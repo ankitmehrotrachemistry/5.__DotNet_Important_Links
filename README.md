@@ -8,7 +8,7 @@
 
 - [Entity Framework Core Model](https://www.learnentityframeworkcore5.com/entity-framework-core-model)
 
-- [Complete 3 Hour ASP NET 6.0 and Entity Framework Core Course!](https://www.youtube.com/watch?v=7d2UMAIgOLQ&list=PLwhVruPHD9rxZ9U5K6vqUFkfrjaRhwEsV&index=12)
+- Youtube free icon[Complete 3 Hour ASP NET 6.0 and Entity Framework Core Course!](https://www.youtube.com/watch?v=7d2UMAIgOLQ&list=PLwhVruPHD9rxZ9U5K6vqUFkfrjaRhwEsV&index=12)
 
 ## ASP.NET MVC
 
