@@ -1,10 +1,6 @@
 # DotNet_Important_Links
 
-## Advanced C# Concepts
-
-- ▶️ [Advanced C# Topics](https://www.youtube.com/watch?v=VT9ueWBqquU&list=PLwhVruPHD9ryiH4kN0EHYeXQXIOHLBcJX&index=1)
-
-#### 1). CORS (Cross Origin Resource Sharing)
+## 1). CORS (Cross Origin Resource Sharing)
 
 - 
 
@@ -95,6 +91,22 @@
 ## 20). Unit Testing - NUnit and XUnit
 
 - [Controller Action Return Types in ASP.NET Core Web API](https://dotnettutorials.net/lesson/controller-action-return-types-core-web-api/)
+
+# Minor Projects
+
+## 1). CRUD Operations
+
+- [ASP.NET Core Web Application](https://www.youtube.com/watch?v=T-e554Zt3n4)
+
+- [CRUD Operations using ASP.NET Core MVC](https://www.youtube.com/watch?v=SfWuOFEatYc)
+
+## 2). Custom Identity
+
+- [Custom Identity in Asp.Net Core MVC](https://www.youtube.com/watch?v=93ssXlCPcuI&t=2158s)
+
+## 0). Advanced C# Concepts
+
+- ▶️ [Advanced C# Topics](https://www.youtube.com/watch?v=VT9ueWBqquU&list=PLwhVruPHD9ryiH4kN0EHYeXQXIOHLBcJX&index=1)
 
 ## ASP.NET MVC
 
