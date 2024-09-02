@@ -92,7 +92,9 @@
 
 - [Controller Action Return Types in ASP.NET Core Web API](https://dotnettutorials.net/lesson/controller-action-return-types-core-web-api/)
 
-# Minor Projects
+
+
+  # Minor Projects
 
 ## 1). CRUD Operations
 
