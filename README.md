@@ -4,7 +4,7 @@
 
 - ▶️ [Advanced C# Topics](https://www.youtube.com/watch?v=VT9ueWBqquU&list=PLwhVruPHD9ryiH4kN0EHYeXQXIOHLBcJX&index=1)
 
-## Entity Framework Core
+## 9). Entity Framework Core
 
 - [Entity Framework Core Model](https://www.learnentityframeworkcore5.com/entity-framework-core-model)
   
