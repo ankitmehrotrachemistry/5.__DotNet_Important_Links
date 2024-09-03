@@ -1,22 +1,22 @@
 # DotNet_Important_Links
 
-## 1). CORS (Cross Origin Resource Sharing)
+### 1). CORS (Cross Origin Resource Sharing)
 
 - 
 
-## 2). How to handle Exception except try-Catch?
+### 2). How to handle Exception except try-Catch?
 
 - 
 
-## 3). Routing in WEB API and MVC
+### 3). Routing in WEB API and MVC
 
 - 
 
-## 4). Middleware and it's working
+### 4). Middleware and it's working
 
 - 
 
-## 5). Create Custom Middleware
+### 5). Create Custom Middleware
 
 - 
 
