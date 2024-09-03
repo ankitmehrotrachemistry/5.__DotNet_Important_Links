@@ -47,6 +47,10 @@
 ## 9.3). DbContext
 
 - [DbContext](https://www.learnentityframeworkcore5.com/dbcontext)
+ 
+## 9.4). Migrations
+
+- [Migrations in Entity Framework Core](https://www.entityframeworktutorial.net/efcore/entity-framework-core-migration.aspx)
 
 ## 10). JWT Authentication and Role Based Authorization
 
