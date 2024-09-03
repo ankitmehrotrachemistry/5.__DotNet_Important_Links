@@ -51,6 +51,8 @@
 - [DbContext](https://www.learnentityframeworkcore5.com/dbcontext)
 
 - [c# Entity framework core assignment solution: Add models and tables](https://www.linkedin.com/pulse/c-entity-framework-core-assignment-solution-add-models-adi-inbar-3r87f/?trackingId=dxMHMLu80K4bLf%2B8FpVmzA%3D%3D)
+
+- [ASP.NET Core REST API DbContext](https://www.pragimtech.com/blog/blazor/asp.net-core-rest-api-dbcontext/)
  
 #### 9.4). Migrations
 
@@ -73,10 +75,14 @@
 #### 9.7). Seeding the Data
 
 - [EF Core Seed Data](https://www.learnentityframeworkcore.com/migrations/seeding)
+ 
+#### 9.8). Entity States
+
+- [Entity States in Entity Framework](https://dotnettutorials.net/lesson/entity-state-in-entity-framework/)
 
 #### 10). JWT Authentication and Role Based Authorization
 
-- [Controller Action Return Types in ASP.NET Core Web API](https://dotnettutorials.net/lesson/controller-action-return-types-core-web-api/)
+- [OAuth 2.0 and OpenID in simple terms](https://medium.com/@iamprovidence/oauth-2-0-and-openid-in-simple-terms-7196089a1b29)
 
 #### 11). Kestrel Server
 
@@ -108,16 +114,19 @@
 
 #### 18). What are Views? ViewData , ViewBag and TempData
 
-- [Controller Action Return Types in ASP.NET Core Web API](https://dotnettutorials.net/lesson/controller-action-return-types-core-web-api/)
+- [ASP.NET MVC: Models, ViewData, ViewBag, and TempData Explained](https://www.linkedin.com/pulse/aspnet-mvc-models-viewdata-viewbag-tempdata-explained-ervis-trupja-ytn7f/)
 
 #### 19). Repository Pattern
 
-- [Controller Action Return Types in ASP.NET Core Web API](https://dotnettutorials.net/lesson/controller-action-return-types-core-web-api/)
+- [Repository Pattern Implementation in ASP.NET Core](https://medium.com/net-core/repository-pattern-implementation-in-asp-net-core-21e01c6664d7)
 
 #### 20). Unit Testing - NUnit and XUnit
 
 - [Controller Action Return Types in ASP.NET Core Web API](https://dotnettutorials.net/lesson/controller-action-return-types-core-web-api/)
 
+#### 24). REST Api. How to create REST API?
+
+- [How To Build a RESTful API with ASP.NET Core](https://medium.com/net-core/how-to-build-a-restful-api-with-asp-net-core-fb7dd8d3e5e3)
 
 
   # Minor Projects
