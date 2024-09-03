@@ -20,15 +20,15 @@
 
 - 
 
-## 6). Dependency Injection
+#### 6). Dependency Injection
 
 - [ASP.NET Core Dependency Injection](https://www.ezzylearning.net/tutorial/a-step-by-step-guide-to-asp-net-core-dependency-injection)
 
-## 7). AddScoped, AddTransient and AddSingleton
+#### 7). AddScoped, AddTransient and AddSingleton
 
 - 
 
-## 8). Extension Methods - App.Run() and App.Use()
+#### 8). Extension Methods - App.Run() and App.Use()
 
 - 
 
@@ -66,8 +66,6 @@
 
 - [Migration Seeding Data in Entity Framework Core with C#](https://www.linkedin.com/pulse/seeding-data-entity-framework-core-c-adi-inbar-tqwff/?trackingId=Bgt89Mt6yxrDPsRHDmpSOQ%3D%3D)
 
-- 
- 
 #### 9.6). Nullable
 
 - [Understanding Nullable Fields and Renaming Columns in C# with Entity Framework Core](https://www.linkedin.com/pulse/understanding-nullable-fields-renaming-columns-c-entity-adi-inbar/?trackingId=%2BwnxToGDylnTUiTV54QnEA%3D%3D)
@@ -124,13 +122,13 @@
 
   # Minor Projects
 
-## 1). CRUD Operations
+### 1). CRUD Operations
 
 - [ASP.NET Core Web Application](https://www.youtube.com/watch?v=T-e554Zt3n4)
 
 - [CRUD Operations using ASP.NET Core MVC](https://www.youtube.com/watch?v=SfWuOFEatYc)
 
-## 2). Custom Identity
+### 2). Custom Identity
 
 - [Custom Identity in Asp.Net Core MVC](https://www.youtube.com/watch?v=93ssXlCPcuI&t=2158s)
 
