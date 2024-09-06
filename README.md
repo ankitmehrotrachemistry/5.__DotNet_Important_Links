@@ -63,6 +63,8 @@
 #### 10.4). LINQ
 
 - [Mastering C# LINQ Guide](https://www.bytehide.com/blog/linq-csharp)
+
+- [LINQ Interview Questions and Answers](https://vasistadotnet.wordpress.com/wp-content/uploads/2015/02/linq-interview-questions-answers-by-shailendra-chauhan.pdf)
  
 #### 10.5). Migrations
 
@@ -143,6 +145,8 @@
 #### 22). REST Api. How to create REST API?
 
 - [How To Build a RESTful API with ASP.NET Core](https://medium.com/net-core/how-to-build-a-restful-api-with-asp-net-core-fb7dd8d3e5e3)
+
+- [Create rest API in .Net Core](https://medium.com/@sagarkumar2499/create-rest-api-in-net-core-b2aed00416fd)
 
 #### 23). What are HTTP Verbs?
 
