@@ -62,7 +62,7 @@
  
 #### 10.4). LINQ
 
-- 
+- [Mastering C# LINQ Guide](https://www.bytehide.com/blog/linq-csharp)
  
 #### 10.5). Migrations
 
