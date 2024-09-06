@@ -65,6 +65,8 @@
 - [Mastering C# LINQ Guide](https://www.bytehide.com/blog/linq-csharp)
 
 - [LINQ Interview Questions and Answers](https://vasistadotnet.wordpress.com/wp-content/uploads/2015/02/linq-interview-questions-answers-by-shailendra-chauhan.pdf)
+
+- [Top 100 LINQ Interview Questions](https://github.com/Devinterview-io/linq-interview-questions) 
  
 #### 10.5). Migrations
 
