@@ -20,21 +20,25 @@
 
 - 
 
-#### 6). Dependency Injection
+#### 6). OWIN Middleware
+
+- [Controller Action Return Types in ASP.NET Core Web API](https://dotnettutorials.net/lesson/controller-action-return-types-core-web-api/)
+
+#### 7). Dependency Injection
 
 - [ASP.NET Core Dependency Injection](https://www.ezzylearning.net/tutorial/a-step-by-step-guide-to-asp-net-core-dependency-injection)
 
-#### 7). AddScoped, AddTransient and AddSingleton
+#### 8). AddScoped, AddTransient and AddSingleton
 
 - [Dependency Injection and using AddTransient, AddScoped and AddSingleton in an ASP.NET Core application](https://alexb72.medium.com/dependency-injection-and-using-addtransient-addscoped-and-addsingleton-in-an-asp-net-2ae09e45c983)
 
 - [Navigating Dependency Lifetimes: A Practical Comparison of AddTransient, AddScoped, and AddSingleton in .NET](https://nshyamprasad.medium.com/navigating-dependency-lifetimes-a-practical-comparison-of-addtransient-addscoped-and-8b825a465dc5)
 
-#### 8). Extension Methods - App.Run() and App.Use()
+#### 9). Extension Methods - App.Run() and App.Use()
 
 - 
 
-#### 9.1). Entity Framework Core
+#### 10.1). Entity Framework Core
 
 - [Entity Framework Core Model](https://www.learnentityframeworkcore5.com/entity-framework-core-model)
   
@@ -44,11 +48,11 @@
 
 - ▶️ [Complete 3 Hour ASP NET 6.0 and Entity Framework Core Course!](https://www.youtube.com/watch?v=7d2UMAIgOLQ&list=PLwhVruPHD9rxZ9U5K6vqUFkfrjaRhwEsV&index=12)
 
-#### 9.2). DataBase First Approach and CodeFirst Approach
+#### 10.2). DataBase First Approach and CodeFirst Approach
 
 - [Entity Framework Core Model](https://www.learnentityframeworkcore5.com/entity-framework-core-model)
  
-#### 9.3). DbContext
+#### 10.3). DbContext
 
 - [DbContext](https://www.learnentityframeworkcore5.com/dbcontext)
 
@@ -56,7 +60,11 @@
 
 - [ASP.NET Core REST API DbContext](https://www.pragimtech.com/blog/blazor/asp.net-core-rest-api-dbcontext/)
  
-#### 9.4). Migrations
+#### 10.4). LINQ
+
+- 
+ 
+#### 10.5). Migrations
 
 - [Migrations in Entity Framework Core](https://www.entityframeworktutorial.net/efcore/entity-framework-core-migration.aspx)
 
@@ -66,39 +74,33 @@
 
 - [Reverting and Managing Migrations in Entity Framework Core with C#](https://www.linkedin.com/pulse/reverting-managing-migrations-entity-framework-core-c-adi-inbar/?trackingId=w3J1ieu5fLpAMDfIVaruhA%3D%3D)
  
-#### 9.5). Seeding Data
+#### 10.6). Seeding Data
 
 - [Migration Seeding Data in Entity Framework Core with C#](https://www.linkedin.com/pulse/seeding-data-entity-framework-core-c-adi-inbar-tqwff/?trackingId=Bgt89Mt6yxrDPsRHDmpSOQ%3D%3D)
 
-#### 9.6). Nullable
+- [EF Core Seed Data](https://www.learnentityframeworkcore.com/migrations/seeding)
+ 
+#### 10.7). Nullable
 
 - [Understanding Nullable Fields and Renaming Columns in C# with Entity Framework Core](https://www.linkedin.com/pulse/understanding-nullable-fields-renaming-columns-c-entity-adi-inbar/?trackingId=%2BwnxToGDylnTUiTV54QnEA%3D%3D)
  
-#### 9.7). Seeding the Data
-
-- [EF Core Seed Data](https://www.learnentityframeworkcore.com/migrations/seeding)
- 
-#### 9.8). Entity States
+#### 10.8). Entity States
 
 - [Entity States in Entity Framework](https://dotnettutorials.net/lesson/entity-state-in-entity-framework/)
 
-#### 10). JWT Authentication and Role Based Authorization
+#### 11). JWT Authentication and Role Based Authorization
 
 - [OAuth 2.0 and OpenID in simple terms](https://medium.com/@iamprovidence/oauth-2-0-and-openid-in-simple-terms-7196089a1b29)
 
-#### 11). Kestrel Server
+#### 12). Kestrel Server
 
 - [Controller Action Return Types in ASP.NET Core Web API](https://dotnettutorials.net/lesson/controller-action-return-types-core-web-api/)
 
-#### 12). State Management - Client and Server
+#### 13). State Management - Client and Server
 
 - [Controller Action Return Types in ASP.NET Core Web API](https://dotnettutorials.net/lesson/controller-action-return-types-core-web-api/)
 
-#### 13). Session Management
-
-- [Controller Action Return Types in ASP.NET Core Web API](https://dotnettutorials.net/lesson/controller-action-return-types-core-web-api/)
-
-#### 14). OWIN Middleware
+#### 14). Session Management
 
 - [Controller Action Return Types in ASP.NET Core Web API](https://dotnettutorials.net/lesson/controller-action-return-types-core-web-api/)
 
@@ -110,15 +112,19 @@
 
 - [Controller Action Return Types in ASP.NET Core Web API](https://dotnettutorials.net/lesson/controller-action-return-types-core-web-api/)
 
-#### 17). Controller Action Methods in MVC
+#### 17). What is MVC Architecture? How to create Controllers?
+
+- 
+
+#### 18). Controller Action Methods in MVC
 
 - [Controller Action Return Types in ASP.NET Core Web API](https://dotnettutorials.net/lesson/controller-action-return-types-core-web-api/)
 
-#### 18). What are Views? ViewData , ViewBag and TempData
+#### 19). What are Views? ViewData , ViewBag and TempData
 
 - [ASP.NET MVC: Models, ViewData, ViewBag, and TempData Explained](https://www.linkedin.com/pulse/aspnet-mvc-models-viewdata-viewbag-tempdata-explained-ervis-trupja-ytn7f/)
 
-#### 19). Repository Pattern
+#### 20). Repository Pattern
 
 - [Repository Pattern Implementation in ASP.NET Core](https://medium.com/net-core/repository-pattern-implementation-in-asp-net-core-21e01c6664d7)
 
@@ -130,24 +136,39 @@
 
 - [A Comprehensive Guide to Repository Pattern in .NET: Implementation and Best Practices](https://medium.com/@dhananjay_1891/a-comprehensive-guide-to-repository-pattern-in-net-implementation-and-best-practices-d67c3a92e618)
 
-#### 20). Unit Testing - NUnit and XUnit
+#### 21). Singleton Design Pattern
 
-- [Controller Action Return Types in ASP.NET Core Web API](https://dotnettutorials.net/lesson/controller-action-return-types-core-web-api/)
+- 
 
-#### 24). REST Api. How to create REST API?
+#### 22). REST Api. How to create REST API?
 
 - [How To Build a RESTful API with ASP.NET Core](https://medium.com/net-core/how-to-build-a-restful-api-with-asp-net-core-fb7dd8d3e5e3)
 
+#### 23). What are HTTP Verbs?
 
-  # Minor Projects
+- 
 
-### 1). CRUD Operations
+#### 24). What is Pagination?
+
+- 
+
+#### 25). What is Data Annotations(Validations)? Client Side and Server Side Validations.
+
+- 
+
+#### 26). Unit Testing - NUnit and XUnit
+
+- [Controller Action Return Types in ASP.NET Core Web API](https://dotnettutorials.net/lesson/controller-action-return-types-core-web-api/)
+
+  ## Minor Projects
+
+#### 1). CRUD Operations
 
 - [ASP.NET Core Web Application](https://www.youtube.com/watch?v=T-e554Zt3n4)
 
 - [CRUD Operations using ASP.NET Core MVC](https://www.youtube.com/watch?v=SfWuOFEatYc)
 
-### 2). Custom Identity
+#### 2). Custom Identity
 
 - [Custom Identity in Asp.Net Core MVC](https://www.youtube.com/watch?v=93ssXlCPcuI&t=2158s)
 
