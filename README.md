@@ -8,7 +8,7 @@
 - You need to register the CORS middleware in the Configure method of Startup.cs .  
              app.UseCors("AllowSpecificOrigin");
 
-- [Cross-Origin Resource Sharing in .NET](https://medium.com/@darshana-edirisinghe/cross-origin-resource-sharing-in-net-f8d0aa802b5f)
+ [Cross-Origin Resource Sharing in .NET](https://medium.com/@darshana-edirisinghe/cross-origin-resource-sharing-in-net-f8d0aa802b5f)
 
 #### 2). How to handle Exception except try-Catch?
 
