@@ -47,7 +47,15 @@ Extension methods are a way to add new functionality to existing types without m
 
 In one of my .NET Core projects, I created an extension method for validating email addresses. 
 
-“public static class StringExtensions { public static bool IsValidEmail(this string email) { return Regex.IsMatch(email, @"^\[^@\\s\]+@\[^@\\s\]+\\.\[^@\\s\]+$"); } }”
+'''csharp
+public static class StringExtensions
+{
+    public static bool IsValidEmail(this string email)
+    {
+        return Regex.IsMatch(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$");
+    }
+}
+
 
 app.UseRouting(): This is used to route incoming requests to the appropriate handlers (e.g., player connections, game events).
 app.UseWebSockets(): If you are handling real-time communication, WebSockets may be necessary for live multiplayer game servers.
