@@ -54,7 +54,8 @@ public static class StringExtensions
     {
         return Regex.IsMatch(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$");
     }
-}```
+}
+```
 
 
 app.UseRouting(): This is used to route incoming requests to the appropriate handlers (e.g., player connections, game events).
