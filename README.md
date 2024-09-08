@@ -6,7 +6,7 @@
 - In a .NET Core API, CORS is implemented using middleware.   
 - A CORS policy defines which domains, HTTP methods, headers, and other options are permitted. 
 - You need to register the CORS middleware in the Configure method of Startup.cs .  
-             'app.UseCors("AllowSpecificOrigin");
+             'app.UseCors("AllowSpecificOrigin");'
 
  [Cross-Origin Resource Sharing in .NET](https://medium.com/@darshana-edirisinghe/cross-origin-resource-sharing-in-net-f8d0aa802b5f)
 
