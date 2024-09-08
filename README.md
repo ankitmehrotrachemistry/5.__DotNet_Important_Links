@@ -88,7 +88,9 @@ app.UseEndpoints(): Configures endpoints for different routes like /api/game/sta
 - [c# Entity framework core assignment solution: Add models and tables](https://www.linkedin.com/pulse/c-entity-framework-core-assignment-solution-add-models-adi-inbar-3r87f/?trackingId=dxMHMLu80K4bLf%2B8FpVmzA%3D%3D)
 
 - [ASP.NET Core REST API DbContext](https://www.pragimtech.com/blog/blazor/asp.net-core-rest-api-dbcontext/)
- 
+
+- [DTO (Data Transfer Object)](https://www.telerik.com/blogs/dotnet-basics-dto-data-transfer-object)
+
 #### 10.4). LINQ
 
 - [Mastering C# LINQ Guide](https://www.bytehide.com/blog/linq-csharp)
