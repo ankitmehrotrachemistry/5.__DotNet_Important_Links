@@ -43,6 +43,18 @@
 
 #### 9). Extension Methods - App.Run() and App.Use()
 
+Extension methods are a way to add new functionality to existing types without modifying their source code. They are static methods that can be called as if they are instance methods on the extended type.
+
+In one of my .NET Core projects, I created an extension method for validating email addresses. 
+
+"public static class StringExtensions
+{
+    public static bool IsValidEmail(this string email)
+    {
+        return Regex.IsMatch(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$");
+    }
+}"
+
 app.UseRouting(): This is used to route incoming requests to the appropriate handlers (e.g., player connections, game events).
 app.UseWebSockets(): If you are handling real-time communication, WebSockets may be necessary for live multiplayer game servers.
 app.UseEndpoints(): Configures endpoints for different routes like /api/game/start for starting a game or /api/game/player/connect for player connections.
@@ -60,6 +72,8 @@ app.UseEndpoints(): Configures endpoints for different routes like /api/game/sta
 - ▶️ [Complete 3 Hour ASP NET 6.0 and Entity Framework Core Course!](https://www.youtube.com/watch?v=7d2UMAIgOLQ&list=PLwhVruPHD9rxZ9U5K6vqUFkfrjaRhwEsV&index=12)
 
 #### 10.2). DataBase First Approach and CodeFirst Approach
+
+🎮 Store persistent player data (e.g., profiles, achievements, leaderboards) using a database like SQL Server. Use Entity Framework Core (Code First) to interact with the database.
 
 - [Entity Framework Core Model](https://www.learnentityframeworkcore5.com/entity-framework-core-model)
  
@@ -104,6 +118,8 @@ app.UseEndpoints(): Configures endpoints for different routes like /api/game/sta
 - [Entity States in Entity Framework](https://dotnettutorials.net/lesson/entity-state-in-entity-framework/)
 
 #### 11). JWT Authentication and Role Based Authorization
+
+🎮 Use JWT Tokens for player authentication, especially in multiplayer environments where players need to remain authenticated across multiple sessions.
 
 - [OAuth 2.0 and OpenID in simple terms](https://medium.com/@iamprovidence/oauth-2-0-and-openid-in-simple-terms-7196089a1b29)
 
@@ -160,6 +176,8 @@ Sessions typically generate a unique identifier (session ID) for each user sessi
 
 #### 22). REST Api. How to create REST API?
 
+🎮 You can implement a matchmaking service using REST APIs or SignalR to find and assign players to games based on their skills, region, or preferences.
+
 - [How To Build a RESTful API with ASP.NET Core](https://medium.com/net-core/how-to-build-a-restful-api-with-asp-net-core-fb7dd8d3e5e3)
 
 - [Create rest API in .Net Core](https://medium.com/@sagarkumar2499/create-rest-api-in-net-core-b2aed00416fd)
@@ -179,6 +197,12 @@ Sessions typically generate a unique identifier (session ID) for each user sessi
 #### 26). Unit Testing - NUnit and XUnit
 
 - [Controller Action Return Types in ASP.NET Core Web API](https://dotnettutorials.net/lesson/controller-action-return-types-core-web-api/)
+
+
+  ## Game Server using Dot Net Core
+
+
+
 
   ## Minor Projects
 
