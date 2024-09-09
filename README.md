@@ -507,9 +507,9 @@ ASP.NET Core is designed from scratch to support Dependency Injection. ASP.NET C
 The built-in container is represented by IServiceProvider implementation that supports constructor injection by default. 
 The built-in IoC container supports three kinds of lifetimes:
 
-**Singleton:** IoC container will create and share a single instance of a service throughout the application's lifetime.
-**Transient:** The IoC container will create a new instance of the specified service type every time you ask for it.
-**Scoped:** IoC container will create an instance of the specified service type once per request and will be shared in a single request.
+**Singleton:** IoC container will create and share a single instance of a service throughout the application's lifetime.  
+**Transient:** The IoC container will create a new instance of the specified service type every time you ask for it.  
+**Scoped:** IoC container will create an instance of the specified service type once per request and will be shared in a single request.  
 
 ASP.NET Core framework includes extension methods for each types of lifetime; AddSingleton(), AddTransient() and AddScoped() methods for singleton, transient and scoped lifetime respectively.
 
