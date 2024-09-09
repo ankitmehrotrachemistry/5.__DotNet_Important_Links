@@ -50,7 +50,48 @@ app.UseCors("AllowSpecificOrigin");
 - This is done using :  
     A). Middleware  
     B). Filters     
-- We’ll focus on using a global filter.
+
+A). In ASP.NET Core, you can use **Middleware** for global exception handling.
+
+```csharp
+public class ErrorHandlingMiddleware
+{
+    private readonly RequestDelegate _next;
+
+    public ErrorHandlingMiddleware(RequestDelegate next)
+    {
+        _next = next;
+    }
+
+    public async Task Invoke(HttpContext context)
+    {
+        try
+        {
+            await _next(context);
+        }
+        catch (Exception ex)
+        {
+            HandleException(context, ex);
+        }
+    }
+
+    private static void HandleException(HttpContext context, Exception ex)
+    {
+        // Log and respond to the error accordingly
+        context.Response.StatusCode = 500;
+        context.Response.ContentType = "application/json";
+        // Serialize and write the exception details to the response
+    }
+}
+
+// In Startup.cs
+public void Configure(IApplicationBuilder app)
+{
+    app.UseMiddleware<ErrorHandlingMiddleware>();
+}
+```
+
+B). We’ll focus on using a **Global Filter**.
 
 ```csharp
 public class GlobalExceptionFilter : IExceptionFilter
@@ -78,7 +119,20 @@ public class GlobalExceptionFilter : IExceptionFilter
         };
     }
 }
-```  
+``` 
+This filter will intercept exceptions and convert them to appropriate HTTP responses.
+
+In the Startup.cs, register the global filter.
+
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddControllers(options =>
+    {
+        options.Filters.Add(new GlobalExceptionFilter());
+    });
+}
+``` 
 
 [Exception Handling in .NET Core Web API](https://medium.com/codenx/exception-handling-in-net-core-web-api-e0c4aad1db06)
 
