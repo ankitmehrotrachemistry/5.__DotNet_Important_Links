@@ -185,6 +185,58 @@ public class ProductsController : ControllerBase
 }
 ```
 
+🎮 In a game server built using .NET Core, routing plays a crucial role in handling requests from clients (game players) and directing them to appropriate controllers or actions.
+
+There are two primary ways to define routes in Web API:
+
+**A). Convention-based routing** : It is typically set up in the Startup.cs file using the MapControllerRoute method.
+
+```csharp
+public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+{
+    app.UseRouting();
+
+    app.UseEndpoints(endpoints =>
+    {
+        endpoints.MapControllerRoute(
+            name: "default",
+            pattern: "api/{controller=Home}/{action=Index}/{id?}");
+    });
+}
+```
+
+For example, if the player requests api/players/GetPlayer/123, the framework maps this to the PlayersController's GetPlayer method with the parameter 123.
+
+**B). Attribute Based Routing** :
+In attribute routing, you specify the URL pattern directly in the controller.
+
+```csharp
+[ApiController]
+[Route("api/[controller]")]
+public class PlayersController : ControllerBase
+{
+    // GET api/players/{id}
+    [HttpGet("{id}")]
+    public IActionResult GetPlayer(string id)
+    {
+        // Logic to retrieve player details by ID
+        var player = PlayerService.GetPlayerById(id);
+        return Ok(player);
+    }
+
+    // POST api/players/create
+    [HttpPost("create")]
+    public IActionResult CreatePlayer([FromBody] Player newPlayer)
+    {
+        // Logic to create a new player
+        PlayerService.CreatePlayer(newPlayer);
+        return Ok(newPlayer);
+    }
+}
+```
+GET api/players/123: Retrieves the player with ID 123.
+POST api/players/create: Creates a new player.
+
 [Http Routing in ASP.NET Core Web API](https://medium.com/@nwonahr/routing-in-asp-net-core-web-api-c9c6dcae5cbd)
 
 #### 4). Middleware and it's working
@@ -451,6 +503,108 @@ Sessions typically generate a unique identifier (session ID) for each user sessi
 #### 17). What is MVC Architecture? How to create Controllers?
 
 - 
+
+Create controllers to handle player interactions. For example, you might have a PlayersController and an ActionsController.
+
+**PlayersController.cs**
+```csharp
+using Microsoft.AspNetCore.Mvc;
+using System.Linq;
+using System.Threading.Tasks;
+
+[ApiController]
+[Route("api/[controller]")]
+public class PlayersController : ControllerBase
+{
+    private readonly GameDbContext _context;
+
+    public PlayersController(GameDbContext context)
+    {
+        _context = context;
+    }
+
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetPlayer(string id)
+    {
+        var player = await _context.Players.FindAsync(id);
+        if (player == null)
+        {
+            return NotFound();
+        }
+        return Ok(player);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> CreatePlayer([FromBody] Player player)
+    {
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(ModelState);
+        }
+
+        _context.Players.Add(player);
+        await _context.SaveChangesAsync();
+        return CreatedAtAction(nameof(GetPlayer), new { id = player.PlayerId }, player);
+    }
+
+    [HttpPut("{id}")]
+    public async Task<IActionResult> UpdatePlayer(string id, [FromBody] Player player)
+    {
+        if (id != player.PlayerId)
+        {
+            return BadRequest();
+        }
+
+        _context.Entry(player).State = EntityState.Modified;
+        await _context.SaveChangesAsync();
+        return NoContent();
+    }
+
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeletePlayer(string id)
+    {
+        var player = await _context.Players.FindAsync(id);
+        if (player == null)
+        {
+            return NotFound();
+        }
+
+        _context.Players.Remove(player);
+        await _context.SaveChangesAsync();
+        return NoContent();
+    }
+}
+```
+
+**ActionsController.cs**
+using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
+
+[ApiController]
+[Route("api/[controller]")]
+public class ActionsController : ControllerBase
+{
+    private readonly GameDbContext _context;
+
+    public ActionsController(GameDbContext context)
+    {
+        _context = context;
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> RecordAction([FromBody] PlayerAction action)
+    {
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(ModelState);
+        }
+
+        _context.PlayerActions.Add(action);
+        await _context.SaveChangesAsync();
+        return Ok(action);
+    }
+}
+
 
 #### 18). Controller Action Methods in MVC
 
