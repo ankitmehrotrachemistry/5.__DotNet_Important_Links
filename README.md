@@ -13,6 +13,24 @@ For security, we used JWT tokens for player authentication, ensuring secure and 
 Client-Server Model: The client (game app) communicates with the server (backend) for operations like player registration, authentication, game state synchronization, and matchmaking. The server is responsible for managing game logic, player connections, and real-time communication.    
 Microservices Architecture: .NET Core supports building modular systems where game functionalities like matchmaking, leaderboards, and player stats are managed in separate services. This architecture enhances scalability and maintainability.
 
+## Real-Time Communication with SignalR:
+
+For multiplayer games, real-time communication between the server and players is crucial. SignalR is a library built into ASP.NET Core that allows real-time communication via WebSockets or other protocols.    
+
+Use Case: It is used to broadcast messages to all players (like game state updates) or send targeted messages (like player-specific notifications or movements).    
+Example: In a multiplayer game where players need to synchronize actions (e.g., shooting, moving), SignalR helps keep all clients in sync    
+
+```csharp
+public class GameHub : Hub
+{
+    public async Task SendMove(string player, string move)
+    {
+        // Broadcast the player's move to all other connected players
+        await Clients.Others.SendAsync("ReceiveMove", player, move);
+    }
+}
+```
+
 #### 1). CORS (Cross Origin Resource Sharing)
 
 - Cross-Origin Resource Sharing (CORS) is a security feature that allows or restricts web applications running at one domain to make requests for resources from a different domain.  
