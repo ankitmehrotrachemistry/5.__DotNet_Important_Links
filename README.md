@@ -467,8 +467,11 @@ public class Startup
     }
 }
 ```
+[Custom Middlewares With Dependency Injection In .NET Framework](https://medium.com/@ofirbarak96/custom-middlewares-with-dependency-injection-in-net-framework-b18f5b935e4d)
 
 #### 6). OWIN Middleware
+
+OWIN defines a standard interface between .NET web servers and web applications. The goal of the OWIN interface is to decouple server and application.
 
 - [Controller Action Return Types in ASP.NET Core Web API](https://dotnettutorials.net/lesson/controller-action-return-types-core-web-api/)
 
@@ -778,7 +781,7 @@ Common Use Cases for Entity Framework in a Game Server
 
 🎮 Store persistent player data (e.g., profiles, achievements, leaderboards) using a database like SQL Server. Use Entity Framework Core (Code First) to interact with the database.
 
-#### 10.2). SQL and NoSQL
+#### 10.3). SQL and NoSQL
 
 🎮 Multiplayer games often have global leaderboards. .NET Core can integrate with databases like Redis for fast leaderboard lookups and use SQL or NoSQL databases to store player performance stats.
 
@@ -821,7 +824,7 @@ public class Player
 
 ```
 
-#### 10.3). DbContext
+#### 10.4). DbContext
 
 - [DbContext](https://www.learnentityframeworkcore5.com/dbcontext)
 
@@ -915,7 +918,7 @@ public class Startup
 }
 ```
 
-#### 10.4). LINQ
+#### 10.5). LINQ
 
 - [Mastering C# LINQ Guide](https://www.bytehide.com/blog/linq-csharp)
 
@@ -923,7 +926,7 @@ public class Startup
 
 - [Top 100 LINQ Interview Questions](https://github.com/Devinterview-io/linq-interview-questions) 
  
-#### 10.5). Migrations
+#### 10.6). Migrations, Seeding Data , Nullable and Entity States
 
 - [Migrations in Entity Framework Core](https://www.entityframeworktutorial.net/efcore/entity-framework-core-migration.aspx)
 
@@ -933,8 +936,6 @@ public class Startup
 
 - [Reverting and Managing Migrations in Entity Framework Core with C#](https://www.linkedin.com/pulse/reverting-managing-migrations-entity-framework-core-c-adi-inbar/?trackingId=w3J1ieu5fLpAMDfIVaruhA%3D%3D)
  
-#### 10.6). Seeding Data , Nullable and Entity States
-
 - [Migration Seeding Data in Entity Framework Core with C#](https://www.linkedin.com/pulse/seeding-data-entity-framework-core-c-adi-inbar-tqwff/?trackingId=Bgt89Mt6yxrDPsRHDmpSOQ%3D%3D)
 
 - [EF Core Seed Data](https://www.learnentityframeworkcore.com/migrations/seeding)
