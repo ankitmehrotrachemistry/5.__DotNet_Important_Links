@@ -1,5 +1,3 @@
-# DotNet_Important_Links
-
 ## Tell me about your Project
 
 In my previous role, I developed the backend for a real-time multiplayer game using .NET Core. My primary responsibility was designing and developing scalable APIs that supported player interactions, matchmaking, and in-game events. We used a microservices architecture to handle key features like player matchmaking, real-time communication, and leaderboards. For real-time gameplay, I integrated SignalR to manage WebSocket connections, allowing players to communicate their moves instantly. 
@@ -30,6 +28,8 @@ public class GameHub : Hub
     }
 }
 ```
+
+# DotNet_Important_Links
 
 #### 1). CORS (Cross Origin Resource Sharing)
 
