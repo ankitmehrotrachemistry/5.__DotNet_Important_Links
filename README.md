@@ -91,9 +91,9 @@ public static class StringExtensions
 ```
 
 
-app.UseRouting(): This is used to route incoming requests to the appropriate handlers (e.g., player connections, game events).
-app.UseWebSockets(): If you are handling real-time communication, WebSockets may be necessary for live multiplayer game servers.
-app.UseEndpoints(): Configures endpoints for different routes like /api/game/start for starting a game or /api/game/player/connect for player connections.
+**app.UseRouting():** This is used to route incoming requests to the appropriate handlers (e.g., player connections, game events).
+**app.UseWebSockets():** If you are handling real-time communication, WebSockets may be necessary for live multiplayer game servers.
+**app.UseEndpoints():** Configures endpoints for different routes like /api/game/start for starting a game or /api/game/player/connect for player connections.
 
 #### 10.1). Entity Framework Core
 
@@ -132,9 +132,9 @@ public class LeaderboardService
     }
 }
 ```
-Performance Optimization:  
-Asynchronous Programming: Use async/await patterns to handle concurrent connections and I/O-bound operations, which is crucial in multiplayer games to prevent blocking threads.  
-Caching: Use Redis for caching frequently accessed data, like player profiles or game states, to reduce database load.
+**Performance Optimization:    
+Asynchronous Programming:** Use async/await patterns to handle concurrent connections and I/O-bound operations, which is crucial in multiplayer games to prevent blocking threads.  
+**Caching:** Use Redis for caching frequently accessed data, like player profiles or game states, to reduce database load.
 
 #### 10.3). DbContext
 
@@ -186,7 +186,7 @@ Caching: Use Redis for caching frequently accessed data, like player profiles or
 
 🎮 In a multiplayer game, it’s important to authenticate users securely. .NET Core provides Identity and OAuth2.0 for managing player authentication and authorization.
 
-JWT Tokens: Issue JWT tokens for player authentication. This is particularly useful in games, where the token can be passed in each request to verify the player’s identity without maintaining a session.
+**JWT Tokens:** Issue JWT tokens for player authentication. This is particularly useful in games, where the token can be passed in each request to verify the player’s identity without maintaining a session.
 
 ```csharp
 public class AuthController : ControllerBase
@@ -209,10 +209,10 @@ public class AuthController : ControllerBase
 
 Use JWT Tokens for player authentication, especially in multiplayer environments where players need to remain authenticated across multiple sessions.
 
-💻 Explain how you Implement Authentication and Authorization in a Project:
-Authentication Example: "In one of my projects, I used ASP.NET Core Identity for user authentication. We allowed users to sign in using either their email and password or via Google using OAuth 2.0. For the web API, we implemented JWT tokens to authenticate users, where the token was validated with every API request."    
+💻 **Explain how you Implement Authentication and Authorization in a Project:**         
+**Authentication Example:** "In one of my projects, I used ASP.NET Core Identity for user authentication. We allowed users to sign in using either their email and password or via Google using OAuth 2.0. For the web API, we implemented JWT tokens to authenticate users, where the token was validated with every API request."    
 
-Authorization Example: "For authorization, we implemented a role-based system where different user roles had different access levels. For example, Admin users could manage products, while regular users could only view them. We used the [Authorize] attribute in ASP.NET Core to protect specific API endpoints and ensured the users' roles were checked before performing certain actions."     
+**Authorization Example:** "For authorization, we implemented a role-based system where different user roles had different access levels. For example, Admin users could manage products, while regular users could only view them. We used the [Authorize] attribute in ASP.NET Core to protect specific API endpoints and ensured the users' roles were checked before performing certain actions."     
  
 #### 12). Kestrel Server
 
@@ -224,7 +224,7 @@ Authorization Example: "For authorization, we implemented a role-based system wh
 
 #### 14). Session Management
 
-Sessions in Web Applications refer to the mechanism of storing user-specific data temporarily on the server side across multiple requests. Unlike cookies, which are stored on the client side, session data is stored on the server side, enhancing security and reducing the risk of exposing sensitive information.
+**Sessions** in Web Applications refer to the mechanism of storing user-specific data temporarily on the server side across multiple requests. Unlike cookies, which are stored on the client side, session data is stored on the server side, enhancing security and reducing the risk of exposing sensitive information.
 Sessions typically generate a unique identifier (session ID) for each user session upon their first interaction with the application. This identifier (session ID) is stored as a cookie on the client side (usually), and the corresponding data is stored on the Web Server. When the client makes subsequent requests, this session ID is sent in the Request header. The server uses this identifier to retrieve session-specific data stored in memory (Temporary Caching Mechanism), a database, or another persistent storage mechanism. This data persists until the session expires (due to user inactivity or logout) or is manually cleared.
 
 - [Controller Action Return Types in ASP.NET Core Web API](https://dotnettutorials.net/lesson/controller-action-return-types-core-web-api/)
