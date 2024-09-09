@@ -8,15 +8,15 @@ For security, we used JWT tokens for player authentication, ensuring secure and 
 
 ## Architecture of a Multiplayer Game Backend:
     
-Client-Server Model: The client (game app) communicates with the server (backend) for operations like player registration, authentication, game state synchronization, and matchmaking. The server is responsible for managing game logic, player connections, and real-time communication.    
-Microservices Architecture: .NET Core supports building modular systems where game functionalities like matchmaking, leaderboards, and player stats are managed in separate services. This architecture enhances scalability and maintainability.
+**Client-Server Model:** The client (game app) communicates with the server (backend) for operations like player registration, authentication, game state synchronization, and matchmaking. The server is responsible for managing game logic, player connections, and real-time communication.    
+**Microservices Architecture:** .NET Core supports building modular systems where game functionalities like matchmaking, leaderboards, and player stats are managed in separate services. This architecture enhances scalability and maintainability.
 
 ## Real-Time Communication with SignalR:
 
 For multiplayer games, real-time communication between the server and players is crucial. SignalR is a library built into ASP.NET Core that allows real-time communication via WebSockets or other protocols.    
 
-Use Case: It is used to broadcast messages to all players (like game state updates) or send targeted messages (like player-specific notifications or movements).    
-Example: In a multiplayer game where players need to synchronize actions (e.g., shooting, moving), SignalR helps keep all clients in sync    
+**Use Case:** It is used to broadcast messages to all players (like game state updates) or send targeted messages (like player-specific notifications or movements).    
+**Example:** In a multiplayer game where players need to synchronize actions (e.g., shooting, moving), SignalR helps keep all clients in sync    
 
 ```csharp
 public class GameHub : Hub
@@ -51,7 +51,7 @@ app.UseCors("AllowSpecificOrigin");
     A). Middleware  
     B). Filters     
 
-A). In ASP.NET Core, you can use **Middleware** for global exception handling.
+**A). In ASP.NET Core, you can use Middleware for global exception handling.**
 
 ```csharp
 public class ErrorHandlingMiddleware
@@ -91,7 +91,7 @@ public void Configure(IApplicationBuilder app)
 }
 ```
 
-B). We’ll focus on using a **Global Filter**.
+**B). We’ll focus on using a Global Filter.**
 
 ```csharp
 public class GlobalExceptionFilter : IExceptionFilter
@@ -146,7 +146,7 @@ In ASP.NET Core, routing is handled by the routing middleware, which is configur
 A). Convention-based Routing   
 B). Attribute Routing  
 
-A). Convention-based Routing : Convention-based routing defines routes globally in the Startup.cs file. This approach is useful when you want to apply a consistent routing pattern across your entire application.
+**A). Convention-based Routing :** Convention-based routing defines routes globally in the Startup.cs file. This approach is useful when you want to apply a consistent routing pattern across your entire application.
 
 **Defining Routes in Startup.cs**
 In the Configure method of the Startup.cs file, you define routes using the UseEndpoints method:  
@@ -164,7 +164,7 @@ public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 }
 ```
 
-B). Attribute Routing : Attribute routing allows you to define routes directly on controller actions using attributes. This approach offers more flexibility and fine-grained control over your API endpoints.  
+**B). Attribute Routing :** Attribute routing allows you to define routes directly on controller actions using attributes. This approach offers more flexibility and fine-grained control over your API endpoints.  
 
 **Using Route Attributes**
 You can use the [Route] attribute to define routes on controllers and actions:
@@ -545,7 +545,7 @@ public void ConfigureServices(IServiceCollection services)
 Common Use Cases in Game Servers
 In a game server, you might use DI for various core components:
 
-**a. Game Logic Services**
+**a. Game Logic Services :**  
 Services that handle game mechanics, rules, and interactions between players.
 Examples: Combat systems, scoring, event handling.
 
@@ -586,7 +586,7 @@ public class GameService : IGameService
 }
 ```
 
-**b. Player Management**
+**b. Player Management :**  
 Managing player profiles, authentication, session tracking, and in-game states.
 
 ```csharp
@@ -1039,13 +1039,13 @@ public async Task SyncGameState()
 
 Kestrel is the default web server used in ASP.NET Core applications. It is designed to be fast and efficient, making it an ideal choice for modern web applications. Kestrel can handle HTTP requests and responses, providing a robust foundation for building web applications.
 
-Why Use Kestrel?
-**a). Performance:** Kestrel is highly performant and can handle a large number of requests per second.
-**b). Cross-Platform:** Kestrel runs on Windows, macOS, and Linux, making it versatile for different deployment environments.
-**c). Asynchronous:** Built on top of libuv, Kestrel is designed to handle asynchronous I/O operations efficiently.
-**d). Default Server:** It’s the default web server in ASP.NET Core, which means it’s well-integrated and supported out of the box.
+Why Use Kestrel?  
+**a). Performance:** Kestrel is highly performant and can handle a large number of requests per second.  
+**b). Cross-Platform:** Kestrel runs on Windows, macOS, and Linux, making it versatile for different deployment environments.  
+**c). Asynchronous:** Built on top of libuv, Kestrel is designed to handle asynchronous I/O operations efficiently.  
+**d). Default Server:** It’s the default web server in ASP.NET Core, which means it’s well-integrated and supported out of the box.  
 
-**Configure Kestrel in Program.cs**
+**Configure Kestrel in Program.cs**  
 Open the Program.cs file and configure Kestrel by calling the UseKestrel method on the WebHostBuilder.
 
 ```csharp
@@ -1072,7 +1072,7 @@ public class Program
 }
 ```
 
-**Configure the Startup Class**
+**Configure the Startup Class**  
 In the Startup.cs file, configure the services and middleware.
 
 ```csharp
@@ -1105,7 +1105,7 @@ public class Startup
 }
 ```
 
-**Create a Sample Controller**
+**Create a Sample Controller**  
 Create a sample controller to test the Kestrel server. Add a new WeatherForecastController.cs file in the Controllers folder.
 
 ```csharp
@@ -1149,8 +1149,6 @@ Sessions typically generate a unique identifier (session ID) for each user sessi
 - [Controller Action Return Types in ASP.NET Core Web API](https://dotnettutorials.net/lesson/controller-action-return-types-core-web-api/)
 
 ## 17). What is MVC Architecture? How to create Controllers?
-
-- 
 
 🎮 Create controllers to handle player interactions. For example, you might have a PlayersController and an ActionsController.
 
@@ -1287,16 +1285,13 @@ public class ActionsController : ControllerBase
 - [Create rest API in .Net Core](https://medium.com/@sagarkumar2499/create-rest-api-in-net-core-b2aed00416fd)
 
 ## 23). What are HTTP Verbs?
-
-- 
+ 
 
 ## 24). What is Pagination?
 
-- 
 
 ## 25). What is Data Annotations(Validations)? Client Side and Server Side Validations.
 
-- 
 
 ## 26). Unit Testing - NUnit and XUnit
 
