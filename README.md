@@ -77,10 +77,32 @@ app.UseEndpoints(): Configures endpoints for different routes like /api/game/sta
 
 #### 10.2). DataBase First Approach and CodeFirst Approach
 
+- [Entity Framework Core Model](https://www.learnentityframeworkcore5.com/entity-framework-core-model)
+
 🎮 Store persistent player data (e.g., profiles, achievements, leaderboards) using a database like SQL Server. Use Entity Framework Core (Code First) to interact with the database.
 
-- [Entity Framework Core Model](https://www.learnentityframeworkcore5.com/entity-framework-core-model)
- 
+#### 10.2). SQL and NoSQL
+
+🎮 Multiplayer games often have global leaderboards. .NET Core can integrate with databases like Redis for fast leaderboard lookups and use SQL or NoSQL databases to store player performance stats.
+
+```csharp
+public class LeaderboardService
+{
+    private readonly IRedisCache _redis;
+
+    public LeaderboardService(IRedisCache redis)
+    {
+        _redis = redis;
+    }
+
+    public async Task<IEnumerable<Player>> GetTopPlayers()
+    {
+        // Get top players from Redis cache
+        return await _redis.GetTopPlayersAsync();
+    }
+}
+```
+
 #### 10.3). DbContext
 
 - [DbContext](https://www.learnentityframeworkcore5.com/dbcontext)
@@ -133,7 +155,7 @@ app.UseEndpoints(): Configures endpoints for different routes like /api/game/sta
 
 JWT Tokens: Issue JWT tokens for player authentication. This is particularly useful in games, where the token can be passed in each request to verify the player’s identity without maintaining a session.
 
-```chsharp
+```csharp
 public class AuthController : ControllerBase
 {
     private readonly ITokenService _tokenService;
