@@ -8,6 +8,11 @@ We stored player profiles and game data in SQL Server while using Redis for cach
      
 For security, we used JWT tokens for player authentication, ensuring secure and stateless communication between the client and server.
 
+## Architecture of a Multiplayer Game Backend:
+    
+Client-Server Model: The client (game app) communicates with the server (backend) for operations like player registration, authentication, game state synchronization, and matchmaking. The server is responsible for managing game logic, player connections, and real-time communication.    
+Microservices Architecture: .NET Core supports building modular systems where game functionalities like matchmaking, leaderboards, and player stats are managed in separate services. This architecture enhances scalability and maintainability.
+
 #### 1). CORS (Cross Origin Resource Sharing)
 
 - Cross-Origin Resource Sharing (CORS) is a security feature that allows or restricts web applications running at one domain to make requests for resources from a different domain.  
