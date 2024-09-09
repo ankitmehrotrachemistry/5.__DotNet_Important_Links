@@ -396,7 +396,7 @@ public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 }
 ```
 
-**You can also create custom middlewares for game-specific scenarios such as:**
+🎮 **You can also create custom middlewares for game-specific scenarios such as:**
 
 **A). Game State Middleware**
 Used to manage the player's current game state and persist data as they progress.
@@ -849,9 +849,22 @@ public class Player
 
 ```
 
-## 10.4). DbContext
+## 10.4). DbContext & DbSet
+
+The DbContext is simply the way for the developers to incorporate Entity Framework based data to the application. It allows you to make database connections inside an application model and allows the developer to link the model properties to the database table using a connection string.
+
+The DbContext in Entity Framework Core consist of the following features and responsibilities:
+
+Database Management
+Database Connections
+Entity Set
+Querying
+Validation
+
+In Entity Framework Core, the DbSet represents the set of entities. In a database, a group of similar entities is called an Entity Set. The DbSet is responsible for performing all the basic CRUD (Create, Read, Update and Delete) operations on each of the Entity.
 
 - [DbContext](https://www.learnentityframeworkcore5.com/dbcontext)
+- [DbSet](https://www.learnentityframeworkcore5.com/dbset)
 
 - [c# Entity framework core assignment solution: Add models and tables](https://www.linkedin.com/pulse/c-entity-framework-core-assignment-solution-add-models-adi-inbar-3r87f/?trackingId=dxMHMLu80K4bLf%2B8FpVmzA%3D%3D)
 
@@ -971,8 +984,6 @@ public class Startup
 
 ## 11). JWT Authentication and Role Based Authorization
 
-
-
 - [OAuth 2.0 and OpenID in simple terms](https://medium.com/@iamprovidence/oauth-2-0-and-openid-in-simple-terms-7196089a1b29)
 
 🎮 In a multiplayer game, it’s important to authenticate users securely. .NET Core provides Identity and OAuth2.0 for managing player authentication and authorization.
@@ -1025,6 +1036,96 @@ public async Task SyncGameState()
 **Authorization Example:** "For authorization, we implemented a role-based system where different user roles had different access levels. For example, Admin users could manage products, while regular users could only view them. We used the [Authorize] attribute in ASP.NET Core to protect specific API endpoints and ensured the users' roles were checked before performing certain actions."     
  
 ## 12). Kestrel Server
+
+Kestrel is the default web server used in ASP.NET Core applications. It is designed to be fast and efficient, making it an ideal choice for modern web applications. Kestrel can handle HTTP requests and responses, providing a robust foundation for building web applications.
+
+Why Use Kestrel?
+**a). Performance:** Kestrel is highly performant and can handle a large number of requests per second.
+**b). Cross-Platform:** Kestrel runs on Windows, macOS, and Linux, making it versatile for different deployment environments.
+**c). Asynchronous:** Built on top of libuv, Kestrel is designed to handle asynchronous I/O operations efficiently.
+**d). Default Server:** It’s the default web server in ASP.NET Core, which means it’s well-integrated and supported out of the box.
+
+**Configure Kestrel in Program.cs**
+Open the Program.cs file and configure Kestrel by calling the UseKestrel method on the WebHostBuilder.
+
+```csharp
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Hosting;
+
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        CreateHostBuilder(args).Build().Run();
+    }
+
+    public static IHostBuilder CreateHostBuilder(string[] args) =>
+        Host.CreateDefaultBuilder(args)
+            .ConfigureWebHostDefaults(webBuilder =>
+            {
+                webBuilder.UseStartup<Startup>();
+                webBuilder.UseKestrel(options =>
+                {
+                    options.ListenAnyIP(5000); // Listen on port 5000
+                });
+            });
+}
+```
+
+**Configure the Startup Class**
+In the Startup.cs file, configure the services and middleware.
+
+```csharp
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+
+public class Startup
+{
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.AddControllers();
+    }
+
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+    {
+        if (env.IsDevelopment())
+        {
+            app.UseDeveloperExceptionPage();
+        }
+
+        app.UseRouting();
+
+        app.UseEndpoints(endpoints =>
+        {
+            endpoints.MapControllers();
+        });
+    }
+}
+```
+
+**Create a Sample Controller**
+Create a sample controller to test the Kestrel server. Add a new WeatherForecastController.cs file in the Controllers folder.
+
+```csharp
+using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+
+namespace KestrelDemo.Controllers
+{
+    [ApiController]
+    [Route("[controller]")]
+    public class WeatherForecastController : ControllerBase
+    {
+        [HttpGet]
+        public IEnumerable<string> Get()
+        {
+            return new string[] { "Weather 1", "Weather 2" };
+        }
+    }
+}
+```
 
 - [Controller Action Return Types in ASP.NET Core Web API](https://dotnettutorials.net/lesson/controller-action-return-types-core-web-api/)
 
