@@ -248,6 +248,115 @@ POST api/players/create: Creates a new player.
 - Middleware can be added and ordered in the pipeline using the **UseMiddleware() method** in the **Configure() method** of the Startup class.  
 - Middleware in .NET Core is like a series of checkpoints or gatekeepers that a request must pass through before reaching the endpoint, and again on its way back as a response. They are essential components in the request pipeline, responsible for everything from logging, authentication, to response compression.
 
+🎮 Middlewares allow you to insert custom logic into the request/response pipeline of your game server.
+In the context of a game server, middlewares can handle:
+
+**Request/Response validation:** Validate requests from clients and responses sent back to clients.
+**Authentication and Authorization:** Ensure that only authenticated users can access the game server.
+
+Middleware components in .NET Core are implemented as part of the RequestDelegate pipeline.
+
+**Common Use Cases for Middleware in Game Server Logic**
+
+**A). Authentication and Authorization Middleware**
+Authentication and Authorization Middleware verifies JWT tokens or other forms of authentication, checking if a player has permission to access the game server.
+
+```csharp
+public class AuthenticationMiddleware
+{
+    private readonly RequestDelegate _next;
+
+    public AuthenticationMiddleware(RequestDelegate next)
+    {
+        _next = next;
+    }
+
+    public async Task Invoke(HttpContext context)
+    {
+        var token = context.Request.Headers["Authorization"].FirstOrDefault()?.Split(" ").Last();
+        if (string.IsNullOrEmpty(token) || !ValidateToken(token))
+        {
+            context.Response.StatusCode = 401; // Unauthorized
+            await context.Response.WriteAsync("Invalid Token");
+            return;
+        }
+
+        await _next(context); // Pass to the next middleware if authenticated
+    }
+
+    private bool ValidateToken(string token)
+    {
+        // Token validation logic
+        return true; // Assume token is valid
+    }
+}
+```
+
+**B). Request Rate Limiting**
+Rate limiting middleware helps prevent denial-of-service attacks and ensures fair use. This is especially important during in-game events where many players may be interacting simultaneously.
+
+```csharp
+public class RateLimitingMiddleware
+{
+    private static Dictionary<string, DateTime> _requestTracker = new Dictionary<string, DateTime>();
+    private readonly RequestDelegate _next;
+    private readonly TimeSpan _throttlePeriod = TimeSpan.FromSeconds(1); // 1 request per second
+
+    public RateLimitingMiddleware(RequestDelegate next)
+    {
+        _next = next;
+    }
+
+    public async Task Invoke(HttpContext context)
+    {
+        string playerId = GetPlayerId(context); // Get player identifier (e.g., from headers)
+
+        if (_requestTracker.TryGetValue(playerId, out var lastRequestTime))
+        {
+            if (DateTime.UtcNow - lastRequestTime < _throttlePeriod)
+            {
+                context.Response.StatusCode = 429; // Too many requests
+                await context.Response.WriteAsync("Rate limit exceeded");
+                return;
+            }
+        }
+
+        _requestTracker[playerId] = DateTime.UtcNow;
+        await _next(context);
+    }
+
+    private string GetPlayerId(HttpContext context)
+    {
+        return context.Request.Headers["Player-Id"].FirstOrDefault();
+    }
+}
+```
+**C). Logging and Performance Monitoring**
+Track the requests coming to your game server, logging critical events like player actions, matchmaking requests, or game state updates.
+
+```csharp
+public class LoggingMiddleware
+{
+    private readonly RequestDelegate _next;
+
+    public LoggingMiddleware(RequestDelegate next)
+    {
+        _next = next;
+    }
+
+    public async Task Invoke(HttpContext context)
+    {
+        var request = context.Request;
+        Console.WriteLine($"Request: {request.Method} {request.Path}");
+
+        var startTime = DateTime.UtcNow;
+        await _next(context); // Pass control to the next middleware
+        var duration = DateTime.UtcNow - startTime;
+
+        Console.WriteLine($"Response Status: {context.Response.StatusCode}, Duration: {duration.TotalMilliseconds} ms");
+    }
+}
+```
 
 #### 5). Create Custom Middleware
 
@@ -284,6 +393,78 @@ public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 {
     app.UseLoggingMiddleware();
     // Other middleware registrations
+}
+```
+
+**You can also create custom middlewares for game-specific scenarios such as:**
+
+**A). Game State Middleware**
+Used to manage the player's current game state and persist data as they progress.
+
+**B). Matchmaking Middleware**
+Track requests for matchmaking and either enqueue them or assign players to a match when conditions are met.
+
+Example Middleware for Matchmaking:
+
+```csharp
+public class MatchmakingMiddleware
+{
+    private static Queue<string> _waitingPlayers = new Queue<string>();
+    private readonly RequestDelegate _next;
+
+    public MatchmakingMiddleware(RequestDelegate next)
+    {
+        _next = next;
+    }
+
+    public async Task Invoke(HttpContext context)
+    {
+        var playerId = context.Request.Headers["Player-Id"].FirstOrDefault();
+        if (!string.IsNullOrEmpty(playerId))
+        {
+            if (_waitingPlayers.Count > 0)
+            {
+                var opponentId = _waitingPlayers.Dequeue();
+                await context.Response.WriteAsync($"Match found! You are playing against {opponentId}");
+            }
+            else
+            {
+                _waitingPlayers.Enqueue(playerId);
+                await context.Response.WriteAsync("Waiting for a match...");
+            }
+        }
+        else
+        {
+            await _next(context);
+        }
+    }
+}
+```
+
+**Register Middlewares in the Pipeline**
+Once you have created your middleware, you need to register it in the request pipeline within the Startup.cs or Program.cs:
+
+```csharp
+public class Startup
+{
+    public void Configure(IApplicationBuilder app)
+    {
+        // Custom Middlewares
+        app.UseMiddleware<LoggingMiddleware>();
+        app.UseMiddleware<AuthenticationMiddleware>();
+        app.UseMiddleware<RateLimitingMiddleware>();
+        app.UseMiddleware<MatchmakingMiddleware>();
+
+        // Exception Handling Middleware
+        app.UseMiddleware<ExceptionHandlingMiddleware>();
+
+        // Endpoints
+        app.UseRouting();
+        app.UseEndpoints(endpoints =>
+        {
+            endpoints.MapControllers();
+        });
+    }
 }
 ```
 
