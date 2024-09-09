@@ -2,9 +2,9 @@
 
 ## Tell me about your Project
 
-In my previous role, I developed the backend for a real-time multiplayer game using .NET Core. We used a microservices architecture to handle key features like player matchmaking, real-time communication, and leaderboards. For real-time gameplay, I integrated SignalR to manage WebSocket connections, allowing players to communicate their moves instantly.
+In my previous role, I developed the backend for a real-time multiplayer game using .NET Core. My primary responsibility was designing and developing scalable APIs that supported player interactions, matchmaking, and in-game events. We used a microservices architecture to handle key features like player matchmaking, real-time communication, and leaderboards. For real-time gameplay, I integrated SignalR to manage WebSocket connections, allowing players to communicate their moves instantly. 
      
-We stored player profiles and game data in SQL Server while using Redis for caching active game sessions and leaderboards. The system was deployed on Azure with Kubernetes, allowing it to scale dynamically based on player demand. This ensured low-latency gameplay for over 1 million players.
+We stored player profiles and game data in SQL Server while using Redis for caching active game sessions and leaderboards. The system was deployed on Azure with Kubernetes, allowing it to scale dynamically based on player demand. This ensured low-latency gameplay for over 1 million players. We also leveraged Azure Cloud Services to scale our servers dynamically based on player activity, ensuring low latency and high availability, especially during peak times.
      
 For security, we used JWT tokens for player authentication, ensuring secure and stateless communication between the client and server.
 
@@ -46,7 +46,12 @@ app.UseCors("AllowSpecificOrigin");
 
 #### 2). How to handle Exception except try-Catch?
 
-- 
+- Instead of scattering try-catch blocks throughout your code, .NET Core allows you to handle exceptions globally.  
+- This is done using :  
+    A). Middleware  
+    B). Filters     
+
+[Exception Handling in .NET Core Web API](https://medium.com/codenx/exception-handling-in-net-core-web-api-e0c4aad1db06)
 
 #### 3). Routing in WEB API and MVC
 
