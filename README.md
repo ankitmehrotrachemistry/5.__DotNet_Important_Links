@@ -1,5 +1,13 @@
 # DotNet_Important_Links
 
+## Tell me about your Project
+
+In my previous role, I developed the backend for a real-time multiplayer game using .NET Core. We used a microservices architecture to handle key features like player matchmaking, real-time communication, and leaderboards. For real-time gameplay, I integrated SignalR to manage WebSocket connections, allowing players to communicate their moves instantly.
+     
+We stored player profiles and game data in SQL Server while using Redis for caching active game sessions and leaderboards. The system was deployed on Azure with Kubernetes, allowing it to scale dynamically based on player demand. This ensured low-latency gameplay for over 1 million players.
+     
+For security, we used JWT tokens for player authentication, ensuring secure and stateless communication between the client and server.
+
 #### 1). CORS (Cross Origin Resource Sharing)
 
 - Cross-Origin Resource Sharing (CORS) is a security feature that allows or restricts web applications running at one domain to make requests for resources from a different domain.  
@@ -64,8 +72,6 @@ app.UseRouting(): This is used to route incoming requests to the appropriate han
 app.UseWebSockets(): If you are handling real-time communication, WebSockets may be necessary for live multiplayer game servers.
 app.UseEndpoints(): Configures endpoints for different routes like /api/game/start for starting a game or /api/game/player/connect for player connections.
 
-- 
-
 #### 10.1). Entity Framework Core
 
 - [Entity Framework Core Model](https://www.learnentityframeworkcore5.com/entity-framework-core-model)
@@ -103,8 +109,8 @@ public class LeaderboardService
     }
 }
 ```
-Performance Optimization:
-Asynchronous Programming: Use async/await patterns to handle concurrent connections and I/O-bound operations, which is crucial in multiplayer games to prevent blocking threads.
+Performance Optimization:  
+Asynchronous Programming: Use async/await patterns to handle concurrent connections and I/O-bound operations, which is crucial in multiplayer games to prevent blocking threads.  
 Caching: Use Redis for caching frequently accessed data, like player profiles or game states, to reduce database load.
 
 #### 10.3). DbContext
