@@ -136,6 +136,8 @@ public void ConfigureServices(IServiceCollection services)
 
 [Exception Handling in .NET Core Web API](https://medium.com/codenx/exception-handling-in-net-core-web-api-e0c4aad1db06)
 
+[Middleware and Filters power in ASP.NET Core](https://binodmahto.medium.com/middleware-and-filters-power-in-asp-net-core-3c4e3349cedb)
+
 #### 3). Routing in WEB API and MVC
 
 Routing in ASP.NET Core Web API is a powerful feature that allows you to define how HTTP requests are mapped to your API endpoints. It allows you to define the endpoints of your API and handle requests efficiently.
@@ -241,11 +243,49 @@ POST api/players/create: Creates a new player.
 
 #### 4). Middleware and it's working
 
-- 
+- Middleware is a component that sits between the web server and the application’s request pipeline. It processes incoming requests and generates outgoing responses.  
+- Middleware can be used to perform a wide range of tasks such as authentication, logging, error handling, routing, and more.  
+- Middleware can be added and ordered in the pipeline using the **UseMiddleware() method** in the **Configure() method** of the Startup class.  
+- Middleware in .NET Core is like a series of checkpoints or gatekeepers that a request must pass through before reaching the endpoint, and again on its way back as a response. They are essential components in the request pipeline, responsible for everything from logging, authentication, to response compression.
+
 
 #### 5). Create Custom Middleware
 
-- 
+C# Code Example: Custom Logging Middleware 📝
+
+```csharp
+public class LoggingMiddleware
+{
+    private readonly RequestDelegate _next;
+
+    public LoggingMiddleware(RequestDelegate next)
+    {
+        _next = next;
+    }
+
+    public async Task InvokeAsync(HttpContext context)
+    {
+        Console.WriteLine($"Request: {context.Request.Path}");
+        await _next(context);
+        Console.WriteLine($"Response: {context.Response.StatusCode}");
+    }
+}
+
+public static class LoggingMiddlewareExtensions
+{
+    public static IApplicationBuilder UseLoggingMiddleware(this IApplicationBuilder builder)
+    {
+        return builder.UseMiddleware<LoggingMiddleware>();
+    }
+}
+
+// In Startup.cs
+public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+{
+    app.UseLoggingMiddleware();
+    // Other middleware registrations
+}
+```
 
 #### 6). OWIN Middleware
 
@@ -504,7 +544,7 @@ Sessions typically generate a unique identifier (session ID) for each user sessi
 
 - 
 
-Create controllers to handle player interactions. For example, you might have a PlayersController and an ActionsController.
+🎮 Create controllers to handle player interactions. For example, you might have a PlayersController and an ActionsController.
 
 **PlayersController.cs**
 ```csharp
