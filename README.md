@@ -474,7 +474,37 @@ public class Startup
 
 #### 7). Dependency Injection
 
-- [ASP.NET Core Dependency Injection](https://www.ezzylearning.net/tutorial/a-step-by-step-guide-to-asp-net-core-dependency-injection)
+Dependency Injection is the design pattern that helps us to create an application which loosely coupled. The main advantage of DI (Dependency Injection) is our application is loosely coupled and has provided greater maintainability, testability, and also re-usability. 
+ASP.NET Core is designed from scratch to support Dependency Injection. ASP.NET Core injects objects of dependency classes through constructor or method by using built-in IoC container.
+The built-in container is represented by IServiceProvider implementation that supports constructor injection by default. 
+The built-in IoC container supports three kinds of lifetimes:
+
+**Singleton:** IoC container will create and share a single instance of a service throughout the application's lifetime.
+**Transient:** The IoC container will create a new instance of the specified service type every time you ask for it.
+**Scoped:** IoC container will create an instance of the specified service type once per request and will be shared in a single request.
+
+ASP.NET Core framework includes extension methods for each types of lifetime; AddSingleton(), AddTransient() and AddScoped() methods for singleton, transient and scoped lifetime respectively.
+
+The following example shows the ways of registering types (service) using extension methods.
+
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddSingleton<ILog, MyConsoleLogger>();
+    services.AddSingleton(typeof(ILog), typeof(MyConsoleLogger));
+
+    services.AddTransient<ILog, MyConsoleLogger>();
+    services.AddTransient(typeof(ILog), typeof(MyConsoleLogger));
+
+    services.AddScoped<ILog, MyConsoleLogger>();
+    services.AddScoped(typeof(ILog), typeof(MyConsoleLogger));
+}
+```
+[ASP.NET Core - Dependency Injection](https://www.tutorialsteacher.com/core/dependency-injection-in-aspnet-core)
+
+[ASP.NET Core Dependency Injection](https://www.ezzylearning.net/tutorial/a-step-by-step-guide-to-asp-net-core-dependency-injection)
+
+🎮 
 
 #### 8). AddScoped, AddTransient and AddSingleton
 
