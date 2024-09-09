@@ -508,7 +508,137 @@ public void ConfigureServices(IServiceCollection services)
 
 [Mastering Dependency Injection in .NET Core](https://medium.com/@vndpal/mastering-dependency-injection-in-net-core-94aea0a4ab6c)
 
-🎮 
+🎮 In a game server, DI allows you to:
+
+- Inject services for handling game logic, player management, matchmaking, etc.
+- Swap implementations, such as switching from in-memory storage to a database.
+- Manage the lifetime of objects (e.g., singleton for game state services, transient for per-request services).
+
+Common Use Cases in Game Servers
+In a game server, you might use DI for various core components:
+
+**a. Game Logic Services**
+Services that handle game mechanics, rules, and interactions between players.
+Examples: Combat systems, scoring, event handling.
+
+```csharp
+public interface IGameService
+{
+    void StartGame(string gameId);
+    void EndGame(string gameId);
+    void UpdateGameState(string gameId, string playerAction);
+}
+
+public class GameService : IGameService
+{
+    private readonly IGameRepository _gameRepository;
+    
+    public GameService(IGameRepository gameRepository)
+    {
+        _gameRepository = gameRepository;
+    }
+
+    public void StartGame(string gameId)
+    {
+        // Initialize game logic
+        Console.WriteLine($"Game {gameId} started.");
+    }
+
+    public void EndGame(string gameId)
+    {
+        // Handle game ending logic
+        Console.WriteLine($"Game {gameId} ended.");
+    }
+
+    public void UpdateGameState(string gameId, string playerAction)
+    {
+        // Update game state based on player action
+        Console.WriteLine($"Game {gameId} updated with player action: {playerAction}");
+    }
+}
+```
+
+**b. Player Management**
+Managing player profiles, authentication, session tracking, and in-game states.
+
+```csharp
+public interface IPlayerService
+{
+    void PlayerLogin(string playerId);
+    void PlayerLogout(string playerId);
+    Player GetPlayerProfile(string playerId);
+}
+
+public class PlayerService : IPlayerService
+{
+    private readonly IPlayerRepository _playerRepository;
+
+    public PlayerService(IPlayerRepository playerRepository)
+    {
+        _playerRepository = playerRepository;
+    }
+
+    public void PlayerLogin(string playerId)
+    {
+        // Handle player login logic
+        Console.WriteLine($"{playerId} logged in.");
+    }
+
+    public void PlayerLogout(string playerId)
+    {
+        // Handle player logout logic
+        Console.WriteLine($"{playerId} logged out.");
+    }
+
+    public Player GetPlayerProfile(string playerId)
+    {
+        // Fetch player profile from repository
+        return _playerRepository.GetPlayer(playerId);
+    }
+}
+```
+
+**c. Matchmaking Services**
+Logic for pairing players based on skill levels, waiting time, or other criteria.
+
+**d. Data Repositories**
+Managing game data storage, such as player stats, inventory, match history, etc.
+Can be backed by a database (e.g., SQL Server) or an in-memory store.
+
+```csharp
+public interface IPlayerRepository
+{
+    Player GetPlayer(string playerId);
+    void SavePlayer(Player player);
+}
+
+public class PlayerRepository : IPlayerRepository
+{
+    // Assume we are using Entity Framework for SQL Server interaction
+    private readonly GameDbContext _dbContext;
+
+    public PlayerRepository(GameDbContext dbContext)
+    {
+        _dbContext = dbContext;
+    }
+
+    public Player GetPlayer(string playerId)
+    {
+        return _dbContext.Players.FirstOrDefault(p => p.PlayerId == playerId);
+    }
+
+    public void SavePlayer(Player player)
+    {
+        _dbContext.Players.Add(player);
+        _dbContext.SaveChanges();
+    }
+}
+```
+
+**e. Real-time Communication Services**
+Handling WebSocket connections or gRPC for real-time player interactions.
+
+By using Dependency Injection in your .NET Core game server, you can manage your components and services more efficiently, reduce code duplication, improve testability, and handle complex game logic in a modular and maintainable way. Whether it’s player management, game state updates, or matchmaking, DI provides flexibility and robustness to your backend game server architecture.
 
 #### 8). AddScoped, AddTransient and AddSingleton
 
@@ -557,6 +687,12 @@ services.AddScoped<IUserService, UserIdentityService>();
 - [Dependency Injection and using AddTransient, AddScoped and AddSingleton in an ASP.NET Core application](https://alexb72.medium.com/dependency-injection-and-using-addtransient-addscoped-and-addsingleton-in-an-asp-net-2ae09e45c983)
 
 - [Navigating Dependency Lifetimes: A Practical Comparison of AddTransient, AddScoped, and AddSingleton in .NET](https://nshyamprasad.medium.com/navigating-dependency-lifetimes-a-practical-comparison-of-addtransient-addscoped-and-8b825a465dc5)
+
+**Advanced Use of DI: Scoped, Transient, and Singleton Lifetimes**
+
+**Singleton services**, such as cache or configuration services, can store game state across sessions.
+**Scoped services** are useful for maintaining game-related state during a single request, such as player session data.
+**Transient services** are ideal for lightweight operations that don’t require state preservation between requests.
 
 #### 9). Extension Methods - App.Run() and App.Use()
 
@@ -628,6 +764,14 @@ In a multiplayer backend, app.Run effectively starts the game server, enabling i
 
 - ▶️ [Complete 3 Hour ASP NET 6.0 and Entity Framework Core Course!](https://www.youtube.com/watch?v=7d2UMAIgOLQ&list=PLwhVruPHD9rxZ9U5K6vqUFkfrjaRhwEsV&index=12)
 
+🎮  **Entity Framework (EF) is an Object-Relational Mapper (ORM)** used in .NET applications to interact with databases, simplifying data access by mapping database records to objects in your application. In the context of a game server, using Entity Framework allows you to efficiently manage player data, game statistics, match histories, and other persistent data without manually writing complex SQL queries.
+
+Common Use Cases for Entity Framework in a Game Server
+- **Player Profiles:** Storing and retrieving player information such as usernames, levels, stats, inventory, etc.
+- **Match History:** Keeping records of past matches, player scores, and performance.
+- **In-Game Currency/Inventory:** Managing virtual currencies or in-game assets tied to players.
+- **Game States:** Saving the state of ongoing matches or sessions for persistence between server restarts.
+
 #### 10.2). DataBase First Approach and CodeFirst Approach
 
 - [Entity Framework Core Model](https://www.learnentityframeworkcore5.com/entity-framework-core-model)
@@ -687,6 +831,90 @@ public class Player
 
 - [DTO (Data Transfer Object)](https://www.telerik.com/blogs/dotnet-basics-dto-data-transfer-object)
 
+🎮 In a game server, the GameDbContext would contain DbSets for various entities like Player, Game, and Match.
+
+```csharp
+public class GameDbContext : DbContext
+{
+    public DbSet<Player> Players { get; set; }
+    public DbSet<Game> Games { get; set; }
+    public DbSet<Match> Matches { get; set; }
+
+    public GameDbContext(DbContextOptions<GameDbContext> options) : base(options)
+    {
+    }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        // Additional configuration of entities (optional)
+    }
+}
+```
+
+Your entities represent the data you want to store. For example, a Player class might include information about a player, such as username, score, level, etc.
+
+```csharp
+public class Player
+{
+    public int PlayerId { get; set; } // Primary Key
+    public string Username { get; set; }
+    public int Level { get; set; }
+    public int Score { get; set; }
+    public List<Match> Matches { get; set; } // One-to-many relationship with Matches
+}
+
+public class Game
+{
+    public int GameId { get; set; } // Primary Key
+    public string Title { get; set; }
+    public List<Match> Matches { get; set; }
+}
+
+public class Match
+{
+    public int MatchId { get; set; } // Primary Key
+    public int PlayerId { get; set; }
+    public Player Player { get; set; } // Foreign Key relationship to Player
+    public int GameId { get; set; }
+    public Game Game { get; set; } // Foreign Key relationship to Game
+    public DateTime MatchDate { get; set; }
+    public int PlayerScore { get; set; }
+}
+```
+In this example:
+
+A Player can participate in many Matches.
+Each Match is associated with both a Player and a Game.
+
+In the Startup.cs file (or Program.cs in .NET 6+), configure Entity Framework to use your chosen database provider (e.g., SQL Server).
+
+```csharp
+public class Startup
+{
+    public void ConfigureServices(IServiceCollection services)
+    {
+        // Register the DbContext with SQL Server
+        services.AddDbContext<GameDbContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("GameDb")));
+
+        // Register other services
+        services.AddTransient<IPlayerService, PlayerService>();
+        services.AddTransient<IGameService, GameService>();
+
+        services.AddControllers();
+    }
+
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+    {
+        app.UseRouting();
+        app.UseEndpoints(endpoints =>
+        {
+            endpoints.MapControllers();
+        });
+    }
+}
+```
+
 #### 10.4). LINQ
 
 - [Mastering C# LINQ Guide](https://www.bytehide.com/blog/linq-csharp)
@@ -705,17 +933,13 @@ public class Player
 
 - [Reverting and Managing Migrations in Entity Framework Core with C#](https://www.linkedin.com/pulse/reverting-managing-migrations-entity-framework-core-c-adi-inbar/?trackingId=w3J1ieu5fLpAMDfIVaruhA%3D%3D)
  
-#### 10.6). Seeding Data
+#### 10.6). Seeding Data , Nullable and Entity States
 
 - [Migration Seeding Data in Entity Framework Core with C#](https://www.linkedin.com/pulse/seeding-data-entity-framework-core-c-adi-inbar-tqwff/?trackingId=Bgt89Mt6yxrDPsRHDmpSOQ%3D%3D)
 
 - [EF Core Seed Data](https://www.learnentityframeworkcore.com/migrations/seeding)
  
-#### 10.7). Nullable
-
 - [Understanding Nullable Fields and Renaming Columns in C# with Entity Framework Core](https://www.linkedin.com/pulse/understanding-nullable-fields-renaming-columns-c-entity-adi-inbar/?trackingId=%2BwnxToGDylnTUiTV54QnEA%3D%3D)
- 
-#### 10.8). Entity States
 
 - [Entity States in Entity Framework](https://dotnettutorials.net/lesson/entity-state-in-entity-framework/)
 
