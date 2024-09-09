@@ -1285,13 +1285,13 @@ public class ActionsController : ControllerBase
 
 - [Create rest API in .Net Core](https://medium.com/@sagarkumar2499/create-rest-api-in-net-core-b2aed00416fd)
 
-## 23). What are HTTP Verbs?
+## 23). What are HTTP Verbs? 
  
 
-## 24). What is Pagination?
+## 24). What is Data Annotations(Validations)? Client Side and Server Side Validations.
 
 
-## 25). What is Data Annotations(Validations)? Client Side and Server Side Validations.
+## 25). What is Pagination?  
 
 
 ## 26). Unit Testing - NUnit and XUnit
