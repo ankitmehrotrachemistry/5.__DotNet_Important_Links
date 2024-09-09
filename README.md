@@ -209,6 +209,11 @@ public class AuthController : ControllerBase
 
 Use JWT Tokens for player authentication, especially in multiplayer environments where players need to remain authenticated across multiple sessions.
 
+💻 Explain how you Implement Authentication and Authorization in a Project:
+Authentication Example: "In one of my projects, I used ASP.NET Core Identity for user authentication. We allowed users to sign in using either their email and password or via Google using OAuth 2.0. For the web API, we implemented JWT tokens to authenticate users, where the token was validated with every API request."    
+
+Authorization Example: "For authorization, we implemented a role-based system where different user roles had different access levels. For example, Admin users could manage products, while regular users could only view them. We used the [Authorize] attribute in ASP.NET Core to protect specific API endpoints and ensured the users' roles were checked before performing certain actions."     
+ 
 #### 12). Kestrel Server
 
 - [Controller Action Return Types in ASP.NET Core Web API](https://dotnettutorials.net/lesson/controller-action-return-types-core-web-api/)
