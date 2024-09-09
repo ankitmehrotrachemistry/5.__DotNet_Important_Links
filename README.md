@@ -851,7 +851,7 @@ public class Player
 
 ## 10.4). DbContext & DbSet
 
-The DbContext is simply the way for the developers to incorporate Entity Framework based data to the application. It allows you to make database connections inside an application model and allows the developer to link the model properties to the database table using a connection string.
+The **DbContext** is simply the way for the developers to incorporate Entity Framework based data to the application. It allows you to make database connections inside an application model and allows the developer to link the model properties to the database table using a connection string.
 
 The DbContext in Entity Framework Core consist of the following features and responsibilities:
 
@@ -861,7 +861,7 @@ Entity Set
 Querying
 Validation
 
-In Entity Framework Core, the DbSet represents the set of entities. In a database, a group of similar entities is called an Entity Set. The DbSet is responsible for performing all the basic CRUD (Create, Read, Update and Delete) operations on each of the Entity.
+In Entity Framework Core, the **DbSet** represents the set of entities. In a database, a group of similar entities is called an Entity Set. The DbSet is responsible for performing all the basic CRUD (Create, Read, Update and Delete) operations on each of the Entity.
 
 - [DbContext](https://www.learnentityframeworkcore5.com/dbcontext)
 - [DbSet](https://www.learnentityframeworkcore5.com/dbset)
@@ -984,7 +984,7 @@ public class Startup
 
 ## 11). JWT Authentication and Role Based Authorization
 
-- [OAuth 2.0 and OpenID in simple terms](https://medium.com/@iamprovidence/oauth-2-0-and-openid-in-simple-terms-7196089a1b29)
+[OAuth 2.0 and OpenID in simple terms](https://medium.com/@iamprovidence/oauth-2-0-and-openid-in-simple-terms-7196089a1b29)
 
 🎮 In a multiplayer game, it’s important to authenticate users securely. .NET Core provides Identity and OAuth2.0 for managing player authentication and authorization.
 
@@ -1127,7 +1127,7 @@ namespace KestrelDemo.Controllers
 }
 ```
 
-- [Controller Action Return Types in ASP.NET Core Web API](https://dotnettutorials.net/lesson/controller-action-return-types-core-web-api/)
+- [Kestrel Server in ASP.NET Core](https://medium.com/@siva.veeravarapu/kestrel-server-in-asp-net-core-cbba6911805b#:~:text=Kestrel%20is%20the%20default%20web%20server%20used%20in%20ASP.NET,IIS%2C%20Nginx%2C%20or%20Apache.)
 
 ## 13). State Management - Client and Server
 
@@ -1140,13 +1140,14 @@ Sessions typically generate a unique identifier (session ID) for each user sessi
 
 - [Controller Action Return Types in ASP.NET Core Web API](https://dotnettutorials.net/lesson/controller-action-return-types-core-web-api/)
 
-## 15). .NET Core and .NET Middleware
+## 15). .NET Core and .NET Framework
 
-- [Controller Action Return Types in ASP.NET Core Web API](https://dotnettutorials.net/lesson/controller-action-return-types-core-web-api/)
+- [.Net Core vs .Net Framework: Key Differences, Features, and more](https://www.mygreatlearning.com/blog/net-core-vs-net-framework/)
 
 ## 16). Filters and it's type
 
-- [Controller Action Return Types in ASP.NET Core Web API](https://dotnettutorials.net/lesson/controller-action-return-types-core-web-api/)
+- Action filters are a type of filter in ASP.NET Core that are used to inject custom logic before or after the execution of a controller action method.  
+[Understanding Action Filters in ASP.NET Core](https://medium.com/@kefasogabi/understanding-action-filters-in-asp-net-core-a-comprehensive-guide-with-code-samples-ec1f1f2af425)
 
 ## 17). What is MVC Architecture? How to create Controllers?
 
