@@ -130,7 +130,9 @@ app.Run();
 
 **app.UseRouting():** This is used to route incoming requests to the appropriate handlers (e.g., player connections, game events).
 **app.UseWebSockets():** If you are handling real-time communication, WebSockets may be necessary for live multiplayer game servers.
-**app.UseEndpoints():** Configures endpoints for different routes like /api/game/start for starting a game or /api/game/player/connect for player connections.
+**app.UseEndpoints():** Configures endpoints for different routes like /api/game/start for starting a game or /api/game/player/connect for player connections.    
+
+In a multiplayer backend, app.Run effectively starts the game server, enabling it to handle player requests, game events, matchmaking, or real-time communication over WebSockets.
 
 #### 10.1). Entity Framework Core
 
