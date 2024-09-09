@@ -31,7 +31,7 @@ public class GameHub : Hub
 
 # DotNet_Important_Links
 
-### 1). CORS (Cross Origin Resource Sharing)
+## 1). CORS (Cross Origin Resource Sharing)
 
 - Cross-Origin Resource Sharing (CORS) is a security feature that allows or restricts web applications running at one domain to make requests for resources from a different domain.  
 - In a .NET Core API, CORS is implemented using middleware.   
