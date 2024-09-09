@@ -44,7 +44,7 @@ app.UseCors("AllowSpecificOrigin");
 
  [Cross-Origin Resource Sharing in .NET](https://medium.com/@darshana-edirisinghe/cross-origin-resource-sharing-in-net-f8d0aa802b5f)
 
-#### 2). How to handle Exception except try-Catch?
+## 2). How to handle Exception except try-Catch?
 
 - Instead of scattering try-catch blocks throughout your code, .NET Core allows you to handle exceptions globally.  
 - This is done using :  
@@ -138,7 +138,7 @@ public void ConfigureServices(IServiceCollection services)
 
 [Middleware and Filters power in ASP.NET Core](https://binodmahto.medium.com/middleware-and-filters-power-in-asp-net-core-3c4e3349cedb)
 
-#### 3). Routing in WEB API and MVC
+## 3). Routing in WEB API and MVC
 
 Routing in ASP.NET Core Web API is a powerful feature that allows you to define how HTTP requests are mapped to your API endpoints. It allows you to define the endpoints of your API and handle requests efficiently.
 
@@ -241,7 +241,7 @@ POST api/players/create: Creates a new player.
 
 [Http Routing in ASP.NET Core Web API](https://medium.com/@nwonahr/routing-in-asp-net-core-web-api-c9c6dcae5cbd)
 
-#### 4). Middleware and it's working
+## 4). Middleware and it's working
 
 - Middleware is a component that sits between the web server and the application’s request pipeline. It processes incoming requests and generates outgoing responses.  
 - Middleware can be used to perform a wide range of tasks such as authentication, logging, error handling, routing, and more.  
@@ -358,7 +358,7 @@ public class LoggingMiddleware
 }
 ```
 
-#### 5). Create Custom Middleware
+## 5). Create Custom Middleware
 
 C# Code Example: Custom Logging Middleware 📝
 
@@ -469,13 +469,13 @@ public class Startup
 ```
 [Custom Middlewares With Dependency Injection In .NET Framework](https://medium.com/@ofirbarak96/custom-middlewares-with-dependency-injection-in-net-framework-b18f5b935e4d)
 
-#### 6). OWIN Middleware
+## 6). OWIN Middleware
 
 OWIN defines a standard interface between .NET web servers and web applications. The goal of the OWIN interface is to decouple server and application.
 
 - [Controller Action Return Types in ASP.NET Core Web API](https://dotnettutorials.net/lesson/controller-action-return-types-core-web-api/)
 
-#### 7). Dependency Injection
+## 7). Dependency Injection
 
 Dependency Injection is the design pattern that helps us to create an application which loosely coupled. The main advantage of DI (Dependency Injection) is our application is loosely coupled and has provided greater maintainability, testability, and also re-usability. 
 ASP.NET Core is designed from scratch to support Dependency Injection. ASP.NET Core injects objects of dependency classes through constructor or method by using built-in IoC container.
@@ -643,7 +643,7 @@ Handling WebSocket connections or gRPC for real-time player interactions.
 
 By using Dependency Injection in your .NET Core game server, you can manage your components and services more efficiently, reduce code duplication, improve testability, and handle complex game logic in a modular and maintainable way. Whether it’s player management, game state updates, or matchmaking, DI provides flexibility and robustness to your backend game server architecture.
 
-#### 8). AddScoped, AddTransient and AddSingleton
+## 8). AddScoped, AddTransient and AddSingleton
 
 ### Service Lifetimes in .NET Core:
 Service lifetimes define how long instances of a service should be kept and reused. The framework provides three main service lifetimes: Singleton, Transient, and Scoped. Choosing the appropriate service lifetime is crucial for managing resources efficiently and ensuring the desired behavior of your application.
@@ -697,7 +697,7 @@ services.AddScoped<IUserService, UserIdentityService>();
 **Scoped services** are useful for maintaining game-related state during a single request, such as player session data.
 **Transient services** are ideal for lightweight operations that don’t require state preservation between requests.
 
-#### 9). Extension Methods - App.Run() and App.Use()
+## 9). Extension Methods - App.Run() and App.Use()
 
 Extension methods are a way to add new functionality to existing types without modifying their source code. They are static methods that can be called as if they are instance methods on the extended type.
 
@@ -757,7 +757,7 @@ app.Run();
 
 In a multiplayer backend, app.Run effectively starts the game server, enabling it to handle player requests, game events, matchmaking, or real-time communication over WebSockets.
 
-#### 10.1). Entity Framework Core
+## 10.1). Entity Framework Core
 
 - [Entity Framework Core Model](https://www.learnentityframeworkcore5.com/entity-framework-core-model)
   
@@ -775,13 +775,13 @@ Common Use Cases for Entity Framework in a Game Server
 - **In-Game Currency/Inventory:** Managing virtual currencies or in-game assets tied to players.
 - **Game States:** Saving the state of ongoing matches or sessions for persistence between server restarts.
 
-#### 10.2). DataBase First Approach and CodeFirst Approach
+## 10.2). DataBase First Approach and CodeFirst Approach
 
 - [Entity Framework Core Model](https://www.learnentityframeworkcore5.com/entity-framework-core-model)
 
 🎮 Store persistent player data (e.g., profiles, achievements, leaderboards) using a database like SQL Server. Use Entity Framework Core (Code First) to interact with the database.
 
-#### 10.3). SQL and NoSQL
+## 10.3). SQL and NoSQL
 
 🎮 Multiplayer games often have global leaderboards. .NET Core can integrate with databases like Redis for fast leaderboard lookups and use SQL or NoSQL databases to store player performance stats.
 
@@ -824,7 +824,7 @@ public class Player
 
 ```
 
-#### 10.4). DbContext
+## 10.4). DbContext
 
 - [DbContext](https://www.learnentityframeworkcore5.com/dbcontext)
 
@@ -918,7 +918,7 @@ public class Startup
 }
 ```
 
-#### 10.5). LINQ
+## 10.5). LINQ
 
 - [Mastering C# LINQ Guide](https://www.bytehide.com/blog/linq-csharp)
 
@@ -926,7 +926,7 @@ public class Startup
 
 - [Top 100 LINQ Interview Questions](https://github.com/Devinterview-io/linq-interview-questions) 
  
-#### 10.6). Migrations, Seeding Data , Nullable and Entity States
+## 10.6). Migrations, Seeding Data , Nullable and Entity States
 
 - [Migrations in Entity Framework Core](https://www.entityframeworktutorial.net/efcore/entity-framework-core-migration.aspx)
 
@@ -944,7 +944,7 @@ public class Startup
 
 - [Entity States in Entity Framework](https://dotnettutorials.net/lesson/entity-state-in-entity-framework/)
 
-#### 11). JWT Authentication and Role Based Authorization
+## 11). JWT Authentication and Role Based Authorization
 
 
 
@@ -999,30 +999,30 @@ public async Task SyncGameState()
 
 **Authorization Example:** "For authorization, we implemented a role-based system where different user roles had different access levels. For example, Admin users could manage products, while regular users could only view them. We used the [Authorize] attribute in ASP.NET Core to protect specific API endpoints and ensured the users' roles were checked before performing certain actions."     
  
-#### 12). Kestrel Server
+## 12). Kestrel Server
 
 - [Controller Action Return Types in ASP.NET Core Web API](https://dotnettutorials.net/lesson/controller-action-return-types-core-web-api/)
 
-#### 13). State Management - Client and Server
+## 13). State Management - Client and Server
 
 - [Controller Action Return Types in ASP.NET Core Web API](https://dotnettutorials.net/lesson/controller-action-return-types-core-web-api/)
 
-#### 14). Session Management
+## 14). Session Management
 
 **Sessions** in Web Applications refer to the mechanism of storing user-specific data temporarily on the server side across multiple requests. Unlike cookies, which are stored on the client side, session data is stored on the server side, enhancing security and reducing the risk of exposing sensitive information.
 Sessions typically generate a unique identifier (session ID) for each user session upon their first interaction with the application. This identifier (session ID) is stored as a cookie on the client side (usually), and the corresponding data is stored on the Web Server. When the client makes subsequent requests, this session ID is sent in the Request header. The server uses this identifier to retrieve session-specific data stored in memory (Temporary Caching Mechanism), a database, or another persistent storage mechanism. This data persists until the session expires (due to user inactivity or logout) or is manually cleared.
 
 - [Controller Action Return Types in ASP.NET Core Web API](https://dotnettutorials.net/lesson/controller-action-return-types-core-web-api/)
 
-#### 15). .NET Core and .NET Middleware
+## 15). .NET Core and .NET Middleware
 
 - [Controller Action Return Types in ASP.NET Core Web API](https://dotnettutorials.net/lesson/controller-action-return-types-core-web-api/)
 
-#### 16). Filters and it's type
+## 16). Filters and it's type
 
 - [Controller Action Return Types in ASP.NET Core Web API](https://dotnettutorials.net/lesson/controller-action-return-types-core-web-api/)
 
-#### 17). What is MVC Architecture? How to create Controllers?
+## 17). What is MVC Architecture? How to create Controllers?
 
 - 
 
@@ -1128,15 +1128,15 @@ public class ActionsController : ControllerBase
 }
 
 
-#### 18). Controller Action Methods in MVC
+## 18). Controller Action Methods in MVC
 
 - [Controller Action Return Types in ASP.NET Core Web API](https://dotnettutorials.net/lesson/controller-action-return-types-core-web-api/)
 
-#### 19). What are Views? ViewData , ViewBag and TempData
+## 19). What are Views? ViewData , ViewBag and TempData
 
 - [ASP.NET MVC: Models, ViewData, ViewBag, and TempData Explained](https://www.linkedin.com/pulse/aspnet-mvc-models-viewdata-viewbag-tempdata-explained-ervis-trupja-ytn7f/)
 
-#### 20). Repository Pattern
+## 20). Repository Pattern
 
 - [Repository Pattern Implementation in ASP.NET Core](https://medium.com/net-core/repository-pattern-implementation-in-asp-net-core-21e01c6664d7)
 
@@ -1148,11 +1148,11 @@ public class ActionsController : ControllerBase
 
 - [A Comprehensive Guide to Repository Pattern in .NET: Implementation and Best Practices](https://medium.com/@dhananjay_1891/a-comprehensive-guide-to-repository-pattern-in-net-implementation-and-best-practices-d67c3a92e618)
 
-#### 21). Singleton Design Pattern
+## 21). Singleton Design Pattern
 
 - 
 
-#### 22). REST Api. How to create REST API?
+## 22). REST Api. How to create REST API?
 
 🎮 You can implement a matchmaking service using REST APIs or SignalR to find and assign players to games based on their skills, region, or preferences.
 
@@ -1160,19 +1160,19 @@ public class ActionsController : ControllerBase
 
 - [Create rest API in .Net Core](https://medium.com/@sagarkumar2499/create-rest-api-in-net-core-b2aed00416fd)
 
-#### 23). What are HTTP Verbs?
+## 23). What are HTTP Verbs?
 
 - 
 
-#### 24). What is Pagination?
+## 24). What is Pagination?
 
 - 
 
-#### 25). What is Data Annotations(Validations)? Client Side and Server Side Validations.
+## 25). What is Data Annotations(Validations)? Client Side and Server Side Validations.
 
 - 
 
-#### 26). Unit Testing - NUnit and XUnit
+## 26). Unit Testing - NUnit and XUnit
 
 - [Controller Action Return Types in ASP.NET Core Web API](https://dotnettutorials.net/lesson/controller-action-return-types-core-web-api/)
 
@@ -1182,7 +1182,7 @@ public class ActionsController : ControllerBase
 
 
 
-  ## Minor Projects
+## Minor Projects
 
 #### 1). CRUD Operations
 
