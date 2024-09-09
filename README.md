@@ -90,6 +90,43 @@ public static class StringExtensions
 }
 ```
 
+🎮 In a game server using .NET, app.Run is typically part of the setup in an ASP.NET Core application, where it starts the web host and begins listening for incoming HTTP requests. For a backend game server, especially in Unity or another game framework using .NET Core, app.Run is used to host the game server logic via a web API or WebSocket server.
+
+Here’s an example of how you might use app.Run in a game server setup for handling player connections or game events via HTTP or WebSockets:
+
+```csharp
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+
+var builder = WebApplication.CreateBuilder(args);
+
+// Add services like WebSockets or other game-related services
+builder.Services.AddControllers();
+builder.Services.AddWebSocketManager(); // If using WebSockets for real-time interactions
+
+var app = builder.Build();
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseDeveloperExceptionPage();
+}
+
+app.UseRouting();
+
+// If using WebSockets
+app.UseWebSockets();
+
+// Endpoints for HTTP-based requests
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllers();  // Map API routes for game functionality
+});
+
+// Run the game server
+app.Run();
+```
 
 **app.UseRouting():** This is used to route incoming requests to the appropriate handlers (e.g., player connections, game events).
 **app.UseWebSockets():** If you are handling real-time communication, WebSockets may be necessary for live multiplayer game servers.
