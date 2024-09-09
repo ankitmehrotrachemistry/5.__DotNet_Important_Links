@@ -473,7 +473,32 @@ public class Startup
 
 OWIN defines a standard interface between .NET web servers and web applications. The goal of the OWIN interface is to decouple server and application.
 
-- [Controller Action Return Types in ASP.NET Core Web API](https://dotnettutorials.net/lesson/controller-action-return-types-core-web-api/)
+With .Net 4.7 I used to log my http request and response conditionally through the help of OWIN. 
+
+```csharp
+public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+{
+     app.UseCors(builder => builder
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
+     app.UseHttpsRedirection();
+     app.UseMiddleware<HttpHandlerMiddleware>();
+     app.UseDefaultFiles();
+     app.UseStaticFiles();
+}
+```
+The above OWIN specification describes the five parts (or roles) of the application called as software actors. They are Server, Web Framework, Web Application, Middleware, and Host.
+
+![image](https://github.com/user-attachments/assets/b307ab92-5583-4862-bdee-7d9c7c385494)
+
+[Introduction to OWIN](https://www.tektutorialshub.com/owin/introduction-to-owin/)
+
+[Create OWIN Middleware](https://www.tektutorialshub.com/asp-net/asp-net-owin-middleware/)
+
+[Controller Action Return Types in ASP.NET Core Web API](https://dotnettutorials.net/lesson/controller-action-return-types-core-web-api/)
+
+[.Net Core Using Middleware to log http request/responses](https://theochiu2010.medium.com/net-core-using-middleware-to-log-http-request-responses-f60364e2880)
 
 ## 7). Dependency Injection
 
