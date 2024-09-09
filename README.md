@@ -138,7 +138,54 @@ public void ConfigureServices(IServiceCollection services)
 
 #### 3). Routing in WEB API and MVC
 
-- 
+Routing in ASP.NET Core Web API is a powerful feature that allows you to define how HTTP requests are mapped to your API endpoints. It allows you to define the endpoints of your API and handle requests efficiently.
+
+In ASP.NET Core, routing is handled by the routing middleware, which is configured in the Startup.cs file. There are two primary types of routing:   
+A). Convention-based Routing   
+B). Attribute Routing  
+
+A). Convention-based Routing : Convention-based routing defines routes globally in the Startup.cs file. This approach is useful when you want to apply a consistent routing pattern across your entire application.
+
+**Defining Routes in Startup.cs**
+In the Configure method of the Startup.cs file, you define routes using the UseEndpoints method:  
+```csharp
+public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+{
+    app.UseRouting();
+
+    app.UseEndpoints(endpoints =>
+    {
+        endpoints.MapControllerRoute(
+            name: "default",
+            pattern: "{controller=Home}/{action=Index}/{id?}");
+    });
+}
+```
+
+B). Attribute Routing : Attribute routing allows you to define routes directly on controller actions using attributes. This approach offers more flexibility and fine-grained control over your API endpoints.  
+
+**Using Route Attributes**
+You can use the [Route] attribute to define routes on controllers and actions:
+
+```csharp
+[Route("api/[controller]")]
+public class ProductsController : ControllerBase
+{
+    [HttpGet]
+    public IActionResult GetAllProducts()
+    {
+        // Implementation
+    }
+
+    [HttpGet("{id}")]
+    public IActionResult GetProductById(int id)
+    {
+        // Implementation
+    }
+}
+```
+
+[Http Routing in ASP.NET Core Web API](https://medium.com/@nwonahr/routing-in-asp-net-core-web-api-c9c6dcae5cbd)
 
 #### 4). Middleware and it's working
 
@@ -263,6 +310,24 @@ public class LeaderboardService
 Asynchronous Programming:** Use async/await patterns to handle concurrent connections and I/O-bound operations, which is crucial in multiplayer games to prevent blocking threads.  
 **Caching:** Use Redis for caching frequently accessed data, like player profiles or game states, to reduce database load.
 
+For certain games, you’ll want to store persistent data, such as player stats, inventory, or achievements. This can be done using a SQL or NoSQL database, integrated with Entity Framework Core.
+
+Example:
+```csharp
+public class PlayerContext : DbContext
+{
+    public DbSet<Player> Players { get; set; }
+}
+
+public class Player
+{
+    public string PlayerId { get; set; }
+    public int Score { get; set; }
+    public Vector2 Position { get; set; }
+}
+
+```
+
 #### 10.3). DbContext
 
 - [DbContext](https://www.learnentityframeworkcore5.com/dbcontext)
@@ -335,6 +400,25 @@ public class AuthController : ControllerBase
 ```
 
 Use JWT Tokens for player authentication, especially in multiplayer environments where players need to remain authenticated across multiple sessions.
+
+The server broadcasts the updated game state to all clients at regular intervals, ensuring that each client has the same view of the game world. The clients update their local copies of the game state based on these updates.
+
+Example: Every 100ms, the server sends an update to all clients, informing them of the latest player positions, game events, etc.
+
+```csharp
+public async Task SyncGameState()
+{
+    while (true)
+    {
+        // Periodically broadcast the authoritative game state to all clients
+        await Clients.All.SendAsync("GameStateUpdate", _gameState);
+
+        // Wait for a short interval before sending the next update
+        await Task.Delay(100); // Send updates every 100ms
+    }
+}
+```
+
 
 💻 **Explain how you Implement Authentication and Authorization in a Project:**         
 **Authentication Example:** "In one of my projects, I used ASP.NET Core Identity for user authentication. We allowed users to sign in using either their email and password or via Google using OAuth 2.0. For the web API, we implemented JWT tokens to authenticate users, where the token was validated with every API request."    
