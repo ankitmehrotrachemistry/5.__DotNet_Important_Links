@@ -504,9 +504,55 @@ public void ConfigureServices(IServiceCollection services)
 
 [ASP.NET Core Dependency Injection](https://www.ezzylearning.net/tutorial/a-step-by-step-guide-to-asp-net-core-dependency-injection)
 
+[Dependency Injection With .NET Core](https://kusham1998.medium.com/dependency-injection-with-net-core-a6b33e74f6df)
+
+[Mastering Dependency Injection in .NET Core](https://medium.com/@vndpal/mastering-dependency-injection-in-net-core-94aea0a4ab6c)
+
 🎮 
 
 #### 8). AddScoped, AddTransient and AddSingleton
+
+### Service Lifetimes in .NET Core:
+Service lifetimes define how long instances of a service should be kept and reused. The framework provides three main service lifetimes: Singleton, Transient, and Scoped. Choosing the appropriate service lifetime is crucial for managing resources efficiently and ensuring the desired behavior of your application.
+
+**A). AddSingleton:**  
+The AddSingleton method is used to register a service as a singleton. A singleton instance is created once and reused throughout the lifetime of the application. This is beneficial when you want a single instance of a service to be shared across the entire application.
+
+```csharp
+services.AddSingleton<IMyService, MyService>();
+```
+
+**Real-world Example:** Consider a scenario where you have a configuration service that loads application settings from a file. You’d want to ensure that the configuration is loaded only once and shared across all components.
+
+```csharp
+services.AddSingleton<IConfigurationService, FileConfigurationService>();  
+```
+
+**B). AddTransient:**
+The AddTransient method is used to register a service as transient. A new instance of the service is created every time it's requested. Transient services are suitable for lightweight and stateless operations.
+
+```csharp
+services.AddTransient<IMyService, MyService>();
+```
+
+**Real-world Example:** Imagine you have a logging service responsible for writing logs to a file. In this case, you may want a new instance of the logging service for every log entry to maintain isolation and avoid interference between log entries.
+
+```csharp
+services.AddTransient<ILoggingService, FileLoggingService>();
+```
+
+**C). AddScoped:**
+The AddScoped method is used to register a service as scoped. A scoped instance is created once per request within the scope of an HTTP request. It means that the same instance is shared across different components within the same HTTP request.
+
+```csharp
+services.AddScoped<IMyService, MyService>();
+```
+
+**Real-world Example:** Consider a scenario where you have a user service responsible for handling user-related operations. Using AddScoped ensures that the same instance of the user service is used throughout the entire HTTP request, allowing you to maintain a consistent state for the current user.
+
+```csharp
+services.AddScoped<IUserService, UserIdentityService>();
+```
 
 - [Dependency Injection and using AddTransient, AddScoped and AddSingleton in an ASP.NET Core application](https://alexb72.medium.com/dependency-injection-and-using-addtransient-addscoped-and-addsingleton-in-an-asp-net-2ae09e45c983)
 
