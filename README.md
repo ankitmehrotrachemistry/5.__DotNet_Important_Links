@@ -103,6 +103,9 @@ public class LeaderboardService
     }
 }
 ```
+Performance Optimization:
+Asynchronous Programming: Use async/await patterns to handle concurrent connections and I/O-bound operations, which is crucial in multiplayer games to prevent blocking threads.
+Caching: Use Redis for caching frequently accessed data, like player profiles or game states, to reduce database load.
 
 #### 10.3). DbContext
 
