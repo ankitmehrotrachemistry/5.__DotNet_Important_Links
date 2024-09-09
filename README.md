@@ -125,9 +125,34 @@ app.UseEndpoints(): Configures endpoints for different routes like /api/game/sta
 
 #### 11). JWT Authentication and Role Based Authorization
 
-🎮 Use JWT Tokens for player authentication, especially in multiplayer environments where players need to remain authenticated across multiple sessions.
+
 
 - [OAuth 2.0 and OpenID in simple terms](https://medium.com/@iamprovidence/oauth-2-0-and-openid-in-simple-terms-7196089a1b29)
+
+🎮 In a multiplayer game, it’s important to authenticate users securely. .NET Core provides Identity and OAuth2.0 for managing player authentication and authorization.
+
+JWT Tokens: Issue JWT tokens for player authentication. This is particularly useful in games, where the token can be passed in each request to verify the player’s identity without maintaining a session.
+
+```chsharp
+public class AuthController : ControllerBase
+{
+    private readonly ITokenService _tokenService;
+
+    public AuthController(ITokenService tokenService)
+    {
+        _tokenService = tokenService;
+    }
+
+    [HttpPost("login")]
+    public async Task<IActionResult> Login(LoginDto loginDto)
+    {
+        var token = await _tokenService.GenerateJwtToken(loginDto);
+        return Ok(new { token });
+    }
+}
+```
+
+Use JWT Tokens for player authentication, especially in multiplayer environments where players need to remain authenticated across multiple sessions.
 
 #### 12). Kestrel Server
 
