@@ -142,6 +142,8 @@ public void ConfigureServices(IServiceCollection services)
 
 Routing in ASP.NET Core Web API is a powerful feature that allows you to define how HTTP requests are mapped to your API endpoints. It allows you to define the endpoints of your API and handle requests efficiently.
 
+![image](https://github.com/user-attachments/assets/a715b526-925d-42c9-a437-b069abab9763)
+
 In ASP.NET Core, routing is handled by the routing middleware, which is configured in the Startup.cs file. There are two primary types of routing:   
 A). Convention-based Routing   
 B). Attribute Routing  
@@ -1040,6 +1042,15 @@ public class Player
 
 ## 11). JWT Authentication and Role Based Authorization
 
+One of the key aspects of building web applications is implementing user authentication and authorization. We can implement authentication and authorization using JSON Web Tokens (JWT) in ASP.NET Core, along with a refresh token mechanism to extend the validity of the JWT.
+JSON Web Token (JWT) is a widely used standard for representing claims securely between two parties. 
+A JWT consists of three parts separated by dots:   
+a). Header  
+b). Payload  
+c). Signature  
+
+[Implementing Authentication and Authorization in ASP.NET Core using JWT Tokens and refresh token with .NET 7](https://medium.com/@kefasogabi/implementing-authentication-and-authorization-in-asp-net-e831c04b4d38)
+
 [OAuth 2.0 and OpenID in simple terms](https://medium.com/@iamprovidence/oauth-2-0-and-openid-in-simple-terms-7196089a1b29)
 
 🎮 In a multiplayer game, it’s important to authenticate users securely. .NET Core provides Identity and OAuth2.0 for managing player authentication and authorization.
@@ -1209,10 +1220,10 @@ Sessions typically generate a unique identifier (session ID) for each user sessi
 
 MVC (Model-View-Controller) separates the logic of the application from the display. MVC, with its ‘separation of concerns principle, not only creates a solid framework for web applications but also ensures that different aspects of the application are neatly organized, simplifying future scalability.  
 
-The three parts of MVC are:
-**a). Model:** Defines the structure of the data  
-**b). View:** Handles the user interface and data presentation  
-**c). Controller:** Updates the model and view based on user input  
+The three parts of MVC are:   
+**a). Model:** Defines the structure of the data    
+**b). View:** Handles the user interface and data presentation    
+**c). Controller:** Updates the model and view based on user input    
 
 ![image](https://github.com/user-attachments/assets/91fdf570-51ef-497f-9a11-8e7fd13f4af5)
 
