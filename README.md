@@ -1101,7 +1101,17 @@ public async Task SyncGameState()
 **Authentication Example:** "In one of my projects, I used ASP.NET Core Identity for user authentication. We allowed users to sign in using either their email and password or via Google using OAuth 2.0. For the web API, we implemented JWT tokens to authenticate users, where the token was validated with every API request."    
 
 **Authorization Example:** "For authorization, we implemented a role-based system where different user roles had different access levels. For example, Admin users could manage products, while regular users could only view them. We used the [Authorize] attribute in ASP.NET Core to protect specific API endpoints and ensured the users' roles were checked before performing certain actions."     
- 
+
+## 12). CSRF (Cross Site Request Forgery)
+
+Cross-site request forgery (CSRF) is an attack that tricks a user's browser into sending a malicious HTTP request to another website. This malicious HTTP request looks like it was sent by the user, but it actually comes from the attacker.
+
+[Cross-site request forgery (CSRF)](https://portswigger.net/web-security/csrf)
+
+![image](https://github.com/user-attachments/assets/4e1df98f-61a0-4a14-8d57-8f16e9865fc5)
+
+[How to secure legacy ASP.NET MVC against Cross-Site (CSRF) Attacks](https://www.red-gate.com/simple-talk/development/web/how-to-secure-legacy-asp-net-mvc-against-csrf-attacks/)
+
 ## 12). Kestrel Server
 
 Kestrel is the default web server used in ASP.NET Core applications. It is designed to be fast and efficient, making it an ideal choice for modern web applications. Kestrel can handle HTTP requests and responses, providing a robust foundation for building web applications.
