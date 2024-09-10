@@ -248,6 +248,8 @@ POST api/players/create: Creates a new player.
 - Middleware can be added and ordered in the pipeline using the **UseMiddleware() method** in the **Configure() method** of the Startup class.  
 - Middleware in .NET Core is like a series of checkpoints or gatekeepers that a request must pass through before reaching the endpoint, and again on its way back as a response. They are essential components in the request pipeline, responsible for everything from logging, authentication, to response compression.
 
+[.Net Core Middleware Explained](https://medium.com/@shubhadeepchat/net-core-middleware-explained-8c21bf646700)
+
 🎮 Middlewares allow you to insert custom logic into the request/response pipeline of your game server.
 In the context of a game server, middlewares can handle:
 
@@ -669,6 +671,8 @@ Handling WebSocket connections or gRPC for real-time player interactions.
 By using Dependency Injection in your .NET Core game server, you can manage your components and services more efficiently, reduce code duplication, improve testability, and handle complex game logic in a modular and maintainable way. Whether it’s player management, game state updates, or matchmaking, DI provides flexibility and robustness to your backend game server architecture.
 
 ## 8). AddScoped, AddTransient and AddSingleton
+
+![image](https://github.com/user-attachments/assets/9d3bd981-1c65-4eba-a4a9-e947a889a50a)
 
 ### Service Lifetimes in .NET Core:
 Service lifetimes define how long instances of a service should be kept and reused. The framework provides three main service lifetimes: Singleton, Transient, and Scoped. Choosing the appropriate service lifetime is crucial for managing resources efficiently and ensuring the desired behavior of your application.
@@ -1202,6 +1206,17 @@ Sessions typically generate a unique identifier (session ID) for each user sessi
 [Understanding Action Filters in ASP.NET Core](https://medium.com/@kefasogabi/understanding-action-filters-in-asp-net-core-a-comprehensive-guide-with-code-samples-ec1f1f2af425)
 
 ## 17). What is MVC Architecture? How to create Controllers?
+
+MVC (Model-View-Controller) separates the logic of the application from the display. MVC, with its ‘separation of concerns principle, not only creates a solid framework for web applications but also ensures that different aspects of the application are neatly organized, simplifying future scalability.  
+
+The three parts of MVC are:
+**a). Model:** Defines the structure of the data  
+**b). View:** Handles the user interface and data presentation  
+**c). Controller:** Updates the model and view based on user input  
+
+![image](https://github.com/user-attachments/assets/91fdf570-51ef-497f-9a11-8e7fd13f4af5)
+
+[The MVC Architecture](https://medium.com/@sadikarahmantanisha/the-mvc-architecture-97d47e071eb2)
 
 🎮 Create controllers to handle player interactions. For example, you might have a PlayersController and an ActionsController.
 
