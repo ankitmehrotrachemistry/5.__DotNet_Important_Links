@@ -802,52 +802,60 @@ Common Use Cases for Entity Framework in a Game Server
 
 ## 10.2). DataBase First Approach and CodeFirst Approach
 
-- [Entity Framework Core Model](https://www.learnentityframeworkcore5.com/entity-framework-core-model)
+Entity Framework is an open-source object-relational mapping framework for ADO .NET, which is a data access technology, this means that you can use this technology to access data in the database.  
+
+**A). Code First Approach**
+The code-first approach is a way to design your application’s data models by creating them as C# classes for your models and then you use them to create your database.
+
+In order to apply the code-first approach, you need to follow these steps:
+
+- Define your model classes, each class corresponds to a table in your database.
+- Create a DbContext class that inherits from the DbContext class provided by Entity Framework.
+- Enable migrations.
+- Create the database, through the package manager console, use the entity framework to create the database and the table. Also, you need to write a command for that which is the Update-Database command.
+
+As a simple example, we will create a Person model class and a DbContext class:
+
+```csharp
+public class Person
+{
+    public int Id { get; set; }
+    public string FullName { get; set; }
+    public int Age { get; set; }
+}
+```
+
+```csharp
+public class MyDbContext : DbContext
+{
+    public DbSet<Person> Persons { get; set; }
+
+    public MyDbContext() : base("TheConnectionString")
+    {
+    }
+}
+```
+
+**B). Database First Approach**
+The database first approach is a way to create the data models starting from an existing database. We generate our data models and the DbContext class based on an existing database schema.
+An example of how to query data using the DbContext would be like this:
+
+```csharp
+public IEnumerable<Person> GetPersons()
+        {
+            using (myDBContext con = new MyDBContext())
+            {
+                con.Persons.Load();
+                return con.Persons.Local.ToList();
+            }
+        }
+```
+
+[Code First Approach vs. Database First Approach](https://medium.com/codex/code-first-approach-vs-database-first-approach-a3830c0cc9b6)
+
+[Entity Framework Core Model](https://www.learnentityframeworkcore5.com/entity-framework-core-model)
 
 🎮 Store persistent player data (e.g., profiles, achievements, leaderboards) using a database like SQL Server. Use Entity Framework Core (Code First) to interact with the database.
-
-## 10.3). SQL and NoSQL
-
-🎮 Multiplayer games often have global leaderboards. .NET Core can integrate with databases like Redis for fast leaderboard lookups and use SQL or NoSQL databases to store player performance stats.
-
-```csharp
-public class LeaderboardService
-{
-    private readonly IRedisCache _redis;
-
-    public LeaderboardService(IRedisCache redis)
-    {
-        _redis = redis;
-    }
-
-    public async Task<IEnumerable<Player>> GetTopPlayers()
-    {
-        // Get top players from Redis cache
-        return await _redis.GetTopPlayersAsync();
-    }
-}
-```
-**Performance Optimization:    
-Asynchronous Programming:** Use async/await patterns to handle concurrent connections and I/O-bound operations, which is crucial in multiplayer games to prevent blocking threads.  
-**Caching:** Use Redis for caching frequently accessed data, like player profiles or game states, to reduce database load.
-
-For certain games, you’ll want to store persistent data, such as player stats, inventory, or achievements. This can be done using a SQL or NoSQL database, integrated with Entity Framework Core.
-
-Example:
-```csharp
-public class PlayerContext : DbContext
-{
-    public DbSet<Player> Players { get; set; }
-}
-
-public class Player
-{
-    public string PlayerId { get; set; }
-    public int Score { get; set; }
-    public Vector2 Position { get; set; }
-}
-
-```
 
 ## 10.4). DbContext & DbSet
 
@@ -855,11 +863,11 @@ The **DbContext** is simply the way for the developers to incorporate Entity Fra
 
 The DbContext in Entity Framework Core consist of the following features and responsibilities:
 
-Database Management
-Database Connections
-Entity Set
-Querying
-Validation
+- Database Management
+- Database Connections
+- Entity Set
+- Querying
+- Validation
 
 In Entity Framework Core, the **DbSet** represents the set of entities. In a database, a group of similar entities is called an Entity Set. The DbSet is responsible for performing all the basic CRUD (Create, Read, Update and Delete) operations on each of the Entity.
 
@@ -954,6 +962,49 @@ public class Startup
         });
     }
 }
+```
+
+## 10.3). SQL and NoSQL
+
+🎮 Multiplayer games often have global leaderboards. .NET Core can integrate with databases like Redis for fast leaderboard lookups and use SQL or NoSQL databases to store player performance stats.
+
+```csharp
+public class LeaderboardService
+{
+    private readonly IRedisCache _redis;
+
+    public LeaderboardService(IRedisCache redis)
+    {
+        _redis = redis;
+    }
+
+    public async Task<IEnumerable<Player>> GetTopPlayers()
+    {
+        // Get top players from Redis cache
+        return await _redis.GetTopPlayersAsync();
+    }
+}
+```
+**Performance Optimization:    
+Asynchronous Programming:** Use async/await patterns to handle concurrent connections and I/O-bound operations, which is crucial in multiplayer games to prevent blocking threads.  
+**Caching:** Use Redis for caching frequently accessed data, like player profiles or game states, to reduce database load.
+
+For certain games, you’ll want to store persistent data, such as player stats, inventory, or achievements. This can be done using a SQL or NoSQL database, integrated with Entity Framework Core.
+
+Example:
+```csharp
+public class PlayerContext : DbContext
+{
+    public DbSet<Player> Players { get; set; }
+}
+
+public class Player
+{
+    public string PlayerId { get; set; }
+    public int Score { get; set; }
+    public Vector2 Position { get; set; }
+}
+
 ```
 
 ## 10.5). LINQ
