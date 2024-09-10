@@ -784,6 +784,8 @@ In a multiplayer backend, app.Run effectively starts the game server, enabling i
 
 ## 10.1). Entity Framework Core
 
+In Entity Framework, the model is prepared according to the requirement of the user. It depends upon the number of classes and categories that will be embedded into the database.
+
 - [Entity Framework Core Model](https://www.learnentityframeworkcore5.com/entity-framework-core-model)
   
 - [One-to-Many Relationships using Fluent API in Entity Framework Core](https://www.entityframeworktutorial.net/efcore/configure-one-to-many-relationship-using-fluent-api-in-ef-core.aspx)
@@ -850,10 +852,9 @@ public IEnumerable<Person> GetPersons()
             }
         }
 ```
+[Exploring Database-First Approach with Entity Framework in .NET Core 6](https://medium.com/@certosinolab/exploring-database-first-approach-with-entity-framework-in-net-core-6-db86a822d72e)
 
 [Code First Approach vs. Database First Approach](https://medium.com/codex/code-first-approach-vs-database-first-approach-a3830c0cc9b6)
-
-[Entity Framework Core Model](https://www.learnentityframeworkcore5.com/entity-framework-core-model)
 
 🎮 Store persistent player data (e.g., profiles, achievements, leaderboards) using a database like SQL Server. Use Entity Framework Core (Code First) to interact with the database.
 
