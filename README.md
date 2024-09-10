@@ -507,8 +507,8 @@ The above OWIN specification describes the five parts (or roles) of the applicat
 ## 7). Dependency Injection
 
 Dependency Injection is the design pattern that helps us to create an application which loosely coupled. The main advantage of DI (Dependency Injection) is our application is loosely coupled and has provided greater maintainability, testability, and also re-usability. 
-ASP.NET Core is designed from scratch to support Dependency Injection. ASP.NET Core injects objects of dependency classes through constructor or method by using built-in IoC container.
-The built-in container is represented by IServiceProvider implementation that supports constructor injection by default. 
+ASP.NET Core is designed from scratch to support Dependency Injection. ASP.NET Core injects objects of dependency classes through constructor or method by using built-in IoC container.  
+The built-in container is represented by **IServiceProvider interface** implementation that supports constructor injection by default. 
 The built-in IoC container supports three kinds of lifetimes:
 
 **Singleton:** IoC container will create and share a single instance of a service throughout the application's lifetime.  
