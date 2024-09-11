@@ -44,6 +44,8 @@ public class GameHub : Hub
 app.UseCors("AllowSpecificOrigin");
 ```
 
+I needed to make an authenticated cross-origin request to an ASP.NET Core Identity application that was using cookie authentication. I showed how to configure the app to allow CORS requests, and how to use the JavaScript fetch() API to call the request. However, this still doesn't work as the ASP.NET Core Identity cookie is marked as SameSite=Lax (for good security reasons). In the final section I showed how to configure Identity to mark the cookie as SameSite=None. This has security implications, so you should be wary about doing this is in your production applications!
+
 [Making authenticated cross-origin requests with ASP.NET Core Identity](https://andrewlock.net/making-authenticated-cross-origin-requests-with-aspnetcore-identity/)
 
 ![image](https://github.com/user-attachments/assets/cdc2c0f6-481a-4285-93e6-ae8c82808d75)
