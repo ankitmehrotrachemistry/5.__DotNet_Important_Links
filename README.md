@@ -1382,12 +1382,67 @@ public class ActionsController : ControllerBase
 ## 25). What is Pagination?  
 
 
+## 25). What is Memory Leaks?  
+
+ 
 ## 26). Unit Testing - NUnit and XUnit
 
 - [Controller Action Return Types in ASP.NET Core Web API](https://dotnettutorials.net/lesson/controller-action-return-types-core-web-api/)
 
+## 28). Memory Leaks
 
-  ## Game Server using Dot Net Core
+**What is Memory Leak?**
+A memory leak in C# occurs when a program allocates memory by creating objects but fails to release them after they are no longer needed.  
+This leads to a gradual increase in the memory consumption of the application, potentially causing it to slow down or crash if the system runs out of memory. Memory leaks are often subtle and can be difficult todetect and debug.
+
+[What are memory leaks in C#](https://www.youtube.com/watch?v=zSGMGFSK6Ho)
+
+**Memory leaks can occur in the following scenarios:**
+
+**1.Unmanaged Resources:** When using unmanaged resources like file handles,
+network connections, or database connections, failing to properly release them
+can lead to memory leaks.
+
+**2.Event Handlers:** Not unregistering event handlers can prevent the garbage
+collector from deallocating the memory used by the subscriber objects.
+
+**3.Static Members:** Static fields and properties, if improperly managed, can hold
+references to objects, preventing those objects from being garbage collected.
+
+**4.Large Object Heap (LOH) Fragmentation:** Large objects are managed in a separate
+heap in .NET. Improper management can lead to memory fragmentation, which
+can indirectly cause memory leaks.
+
+**5.References in Collections:** Holding references to objects in collections (like lists,
+dictionaries, etc.) for longer than necessary can prevent the garbage collector
+from reclaiming that memory.
+
+**To prevent memory leaks in C#, you can follow these best practices:**
+
+**1. Properly Dispose Unmanaged Resources:** Implement the IDisposable interface for
+classes that use unmanaged resources and ensure that the Dispose method is
+called appropriately, either explicitly or using a using statement.
+
+**2. Detach Event Handlers:** Always detach event handlers when they are no longer
+needed, especially in the case of long-lived publishers.
+
+**3. Be Cautious with Static Members:** Avoid unnecessary static fields, or ensure that
+they do not hold references to instances that should be garbage collected.
+
+**4. Monitor and Optimize LOH Usage:** Be aware of memory allocation in the Large
+Object Heap and optimize it to avoid fragmentation.
+
+**5. Manage Collection Lifetimes:** Regularly review and clean up collections, removing
+references to objects that are no longer needed.
+
+**6. Use Weak References:** Where applicable, use weak references (WeakReference
+class) for objects that do not need to be kept alive by the garbage collector.
+
+**7. Profiling and Analysis Tools:** Utilize memory profiling and analysis tools to identify
+potential leaks, especially in complex applications.
+
+
+## Game Server using Dot Net Core
 
 
 
