@@ -260,7 +260,9 @@ POST api/players/create: Creates a new player.
 
 [.Net Core Middleware Explained](https://medium.com/@shubhadeepchat/net-core-middleware-explained-8c21bf646700)
 
-![image](https://github.com/user-attachments/assets/6cca0303-5287-4c16-96a4-310f80dffa35)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/6cca0303-5287-4c16-96a4-310f80dffa35" width="500" height="250" />
+</p>
 
 🎮 Middlewares allow you to insert custom logic into the request/response pipeline of your game server.
 In the context of a game server, middlewares can handle:
