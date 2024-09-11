@@ -51,9 +51,7 @@ I needed to make an authenticated cross-origin request to an ASP.NET Core Identi
 # image_resize
 ## image
 
-<img src="https://github.com/user-attachments/assets/cdc2c0f6-481a-4285-93e6-ae8c82808d75" width="200" height="400" />
-
-![image](https://github.com/user-attachments/assets/cdc2c0f6-481a-4285-93e6-ae8c82808d75)
+<img src="https://github.com/user-attachments/assets/cdc2c0f6-481a-4285-93e6-ae8c82808d75" width="400" height="800" />
 
 ## 3). How to handle Exception except try-Catch?
 
