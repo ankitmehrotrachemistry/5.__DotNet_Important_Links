@@ -44,6 +44,10 @@ app.UseCors("AllowSpecificOrigin");
 
  [Cross-Origin Resource Sharing in .NET](https://medium.com/@darshana-edirisinghe/cross-origin-resource-sharing-in-net-f8d0aa802b5f)
 
+[Making authenticated cross-origin requests with ASP.NET Core Identity](https://andrewlock.net/making-authenticated-cross-origin-requests-with-aspnetcore-identity/)
+
+![image](https://github.com/user-attachments/assets/cdc2c0f6-481a-4285-93e6-ae8c82808d75)
+
 ## 3). How to handle Exception except try-Catch?
 
 - Instead of scattering try-catch blocks throughout your code, .NET Core allows you to handle exceptions globally.  
