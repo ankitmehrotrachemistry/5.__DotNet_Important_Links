@@ -1252,10 +1252,51 @@ e). Hidden Field
 
 ## 16). Session Management
 
-**Sessions** in Web Applications refer to the mechanism of storing user-specific data temporarily on the server side across multiple requests. Unlike cookies, which are stored on the client side, session data is stored on the server side, enhancing security and reducing the risk of exposing sensitive information.
-Sessions typically generate a unique identifier (session ID) for each user session upon their first interaction with the application. This identifier (session ID) is stored as a cookie on the client side (usually), and the corresponding data is stored on the Web Server. When the client makes subsequent requests, this session ID is sent in the Request header. The server uses this identifier to retrieve session-specific data stored in memory (Temporary Caching Mechanism), a database, or another persistent storage mechanism. This data persists until the session expires (due to user inactivity or logout) or is manually cleared.
+- **Sessions** in Web Applications refer to the mechanism of storing user-specific data temporarily on the server side across multiple requests. 
+- Unlike cookies, which are stored on the client side, session data is stored on the server side, enhancing security and reducing the risk of exposing sensitive information.
+- Sessions typically generate a unique identifier (session ID) for each user session upon their first interaction with the application. This identifier (session ID) is stored as a cookie on the client side (usually), and the corresponding data is stored on the Web Server.
+- When the client makes subsequent requests, this session ID is sent in the Request header.
+- The server uses this identifier to retrieve session-specific data stored in memory (Temporary Caching Mechanism), a database, or another persistent storage mechanism.
+- This data persists until the session expires (due to user inactivity or logout) or is manually cleared.
 
-- [Controller Action Return Types in ASP.NET Core Web API](https://dotnettutorials.net/lesson/controller-action-return-types-core-web-api/)
+- Session state allows you to store user data on the server that can be accessed across multiple requests from the same client. You can configure session state in the Startup.cs file and then use it in a controller or a view.
+
+[6.2 Using session and TempData for preserving user data](https://medium.com/@syantien/6-2-using-session-and-tempdata-for-preserving-user-data-5a3a6de32b76)
+
+```csharp
+// Startup.cs
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddSession(options =>
+    {
+        options.IdleTimeout = TimeSpan.FromMinutes(30);
+    });
+}
+
+public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+{
+    app.UseSession();
+}
+
+// In a controller
+public IActionResult Index()
+{
+    HttpContext.Session.SetString("Name", "John Doe");
+    return View();
+}
+
+```
+
+To retrieve the data from the session:
+
+```csharp
+public IActionResult AnotherAction()
+{
+    var name = HttpContext.Session.GetString("Name");
+    //...
+}
+
+```
 
 ## 17). .NET Core and .NET Framework
 
@@ -1390,6 +1431,23 @@ public class ActionsController : ControllerBase
 ## 21). What are Views? ViewData , ViewBag and TempData
 
 - [ASP.NET MVC: Models, ViewData, ViewBag, and TempData Explained](https://www.linkedin.com/pulse/aspnet-mvc-models-viewdata-viewbag-tempdata-explained-ervis-trupja-ytn7f/)
+
+**TempData** is another way to store temporary data. It is meant to be a short-lived, single-use store for data between requests. It uses session state behind the scenes.
+
+```csharp
+public IActionResult Index()
+{
+    TempData["Message"] = "You successfully registered!";
+    return RedirectToAction("Welcome");
+}
+
+public IActionResult Welcome()
+{
+    var message = TempData["Message"];
+    // ...
+}
+```
+TempData values are retained for a single request, so they are useful for scenarios such as redirecting between actions (Post-Redirect-Get pattern).
 
 ## 22). Repository Pattern
 
