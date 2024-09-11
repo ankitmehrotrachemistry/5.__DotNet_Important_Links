@@ -506,7 +506,9 @@ public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 ```
 The above OWIN specification describes the five parts (or roles) of the application called as software actors. They are Server, Web Framework, Web Application, Middleware, and Host.
 
-![image](https://github.com/user-attachments/assets/b307ab92-5583-4862-bdee-7d9c7c385494)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/b307ab92-5583-4862-bdee-7d9c7c385494" width="500" height="250" />
+</p>
 
 [Introduction to OWIN](https://www.tektutorialshub.com/owin/introduction-to-owin/)
 
@@ -686,7 +688,9 @@ By using Dependency Injection in your .NET Core game server, you can manage your
 
 ## 9). AddScoped, AddTransient and AddSingleton
 
-![image](https://github.com/user-attachments/assets/9d3bd981-1c65-4eba-a4a9-e947a889a50a)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/9d3bd981-1c65-4eba-a4a9-e947a889a50a" width="500" height="250" />
+</p>
 
 ### Service Lifetimes in .NET Core:
 Service lifetimes define how long instances of a service should be kept and reused. The framework provides three main service lifetimes: Singleton, Transient, and Scoped. Choosing the appropriate service lifetime is crucial for managing resources efficiently and ensuring the desired behavior of your application.
@@ -1120,7 +1124,9 @@ Cross-site request forgery (CSRF) is an attack that tricks a user's browser into
 
 [Cross-site request forgery (CSRF)](https://portswigger.net/web-security/csrf)
 
-![image](https://github.com/user-attachments/assets/4e1df98f-61a0-4a14-8d57-8f16e9865fc5)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/4e1df98f-61a0-4a14-8d57-8f16e9865fc5" width="500" height="250" />
+</p>
 
 [How to secure legacy ASP.NET MVC against Cross-Site (CSRF) Attacks](https://www.red-gate.com/simple-talk/development/web/how-to-secure-legacy-asp-net-mvc-against-csrf-attacks/)
 
@@ -1267,7 +1273,9 @@ The three parts of MVC are:
 **b). View:** Handles the user interface and data presentation    
 **c). Controller:** Updates the model and view based on user input    
 
-![image](https://github.com/user-attachments/assets/91fdf570-51ef-497f-9a11-8e7fd13f4af5)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/91fdf570-51ef-497f-9a11-8e7fd13f4af5" width="500" height="250" />
+</p>
 
 [The MVC Architecture](https://medium.com/@sadikarahmantanisha/the-mvc-architecture-97d47e071eb2)
 
@@ -1416,7 +1424,9 @@ public class ActionsController : ControllerBase
 
 ## 28). Improve (Optimize) performance of Dot Net Application.
 
-![image](https://github.com/user-attachments/assets/7803c0d0-dcc5-42d1-90f9-a11907e915ea)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/7803c0d0-dcc5-42d1-90f9-a11907e915ea" width="500" height="250" />
+</p>
 
 **1. Caching Data :** Caching is a technique used in software development to store data that is computationally expensive or frequently accessed temporarily. The server is called, and the reply obtained is saved. As a result, the next time a request is made for a similar response, instead of going to the server, the data is verified against the cached data, and if they match, the stored data is obtained.
 
@@ -1447,7 +1457,9 @@ This leads to a gradual increase in the memory consumption of the application, p
 
 [What are memory leaks in C#](https://www.youtube.com/watch?v=zSGMGFSK6Ho)
 
-![image](https://github.com/user-attachments/assets/154ce1fa-052f-406e-a338-f4eb53b691f1)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/154ce1fa-052f-406e-a338-f4eb53b691f1" width="500" height="250" />
+</p>
 
 [8 Ways You can Cause Memory Leaks in .NET](https://michaelscodingspot.com/ways-to-cause-memory-leaks-in-dotnet/)
 
@@ -1530,11 +1542,3 @@ potential leaks, especially in complex applications.
 
 - ▶️ [Code Unparalleled .NET Playlist](https://www.youtube.com/@CodeUnparalleled/playlists)
 
-
-
-
-
-
-
-
- 
