@@ -1214,7 +1214,24 @@ namespace KestrelDemo.Controllers
 
 ## 15). State Management - Client and Server
 
-- [Controller Action Return Types in ASP.NET Core Web API](https://dotnettutorials.net/lesson/controller-action-return-types-core-web-api/)
+There are two types of State management in ASP net. They are :  
+- Server-side  
+- Client-side  
+
+These are further subdivided into the following -
+**Server-Side**  
+a). Session  
+b). Application  
+c). Cache  
+
+**Client-Side**  
+a). Cookies   
+b). Viewstate  
+c). Control state  
+d). Query String  
+e). Hidden Field  
+
+- [What Is State Management: Applications, Types, Example and More](https://www.simplilearn.com/tutorials/asp-dot-net-tutorial/state-management-in-asp-net)
 
 ## 16). Session Management
 
