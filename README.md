@@ -258,6 +258,8 @@ POST api/players/create: Creates a new player.
 
 [.Net Core Middleware Explained](https://medium.com/@shubhadeepchat/net-core-middleware-explained-8c21bf646700)
 
+![image](https://github.com/user-attachments/assets/6cca0303-5287-4c16-96a4-310f80dffa35)
+
 🎮 Middlewares allow you to insert custom logic into the request/response pipeline of your game server.
 In the context of a game server, middlewares can handle:
 
@@ -517,9 +519,9 @@ ASP.NET Core is designed from scratch to support Dependency Injection. ASP.NET C
 The built-in container is represented by **IServiceProvider interface** implementation that supports constructor injection by default. 
 The built-in IoC container supports three kinds of lifetimes:
 
-**Singleton:** IoC container will create and share a single instance of a service throughout the application's lifetime.  
-**Transient:** The IoC container will create a new instance of the specified service type every time you ask for it.  
-**Scoped:** IoC container will create an instance of the specified service type once per request and will be shared in a single request.  
+**a). Singleton:** IoC container will create and share a single instance of a service throughout the application's lifetime.  
+**b). Transient:** The IoC container will create a new instance of the specified service type every time you ask for it.  
+**c). Scoped:** IoC container will create an instance of the specified service type once per request and will be shared in a single request.  
 
 ASP.NET Core framework includes extension methods for each types of lifetime; AddSingleton(), AddTransient() and AddScoped() methods for singleton, transient and scoped lifetime respectively.
 
@@ -1218,7 +1220,7 @@ There are two types of State management in ASP net. They are :
 - Server-side  
 - Client-side  
 
-These are further subdivided into the following -
+These are further subdivided into the following -  
 **Server-Side**  
 a). Session  
 b). Application  
@@ -1232,6 +1234,9 @@ d). Query String
 e). Hidden Field  
 
 - [What Is State Management: Applications, Types, Example and More](https://www.simplilearn.com/tutorials/asp-dot-net-tutorial/state-management-in-asp-net)
+
+![image](https://github.com/user-attachments/assets/74518738-e094-41d8-8d52-c7695cda37d0)
+
 
 ## 16). Session Management
 
@@ -1404,7 +1409,31 @@ public class ActionsController : ControllerBase
 
 ## 27). What is Pagination?  
 
-## 27). Improve (Optimize) performance of Dot Net Application.
+
+## 28). Improve (Optimize) performance of Dot Net Application.
+
+![image](https://github.com/user-attachments/assets/7803c0d0-dcc5-42d1-90f9-a11907e915ea)
+
+**1. Caching Data :** Caching is a technique used in software development to store data that is computationally expensive or frequently accessed temporarily. The server is called, and the reply obtained is saved. As a result, the next time a request is made for a similar response, instead of going to the server, the data is verified against the cached data, and if they match, the stored data is obtained.
+
+**2. Memory optimizations :** In .NET application development, memory optimization is an essential factor to consider. Object pooling, reducing the object’s size, and preventing memory leaks are all ways that developers can increase the scalability of their applications and lessen memory-related problems.
+
+**3. Disable View State :** Disabling View State is another tried-and-true method a seasoned .NET development company uses to enhance .NET application performance. The View State method is a state management technique used by .NET to maintain page and control data over round trips.
+
+**4. Asynchronous programming :** Asynchronous programming enables you to run numerous processes simultaneously without stopping the main thread, which helps dedicated .NET developers to create responsive and scalable apps.
+
+**5. Optimize database access :** Here are a few techniques that could be utilized to create code that would significantly improve performance.
+
+- Try retrieving the data in one or two calls to the server rather than several.
+- If it is not necessary, do not retrieve the data in advance. The application slows down due to the increased demand for the response.
+- Use Entity Framework Core (EF Core) or other Object-Relational Mapping (ORM) technologies to make your database searches more efficient.
+- Avoid making repeated database calls by using caching to save frequently accessed data.
+
+**6. Reduce Network Round-Trip Time :** One of the most effective ways to boost the overall speed of your.NET application is to minimize the number of networks round-trips by compressing data, employing HTTP compression, and lowering the size of payloads. 
+
+**7. Use JSON Serialization :** `System.Text.Json` is used by leading .NET development companies for JSON serialization to and deserialization from options. As a result, JSON can be read and written asynchronously without the need to wait for other processes to finish. Use JSON instead of NEwtonsoft because it enhances performance.
+
+[Optimizing Performance in .NET Web Applications: Tips and Techniques](https://eluminoustechnologies.com/blog/optimizing-net-application-development/)
 
 ## 29). Memory Leaks
 
