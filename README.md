@@ -1381,14 +1381,19 @@ public class ActionsController : ControllerBase
 
 ## 27). What is Pagination?  
 
+## 27). Improve (Optimize) performance of Dot Net Application.
 
-## 28). Memory Leaks
+## 29). Memory Leaks
 
 **What is Memory Leak?**
 A memory leak in C# occurs when a program allocates memory by creating objects but fails to release them after they are no longer needed.  
 This leads to a gradual increase in the memory consumption of the application, potentially causing it to slow down or crash if the system runs out of memory. Memory leaks are often subtle and can be difficult todetect and debug.
 
 [What are memory leaks in C#](https://www.youtube.com/watch?v=zSGMGFSK6Ho)
+
+![image](https://github.com/user-attachments/assets/154ce1fa-052f-406e-a338-f4eb53b691f1)
+
+[8 Ways You can Cause Memory Leaks in .NET](https://michaelscodingspot.com/ways-to-cause-memory-leaks-in-dotnet/)
 
 **Memory leaks can occur in the following scenarios:**
 
