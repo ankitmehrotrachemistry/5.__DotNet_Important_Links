@@ -1432,6 +1432,79 @@ public class ActionsController : ControllerBase
 
 - [ASP.NET MVC: Models, ViewData, ViewBag, and TempData Explained](https://www.linkedin.com/pulse/aspnet-mvc-models-viewdata-viewbag-tempdata-explained-ervis-trupja-ytn7f/)
 
+There are two approaches to passing a weakly typed data into the views:
+
+- ViewData
+- ViewBag
+- ViewData
+
+**ViewData** is a dictionary object and we can get/set values using a key. ViewData exposes an instance of the ViewDataDictionary class.
+
+Let’s create a controller action method and set a value for UserId inside ViewData:
+
+```csharp
+public class ViewDataController : Controller
+{
+    public IActionResult Index()
+    {
+        ViewData["UserId"] = 101;
+        return View();
+    }
+}
+```
+
+Now let’s try to access the userId value inside the View:
+
+```html
+@{
+    ViewData["Title"] = "Index";
+    var userId = ViewData["UserId"]?.ToString();
+}
+<h1>ViewData</h1>
+User Id : @userId
+```
+
+Then let’s run the application and navigate to /viewdata:
+
+![image](https://github.com/user-attachments/assets/843ec7b1-e81e-4bd2-a1f7-0cf845e304e8)
+
+We can see the UserId value is read from ViewData and displayed on the page.
+
+**ViewBag** is similar to ViewData but it is a dynamic object and we can add data into it without converting to a strongly typed object. In other words, ViewBag is just a dynamic wrapper around the ViewData.
+
+Let’s add a controller action method to set a few values in ViewBag:
+
+```csharp
+public class ViewBagController : Controller
+{
+    public IActionResult Index()
+    {
+        ViewBag.UserId = 101;
+        ViewBag.Name = "John";
+        ViewBag.Age = 31;
+        return View();
+    }
+}
+```
+Then let’s access it from the View and display the values:
+
+```csharp
+{
+    ViewData["Title"] = "Index";
+    var userId = ViewBag.UserId;
+    var name = ViewBag.Name;
+    var age = ViewBag.Age;
+}
+<h1>ViewBag</h1>
+User Id : @userId<br />
+Name : @name<br /&gt;
+Age : @age<br />
+
+```
+Now let’s run the application and navigate to /viewbag:
+
+![image](https://github.com/user-attachments/assets/01e5e09b-ae14-418b-b1e4-008e7c2ede5f)
+
 **TempData** is another way to store temporary data. It is meant to be a short-lived, single-use store for data between requests. It uses session state behind the scenes.
 
 ```csharp
@@ -1448,6 +1521,8 @@ public IActionResult Welcome()
 }
 ```
 TempData values are retained for a single request, so they are useful for scenarios such as redirecting between actions (Post-Redirect-Get pattern).
+
+[State Management in ASP.NET Core MVC](https://code-maze.com/state-management-in-asp-net-core-mvc/)
 
 ## 22). Repository Pattern
 
