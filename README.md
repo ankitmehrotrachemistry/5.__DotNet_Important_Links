@@ -151,7 +151,7 @@ public void ConfigureServices(IServiceCollection services)
 Routing in ASP.NET Core Web API is a powerful feature that allows you to define how HTTP requests are mapped to your API endpoints. It allows you to define the endpoints of your API and handle requests efficiently.
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/a715b526-925d-42c9-a437-b069abab9763" width="500" height="250" />
+  <img src="https://github.com/user-attachments/assets/a715b526-925d-42c9-a437-b069abab9763" width="300" height="250" />
 </p>
 
 In ASP.NET Core, routing is handled by the routing middleware, which is configured in the Startup.cs file. There are two primary types of routing:   
