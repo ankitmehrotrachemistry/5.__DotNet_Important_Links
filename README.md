@@ -31,7 +31,7 @@ public class GameHub : Hub
 
 # DotNet_Important_Links
 
-## 1). CORS (Cross Origin Resource Sharing)
+## 2). CORS (Cross Origin Resource Sharing)
 
 - Cross-Origin Resource Sharing (CORS) is a security feature that allows or restricts web applications running at one domain to make requests for resources from a different domain.  
 - In a .NET Core API, CORS is implemented using middleware.   
@@ -44,7 +44,7 @@ app.UseCors("AllowSpecificOrigin");
 
  [Cross-Origin Resource Sharing in .NET](https://medium.com/@darshana-edirisinghe/cross-origin-resource-sharing-in-net-f8d0aa802b5f)
 
-## 2). How to handle Exception except try-Catch?
+## 3). How to handle Exception except try-Catch?
 
 - Instead of scattering try-catch blocks throughout your code, .NET Core allows you to handle exceptions globally.  
 - This is done using :  
@@ -138,7 +138,7 @@ public void ConfigureServices(IServiceCollection services)
 
 [Middleware and Filters power in ASP.NET Core](https://binodmahto.medium.com/middleware-and-filters-power-in-asp-net-core-3c4e3349cedb)
 
-## 3). Routing in WEB API and MVC
+## 4). Routing in WEB API and MVC
 
 Routing in ASP.NET Core Web API is a powerful feature that allows you to define how HTTP requests are mapped to your API endpoints. It allows you to define the endpoints of your API and handle requests efficiently.
 
@@ -243,7 +243,7 @@ POST api/players/create: Creates a new player.
 
 [Http Routing in ASP.NET Core Web API](https://medium.com/@nwonahr/routing-in-asp-net-core-web-api-c9c6dcae5cbd)
 
-## 4). Middleware and it's working
+## 5). Middleware and it's working
 
 - Middleware is a component that sits between the web server and the application’s request pipeline. It processes incoming requests and generates outgoing responses.  
 - Middleware can be used to perform a wide range of tasks such as authentication, logging, error handling, routing, and more.  
@@ -362,7 +362,7 @@ public class LoggingMiddleware
 }
 ```
 
-## 5). Create Custom Middleware
+## 6). Create Custom Middleware
 
 C# Code Example: Custom Logging Middleware 📝
 
@@ -473,7 +473,7 @@ public class Startup
 ```
 [Custom Middlewares With Dependency Injection In .NET Framework](https://medium.com/@ofirbarak96/custom-middlewares-with-dependency-injection-in-net-framework-b18f5b935e4d)
 
-## 6). OWIN Middleware
+## 7). OWIN Middleware
 
 OWIN defines a standard interface between .NET web servers and web applications. The goal of the OWIN interface is to decouple server and application.
 
@@ -504,7 +504,7 @@ The above OWIN specification describes the five parts (or roles) of the applicat
 
 [.Net Core Using Middleware to log http request/responses](https://theochiu2010.medium.com/net-core-using-middleware-to-log-http-request-responses-f60364e2880)
 
-## 7). Dependency Injection
+## 8). Dependency Injection
 
 Dependency Injection is the design pattern that helps us to create an application which loosely coupled. The main advantage of DI (Dependency Injection) is our application is loosely coupled and has provided greater maintainability, testability, and also re-usability. 
 ASP.NET Core is designed from scratch to support Dependency Injection. ASP.NET Core injects objects of dependency classes through constructor or method by using built-in IoC container.  
@@ -672,7 +672,7 @@ Handling WebSocket connections or gRPC for real-time player interactions.
 
 By using Dependency Injection in your .NET Core game server, you can manage your components and services more efficiently, reduce code duplication, improve testability, and handle complex game logic in a modular and maintainable way. Whether it’s player management, game state updates, or matchmaking, DI provides flexibility and robustness to your backend game server architecture.
 
-## 8). AddScoped, AddTransient and AddSingleton
+## 9). AddScoped, AddTransient and AddSingleton
 
 ![image](https://github.com/user-attachments/assets/9d3bd981-1c65-4eba-a4a9-e947a889a50a)
 
@@ -728,7 +728,7 @@ services.AddScoped<IUserService, UserIdentityService>();
 **Scoped services** are useful for maintaining game-related state during a single request, such as player session data.
 **Transient services** are ideal for lightweight operations that don’t require state preservation between requests.
 
-## 9). Extension Methods - App.Run() and App.Use()
+## 10). Extension Methods - App.Run() and App.Use()
 
 Extension methods are a way to add new functionality to existing types without modifying their source code. They are static methods that can be called as if they are instance methods on the extended type.
 
@@ -788,7 +788,7 @@ app.Run();
 
 In a multiplayer backend, app.Run effectively starts the game server, enabling it to handle player requests, game events, matchmaking, or real-time communication over WebSockets.
 
-## 10.1). Entity Framework Core
+## 11.1). Entity Framework Core
 
 In Entity Framework, the model is prepared according to the requirement of the user. It depends upon the number of classes and categories that will be embedded into the database.
 
@@ -808,7 +808,7 @@ Common Use Cases for Entity Framework in a Game Server
 - **In-Game Currency/Inventory:** Managing virtual currencies or in-game assets tied to players.
 - **Game States:** Saving the state of ongoing matches or sessions for persistence between server restarts.
 
-## 10.2). DataBase First Approach and CodeFirst Approach
+## 11.2). DataBase First Approach and CodeFirst Approach
 
 Entity Framework is an open-source object-relational mapping framework for ADO .NET, which is a data access technology, this means that you can use this technology to access data in the database.  
 
@@ -864,7 +864,7 @@ public IEnumerable<Person> GetPersons()
 
 🎮 Store persistent player data (e.g., profiles, achievements, leaderboards) using a database like SQL Server. Use Entity Framework Core (Code First) to interact with the database.
 
-## 10.4). DbContext & DbSet
+## 11.3). DbContext & DbSet
 
 The **DbContext** is simply the way for the developers to incorporate Entity Framework based data to the application. It allows you to make database connections inside an application model and allows the developer to link the model properties to the database table using a connection string.
 
@@ -971,7 +971,7 @@ public class Startup
 }
 ```
 
-## 10.3). SQL and NoSQL
+## 11.4). SQL and NoSQL
 
 🎮 Multiplayer games often have global leaderboards. .NET Core can integrate with databases like Redis for fast leaderboard lookups and use SQL or NoSQL databases to store player performance stats.
 
@@ -1014,7 +1014,7 @@ public class Player
 
 ```
 
-## 10.5). LINQ
+## 11.5). LINQ
 
 - [Mastering C# LINQ Guide](https://www.bytehide.com/blog/linq-csharp)
 
@@ -1022,7 +1022,7 @@ public class Player
 
 - [Top 100 LINQ Interview Questions](https://github.com/Devinterview-io/linq-interview-questions) 
  
-## 10.6). Migrations, Seeding Data , Nullable and Entity States
+## 11.6). Migrations, Seeding Data , Nullable and Entity States
 
 - [Migrations in Entity Framework Core](https://www.entityframeworktutorial.net/efcore/entity-framework-core-migration.aspx)
 
@@ -1040,7 +1040,7 @@ public class Player
 
 - [Entity States in Entity Framework](https://dotnettutorials.net/lesson/entity-state-in-entity-framework/)
 
-## 11). JWT Authentication and Role Based Authorization
+## 12). JWT Authentication and Role Based Authorization
 
 One of the key aspects of building web applications is implementing user authentication and authorization. We can implement authentication and authorization using JSON Web Tokens (JWT) in ASP.NET Core, along with a refresh token mechanism to extend the validity of the JWT.
 JSON Web Token (JWT) is a widely used standard for representing claims securely between two parties. 
@@ -1102,7 +1102,7 @@ public async Task SyncGameState()
 
 **Authorization Example:** "For authorization, we implemented a role-based system where different user roles had different access levels. For example, Admin users could manage products, while regular users could only view them. We used the [Authorize] attribute in ASP.NET Core to protect specific API endpoints and ensured the users' roles were checked before performing certain actions."     
 
-## 12). CSRF (Cross Site Request Forgery)
+## 13). CSRF (Cross Site Request Forgery)
 
 Cross-site request forgery (CSRF) is an attack that tricks a user's browser into sending a malicious HTTP request to another website. This malicious HTTP request looks like it was sent by the user, but it actually comes from the attacker.
 
@@ -1112,7 +1112,7 @@ Cross-site request forgery (CSRF) is an attack that tricks a user's browser into
 
 [How to secure legacy ASP.NET MVC against Cross-Site (CSRF) Attacks](https://www.red-gate.com/simple-talk/development/web/how-to-secure-legacy-asp-net-mvc-against-csrf-attacks/)
 
-## 12). Kestrel Server
+## 14). Kestrel Server
 
 Kestrel is the default web server used in ASP.NET Core applications. It is designed to be fast and efficient, making it an ideal choice for modern web applications. Kestrel can handle HTTP requests and responses, providing a robust foundation for building web applications.
 
@@ -1206,27 +1206,27 @@ namespace KestrelDemo.Controllers
 
 - [Kestrel Server in ASP.NET Core](https://medium.com/@siva.veeravarapu/kestrel-server-in-asp-net-core-cbba6911805b#:~:text=Kestrel%20is%20the%20default%20web%20server%20used%20in%20ASP.NET,IIS%2C%20Nginx%2C%20or%20Apache.)
 
-## 13). State Management - Client and Server
+## 15). State Management - Client and Server
 
 - [Controller Action Return Types in ASP.NET Core Web API](https://dotnettutorials.net/lesson/controller-action-return-types-core-web-api/)
 
-## 14). Session Management
+## 16). Session Management
 
 **Sessions** in Web Applications refer to the mechanism of storing user-specific data temporarily on the server side across multiple requests. Unlike cookies, which are stored on the client side, session data is stored on the server side, enhancing security and reducing the risk of exposing sensitive information.
 Sessions typically generate a unique identifier (session ID) for each user session upon their first interaction with the application. This identifier (session ID) is stored as a cookie on the client side (usually), and the corresponding data is stored on the Web Server. When the client makes subsequent requests, this session ID is sent in the Request header. The server uses this identifier to retrieve session-specific data stored in memory (Temporary Caching Mechanism), a database, or another persistent storage mechanism. This data persists until the session expires (due to user inactivity or logout) or is manually cleared.
 
 - [Controller Action Return Types in ASP.NET Core Web API](https://dotnettutorials.net/lesson/controller-action-return-types-core-web-api/)
 
-## 15). .NET Core and .NET Framework
+## 17). .NET Core and .NET Framework
 
 - [.Net Core vs .Net Framework: Key Differences, Features, and more](https://www.mygreatlearning.com/blog/net-core-vs-net-framework/)
 
-## 16). Filters and it's type
+## 18). Filters and it's type
 
 - Action filters are a type of filter in ASP.NET Core that are used to inject custom logic before or after the execution of a controller action method.  
 [Understanding Action Filters in ASP.NET Core](https://medium.com/@kefasogabi/understanding-action-filters-in-asp-net-core-a-comprehensive-guide-with-code-samples-ec1f1f2af425)
 
-## 17). What is MVC Architecture? How to create Controllers?
+## 19). What is MVC Architecture? How to create Controllers?
 
 MVC (Model-View-Controller) separates the logic of the application from the display. MVC, with its ‘separation of concerns principle, not only creates a solid framework for web applications but also ensures that different aspects of the application are neatly organized, simplifying future scalability.  
 
@@ -1341,15 +1341,15 @@ public class ActionsController : ControllerBase
 }
 
 
-## 18). Controller Action Methods in MVC
+## 20). Controller Action Methods in MVC
 
 - [Controller Action Return Types in ASP.NET Core Web API](https://dotnettutorials.net/lesson/controller-action-return-types-core-web-api/)
 
-## 19). What are Views? ViewData , ViewBag and TempData
+## 21). What are Views? ViewData , ViewBag and TempData
 
 - [ASP.NET MVC: Models, ViewData, ViewBag, and TempData Explained](https://www.linkedin.com/pulse/aspnet-mvc-models-viewdata-viewbag-tempdata-explained-ervis-trupja-ytn7f/)
 
-## 20). Repository Pattern
+## 22). Repository Pattern
 
 - [Repository Pattern Implementation in ASP.NET Core](https://medium.com/net-core/repository-pattern-implementation-in-asp-net-core-21e01c6664d7)
 
@@ -1361,11 +1361,11 @@ public class ActionsController : ControllerBase
 
 - [A Comprehensive Guide to Repository Pattern in .NET: Implementation and Best Practices](https://medium.com/@dhananjay_1891/a-comprehensive-guide-to-repository-pattern-in-net-implementation-and-best-practices-d67c3a92e618)
 
-## 21). Singleton Design Pattern
+## 23). Singleton Design Pattern
 
 - 
 
-## 22). REST Api. How to create REST API?
+## 24). REST Api. How to create REST API?
 
 🎮 You can implement a matchmaking service using REST APIs or SignalR to find and assign players to games based on their skills, region, or preferences.
 
@@ -1373,21 +1373,14 @@ public class ActionsController : ControllerBase
 
 - [Create rest API in .Net Core](https://medium.com/@sagarkumar2499/create-rest-api-in-net-core-b2aed00416fd)
 
-## 23). What are HTTP Verbs? 
+## 25). What are HTTP Verbs? 
  
 
-## 24). What is Data Annotations(Validations)? Client Side and Server Side Validations.
+## 26). What is Data Annotations(Validations)? Client Side and Server Side Validations.
 
 
-## 25). What is Pagination?  
+## 27). What is Pagination?  
 
-
-## 25). What is Memory Leaks?  
-
- 
-## 26). Unit Testing - NUnit and XUnit
-
-- [Controller Action Return Types in ASP.NET Core Web API](https://dotnettutorials.net/lesson/controller-action-return-types-core-web-api/)
 
 ## 28). Memory Leaks
 
@@ -1441,6 +1434,9 @@ class) for objects that do not need to be kept alive by the garbage collector.
 **7. Profiling and Analysis Tools:** Utilize memory profiling and analysis tools to identify
 potential leaks, especially in complex applications.
 
+## 30). Unit Testing - NUnit and XUnit
+
+- [Controller Action Return Types in ASP.NET Core Web API](https://dotnettutorials.net/lesson/controller-action-return-types-core-web-api/)
 
 ## Game Server using Dot Net Core
 
