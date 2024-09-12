@@ -736,9 +736,9 @@ services.AddScoped<IMyService, MyService>();
 services.AddScoped<IUserService, UserIdentityService>();
 ```
 
-- [Dependency Injection and using AddTransient, AddScoped and AddSingleton in an ASP.NET Core application](https://alexb72.medium.com/dependency-injection-and-using-addtransient-addscoped-and-addsingleton-in-an-asp-net-2ae09e45c983)
+[Dependency Injection and using AddTransient, AddScoped and AddSingleton in an ASP.NET Core application](https://alexb72.medium.com/dependency-injection-and-using-addtransient-addscoped-and-addsingleton-in-an-asp-net-2ae09e45c983)
 
-- [Navigating Dependency Lifetimes: A Practical Comparison of AddTransient, AddScoped, and AddSingleton in .NET](https://nshyamprasad.medium.com/navigating-dependency-lifetimes-a-practical-comparison-of-addtransient-addscoped-and-8b825a465dc5)
+[Navigating Dependency Lifetimes: A Practical Comparison of AddTransient, AddScoped, and AddSingleton in .NET](https://nshyamprasad.medium.com/navigating-dependency-lifetimes-a-practical-comparison-of-addtransient-addscoped-and-8b825a465dc5)
 
 **Advanced Use of DI: Scoped, Transient, and Singleton Lifetimes**
 
@@ -906,9 +906,13 @@ public IEnumerable<Person> GetPersons()
 
 🎮 Store persistent player data (e.g., profiles, achievements, leaderboards) using a database like SQL Server. Use Entity Framework Core (Code First) to interact with the database.
 
-## 11.3). DbContext & DbSet
+## 11.3). DbContext, DbSet & DTOs
 
 The **DbContext** is simply the way for the developers to incorporate Entity Framework based data to the application. It allows you to make database connections inside an application model and allows the developer to link the model properties to the database table using a connection string.
+
+[DbContext](https://www.learnentityframeworkcore5.com/dbcontext)
+
+[ASP.NET Core REST API DbContext](https://www.pragimtech.com/blog/blazor/asp.net-core-rest-api-dbcontext/)
 
 The DbContext in Entity Framework Core consist of the following features and responsibilities:
 
@@ -920,14 +924,20 @@ The DbContext in Entity Framework Core consist of the following features and res
 
 In Entity Framework Core, the **DbSet** represents the set of entities. In a database, a group of similar entities is called an Entity Set. The DbSet is responsible for performing all the basic CRUD (Create, Read, Update and Delete) operations on each of the Entity.
 
-- [DbContext](https://www.learnentityframeworkcore5.com/dbcontext)
-- [DbSet](https://www.learnentityframeworkcore5.com/dbset)
+[DbSet](https://www.learnentityframeworkcore5.com/dbset)
 
-- [c# Entity framework core assignment solution: Add models and tables](https://www.linkedin.com/pulse/c-entity-framework-core-assignment-solution-add-models-adi-inbar-3r87f/?trackingId=dxMHMLu80K4bLf%2B8FpVmzA%3D%3D)
+**What Is a DTO?**  
+A DTO (Data Transfer Object) is an object that defines how data will be sent between applications.  
+It’s used only to send and receive data and does not contain in itself any business logic.  
 
-- [ASP.NET Core REST API DbContext](https://www.pragimtech.com/blog/blazor/asp.net-core-rest-api-dbcontext/)
+**Why Use DTOs?**
+The use of DTOs is very common in web development with ASP.NET Core as they provide solutions for many needs. Below are some of them:  
+- Separate the service layer from the database layer  
+- Hide specific properties that clients don’t need to receive  
+- Omit properties to reduce the payload size  
+- Manipulate nested objects to make them more convenient for clients  
 
-- [DTO (Data Transfer Object)](https://www.telerik.com/blogs/dotnet-basics-dto-data-transfer-object)
+[DTO (Data Transfer Object)](https://www.telerik.com/blogs/dotnet-basics-dto-data-transfer-object)
 
 🎮 In a game server, the GameDbContext would contain DbSets for various entities like Player, Game, and Match.
 
@@ -1616,15 +1626,14 @@ TempData.Peek("Name");
 
 ## 23). Singleton Design Pattern
 
-- 
 
 ## 24). REST Api. How to create REST API?
 
 🎮 You can implement a matchmaking service using REST APIs or SignalR to find and assign players to games based on their skills, region, or preferences.
 
-- [How To Build a RESTful API with ASP.NET Core](https://medium.com/net-core/how-to-build-a-restful-api-with-asp-net-core-fb7dd8d3e5e3)
+[How To Build a RESTful API with ASP.NET Core](https://medium.com/net-core/how-to-build-a-restful-api-with-asp-net-core-fb7dd8d3e5e3)
 
-- [Create rest API in .Net Core](https://medium.com/@sagarkumar2499/create-rest-api-in-net-core-b2aed00416fd)
+[Create rest API in .Net Core](https://medium.com/@sagarkumar2499/create-rest-api-in-net-core-b2aed00416fd)
 
 ## 25). What are HTTP Verbs? 
  
@@ -1725,11 +1734,7 @@ potential leaks, especially in complex applications.
 
 ## 30). Unit Testing - NUnit and XUnit
 
-- [Controller Action Return Types in ASP.NET Core Web API](https://dotnettutorials.net/lesson/controller-action-return-types-core-web-api/)
-
-## Game Server using Dot Net Core
-
-
+[Controller Action Return Types in ASP.NET Core Web API](https://dotnettutorials.net/lesson/controller-action-return-types-core-web-api/)
 
 
 ## Minor Projects
