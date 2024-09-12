@@ -760,9 +760,9 @@ Extension methods are a way to add new functionality to existing types without m
 - Encapsulation of Logic: You can encapsulate frequently used logic, which simplifies code maintenance.  
 - Flexibility: They allow you to "add" functionality to existing types, including those in third-party libraries or .NET's core libraries, without inheritance.  
 
-**Common Uses:**
-LINQ: Most LINQ operations are implemented as extension methods on IEnumerable<T> and IQueryable<T>.  
-Utility Functions: Often used for string manipulations, date/time operations, and other utility functions.  
+**Common Uses:**  
+- LINQ: Most LINQ operations are implemented as extension methods on IEnumerable<T> and IQueryable<T>.  
+- Utility Functions: Often used for string manipulations, date/time operations, and other utility functions.  
 
 [Mastering Extension Methods in C#](https://www.linkedin.com/pulse/mastering-extension-methods-c-pradeep-pandit-feawf/)
 
@@ -778,7 +778,7 @@ public static class StringExtensions
 }
 ```
 
-Coming to the Extension Methods - Run(), Use() and Next().
+Coming to the Extension Methods - Run(), Use() and Next()  
 [Run, Use, and Next Method in ASP.NET Core](https://dotnettutorials.net/lesson/run-next-use-methods-in-asp-net-core/#:~:text=The%20Run%20method%20in%20ASP,in%20the%20request%20processing%20pipeline.)
 
 🎮 We can use Extension Methods in Unity3D also in Game Development.
@@ -1323,6 +1323,12 @@ public IActionResult AnotherAction()
 ```
 
 ## 17). .NET Core and .NET Framework
+
+| Column 1 | Column 2 | Column 3 |
+|----------|----------|----------|
+| Mobile Development    | The .NET Framework currently does not support their development at all, and that is a problem. | NET Core has some support for mobile apps that is compatible with Xamarin and other open-source platforms for mobile applications.|
+| Row 2    | Data 3   | Data 4   |
+
 
 - [.Net Core vs .Net Framework: Key Differences, Features, and more](https://www.mygreatlearning.com/blog/net-core-vs-net-framework/)
 
