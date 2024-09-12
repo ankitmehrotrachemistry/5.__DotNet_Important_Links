@@ -4,7 +4,7 @@ In my previous role, I developed the backend for a real-time multiplayer game us
      
 We stored player profiles and game data in SQL Server while using Redis for caching active game sessions and leaderboards. The system was deployed on Azure with Kubernetes, allowing it to scale dynamically based on player demand. This ensured low-latency gameplay for over 1 million players. We also leveraged Azure Cloud Services to scale our servers dynamically based on player activity, ensuring low latency and high availability, especially during peak times.
      
-For security, we used JWT tokens for player authentication, ensuring secure and stateless communication between the client and server.  
+For security, we used JWT tokens for player authentication, ensuring secure and stateless communication between the client and server.
 
 ## Architecture of a Multiplayer Game Backend:
     
@@ -1160,7 +1160,7 @@ Cross-site request forgery (CSRF) is an attack that tricks a user's browser into
 
 Kestrel is the default web server used in ASP.NET Core applications. It is designed to be fast and efficient, making it an ideal choice for modern web applications. Kestrel can handle HTTP requests and responses, providing a robust foundation for building web applications.
 
-Why Use Kestrel?  
+Why Use Kestrel?   
 **a). Performance:** Kestrel is highly performant and can handle a large number of requests per second.  
 **b). Cross-Platform:** Kestrel runs on Windows, macOS, and Linux, making it versatile for different deployment environments.  
 **c). Asynchronous:** Built on top of libuv, Kestrel is designed to handle asynchronous I/O operations efficiently.  
@@ -1273,6 +1273,7 @@ e). Hidden Field
 
 ![image](https://github.com/user-attachments/assets/74518738-e094-41d8-8d52-c7695cda37d0)
 
+[What are the different Session state management options available in ASP.NET?](https://medium.com/@iammanolov98/what-are-the-different-session-state-management-options-available-in-asp-net-c08b7ef7dc49)
 
 ## 16). Session Management
 
