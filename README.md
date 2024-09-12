@@ -4,7 +4,7 @@ In my previous role, I developed the backend for a real-time multiplayer game us
      
 We stored player profiles and game data in SQL Server while using Redis for caching active game sessions and leaderboards. The system was deployed on Azure with Kubernetes, allowing it to scale dynamically based on player demand. This ensured low-latency gameplay for over 1 million players. We also leveraged Azure Cloud Services to scale our servers dynamically based on player activity, ensuring low latency and high availability, especially during peak times.
      
-For security, we used JWT tokens for player authentication, ensuring secure and stateless communication between the client and server.
+For security, we used JWT tokens for player authentication, ensuring secure and stateless communication between the client and server.  
 
 ## Architecture of a Multiplayer Game Backend:
     
