@@ -553,7 +553,7 @@ public void ConfigureServices(IServiceCollection services)
 
 [Mastering Dependency Injection in .NET Core](https://medium.com/@vndpal/mastering-dependency-injection-in-net-core-94aea0a4ab6c)
 
-**Dependency Injection Video Demonstration**
+**Dependency Injection Video Demonstration** ▶️    
 [ASP.NET CORE Tutorial For Beginners 31 - Dependency Injection (DI) in Hindi](https://www.youtube.com/watch?v=3nnESO6I3iE)
 
 🎮 In a game server, DI allows you to:
