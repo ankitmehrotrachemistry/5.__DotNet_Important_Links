@@ -691,7 +691,7 @@ By using Dependency Injection in your .NET Core game server, you can manage your
 ## 9). AddScoped, AddTransient and AddSingleton
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/9d3bd981-1c65-4eba-a4a9-e947a889a50a" width="500" height="250" />
+  <img src="https://github.com/user-attachments/assets/9d3bd981-1c65-4eba-a4a9-e947a889a50a" width="400" height="250" />
 </p>
 
 ### Service Lifetimes in .NET Core:
@@ -1317,7 +1317,7 @@ The three parts of MVC are:
 **c). Controller:** Updates the model and view based on user input    
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/91fdf570-51ef-497f-9a11-8e7fd13f4af5" width="500" height="250" />
+  <img src="https://github.com/user-attachments/assets/91fdf570-51ef-497f-9a11-8e7fd13f4af5" width="500" height="350" />
 </p>
 
 [The MVC Architecture](https://medium.com/@sadikarahmantanisha/the-mvc-architecture-97d47e071eb2)
@@ -1522,7 +1522,7 @@ Age : @age<br />
 Now let’s run the application and navigate to /viewbag:
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/01e5e09b-ae14-418b-b1e4-008e7c2ede5f" width="500" height="250" />
+  <img src="https://github.com/user-attachments/assets/01e5e09b-ae14-418b-b1e4-008e7c2ede5f" width="500" height="200" />
 </p>
 
 **3). TempData**
