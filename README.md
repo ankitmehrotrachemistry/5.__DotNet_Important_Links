@@ -746,9 +746,25 @@ services.AddScoped<IUserService, UserIdentityService>();
 **Scoped services** are useful for maintaining game-related state during a single request, such as player session data.
 **Transient services** are ideal for lightweight operations that don’t require state preservation between requests.
 
-## 10). Extension Methods - App.Run() and App.Use()
+## 10). Extension Methods. What are the use of extension methods : Run(), Use() and Next() ?
 
-Extension methods are a way to add new functionality to existing types without modifying their source code. They are static methods that can be called as if they are instance methods on the extended type.
+Extension methods are a way to add new functionality to existing types without modifying their source code. They are static methods that can be called as if they are instance methods on the extended type. Extension methods are a powerful feature in C# that can help you write cleaner, more expressive code.  
+
+**Key Characteristics:**
+- Static Class: Extension methods must be defined in a static class.  
+- Static Method: The method itself must be static.  
+- First Parameter with this Keyword: The first parameter specifies the type being extended, and it must be preceded by the this keyword.  
+
+**Benefits of Extension Methods:**
+- Improved Readability and Maintainability: They help in writing fluent APIs and make code more readable.  
+- Encapsulation of Logic: You can encapsulate frequently used logic, which simplifies code maintenance.  
+- Flexibility: They allow you to "add" functionality to existing types, including those in third-party libraries or .NET's core libraries, without inheritance.  
+
+**Common Uses:**
+LINQ: Most LINQ operations are implemented as extension methods on IEnumerable<T> and IQueryable<T>.  
+Utility Functions: Often used for string manipulations, date/time operations, and other utility functions.  
+
+[Mastering Extension Methods in C#](https://www.linkedin.com/pulse/mastering-extension-methods-c-pradeep-pandit-feawf/)
 
 In one of my .NET Core projects, I created an extension method for validating email addresses. 
 
@@ -762,7 +778,15 @@ public static class StringExtensions
 }
 ```
 
-🎮 In a game server using .NET, app.Run is typically part of the setup in an ASP.NET Core application, where it starts the web host and begins listening for incoming HTTP requests. For a backend game server, especially in Unity or another game framework using .NET Core, app.Run is used to host the game server logic via a web API or WebSocket server.
+Coming to the Extension Methods - Run(), Use() and Next().
+[Run, Use, and Next Method in ASP.NET Core](https://dotnettutorials.net/lesson/run-next-use-methods-in-asp-net-core/#:~:text=The%20Run%20method%20in%20ASP,in%20the%20request%20processing%20pipeline.)
+
+🎮 We can use Extension Methods in Unity3D also in Game Development.
+
+[11 Useful Unity C# Extension Methods](https://monoflauta.com/2021/07/27/11-useful-unity-c-extension-methods/)  
+
+**Game server setup for handling player connections or game events**  
+In a game server using .NET, app.Run is typically part of the setup in an ASP.NET Core application, where it starts the web host and begins listening for incoming HTTP requests. For a backend game server, especially in Unity or another game framework using .NET Core, app.Run is used to host the game server logic via a web API or WebSocket server.
 
 Here’s an example of how you might use app.Run in a game server setup for handling player connections or game events via HTTP or WebSockets:
 
