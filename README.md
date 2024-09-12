@@ -1662,7 +1662,7 @@ TempData.Peek("Name");
 
 [Optimizing Performance in .NET Web Applications: Tips and Techniques](https://eluminoustechnologies.com/blog/optimizing-net-application-development/)
 
-**How to Maximize Performance and Scalability of Your App?**
+**How to Maximize Performance and Scalability of Your App?**  
 https://medium.com/agoda-engineering/asp-net-core-performance-optimization-how-to-maximize-performance-and-scalability-of-your-app-d676668aebea
 
 ## 29). Memory Leaks
