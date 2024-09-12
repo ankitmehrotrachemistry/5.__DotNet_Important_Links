@@ -548,9 +548,6 @@ public void ConfigureServices(IServiceCollection services)
     services.AddScoped(typeof(ILog), typeof(MyConsoleLogger));
 }
 ```
-[ASP.NET Core - Dependency Injection](https://www.tutorialsteacher.com/core/dependency-injection-in-aspnet-core)
-
-[ASP.NET Core Dependency Injection](https://www.ezzylearning.net/tutorial/a-step-by-step-guide-to-asp-net-core-dependency-injection)
 
 [Dependency Injection With .NET Core](https://kusham1998.medium.com/dependency-injection-with-net-core-a6b33e74f6df)
 
@@ -742,9 +739,9 @@ services.AddScoped<IUserService, UserIdentityService>();
 
 **Advanced Use of DI: Scoped, Transient, and Singleton Lifetimes**
 
-**Singleton services**, such as cache or configuration services, can store game state across sessions.
-**Scoped services** are useful for maintaining game-related state during a single request, such as player session data.
-**Transient services** are ideal for lightweight operations that don’t require state preservation between requests.
+**Singleton services**, such as cache or configuration services, can store game state across sessions.  
+**Scoped services** are useful for maintaining game-related state during a single request, such as player session data.  
+**Transient services** are ideal for lightweight operations that don’t require state preservation between requests.  
 
 ## 10). Extension Methods. What are the use of extension methods : Run(), Use() and Next() ?
 
