@@ -683,7 +683,7 @@ public class PlayerRepository : IPlayerRepository
 }
 ```
 
-**e. Real-time Communication Services**
+**e. Real-time Communication Services:**    
 Handling WebSocket connections or gRPC for real-time player interactions.
 
 By using Dependency Injection in your .NET Core game server, you can manage your components and services more efficiently, reduce code duplication, improve testability, and handle complex game logic in a modular and maintainable way. Whether it’s player management, game state updates, or matchmaking, DI provides flexibility and robustness to your backend game server architecture.
@@ -746,7 +746,7 @@ services.AddScoped<IUserService, UserIdentityService>();
 **Scoped services** are useful for maintaining game-related state during a single request, such as player session data.  
 **Transient services** are ideal for lightweight operations that don’t require state preservation between requests.  
 
-## 10). Extension Methods. What are the use of extension methods : Run(), Use() and Next() ?
+## 10). Extension Methods. What are the use of extension method : Run(), Use() and Next()?
 
 Extension methods are a way to add new functionality to existing types without modifying their source code. They are static methods that can be called as if they are instance methods on the extended type. Extension methods are a powerful feature in C# that can help you write cleaner, more expressive code.  
 
@@ -1150,9 +1150,10 @@ public async Task SyncGameState()
 
 
 💻 **Explain how you Implement Authentication and Authorization in a Project:**         
-**Authentication Example:** "In one of my projects, I used ASP.NET Core Identity for user authentication. We allowed users to sign in using either their email and password or via Google using OAuth 2.0. For the web API, we implemented JWT tokens to authenticate users, where the token was validated with every API request."    
 
-**Authorization Example:** "For authorization, we implemented a role-based system where different user roles had different access levels. For example, Admin users could manage products, while regular users could only view them. We used the [Authorize] attribute in ASP.NET Core to protect specific API endpoints and ensured the users' roles were checked before performing certain actions."     
+**a). Authentication Example:** "In one of my projects, I used ASP.NET Core Identity for user authentication. We allowed users to sign in using either their email and password or via Google using OAuth 2.0. For the web API, we implemented JWT tokens to authenticate users, where the token was validated with every API request."    
+
+**b). Authorization Example:** "For authorization, we implemented a role-based system where different user roles had different access levels. For example, Admin users could manage products, while regular users could only view them. We used the [Authorize] attribute in ASP.NET Core to protect specific API endpoints and ensured the users' roles were checked before performing certain actions."     
 
 ## 13). CSRF (Cross Site Request Forgery)
 
@@ -1279,7 +1280,7 @@ c). Control state
 d). Query String  
 e). Hidden Field  
 
-- [What Is State Management: Applications, Types, Example and More](https://www.simplilearn.com/tutorials/asp-dot-net-tutorial/state-management-in-asp-net)
+[What Is State Management: Applications, Types, Example and More](https://www.simplilearn.com/tutorials/asp-dot-net-tutorial/state-management-in-asp-net)
 
 ![image](https://github.com/user-attachments/assets/74518738-e094-41d8-8d52-c7695cda37d0)
 
@@ -1341,7 +1342,7 @@ public IActionResult AnotherAction()
 | Row 2    | Data 3   | Data 4   |
 
 
-- [.Net Core vs .Net Framework: Key Differences, Features, and more](https://www.mygreatlearning.com/blog/net-core-vs-net-framework/)
+[.Net Core vs .Net Framework: Key Differences, Features, and more](https://www.mygreatlearning.com/blog/net-core-vs-net-framework/)
 
 ## 18). Filters and it's type
 
@@ -1467,7 +1468,7 @@ public class ActionsController : ControllerBase
 
 ## 20). Controller Action Methods in MVC
 
-- [Controller Action Return Types in ASP.NET Core Web API](https://dotnettutorials.net/lesson/controller-action-return-types-core-web-api/)
+[Controller Action Return Types in ASP.NET Core Web API](https://dotnettutorials.net/lesson/controller-action-return-types-core-web-api/)
 
 ## 21). What are Views? ViewData , ViewBag and TempData
 
@@ -1736,7 +1737,6 @@ potential leaks, especially in complex applications.
 
 [Controller Action Return Types in ASP.NET Core Web API](https://dotnettutorials.net/lesson/controller-action-return-types-core-web-api/)
 
-
 ## Minor Projects
 
 #### 1). CRUD Operations
@@ -1748,10 +1748,6 @@ potential leaks, especially in complex applications.
 #### 2). Custom Identity
 
 - [Custom Identity in Asp.Net Core MVC](https://www.youtube.com/watch?v=93ssXlCPcuI&t=2158s)
-
-## 0). Advanced C# Concepts
-
-- ▶️ [Advanced C# Topics](https://www.youtube.com/watch?v=VT9ueWBqquU&list=PLwhVruPHD9ryiH4kN0EHYeXQXIOHLBcJX&index=1)
 
 ## ASP.NET MVC
 
