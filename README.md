@@ -1436,9 +1436,16 @@ There are two approaches to passing a weakly typed data into the views:
 
 - ViewData
 - ViewBag
-- ViewData
 
-**ViewData** is a dictionary object and we can get/set values using a key. ViewData exposes an instance of the ViewDataDictionary class.
+**1). ViewData**
+
+ViewData maintains data when you move from controller to view. It is also a dictionary object and derived from ViewDataDictionary. As Data is stored as Object in ViewData, while retrieving, the data it needs to be TypeCasted to its original type as the datas stored as objects and it also requires NULL checks while retrieving.
+
+```csharp
+ViewData[“Name"] = “CodingSikho";
+```
+
+ViewData is a dictionary object and we can get/set values using a key. ViewData exposes an instance of the ViewDataDictionary class.
 
 Let’s create a controller action method and set a value for UserId inside ViewData:
 
@@ -1466,11 +1473,22 @@ User Id : @userId
 
 Then let’s run the application and navigate to /viewdata:
 
-![image](https://github.com/user-attachments/assets/843ec7b1-e81e-4bd2-a1f7-0cf845e304e8)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/843ec7b1-e81e-4bd2-a1f7-0cf845e304e8" width="500" height="250" />
+</p>
 
 We can see the UserId value is read from ViewData and displayed on the page.
 
-**ViewBag** is similar to ViewData but it is a dynamic object and we can add data into it without converting to a strongly typed object. In other words, ViewBag is just a dynamic wrapper around the ViewData.
+**2). ViewBag** 
+
+The ViewBag is a dynamic type property of ControllerBase class which is the base class of all the controllers. Castings not required when you use ViewBag.  
+ViewBag only transfers data from controller to view, not visa-versa. ViewBag values will be null if redirection occurs.  
+ViewBag support any number of properties or values. If same value found then it will only consider last value assigned to the property.
+
+```csharp
+ViewBag.Name = “Coding Sikho";
+```
+ViewBag is similar to ViewData but it is a dynamic object and we can add data into it without converting to a strongly typed object. In other words, ViewBag is just a dynamic wrapper around the ViewData.
 
 Let’s add a controller action method to set a few values in ViewBag:
 
@@ -1503,9 +1521,13 @@ Age : @age<br />
 ```
 Now let’s run the application and navigate to /viewbag:
 
-![image](https://github.com/user-attachments/assets/01e5e09b-ae14-418b-b1e4-008e7c2ede5f)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/01e5e09b-ae14-418b-b1e4-008e7c2ede5f" width="500" height="250" />
+</p>
 
-**TempData** is another way to store temporary data. It is meant to be a short-lived, single-use store for data between requests. It uses session state behind the scenes.
+**3). TempData**
+
+TempData is another way to store temporary data. It is meant to be a short-lived, single-use store for data between requests. It uses session state behind the scenes.
 
 ```csharp
 public IActionResult Index()
@@ -1522,7 +1544,32 @@ public IActionResult Welcome()
 ```
 TempData values are retained for a single request, so they are useful for scenarios such as redirecting between actions (Post-Redirect-Get pattern).
 
+TempData internally uses session variable and stays for a subsequent HTTP Request. This means it maintains data when you move one controller to another controller or oneaction to another action. As this is a dictionary object null checking and typecastingis required while using it.
+
+```csharp
+TempData["Name"] = “Coding Sikho";
+```
+
+TempData gets destroyed immediately after it's used (once value is read from tempdata) in subsequent HTTP request, so no explicit action required, if you want preserve value in the subsequent request after using need to call **Keep method or Peek method**.
+
+**Keep and Peek**
+The keep() and peek() method is used to read the data without deletion of the current read object.
+You can use Keep() when prevent/hold the value depends on additional logic.
+You can use Peek() when you always want to hold/prevent the value for another request.
+
+```csharp
+TempData["Name"] = "Coding Sikho"
+TempData.Keep("Name");
+TempData.Peek("Name");
+```
+
 [State Management in ASP.NET Core MVC](https://code-maze.com/state-management-in-asp-net-core-mvc/)
+
+▶️ [TempData, ViewData, ViewBag in Asp.Net MVC | MVC for beginners](https://www.youtube.com/watch?v=lr7YTjpRF5g)
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/f7b31ffa-1a68-4a79-84bf-06f3ab51624f" width="500" height="250" />
+</p>
 
 ## 22). Repository Pattern
 
