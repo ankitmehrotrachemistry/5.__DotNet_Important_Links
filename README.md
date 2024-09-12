@@ -531,6 +531,8 @@ The built-in IoC container supports three kinds of lifetimes:
 **b). Transient:** The IoC container will create a new instance of the specified service type every time you ask for it.  
 **c). Scoped:** IoC container will create an instance of the specified service type once per request and will be shared in a single request.  
 
+[Dependency Injection With .NET Core](https://kusham1998.medium.com/dependency-injection-with-net-core-a6b33e74f6df)
+
 ASP.NET Core framework includes extension methods for each types of lifetime; AddSingleton(), AddTransient() and AddScoped() methods for singleton, transient and scoped lifetime respectively.
 
 The following example shows the ways of registering types (service) using extension methods.
@@ -549,9 +551,10 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-[Dependency Injection With .NET Core](https://kusham1998.medium.com/dependency-injection-with-net-core-a6b33e74f6df)
-
 [Mastering Dependency Injection in .NET Core](https://medium.com/@vndpal/mastering-dependency-injection-in-net-core-94aea0a4ab6c)
+
+**Dependency Injection Video Demonstration**
+[ASP.NET CORE Tutorial For Beginners 31 - Dependency Injection (DI) in Hindi](https://www.youtube.com/watch?v=3nnESO6I3iE)
 
 🎮 In a game server, DI allows you to:
 
@@ -1458,8 +1461,6 @@ public class ActionsController : ControllerBase
 
 ## 21). What are Views? ViewData , ViewBag and TempData
 
-- [ASP.NET MVC: Models, ViewData, ViewBag, and TempData Explained](https://www.linkedin.com/pulse/aspnet-mvc-models-viewdata-viewbag-tempdata-explained-ervis-trupja-ytn7f/)
-
 There are two approaches to passing a weakly typed data into the views:
 
 - ViewData
@@ -1579,6 +1580,8 @@ TempData["Name"] = “Coding Sikho";
 ```
 
 TempData gets destroyed immediately after it's used (once value is read from tempdata) in subsequent HTTP request, so no explicit action required, if you want preserve value in the subsequent request after using need to call **Keep method or Peek method**.
+
+[ASP.NET MVC: Models, ViewData, ViewBag, and TempData Explained](https://www.linkedin.com/pulse/aspnet-mvc-models-viewdata-viewbag-tempdata-explained-ervis-trupja-ytn7f/)
 
 **Keep and Peek**
 The keep() and peek() method is used to read the data without deletion of the current read object.
