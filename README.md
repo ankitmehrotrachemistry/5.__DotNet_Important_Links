@@ -694,7 +694,7 @@ By using Dependency Injection in your .NET Core game server, you can manage your
   <img src="https://github.com/user-attachments/assets/9d3bd981-1c65-4eba-a4a9-e947a889a50a" width="400" height="250" />
 </p>
 
-#### Service Lifetimes in .NET Core:
+**Service Lifetimes in .NET Core:**
 Service lifetimes define how long instances of a service should be kept and reused. The framework provides three main service lifetimes: Singleton, Transient, and Scoped. Choosing the appropriate service lifetime is crucial for managing resources efficiently and ensuring the desired behavior of your application.
 
 **A). AddSingleton:**  
