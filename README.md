@@ -1615,6 +1615,11 @@ TempData.Peek("Name");
 
 ## 22). Repository Pattern
 
+The repository pattern is a software design pattern that acts as an abstraction layer between your data access layer and the business logic layer in an ASP.NET Core Web API .  
+It hides the details of how exactly the data is saved or retrieved from the underlying data source.   
+The details of how the data is stored and retrieved is in the respective repository.   
+This means your business logic doesn’t care whether it’s talking to SQL Server, Oracle, or even a mock object for testing purposes.  
+
 - [Repository Pattern Implementation in ASP.NET Core](https://medium.com/net-core/repository-pattern-implementation-in-asp-net-core-21e01c6664d7)
 
 - [Implement Repository Base and Unit of Work in C#](https://dev.to/1001binary/implement-repository-base-and-unit-of-work-in-c-2ncg)
