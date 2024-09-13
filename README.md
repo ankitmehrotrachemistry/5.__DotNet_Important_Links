@@ -1103,6 +1103,14 @@ c). Signature
 
 [Implementing Authentication and Authorization in ASP.NET Core using JWT Tokens and refresh token with .NET 7](https://medium.com/@kefasogabi/implementing-authentication-and-authorization-in-asp-net-e831c04b4d38)
 
+**Here is a basic overview of how JWT-based authentication works in a web application:**  
+**1. User Authentication:** When a user logs in, the server validates the provided credentials (username and password). If the credentials are valid, the server generates a JWT token containing claims such as user ID, roles, expiration time, etc.  
+**2. JWT Structure:** A JWT token is a compact, URL-safe string composed of three parts: header, payload, and signature.  
+**3. Token Storage:** The client typically stores the JWT token in a secure manner, such as in an HTTP-only cookie or in local storage.   
+**4. Server Validation:** The server validates the token upon receiving a request by checking the signature and verifying the claims.   
+**5. Token Refresh:** To avoid frequent logins, a refresh token mechanism may be implemented. The client can request a new JWT token using a refresh token without re-entering credentials.   
+**6. Token Expiration:** JWT tokens have an expiration time, which helps mitigate the risk of token misuse.  
+
 [OAuth 2.0 and OpenID in simple terms](https://medium.com/@iamprovidence/oauth-2-0-and-openid-in-simple-terms-7196089a1b29)
 
 🎮 In a multiplayer game, it’s important to authenticate users securely. .NET Core provides Identity and OAuth2.0 for managing player authentication and authorization.
