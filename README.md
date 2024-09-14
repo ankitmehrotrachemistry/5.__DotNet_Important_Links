@@ -832,13 +832,36 @@ In a multiplayer backend, app.Run effectively starts the game server, enabling i
 
 ## 11.1). Entity Framework Core
 
-In Entity Framework, the model is prepared according to the requirement of the user. It depends upon the number of classes and categories that will be embedded into the database.
+In Entity Framework, the model is prepared according to the requirement of the user. It depends upon the number of classes and categories that will be embedded into the database. 
+Entity Framework is a tool we use to access the database. EF is an Object Relational Mapper (ORM) we use to map the objects of our applications with the Relational Data.  
 
-- [Entity Framework Core Model](https://www.learnentityframeworkcore5.com/entity-framework-core-model)
+![image](https://github.com/user-attachments/assets/1ecc98c4-a8ce-434a-a2f8-6492385fcda6)
+
+Earlier, we had to do all these mapping manually which involved lots of steps. We work at a higher level of Abstraction in Entity Framework.  
+
+Entity Framework provides a class - DbContext which is the Gateway to our database. A DbContext can have one or more DbSets. These DBSets represent tables in our database. 
+
+![image](https://github.com/user-attachments/assets/bbcb8b46-0b4c-4acc-9be2-173d5f149452)
+           
+We use LINQ Query to query these DbSets. Entity Framework converts these LINQ Queries to SQL Queries at runtime. We don’t have to do these translations manually. All of these are done by EF behind the scenes.
+
+![image](https://github.com/user-attachments/assets/9fb5f640-deae-41cf-9b83-82ed7d01b846)
+
+So, Entity Framework is responsible for opening a connection to the database, reads the data and maps it to the objects and adds them to the DbSet and returns the DBContext back to us. 
+
+![image](https://github.com/user-attachments/assets/67141e8f-a167-455e-94b2-bca15f735b54)
+
+As we add, modify or remove objects in these DbSets, EF keeps track of these changes and when we ask to persist these changes, again it will automatically generate the SQL Statements and execute them on our Database. 
+
+There are 2 different ways/workflow for the EF - 
+  a). Database First Approach 
+  b). CodeFirst Approach 
+
+[Entity Framework Core Model](https://www.learnentityframeworkcore5.com/entity-framework-core-model)
   
-- [One-to-Many Relationships using Fluent API in Entity Framework Core](https://www.entityframeworktutorial.net/efcore/configure-one-to-many-relationship-using-fluent-api-in-ef-core.aspx)
+[One-to-Many Relationships using Fluent API in Entity Framework Core](https://www.entityframeworktutorial.net/efcore/configure-one-to-many-relationship-using-fluent-api-in-ef-core.aspx)
 
-- [An Insightful Dive into Entity Framework Core](https://www.linkedin.com/pulse/insightful-dive-entity-framework-core-heart-data-management-adi-inbar/?trackingId=CKg92x8pLiei6Du9gH2AjQ%3D%3D)
+[An Insightful Dive into Entity Framework Core](https://www.linkedin.com/pulse/insightful-dive-entity-framework-core-heart-data-management-adi-inbar/?trackingId=CKg92x8pLiei6Du9gH2AjQ%3D%3D)
 
 - ▶️ [Complete 3 Hour ASP NET 6.0 and Entity Framework Core Course!](https://www.youtube.com/watch?v=7d2UMAIgOLQ&list=PLwhVruPHD9rxZ9U5K6vqUFkfrjaRhwEsV&index=12)
 
