@@ -1143,11 +1143,11 @@ foreach (var item in result)
 
 Sorting Operators available in LINQ are:
 
-- ORDER BY
-- ORDER BY DESCENDING
-- THEN BY
-- THEN BY DESCENDING
-- REVERSE
+1. ORDER BY  
+2. ORDER BY DESCENDING  
+3. THEN BY  
+4. THEN BY DESCENDING  
+5. REVERSE  
 
 - **Syntax of LINQ OrderBy operator**
 
@@ -1177,7 +1177,8 @@ namespace ConsoleApp1
         new Student() { Name = "Sateesh Chandra", Gender = "Male", Subjects = new List<string> { "English", "Social Studies", "Chemistry" } },  
         new Student() { Name = "Madhav Sai", Gender = "Male", Subjects = new List<string> { "Accounting", "Charted" } }  
         };  
-            var studentname = Objstudent.OrderBy(x => x.Name);  
+            var studentname = Objstudent.OrderBy(x => x.Name);
+ 
             foreach (var student in student name)  
             {  
                 Console.WriteLine(student.Name);  
@@ -1225,9 +1226,9 @@ namespace ConsoleApp1
                 new Student() { Name = "Shubham", Gender = "Male", Subjects = new List<string> { "Account", "Social Studies", "Chemistry" } },
                 new Student() { Name = "Himanshu", Gender = "Male", Subjects = new List<string>{ "English", "Charted" } }
     };
-            /*OrderByDescending() operator is used to print  
-            the name of the student in the descending form*/
+            /*OrderByDescending() operator is used to print the name of the student in the descending form*/
             var studentname = Objstudent.OrderByDescending(x => x.Name);
+
             //foreach loop is used to print the name of the student  
             foreach (var student in studentname)
             {
@@ -1241,9 +1242,7 @@ namespace ConsoleApp1
     {
         public string Name { get; set; }
         public string Gender { get; set; }
-        public List<string>
-            Subjects
-        { get; set; }
+        public List<string> Subjects { get; set; }
     }
 }
 ```
