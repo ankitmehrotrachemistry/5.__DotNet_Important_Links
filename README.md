@@ -1068,6 +1068,35 @@ public class Player
 
 ## 11.5). LINQ
 
+**LINQ Query Syntax in C#**
+```csharp
+int[] Num = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
+IEnumerable<int> result = from numbers in Num  
+                                where numbers >3  
+                                select numbers;  
+```
+
+**List to store the countries type of string**
+```csharp
+List<string> countries = new List<string>();
+
+countries.Add("India");
+countries.Add("US");
+countries.Add("Australia");
+countries.Add("Russia");
+
+//use lambda expression to show the list of the countries  
+IEnumerable<string> result = countries.Select(x => x);
+
+//foreach loop to display the countries  
+foreach (var item in result)    
+{
+    Console.WriteLine(item);
+}
+```
+
+
+
 - [Mastering C# LINQ Guide](https://www.bytehide.com/blog/linq-csharp)
 
 - [LINQ Interview Questions and Answers](https://vasistadotnet.wordpress.com/wp-content/uploads/2015/02/linq-interview-questions-answers-by-shailendra-chauhan.pdf)
