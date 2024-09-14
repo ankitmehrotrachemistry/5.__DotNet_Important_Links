@@ -1099,6 +1099,27 @@ IEnumerable<int> result = from numbers in Num
                                 select numbers;  
 ```
 
+- **LINQ Min () Function Syntax in C#**
+
+```csharp
+int[] a = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
+int minimumNum = a.Min();  
+```
+
+- **LINQ Max () Function Syntax in C#**
+
+```csharp
+int[] a = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
+int MaximumNum = a.Max();  
+```
+
+- **LINQ Sum () Function Syntax in C#**
+
+```csharp
+int[] Num = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
+int Sum = Num.Sum();  
+```
+
 - **List to store the countries type of string**
 ```csharp
 List<string> countries = new List<string>();
@@ -1118,19 +1139,115 @@ foreach (var item in result)
 }
 ```
 
-- **LINQ Min () Function Syntax in C#**
+### LINQ Sorting Operators
+
+Sorting Operators available in LINQ are:
+
+- ORDER BY
+- ORDER BY DESCENDING
+- THEN BY
+- THEN BY DESCENDING
+- REVERSE
+
+- **Syntax of LINQ OrderBy operator**
 
 ```csharp
-int[] a = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
-int minimumNum = a.Min();  
+var studentname = Objstudent.OrderBy(x => x.Name);
 ```
 
-- **LINQ Max () Function Syntax in C#**
+**LINQ OrderBy Operator Example**
+```csharp
+using System;  
+using System.Collections;  
+using System.Collections.Generic;  
+using System.Linq;  
+using System.Text;  
+using System.Threading.Tasks;  
+  
+namespace ConsoleApp1  
+{  
+    class Program  
+    {  
+        static void Main(string[] args)  
+        {  
+            List<Student> Objstudent = new List<Student>(){  
+        new Student() { Name = "Suresh Dasari", Gender = "Male", Subjects = new List<string> { "Mathematics", "Physics" } },  
+        new Student() { Name = "Rohini Alavala", Gender = "Female", Subjects = new List<string> { "Entomology", "Botany" } },  
+        new Student() { Name = "Praveen Kumar", Gender = "Male", Subjects = new List<string> { "Computers", "Operating System", "Java" } },  
+        new Student() { Name = "Sateesh Chandra", Gender = "Male", Subjects = new List<string> { "English", "Social Studies", "Chemistry" } },  
+        new Student() { Name = "Madhav Sai", Gender = "Male", Subjects = new List<string> { "Accounting", "Charted" } }  
+        };  
+            var studentname = Objstudent.OrderBy(x => x.Name);  
+            foreach (var student in student name)  
+            {  
+                Console.WriteLine(student.Name);  
+            }  
+                Console.ReadLine();  
+    }  
+}  
+    class Student  
+    {  
+        public string Name { get; set; }  
+        public string Gender { get; set; }  
+        public List<string> Subjects { get; set; }  
+    }  
+}  
+```
+
+- **Syntax of LINQ OrderByDescending operator**
 
 ```csharp
-int[] a = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
-int MaximumNum = a.Max();  
+var studentname = Objstudent.OrderByDescending(x => x.Name);  
 ```
+
+**LINQ OrderByDescending Operator Example**
+
+```csharp
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //create object of Student class and create a list of the student information  
+            List<Student> Objstudent = new List<Student>()
+            {
+                new Student() { Name = "Akshay", Gender = "Male", Subjects = new List<string> { "Mathematics", "Physics" } },
+                new Student() { Name = "Vaishali", Gender = "Female", Subjects = new List<string> { "Computer", "Botany" } },
+                new Student() { Name = "Arpita", Gender = "FMale", Subjects = new List<string> { "Economics", "Operating System", "Java" } },
+                new Student() { Name = "Shubham", Gender = "Male", Subjects = new List<string> { "Account", "Social Studies", "Chemistry" } },
+                new Student() { Name = "Himanshu", Gender = "Male", Subjects = new List<string>{ "English", "Charted" } }
+    };
+            /*OrderByDescending() operator is used to print  
+            the name of the student in the descending form*/
+            var studentname = Objstudent.OrderByDescending(x => x.Name);
+            //foreach loop is used to print the name of the student  
+            foreach (var student in studentname)
+            {
+                Console.WriteLine(student.Name);
+            }
+            Console.ReadLine();
+        }
+    }
+    //create a class student  
+    class Student
+    {
+        public string Name { get; set; }
+        public string Gender { get; set; }
+        public List<string>
+            Subjects
+        { get; set; }
+    }
+}
+```
+
 
 [Mastering C# LINQ Guide](https://www.bytehide.com/blog/linq-csharp)
 
