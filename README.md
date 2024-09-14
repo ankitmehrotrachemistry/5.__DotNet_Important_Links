@@ -1707,7 +1707,42 @@ This means your business logic doesn’t care whether it’s talking to SQL Serv
 [Create rest API in .Net Core](https://medium.com/@sagarkumar2499/create-rest-api-in-net-core-b2aed00416fd)
 
 ## 25). What are HTTP Verbs? 
+
+HTTP verbs are a set of standardized HTTP methods used to specify the desired action to be performed on a resource. 
+In REST API, these verbs are the means by which clients communicate their intentions to the server. 
+The most commonly used HTTP verbs in REST API are :
+
+1. GET : The GET method is used to request data from the server.
+2. POST : POST is employed to create a new resource on the server.
+3. PUT : The PUT method is used to update an existing resource on the server.
+4. DELETE : DELETE is used to remove a resource from the server.
+
+HTTP Methods like Put, GET, POST, PATCH , DELETE , OPTIONS explained in Hindi. This is part of the API Testing with Rest Assured Series.
+
+✅ **What is GET Request?**  
+The HTTP GET method is used to *read* (or retrieve) a representation of a resource. In the “happy” (or non-error) path, GET returns a representation in XML or JSON and an HTTP response code of 200 (OK). In an error case, it most often returns a 404 (NOT FOUND) or 400 (BAD REQUEST).  
+
+✅ **What is POST Request?**  
+The POST verb is most-often utilized to *create* new resources. In particular, it's used to create subordinate resources. That is, subordinate to some other (e.g. parent) resource. In other words, when creating a new resource, POST to the parent and the service takes care of associating the new resource with the parent, assigning an ID (new resource URI), etc.  
+
+
+✅ **What is PATCH Request?**  
+PATCH is used for *modify* capabilities. The PATCH request only needs to contain the changes to the resource, not the complete resource.  
+
+
+✅ **What is Delete Request?**  
+DELETE is pretty easy to understand. It is used to *delete* a resource identified by a URI.  
+
+
+✅ **What is PUT Request?**  
+PUT is most-often utilized for *update* capabilities, PUT-ing to a known resource URI with the request body containing the newly-updated representation of the original resource.  
+
+However, PUT can also be used to create a resource in the case where the resource ID is chosen by the client instead of by the server. In other words, if the PUT is to a URI that contains the value of a non-existent resource ID. Again, the request body contains a resource representation. Many feel this is convoluted and confusing. Consequently, this method of creation should be used sparingly, if at all.  
+
+✅ **Put VS Patch vs post**  
+POST creates an item in a collection. PUT replaces an item. PATCH modifies an item.   
  
+[HTTP Verbs in REST API](https://medium.com/@alrazak/understanding-http-verbs-in-rest-api-f6080711d580)
 
 ## 26). What is Data Annotations(Validations)? Client Side and Server Side Validations.
 
