@@ -1271,22 +1271,24 @@ namespace KestrelDemo.Controllers
 
 ## 15). State Management - Client and Server
 
+State Management is a programming technique for User Interface in which the state of a single UI control completely or partially depends on the state of all the other UI controls.  
+
 There are two types of State management in ASP net. They are :  
 - Server-side  
 - Client-side  
 
 These are further subdivided into the following -  
 **Server-Side**  
-a). Session  
-b). Application  
-c). Cache  
+**a). Session :** It is used to store identity and information; information is stored in the server using Sessionid.  
+**b). Application :** This is mainly used to store user activity in server memory and application events.  
+**c). Cache :** This is stored on the server-side, and it is used to implement page caching and data caching.  
 
 **Client-Side**  
-a). Cookies   
-b). Viewstate  
-c). Control state  
-d). Query String  
-e). Hidden Field  
+**a). Cookies :** Cookies are small text files that are stored on the user's computer, and they can be used to store data such as user preferences, session information, and so on.  
+**b). Viewstate :** It is used to manage page-level state and is used for storing, sending, and receiving information.  
+**c). Control state :** We use Control State to use the view state without the possibility of it being disabled by the user.  
+**d). Query String :** The query string is used to store the value in the URL.  
+**e). Hidden Field :** Hidden fields are HTML input elements that are used to store data that is not meant to be seen or edited by the user.  
 
 [What Is State Management: Applications, Types, Example and More](https://www.simplilearn.com/tutorials/asp-dot-net-tutorial/state-management-in-asp-net)
 
@@ -1352,7 +1354,21 @@ public IActionResult AnotherAction()
 
 [.Net Core vs .Net Framework: Key Differences, Features, and more](https://www.mygreatlearning.com/blog/net-core-vs-net-framework/)
 
+Use .NET Core for Server Applications When:
+- When a project needs to be integrated across multiple platforms.
+- The project requires the development of microservices
+- The project necessitates extensive utilization of the Command Line Interface (CLI).
+
+Prefer .NET Framework for Server Applications when:
+- Applications are already run on .NET Framework
+- Applications that require technologies such as workflow, webforms, or WCF may not be compatible with .NET Core
+
 ## 18). Filters and it's type
+
+- Web API includes filters to add extra logic before or after the action method executes. Filters can be used to provide cross-cutting features such as logging, exception handling, performance measurement, authentication and authorization.
+- Filters are actually attributes that can be applied on the Web API controller or one or more action methods.
+
+![image](https://github.com/user-attachments/assets/adb92003-1d8b-4832-ac7c-d0ad4e8fb09d)
 
 - Action filters are a type of filter in ASP.NET Core that are used to inject custom logic before or after the execution of a controller action method.  
 [Understanding Action Filters in ASP.NET Core](https://medium.com/@kefasogabi/understanding-action-filters-in-asp-net-core-a-comprehensive-guide-with-code-samples-ec1f1f2af425)
