@@ -1068,7 +1068,7 @@ public class Player
 
 ## 11.5). LINQ
 
-**LINQ Query Syntax in C#**
+**- LINQ Query Syntax in C#**
 ```csharp
 int[] Num = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
 IEnumerable<int> result = from numbers in Num  
@@ -1076,7 +1076,7 @@ IEnumerable<int> result = from numbers in Num
                                 select numbers;  
 ```
 
-**List to store the countries type of string**
+**- List to store the countries type of string**
 ```csharp
 List<string> countries = new List<string>();
 
@@ -1095,13 +1095,11 @@ foreach (var item in result)
 }
 ```
 
+[Mastering C# LINQ Guide](https://www.bytehide.com/blog/linq-csharp)
 
+[LINQ Interview Questions and Answers](https://vasistadotnet.wordpress.com/wp-content/uploads/2015/02/linq-interview-questions-answers-by-shailendra-chauhan.pdf)
 
-- [Mastering C# LINQ Guide](https://www.bytehide.com/blog/linq-csharp)
-
-- [LINQ Interview Questions and Answers](https://vasistadotnet.wordpress.com/wp-content/uploads/2015/02/linq-interview-questions-answers-by-shailendra-chauhan.pdf)
-
-- [Top 100 LINQ Interview Questions](https://github.com/Devinterview-io/linq-interview-questions) 
+[Top 100 LINQ Interview Questions](https://github.com/Devinterview-io/linq-interview-questions) 
  
 ## 11.6). Migrations, Seeding Data , Nullable and Entity States
 
