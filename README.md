@@ -1857,8 +1857,8 @@ This means your business logic doesn’t care whether it’s talking to SQL Serv
 
 - [A Comprehensive Guide to Repository Pattern in .NET: Implementation and Best Practices](https://medium.com/@dhananjay_1891/a-comprehensive-guide-to-repository-pattern-in-net-implementation-and-best-practices-d67c3a92e618)
 
-## 23). Singleton Design Pattern
-
+## 23). Singleton Design Pattern  
+The Singleton pattern is used to ensure that a class has only one instance, and it provides a global point of access to that instance. In .NET, the Singleton pattern is implemented using a private constructor and a static field that holds the single instance of the class.  
 
 ## 24). REST Api. How to create REST API?
 
