@@ -1226,6 +1226,12 @@ Why Use Kestrel?
 **c). Asynchronous:** Built on top of libuv, Kestrel is designed to handle asynchronous I/O operations efficiently.  
 **d). Default Server:** It’s the default web server in ASP.NET Core, which means it’s well-integrated and supported out of the box.  
 
+The Kestrel web server is the latest web server as part of ASP.NET Core. Kestrel is open-source , asynchronous I/O based server .It is used to host on any platform ASP.NET applications. It’s a command-line interface and listening server.  
+
+![image](https://github.com/user-attachments/assets/642dbf97-2d29-4b7e-9240-6eb9382692a2)
+
+The internal web server is called Kestrel and the external web server can be IIS, Apache or Nginx .Security purpose kestrel web server supports Secure Sockets Layer.  
+
 **Configure Kestrel in Program.cs**  
 Open the Program.cs file and configure Kestrel by calling the UseKestrel method on the WebHostBuilder.
 
@@ -1532,6 +1538,23 @@ public class ActionsController : ControllerBase
 
 
 ## 20). Controller Action Methods in MVC
+
+Different types of action results returned by action methods in the MVC controller. In the MVC Controller file you have many action methods. Each action method can return different return types of results lik e contentresult,javascript,json or view.  
+
+[Basic return types of ActionResults in ASP.NET MVC](http://www.usmtechworld.com/actionreturntypes)  
+
+Basic return types of action results in ASP.NET MVC are :-  
+- **ViewResult -** If you want to return a view in an action method , you should use View as the return type of that method.  
+- **PartialViewResult -** If you want to return partialview in action method,you should use partialviewresult as return type of that method.  
+- **Contentresult -** If you want to return your content to the view then you should use Content as the return type of the action method.  
+- **Emptyresult -** This emptyresult returns nothing in the view page.  
+- **Fileresult -** If you want to return a file to the view then you should use File as the return type of the action method.  
+- **Json result -** If you want to return JSON data to the view then you should use JSON as the return type of the action method.  
+- **Javascript result -** If you want to return javascript to the view then you should use JavaScript as the return type of the action method.  
+
+![image](https://github.com/user-attachments/assets/3f833388-c2b4-4882-a3ea-5b2407febd66)
+
+**Content negotiation** is the process of selecting the best resource for a response when multiple resource representations are available. Content negotiation is an HTTP feature. Examples are - IActionResult. [Content Negotiation in Web API](https://code-maze.com/content-negotiation-web-api/)
 
 [Controller Action Return Types in ASP.NET Core Web API](https://dotnettutorials.net/lesson/controller-action-return-types-core-web-api/)
 
