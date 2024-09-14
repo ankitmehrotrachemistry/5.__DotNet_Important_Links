@@ -1068,7 +1068,7 @@ public class Player
 
 ## 11.5). LINQ
 
-**- LINQ Query Syntax in C#**
+- **LINQ Query Syntax in C#**
 ```csharp
 int[] Num = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
 IEnumerable<int> result = from numbers in Num  
@@ -1076,7 +1076,7 @@ IEnumerable<int> result = from numbers in Num
                                 select numbers;  
 ```
 
-**- List to store the countries type of string**
+- **List to store the countries type of string**
 ```csharp
 List<string> countries = new List<string>();
 
@@ -1093,6 +1093,20 @@ foreach (var item in result)
 {
     Console.WriteLine(item);
 }
+```
+
+- **LINQ Min () Function Syntax in C#**
+
+```csharp
+int[] a = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
+int minimumNum = a.Min();  
+```
+
+- **LINQ Max () Function Syntax in C#**
+
+```csharp
+int[] a = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
+int MaximumNum = a.Max();  
 ```
 
 [Mastering C# LINQ Guide](https://www.bytehide.com/blog/linq-csharp)
