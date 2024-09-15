@@ -512,9 +512,20 @@ public class Startup
 
 ## 7). OWIN Middleware
 
-OWIN defines a standard interface between .NET web servers and web applications. The goal of the OWIN interface is to decouple server and application.
+- OWIN defines a standard interface between .NET web servers and web applications.
+- The goal of the OWIN interface is to decouple server and application.
+- Prior to this standard in .NET, there was a tight coupling between .NET applications and Internet Information Server (IIS), which led to great difficulties when trying to expand to different web application/server technologies.
+- The introduction of OWIN has created an abstraction between application and server that completely decouples one from the other.
+- OWIN extends its support as: 
+a). It supports Authentication functionality related with Cookies.  
+b). It also supports Expiry states.  
+c). It supports Expiry state of session etc.  
+d). It supports the security protections using such secure tokens.
 
-With .Net 4.7 I used to log my http request and response conditionally through the help of OWIN. 
+- The contract defined by OWIN for application/server communication can be found within the IAppBuilder interface and at its core is boiled down into two pieces: the environment dictionary and a function to register middleware.  
+The environment dictionary outlines the state of the request/response and simplifies it down to a mapping of string keys to objects within the Properties property. 
+
+- With .Net 4.7 I used to log my http request and response conditionally through the help of OWIN. 
 
 ```csharp
 public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
