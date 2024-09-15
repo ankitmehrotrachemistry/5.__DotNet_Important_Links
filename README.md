@@ -1587,6 +1587,21 @@ Prefer .NET Framework for Server Applications when:
 
 ![image](https://github.com/user-attachments/assets/adb92003-1d8b-4832-ac7c-d0ad4e8fb09d)
 
+- Sometimes we want to execute some logic either before the execution of the action method or after the execution. We can use Action Filter for such a scenario.
+- Filters define the logic which is executed before or after the execution of the action method.
+- Action Filters are attributes which we can apply to the action methods.
+
+  Following are the MVC action filter types:
+  **a). Authorization filter (implements IAuthorizationFilter) :** Authorization filters are used to implement authentication and authorization for controller actions. For example, the 
+Authorize filter is an example of an Authorization filter.
+  **b). Action filter  (implements IActionFilter) :** Action filters contain logic that is executed before and after a controller action executes. You can use an action filter, for instance, to modify the view data that a controller action returns.
+  **c). Result filter  (implements IResultFilter) :** Result filters contain logic that is executed before and after a view result is executed. For example, you might want to modify a view result right before the view is rendered to the browser.
+  **d). Exception filter  (implementsIExceptionFilter attribute) :** Exception filters are the last type of filter to run. You can use an exception filter to handle errors raised by either your controller actions or controller action results. You also can use exception filters to log errors.
+
+![image](https://github.com/user-attachments/assets/b3776787-ab79-4e20-bde5-b0a5f652f3c9)
+
+[Action Filters in MVC [Types of Filters with Examples]](https://www.upgrad.com/blog/action-filters-in-mvc/)
+
 - Action filters are a type of filter in ASP.NET Core that are used to inject custom logic before or after the execution of a controller action method.  
 [Understanding Action Filters in ASP.NET Core](https://medium.com/@kefasogabi/understanding-action-filters-in-asp-net-core-a-comprehensive-guide-with-code-samples-ec1f1f2af425)
 
