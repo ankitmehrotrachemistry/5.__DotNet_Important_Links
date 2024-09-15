@@ -1614,6 +1614,16 @@ The three parts of MVC are:
 
 [What Is ASP.NET MVC and What Are Its Main Features?](https://www.matridtech.net/what-is-asp-net-mvc-and-what-are-its-main-features/)
 
+**What is the role of the Controller in ASP.NET MVC?**
+
+- The controller is the interface between the model and view components. 
+- It manages and responds to the input and interaction from a user. 
+- Controller renders the suitable view to the client, executes the relevant action method, obtains data from the model and fills the view, gets data from the view and updates the model.
+
+As an example, the Customer controller manages all the interactions and inputs received from the Customer View and updates the database by using the Customer model. The Customer controller is also utilized for viewing the Customer-specific data.
+
+![image](https://github.com/user-attachments/assets/a7c9ee7a-f685-445f-a6c0-01b61fbbcf63)
+
 🎮 Create controllers to handle player interactions. For example, you might have a PlayersController and an ActionsController.
 
 **PlayersController.cs**
