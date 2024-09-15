@@ -1591,12 +1591,12 @@ Prefer .NET Framework for Server Applications when:
 - Filters define the logic which is executed before or after the execution of the action method.
 - Action Filters are attributes which we can apply to the action methods.
 
-  Following are the MVC action filter types:
+  Following are the MVC action filter types:  
   **a). Authorization filter (implements IAuthorizationFilter) :** Authorization filters are used to implement authentication and authorization for controller actions. For example, the 
-Authorize filter is an example of an Authorization filter.
-  **b). Action filter  (implements IActionFilter) :** Action filters contain logic that is executed before and after a controller action executes. You can use an action filter, for instance, to modify the view data that a controller action returns.
-  **c). Result filter  (implements IResultFilter) :** Result filters contain logic that is executed before and after a view result is executed. For example, you might want to modify a view result right before the view is rendered to the browser.
-  **d). Exception filter  (implementsIExceptionFilter attribute) :** Exception filters are the last type of filter to run. You can use an exception filter to handle errors raised by either your controller actions or controller action results. You also can use exception filters to log errors.
+Authorize filter is an example of an Authorization filter.  
+  **b). Action filter  (implements IActionFilter) :** Action filters contain logic that is executed before and after a controller action executes. You can use an action filter, for instance, to modify the view data that a controller action returns.  
+  **c). Result filter  (implements IResultFilter) :** Result filters contain logic that is executed before and after a view result is executed. For example, you might want to modify a view result right before the view is rendered to the browser.  
+  **d). Exception filter  (implementsIExceptionFilter attribute) :** Exception filters are the last type of filter to run. You can use an exception filter to handle errors raised by either your controller actions or controller action results. You also can use exception filters to log errors.  
 
 ![image](https://github.com/user-attachments/assets/b3776787-ab79-4e20-bde5-b0a5f652f3c9)
 
@@ -1922,18 +1922,22 @@ This means your business logic doesn’t care whether it’s talking to SQL Serv
 
 - [A Comprehensive Guide to Repository Pattern in .NET: Implementation and Best Practices](https://medium.com/@dhananjay_1891/a-comprehensive-guide-to-repository-pattern-in-net-implementation-and-best-practices-d67c3a92e618)
 
-## 23). Singleton Design Pattern  
-- The Singleton pattern is used to ensure that a class has only one instance, and it provides a global point of access to that instance.
-- In .NET, the Singleton pattern is implemented using a private constructor and a static field that holds the single instance of the class.
-- The Singleton Design Pattern ensures that a class has only one instance and provides a global point of access to that instance.  
-- In software engineering, the singleton pattern is a software design pattern that restricts the instantiation of a class to a singular instance.  
-- One of the well-known "Gang of Four" design patterns, which describe how to solve recurring problems in object-oriented software, the pattern is useful when exactly one object is needed to coordinate actions across a system.
-- More specifically, the singleton pattern allows objects to:
+## 23). Singleton Design Pattern. Singleton VS Static Class.  
+
+**Definition :**  
+- In software engineering, the singleton pattern is a software design pattern that restricts the instantiation of a class to a single instance(object). The Singleton pattern is used to ensure that a class has only one instance.
+- Throughout the lifetime of the application the instance will remain same.  
+- One of the well-known "Gang of Four" design patterns, which describe how to solve recurring problems in object-oriented software, the pattern is useful when exactly one object is needed to coordinate actions across a system.  
+- More specifically, the singleton pattern allows objects to:  
 1). Ensure they only have one instance  
 2). Provide easy access to that instance  
 3). Control their instantiation (for example, hiding the constructors of a class)  
 
-**Implementation in C#:**  
+**Implementation :**  
+- In .NET, the Singleton pattern is implemented using a private constructor and a static field that holds the single instance of the class.  
+- Class should be sealed and its constructor should be private.  
+
+**C# Code:**  
 ```csharp
 public sealed class Singleton
 {
@@ -1949,6 +1953,8 @@ Console.WriteLine( Singleton method called.”);
 }
 }
 ```
+
+[Singleton Design Pattern | Singleton Class | Hindi](https://www.youtube.com/watch?v=UjP8YPTVONU)
 
 ## 24). REST Api. How to create REST API?
 
