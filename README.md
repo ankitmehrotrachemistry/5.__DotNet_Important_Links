@@ -154,6 +154,29 @@ Routing in ASP.NET Core Web API is a powerful feature that allows you to define 
   <img src="https://github.com/user-attachments/assets/a715b526-925d-42c9-a437-b069abab9763" width="300" height="250" />
 </p>
 
+**What is Routing?**  
+- Routing is a pattern matching system.  
+- Routing maps incoming request (from browser) to a particular resource (controller & action method).
+                 domain.com/Home/About
+                 domain.com/about-us
+- MVC routing can be defined as a pattern-matching scheme that is used for mapping incoming requests of browsers to a definite MVC controller action.
+
+**The MVC routing has 3 parameters :**
+   - The first parameter determines the name of the route (ControllerName). 
+   - The second parameter determines a specific pattern with which the URL matches 
+     (ActionMethodName). 
+   - The third parameter is responsible for providing default values for its placeholders 
+     (Parameter).
+
+**How Routing works?**
+- We define a route for each action method. 
+- All the routes are stored in route table
+- Each incoming request is mapped to this route table.
+- If a URL match is found then the request goes to the related controller action method.
+- If the URL is not found then the application returns 404 pages.
+
+![image](https://github.com/user-attachments/assets/917c400e-940c-4782-8f81-fb47f6a7b6f9)
+
 In ASP.NET Core, routing is handled by the routing middleware, which is configured in the Startup.cs file. There are two primary types of routing:   
 A). Convention-based Routing   
 B). Attribute Routing  
@@ -1569,18 +1592,27 @@ Prefer .NET Framework for Server Applications when:
 
 ## 19). What is MVC Architecture? How to create Controllers?
 
-MVC (Model-View-Controller) separates the logic of the application from the display. MVC, with its ‘separation of concerns principle, not only creates a solid framework for web applications but also ensures that different aspects of the application are neatly organized, simplifying future scalability.  
+**MVC (Model-View-Controller)** separates the logic of the application from the display. MVC, with its ‘separation of concerns principle, not only creates a solid framework for web applications but also ensures that different aspects of the application are neatly organized, simplifying future scalability.  
 
 The three parts of MVC are:   
-**a). Model:** Defines the structure of the data    
-**b). View:** Handles the user interface and data presentation    
-**c). Controller:** Updates the model and view based on user input    
+**a). Model:** Defines the structure of the data. The Model is the business layer. Model provides the data.      
+**b). View:** Handles the user interface and data presentation. The View is the display layer. View presents something to the user i.e User Interface.    
+**c). Controller:** Updates the model and view based on user input. The Controller is input control. Controller coordinates between Model and the View. 
+      Whatever data the Model has, the Controller passes that data to the View.  
+
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/91fdf570-51ef-497f-9a11-8e7fd13f4af5" width="500" height="350" />
 </p>
 
 [The MVC Architecture](https://medium.com/@sadikarahmantanisha/the-mvc-architecture-97d47e071eb2)
+
+- MVC Architecture is used to manage Code.
+- The ASP.NET MVC framework is suitable for building complex but lightweight web applications.
+- It facilitates rapid and efficient application development.
+- The framework has a loosely coupled architecture that allows bigger teams of web designers and developers to work parallely in the development projects.
+
+[What Is ASP.NET MVC and What Are Its Main Features?](https://www.matridtech.net/what-is-asp-net-mvc-and-what-are-its-main-features/)
 
 🎮 Create controllers to handle player interactions. For example, you might have a PlayersController and an ActionsController.
 
