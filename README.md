@@ -1923,7 +1923,32 @@ This means your business logic doesn’t care whether it’s talking to SQL Serv
 - [A Comprehensive Guide to Repository Pattern in .NET: Implementation and Best Practices](https://medium.com/@dhananjay_1891/a-comprehensive-guide-to-repository-pattern-in-net-implementation-and-best-practices-d67c3a92e618)
 
 ## 23). Singleton Design Pattern  
-The Singleton pattern is used to ensure that a class has only one instance, and it provides a global point of access to that instance. In .NET, the Singleton pattern is implemented using a private constructor and a static field that holds the single instance of the class.  
+- The Singleton pattern is used to ensure that a class has only one instance, and it provides a global point of access to that instance.
+- In .NET, the Singleton pattern is implemented using a private constructor and a static field that holds the single instance of the class.
+- The Singleton Design Pattern ensures that a class has only one instance and provides a global point of access to that instance.  
+- In software engineering, the singleton pattern is a software design pattern that restricts the instantiation of a class to a singular instance.  
+- One of the well-known "Gang of Four" design patterns, which describe how to solve recurring problems in object-oriented software, the pattern is useful when exactly one object is needed to coordinate actions across a system.
+- More specifically, the singleton pattern allows objects to:
+1). Ensure they only have one instance  
+2). Provide easy access to that instance  
+3). Control their instantiation (for example, hiding the constructors of a class)  
+
+**Implementation in C#:**  
+```csharp
+public sealed class Singleton
+{
+private static readonly Singleton instance = new Singleton();
+private Singleton() { }
+public static Singleton Instance
+{
+get { return instance; }
+}
+public void SomeMethod()
+{
+Console.WriteLine( Singleton method called.”);
+}
+}
+```
 
 ## 24). REST Api. How to create REST API?
 
