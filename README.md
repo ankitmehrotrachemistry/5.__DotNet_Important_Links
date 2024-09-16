@@ -1944,7 +1944,9 @@ TempData.Peek("Name");
 
 ## 23). Singleton Design Pattern. Singleton VS Static Class.  
 
-**Definition :**  [Singleton Pattern in C#](https://dev.to/kalkwst/singleton-pattern-in-c-1dh0)
+[Singleton Pattern in C#](https://dev.to/kalkwst/singleton-pattern-in-c-1dh0)
+
+**Definition :**  
 - In software engineering, the singleton pattern is a Creational software design pattern that restricts the instantiation of a class to a single instance(object). The Singleton pattern is used to ensure that a class has only one instance.
 - Throughout the lifetime of the application the instance will remain same.  
 - One of the well-known "Gang of Four" design patterns, which describe how to solve recurring problems in object-oriented software, the pattern is useful when exactly one object is needed to coordinate actions across a system.  
@@ -1954,6 +1956,11 @@ TempData.Peek("Name");
 3). Control their instantiation (for example, hiding the constructors of a class)  
 
 [Singleton Design Pattern | Singleton Class | Hindi](https://www.youtube.com/watch?v=UjP8YPTVONU)
+
+**Why we need Singleton design Pattern?**
+- When there is single resource throughout the application, for example database, log file etc.
+- When there is a single resource and there is very high chance for deadlock.
+- When we want to pass instance from one class to another class.
 
 **Implementation :**  
 - In .NET, the Singleton pattern is implemented using a private constructor and a static field that holds the single instance of the class.  
@@ -1967,7 +1974,7 @@ We want only one Instance of Singleton class , when a class inherits a call to p
 ♉ 𝐖𝐡𝐲 𝐂𝐨𝐧𝐬𝐭𝐫𝐮𝐜𝐭𝐨𝐫 𝐢𝐬 𝐏𝐫𝐢𝐯𝐚𝐭𝐞 ?
 To avoid multiple instance creation of Singleton class we have made constructor private. When constructor is private no one can create object of that class using new Singleton() out of that class.
 
-♉ 𝐇𝐨𝐰 𝐚𝐫𝐞 𝐰𝐞 𝐬𝐮𝐫𝐞 𝐭𝐡𝐚𝐭 𝐨𝐧𝐥𝐲 𝐨𝐧𝐞 𝐈𝐧𝐬𝐭𝐚𝐧𝐜𝐞 𝐰𝐨𝐮𝐥𝐝 𝐛𝐞 𝐜𝐫𝐞𝐚𝐭𝐞𝐝
+♉ 𝐇𝐨𝐰 𝐚𝐫𝐞 𝐰𝐞 𝐬𝐮𝐫𝐞 𝐭𝐡𝐚𝐭 𝐨𝐧𝐥𝐲 𝐨𝐧𝐞 𝐈𝐧𝐬𝐭𝐚𝐧𝐜𝐞 𝐰𝐨𝐮𝐥𝐝 𝐛𝐞 𝐜𝐫𝐞𝐚𝐭𝐞𝐝  
 ▶ Sealed class make sure that no class can inherit it
 
 ▶ Constructor is private so no way for direct instantiation.
@@ -1997,9 +2004,44 @@ Console.WriteLine( Singleton method called.”);
 }
 ```
 
+Let's see another piece of Code :
+
+```csharp
+using System;
+namespace SingleTonExample
+{
+public sealed class SingleTonClass
+{
+private static SingleTonClass instance;
+private static object obj;
+
+private singleTonclass() { }
+
+public static singleTonclass GetInstance()
+{
+lock (obj)
+{
+if (instance == null)
+{
+instance = new Singletonclass()il |
+}
+}
+return instance;
+}
+}
+class Program
+{
+static void Main(string[] args)
+{
+singleTonClass s = SingleTonClass.GetInstance();
+}
+}
+}
+```
+
 **Singleton Vs Static Class**
 
-- The big difference between a singleton and a bunch of static methods is that singletons can implement interfaces.
+The big difference between a singleton and a bunch of static methods is that singletons can implement interfaces.
 
 [C# : Singleton Vs Static Class](https://rajeevdotnet.blogspot.com/2015/12/c-singleton-vs-static-class.html)
 
