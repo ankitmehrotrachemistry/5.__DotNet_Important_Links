@@ -68,7 +68,8 @@ To enable CORS there are  three ways to do so:
 - **Middleware using a named policy or default policy.**
   This following code enables the default CORS policy :
   ```csharp
-  public class Startup {  
+  public class Startup
+  {  
     public void ConfigureServices(IServiceCollection services) {  
         services.AddCors(options => {  
             options.AddDefaultPolicy(builder => {  
@@ -86,8 +87,7 @@ To enable CORS there are  three ways to do so:
         app.UseEndpoints(endpoints => {  
             endpoints.MapControllers();  
         });  
-    }  
-}
+    } }```
 
 - **Using Endpoint Routing**
 
