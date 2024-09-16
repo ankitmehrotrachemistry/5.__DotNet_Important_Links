@@ -1439,16 +1439,336 @@ namespace ConsoleApp1
         public string Name { get; set; }
         public string Gender { get; set; }
         public List<string> Subjects { get; set; }
-    } 
+    }
 }
 ```
 
+### D). Partition Operator
 
-[Mastering C# LINQ Guide](https://www.bytehide.com/blog/linq-csharp)
+- **Take Operator**
 
-[LINQ Interview Questions and Answers](https://vasistadotnet.wordpress.com/wp-content/uploads/2015/02/linq-interview-questions-answers-by-shailendra-chauhan.pdf)
+```csharp
+int[] a = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
+int minimumNum = a.Min();  
+```
 
-[Top 100 LINQ Interview Questions](https://github.com/Devinterview-io/linq-interview-questions) 
+- **TakeWhile Operator**
+
+```csharp
+int[] a = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
+int MaximumNum = a.Max();  
+```
+
+- **Skip Operator**
+
+```csharp
+int[] Num = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
+int Sum = Num.Sum();  
+```
+
+
+### E). Conversion Operator
+
+- **ToList() Method**
+
+```csharp
+int[] a = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
+int minimumNum = a.Min();  
+```
+
+- **ToArray() Method**
+
+```csharp
+int[] a = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
+int MaximumNum = a.Max();  
+```
+
+- **ToLookup() Method**
+
+```csharp
+int[] Num = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
+int Sum = Num.Sum();  
+```
+
+- **Cast() Method**
+
+```csharp
+int[] a = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
+int minimumNum = a.Min();  
+```
+
+- **OfType() Method**
+
+```csharp
+int[] a = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
+int MaximumNum = a.Max();  
+```
+
+- **AsEnumerable() Method**
+
+```csharp
+int[] Num = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
+int Sum = Num.Sum();  
+```
+
+- **ToDictionary() Method**
+
+```csharp
+int[] Num = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
+int Sum = Num.Sum();  
+```
+
+### F). Element Operators
+
+- **First() Element**
+
+```csharp
+int[] a = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
+int minimumNum = a.Min();  
+```
+
+- **FirstOrDefault() Method**
+
+```csharp
+int[] a = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
+int MaximumNum = a.Max();  
+```
+
+- **Last() Method**
+
+```csharp
+int[] Num = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
+int Sum = Num.Sum();  
+```
+
+- **LastOrDefault() Method**
+
+```csharp
+int[] a = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
+int minimumNum = a.Min();  
+```
+
+- **ElementAt() Method**
+
+```csharp
+int[] a = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
+int MaximumNum = a.Max();  
+```
+
+- **ElementAtOrDefault() Method**
+
+```csharp
+int[] Num = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
+int Sum = Num.Sum();  
+```
+
+- **Single() Method**
+
+```csharp
+int[] a = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
+int minimumNum = a.Min();  
+```
+
+- **SingleOrDefault Method**
+
+```csharp
+int[] a = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
+int MaximumNum = a.Max();  
+```
+
+- **DefaultfEmpty() Method**
+
+```csharp
+int[] Num = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
+int Sum = Num.Sum();  
+```
+
+### G). Grouping Operators
+
+- **GroupBy() Method**
+
+```csharp
+int[] a = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
+int minimumNum = a.Min();  
+```
+
+### H). Join Operators
+
+- **Inner Join**
+
+```csharp
+int[] a = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
+int minimumNum = a.Min();  
+```
+
+- **Left Join**
+
+```csharp
+int[] a = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
+int MaximumNum = a.Max();  
+```
+
+- **Cross Join**
+
+```csharp
+int[] Num = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
+int Sum = Num.Sum();  
+```
+
+- **Group Join**
+
+```csharp
+int[] Num = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
+int Sum = Num.Sum();  
+```
+
+### I). Set Operations
+
+- **Union Method**
+
+```csharp
+int[] a = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
+int minimumNum = a.Min();  
+```
+
+- **Intersect Method**
+
+```csharp
+int[] a = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
+int MaximumNum = a.Max();  
+```
+
+- **Distinct Method**
+
+```csharp
+int[] Num = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
+int Sum = Num.Sum();  
+```
+
+- **Except Method**
+
+```csharp
+int[] Num = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
+int Sum = Num.Sum();  
+```
+
+
+### J). Equality Operations
+
+- **SequenceEqual Method**
+
+```csharp
+int[] a = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
+int minimumNum = a.Min();  
+```
+
+### K). Concat Operations
+
+- **Concat Method**
+
+```csharp
+int[] a = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
+int minimumNum = a.Min();  
+```
+
+### L). Generations Operations
+
+- **Range Method**
+
+```csharp
+int[] a = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
+int minimumNum = a.Min();  
+```
+
+- **Repeat Method**
+
+```csharp
+int[] a = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
+int MaximumNum = a.Max();  
+```
+
+- **Empty Method**
+
+```csharp
+int[] Num = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
+int Sum = Num.Sum();  
+```
+
+
+### M). LINQ with Objects
+
+- **LINQ to Objects**
+
+```csharp
+int[] a = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
+int minimumNum = a.Min();  
+```
+
+- **LINQ to Strings**
+
+```csharp
+int[] a = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
+int MaximumNum = a.Max();  
+```
+
+- **LINQ to String Array**
+
+```csharp
+int[] Num = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
+int Sum = Num.Sum();  
+```
+
+- **LINQ to Int Array**
+
+```csharp
+int[] a = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
+int MaximumNum = a.Max();  
+```
+
+- **LINQ to Lists/Collection**
+
+```csharp
+int[] Num = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
+int Sum = Num.Sum();  
+```
+
+
+### N). LINQ with SQL
+
+- **LINQ to SQL**
+
+```csharp
+int[] a = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
+int minimumNum = a.Min();  
+```
+
+- **LINQ to SQL Select Query**
+
+```csharp
+int[] a = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
+int MaximumNum = a.Max();  
+```
+
+- **LINQ to SQL Inner Join**
+
+```csharp
+int[] Num = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
+int Sum = Num.Sum();  
+```
+
+- **LINQ to SQL Group Join**
+
+```csharp
+int[] a = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
+int MaximumNum = a.Max();  
+```
+
+- **LINQ to SQL CRUD Operations**
+
+```csharp
+int[] Num = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
+int Sum = Num.Sum();  
+```
  
 ## 11.6). Migrations, Seeding Data , Nullable and Entity States
 
