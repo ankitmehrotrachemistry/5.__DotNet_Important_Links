@@ -1334,6 +1334,20 @@ int[] Num = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 int Sum = Num.Sum();  
 ```
 
+- **LINQ Count () Function Syntax in C#**
+
+```csharp
+int[] Num = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
+int Sum = Num.Sum();  
+```
+
+- **LINQ Aggregate () Function Syntax in C#**  
+Aggregate() function is used to perform the operation on each item of the list. The Aggregate() function performs the action on the first and second elements and then carry forward the result. 
+```csharp
+int[] Num = { 1, 2, 3, 4 };  
+double Average = Num.Aggregate((a, b) => a + b);  
+Console.WriteLine("{0}", Average); //Output 10 ((1+2)+3)+4  
+```
 
 ### C). LINQ Sorting Operators
 
