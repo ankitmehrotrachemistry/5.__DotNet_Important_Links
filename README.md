@@ -1969,6 +1969,27 @@ Console.WriteLine( Singleton method called.”);
 
 ## 24). REST Api. How to create REST API?
 
+REST, or REpresentational State Transfer, is an architectural style for providing standards between computer systems on the web, making it easier for systems to communicate with each other. [How To Build a RESTful API with ASP.NET Core](https://medium.com/net-core/how-to-build-a-restful-api-with-asp-net-core-fb7dd8d3e5e3)
+
+REST relies on client-server relationship. This essentially means that client application and server application must be able to evolve separately without any dependency on each other.
+
+REST is stateless. That means the communication between the client and the server always contains all the information needed to perform the request. There is no session state in the server, it is kept entirely on the client’s side.
+
+REST provides a uniform interface between components. Resources expose directory structure-like URIs.
+
+REST is not strictly related to HTTP, but it is most commonly associated with it. There are four basic HTTP verbs we use in requests to interact with resources in a REST system:
+
+GET — retrieve a specific resource (by id) or a collection of resources
+POST — create a new resource
+PUT — update a specific resource (by id)
+DELETE — remove a specific resource by id
+
+Our API will manage movie records stored in a relational database as described in the table below:
+
+![image](https://github.com/user-attachments/assets/8cc8745a-1b8f-4ac8-bae7-3657454f1ac4)
+
+In a REST system, representations transfer JSON or XML to represent data objects and attributes.
+
 🎮 You can implement a matchmaking service using REST APIs or SignalR to find and assign players to games based on their skills, region, or preferences.
 
 [How To Build a RESTful API with ASP.NET Core](https://medium.com/net-core/how-to-build-a-restful-api-with-asp-net-core-fb7dd8d3e5e3)
