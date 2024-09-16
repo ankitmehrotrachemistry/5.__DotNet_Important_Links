@@ -1977,12 +1977,12 @@ REST is stateless. That means the communication between the client and the serve
 
 REST provides a uniform interface between components. Resources expose directory structure-like URIs.
 
-REST is not strictly related to HTTP, but it is most commonly associated with it. There are four basic HTTP verbs we use in requests to interact with resources in a REST system:
+REST is not strictly related to HTTP, but it is most commonly associated with it. There are four basic HTTP verbs we use in requests to interact with resources in a REST system:  
 
-GET — retrieve a specific resource (by id) or a collection of resources
-POST — create a new resource
-PUT — update a specific resource (by id)
-DELETE — remove a specific resource by id
+- GET — retrieve a specific resource (by id) or a collection of resources  
+- POST — create a new resource  
+- PUT — update a specific resource (by id)  
+- DELETE — remove a specific resource by id  
 
 Our API will manage movie records stored in a relational database as described in the table below:
 
