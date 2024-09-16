@@ -87,7 +87,7 @@ To enable CORS there are  three ways to do so:
         app.UseEndpoints(endpoints => {  
             endpoints.MapControllers();  
         });  
-    } }```
+    } }
 
 - **Using Endpoint Routing**
 
