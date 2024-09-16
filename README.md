@@ -1459,25 +1459,22 @@ namespace ConsoleApp1
 
 ### D). Partition Operator
 
-- **Take Operator**
-
+- **Take Operator**  
+In LINQ, Take Operator is used to get the specified number of elements in sequence from the list/collection.  
 ```csharp
-int[] a = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
-int minimumNum = a.Min();  
+IEnumerable<string> result = countries.Take(3);  
 ```
 
 - **TakeWhile Operator**
 
 ```csharp
-int[] a = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
-int MaximumNum = a.Max();  
+IEnumerable<string> result = countries.TakeWhile(x => x.StartsWith("U"));   
 ```
 
 - **Skip Operator**
 
 ```csharp
-int[] Num = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
-int Sum = Num.Sum();  
+IEnumerable<string> result = countries.Skip(3);  
 ```
 
 
@@ -1486,50 +1483,201 @@ int Sum = Num.Sum();
 - **ToList() Method**
 
 ```csharp
-int[] a = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
-int minimumNum = a.Min();  
+List<string> result = countries.ToList();  
+```
+The demonstration by Code :  
+```csharp
+static void Main(string[] args)  
+        {  
+            string[] countries = { "US", "UK", "India", "Russia", "China", "Australia", "Argentina" };  
+//used query syntax to convert the collection of the data into the list  
+            List<string> result = (from x in countries select x).ToList();  
+            foreach (string s in result)  
+            {  
+                Console.WriteLine(s);  
+            }  
+                Console.ReadLine();  
+        }
 ```
 
 - **ToArray() Method**
 
 ```csharp
-int[] a = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
-int MaximumNum = a.Max();  
+string[] countryarray = countries.ToArray();   
 ```
 
-- **ToLookup() Method**
+The demonstration by Code :  
+```csharp
+static void Main(string[] args)  
+        {  
+            string[] countries = { "India", "China", "US", "Russia", "Argentina", "Australia", "UK" };  
+//query syntax is used to convert the collection of data into the form of array  
+            string[] countrArray = (from x in countries select x).ToArray();  
+            foreach (string s in countrArray)  
+            {  
+                Console.WriteLine(s);  
+            }  
+                Console.ReadLine();  
+        }  
+```
+
+
+- **ToLookup() Method**  
+ToLookup operator in LINQ is an extension method, and it is used to extract a set of key/value pairs from the source. Lookup object holds the Key and subsequence items that matched with the Key.
 
 ```csharp
-int[] Num = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
-int Sum = Num.Sum();  
+var Emp = objEmployee.ToLookup(x => x.Department);  
+```
+
+```csharp
+using System;  
+using System.Collections;  
+using System.Collections.Generic;  
+using System.Linq;  
+using System.Text;  
+using System.Threading.Tasks;  
+  
+namespace ConsoleApp1  
+{  
+    class Program  
+    {  
+        static void Main(string[] args)  
+        {  
+//create an objEmployee of the class Employee and create a list of Employee  
+            List<Employee> objEmployee = new List<Employee>()  
+            {  
+                new Employee(){ Name="Akshay Tyagi", Department="IT", Country="India"},  
+                new Employee(){ Name="Vaishali Tyagi", Department="Marketing", Country="Australia"},  
+                new Employee(){ Name="Arpita Rai", Department="HR", Country="China"},  
+                new Employee(){ Name="Shubham Ratogi", Department="Sales", Country="USA"},  
+                new Employee(){ Name="Himanshu Tyagi", Department="Operations", Country="Canada"}  
+            };  
+    //objEmployee.ToLookup() method is used to print the value of the data in the pair/collection of items.  
+                var Emp = objEmployee.ToLookup(x => x.Department);  
+                Console.WriteLine("Grouping Employees by Department");  
+                Console.WriteLine("---------------------------------");  
+                foreach (var KeyValurPair in Emp)  
+                {  
+                    Console.WriteLine(KeyValurPair.Key);  
+                // Lookup employees by Department  
+                foreach (var item in Emp[KeyValurPair.Key])  
+                {  
+                    Console.WriteLine("\t" + item.Name + "\t" + item.Department + "\t" + item.Country);  
+                }  
+          }  
+                Console.ReadLine();  
+    }  
+}  
+    class Employee  
+    {  
+        public string Name { get; set; }  
+        public string Department { get; set; }  
+        public string Country { get; set; }  
+    }  
+}
 ```
 
 - **Cast() Method**
+Cast operator is used to cast/convert all the elements present in a collection into a specified data type of new collection.
 
 ```csharp
-int[] a = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
-int minimumNum = a.Min();  
+IEnumerable<string> result = obj.Cast<string>();
 ```
 
 - **OfType() Method**
 
 ```csharp
-int[] a = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
-int MaximumNum = a.Max();  
+IEnumerable<string> result = obj.OfType<string>();  
+```
+
+```csharp
+using System;  
+using System. Collections;  
+using System.Collections.Generic;  
+using System.Linq;  
+using System. Text;  
+using System.Threading.Tasks;  
+  
+namespace ConsoleApp1  
+{  
+    class Program  
+    {  
+        static void Main(string[] args)  
+        {  
+//Create an object of ArrayList and add the values  
+            ArrayList obj = new ArrayList();  
+            obj.Add("Australia");  
+            obj.Add("India");  
+            obj.Add("UK");  
+            obj.Add("USA");  
+            obj.Add(1);  
+//ofType() method will return the value only the specific type  
+            IEnumerable<string> result = obj.OfType<string>();  
+    //foreach loop is applied to print the value of the item  
+            foreach (var item in result)  
+            {  
+                Console.WriteLine(item);  
+            }  
+                Console.ReadLine();  
+        }  
+    }  
+}  
 ```
 
 - **AsEnumerable() Method**
 
 ```csharp
-int[] Num = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
-int Sum = Num.Sum();  
+var result = numarray.AsEnumerable();  
 ```
 
 - **ToDictionary() Method**
 
 ```csharp
-int[] Num = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
-int Sum = Num.Sum();  
+var student = objStudent.ToDictionary(x => x.Id, x => x.Name);   
+```
+
+```csharp
+using System;  
+using System. Collections;  
+using System.Collections.Generic;  
+using System. Linq;  
+using System. Text;  
+using System.Threading.Tasks;  
+  
+namespace ConsoleApp1  
+{  
+    class Program  
+    {  
+        static void Main(string[] args)  
+        {  
+//Create a object objStudent of Student class and add the information of student in the List  
+            List<Student> objStudent = new List<Student>()  
+            {  
+                new Student() { Id=1,Name = "Vinay Tyagi", Gender = "Male",Location="Chennai" },  
+                new Student() { Id=2,Name = "Vaishali Tyagi", Gender = "Female", Location="Chennai" },  
+                new Student() { Id=3,Name = "Montu Tyagi", Gender = "Male",Location="Bangalore" },  
+                new Student() { Id=4,Name = "Akshay Tyagi", Gender = "Male", Location ="Vizag"},  
+                new Student() { Id=5,Name = "Arpita Rai", Gender = "Male", Location="Nagpur"}  
+             };  
+    /*here with the help of ToDictionary() method we are converting the colection  
+    of information in the form of dictionary and will fetch only the required information*/  
+                var student = objStudent.ToDictionary(x => x.Id, x => x.Name);  
+    //foreach loop is used to print the information of the student  
+                foreach (var stud in student)  
+                {  
+                    Console.WriteLine(stud.Key + "\t" + stud.Value);  
+                }  
+                Console.ReadLine();  
+    }  
+}  
+        class Student  
+        {  
+            public int Id { get; set; }  
+            public string Name { get; set; }  
+            public string Gender { get; set; }  
+            public string Location { get; set; }  
+         }  
+} 
 ```
 
 ### F). Element Operators
