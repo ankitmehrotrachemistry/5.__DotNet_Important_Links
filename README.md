@@ -1285,7 +1285,7 @@ namespace ConsoleApp1
         public string Name { get; set; }
         public string Gender { get; set; }
         public List<string> Subjects { get; set; }
-    }
+    } 
 }
 ```
 
