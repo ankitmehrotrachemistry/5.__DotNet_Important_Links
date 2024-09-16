@@ -1944,8 +1944,8 @@ TempData.Peek("Name");
 
 ## 23). Singleton Design Pattern. Singleton VS Static Class.  
 
-**Definition :**  
-- In software engineering, the singleton pattern is a software design pattern that restricts the instantiation of a class to a single instance(object). The Singleton pattern is used to ensure that a class has only one instance.
+**Definition :**  [Singleton Pattern in C#](https://dev.to/kalkwst/singleton-pattern-in-c-1dh0)
+- In software engineering, the singleton pattern is a Creational software design pattern that restricts the instantiation of a class to a single instance(object). The Singleton pattern is used to ensure that a class has only one instance.
 - Throughout the lifetime of the application the instance will remain same.  
 - One of the well-known "Gang of Four" design patterns, which describe how to solve recurring problems in object-oriented software, the pattern is useful when exactly one object is needed to coordinate actions across a system.  
 - More specifically, the singleton pattern allows objects to:  
@@ -1953,9 +1953,32 @@ TempData.Peek("Name");
 2). Provide easy access to that instance  
 3). Control their instantiation (for example, hiding the constructors of a class)  
 
+[Singleton Design Pattern | Singleton Class | Hindi](https://www.youtube.com/watch?v=UjP8YPTVONU)
+
 **Implementation :**  
 - In .NET, the Singleton pattern is implemented using a private constructor and a static field that holds the single instance of the class.  
 - Class should be sealed and its constructor should be private.  
+
+![image](https://github.com/user-attachments/assets/4c4e67a9-2d3f-46cd-a884-b101035ad3fa)
+
+♉ 𝐖𝐡𝐲 𝐒𝐞𝐚𝐥𝐞𝐝 ?
+We want only one Instance of Singleton class , when a class inherits a call to parent constructor comes which is eventually causing a object creation (Kind of objection creation not exactly). So to avoid it we have made Singleton class sealed. Now no other class can inherit from it.
+
+♉ 𝐖𝐡𝐲 𝐂𝐨𝐧𝐬𝐭𝐫𝐮𝐜𝐭𝐨𝐫 𝐢𝐬 𝐏𝐫𝐢𝐯𝐚𝐭𝐞 ?
+To avoid multiple instance creation of Singleton class we have made constructor private. When constructor is private no one can create object of that class using new Singleton() out of that class.
+
+♉ 𝐇𝐨𝐰 𝐚𝐫𝐞 𝐰𝐞 𝐬𝐮𝐫𝐞 𝐭𝐡𝐚𝐭 𝐨𝐧𝐥𝐲 𝐨𝐧𝐞 𝐈𝐧𝐬𝐭𝐚𝐧𝐜𝐞 𝐰𝐨𝐮𝐥𝐝 𝐛𝐞 𝐜𝐫𝐞𝐚𝐭𝐞𝐝
+▶ Sealed class make sure that no class can inherit it
+
+▶ Constructor is private so no way for direct instantiation.
+
+▶ The read only keyword ensures that the lazy property is initialized only once, either during the static constructor or before the class is first accessed, and is never modified again. But only read only keyword does not guarantee it right ! That’s why we have made property of only getter type you would note it does not have setter in it.
+
+[Singleton Design Pattern Implementation in C# (Thread Safe)](https://medium.com/@mwaseemzakir/singleton-design-pattern-implementation-in-c-thread-safe-4b0fd536d821)
+
+**Pros and Cons of Singleton Pattern :**
+
+![image](https://github.com/user-attachments/assets/a0f7e3f9-d299-477c-a3fa-3f8fe434db91)
 
 **C# Code:**  
 ```csharp
@@ -1974,7 +1997,23 @@ Console.WriteLine( Singleton method called.”);
 }
 ```
 
-[Singleton Design Pattern | Singleton Class | Hindi](https://www.youtube.com/watch?v=UjP8YPTVONU)
+**Singleton Vs Static Class**
+
+- The big difference between a singleton and a bunch of static methods is that singletons can implement interfaces.
+
+[C# : Singleton Vs Static Class](https://rajeevdotnet.blogspot.com/2015/12/c-singleton-vs-static-class.html)
+
+Other differences as below:
+- Singleton object stores in Heap but, static object stores in stack
+- We can clone the object of Singleton but, we cannot clone the static class object
+- Singleton class follow the OOP(object oriented principles) but not static class
+- We can implement interface with Singleton class but not with Static class.
+
+The Singleton pattern has several advantages over static classes. 
+- A singleton can extend classes and implement interfaces, while a static class cannot (it can extend classes, but it does not inherit their instance members). 
+- A singleton can be initialized lazily or asynchronously while a static class is generally initialized when it is first loaded, leading to potential class loader issues. 
+
+However the most important advantage, though, is that singletons can be handled polymorphic ally without forcing their users to assume that there is only one instance.
 
 ## 24). REST Api. How to create REST API?
 
