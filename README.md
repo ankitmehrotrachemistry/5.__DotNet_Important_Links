@@ -1918,20 +1918,29 @@ TempData.Peek("Name");
 
 ## 22). Repository Pattern
 
-The repository pattern is a software design pattern that acts as an abstraction layer between your data access layer and the business logic layer in an ASP.NET Core Web API .  
-It hides the details of how exactly the data is saved or retrieved from the underlying data source.   
-The details of how the data is stored and retrieved is in the respective repository.   
-This means your business logic doesn’t care whether it’s talking to SQL Server, Oracle, or even a mock object for testing purposes.  
+[Repository Pattern Implementation in ASP.NET Core](https://medium.com/net-core/repository-pattern-implementation-in-asp-net-core-21e01c6664d7) 
+- The repository pattern is a software design pattern that acts as an abstraction layer between your data access layer and the business logic layer in an ASP.NET Core Web API .  
+- It hides the details of how exactly the data is saved or retrieved from the underlying data source.   
+- The details of how the data is stored and retrieved is in the respective repository.   
+- This means your business logic doesn’t care whether it’s talking to SQL Server, Oracle, or even a mock object for testing purposes.  
 
-- [Repository Pattern Implementation in ASP.NET Core](https://medium.com/net-core/repository-pattern-implementation-in-asp-net-core-21e01c6664d7)
+[How to perform Repository pattern in ASP.NET MVC?](https://www.ifourtechnolab.com/blog/how-to-perform-repository-pattern-in-asp-net-mvc#:~:text=The%20repository%20is%20used%20to,can%20facilitate%20automated%20unit%20testing.)
 
-- [Implement Repository Base and Unit of Work in C#](https://dev.to/1001binary/implement-repository-base-and-unit-of-work-in-c-2ncg)
+- The Repository pattern is the most popular pattern for creating an enterprise level application. 
+- The repository is used to create an abstraction layer between the data access layer and the business logic layer of an application.Implementation of repository patterns can help to abstract your application from changes in the data store and can facilitate automated unit testing.
+- Repository directly communicates with Database (Data Access Layer (DAL)) and fetches the data and provides it to the logical layer (Business logic layer (BAL)). 
+- The purpose of the Repository is to isolate the data access layer (DAL) and the Business Logic Layer (BAL). 
+- Instead of writing entire data access logic in a controller, write this logic in a different class known as a repository. This will make your code maintainable and understandable.
 
-- [Repository Pattern C# ultimate guide: Entity Framework Core, Clean Architecture, DTOs, Dependency Injection, CQRS](https://medium.com/@codebob75/repository-pattern-c-ultimate-guide-entity-framework-core-clean-architecture-dtos-dependency-6a8d8b444dcb)
+![image](https://github.com/user-attachments/assets/ac941a3d-7b8f-488f-b8ad-fde8597e33f2)
 
-- [Implementing ASP.NET CRUD APIs with Repository Pattern and Unit of Work](https://medium.com/@tahatasleem01/implementing-asp-net-crud-apis-with-repository-pattern-and-unit-of-work-b34a86d91baf)
+[Implement Repository Base and Unit of Work in C#](https://dev.to/1001binary/implement-repository-base-and-unit-of-work-in-c-2ncg)
 
-- [A Comprehensive Guide to Repository Pattern in .NET: Implementation and Best Practices](https://medium.com/@dhananjay_1891/a-comprehensive-guide-to-repository-pattern-in-net-implementation-and-best-practices-d67c3a92e618)
+[Repository Pattern C# ultimate guide: Entity Framework Core, Clean Architecture, DTOs, Dependency Injection, CQRS](https://medium.com/@codebob75/repository-pattern-c-ultimate-guide-entity-framework-core-clean-architecture-dtos-dependency-6a8d8b444dcb)
+
+[Implementing ASP.NET CRUD APIs with Repository Pattern and Unit of Work](https://medium.com/@tahatasleem01/implementing-asp-net-crud-apis-with-repository-pattern-and-unit-of-work-b34a86d91baf)
+
+[A Comprehensive Guide to Repository Pattern in .NET: Implementation and Best Practices](https://medium.com/@dhananjay_1891/a-comprehensive-guide-to-repository-pattern-in-net-implementation-and-best-practices-d67c3a92e618)
 
 ## 23). Singleton Design Pattern. Singleton VS Static Class.  
 
