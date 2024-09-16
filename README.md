@@ -40,8 +40,134 @@ public class GameHub : Hub
 
  [Cross-Origin Resource Sharing in .NET](https://medium.com/@darshana-edirisinghe/cross-origin-resource-sharing-in-net-f8d0aa802b5f)
 
+Configure CORS startup class inside the ConfigureService method.  
+
 ```csharp
-app.UseCors("AllowSpecificOrigin");
+public void ConfigureServices(IServiceCollection services)  
+services.AddCors(options =>  
+{  
+   options.AddPolicy("Policy11",  
+   builder => builder.WithOrigins("http://hello.com"));  
+});  
+```
+
+Enable CORS using middleware in the Configure method.
+
+```csharp
+public void Configure(IApplicationBuilder app)  
+{  
+   app.UseCors("AllowMyOrigin");  
+} 
+```
+
+**Implementation:**
+
+To enable CORS there are  three ways to do so:  
+- **Middleware using a named policy or default policy.**
+  This following code enables the default CORS policy :
+  ```csharp
+  public class Startup {  
+    public void ConfigureServices(IServiceCollection services) {  
+        services.AddCors(options => {  
+            options.AddDefaultPolicy(builder => {  
+                builder.WithOrigins("http://hello.com", "http://www.test.com");  
+            });  
+        });  
+        services.AddControllers();  
+    }  
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env) {  
+        if (env.IsDevelopment()) {  
+            app.UseDeveloperExceptionPage();  
+        }  
+        app.UseRouting();  
+        app.UseCors();  
+        app.UseEndpoints(endpoints => {  
+            endpoints.MapControllers();  
+        });  
+    }  
+}  ```
+
+- **Using Endpoint Routing**
+
+Using endpoint routing, CORS can be apply per-endpoint basis using the RequireCors.
+```csharp
+public class Startup {  
+    readonly string allowCors = "_myOrigins";  
+    public void ConfigureServices(IServiceCollection services) {  
+        services.AddCors(options => {  
+            options.AddPolicy(name: allowCors, builder => {  
+                builder.WithOrigins("http://hello.com");  
+            });  
+        });  
+    }  
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env) {  
+        if (env.IsDevelopment()) {  
+            app.UseDeveloperExceptionPage();  
+        }  
+        app.UseRouting();  
+        app.UseCors();  
+        app.UseAuthorization();  
+        app.UseEndpoints(endpoints => {  
+            endpoints.MapGet("/foo", context => context.Response.WriteAsync("foo")).RequireCors(MyAllowSpecificOrigins);  
+        });  
+    }  
+}
+```
+
+- **Using [EnableCors] attribute.**
+  
+This [EnableCors] attribute allow CORS for selected endpoints, so it will not impact the all endpoints,
+ 
+This attribute will be applied on the following places:
+**1). Global :** You can enable CORS globally for all controllers by adding the CorsAuthorizationFilterFactory filter in the ConfigureServices method,
+```csharp
+public void ConfigureServices(IServiceCollection services) {  
+    services.AddMvc();  
+    services.Configure < MvcOptions > (options => {  
+        options.Filters.Add(new CorsAuthorizationFilterFactory("Policy1"));  
+    });  
+}
+```
+
+**2). Controller :** To apply the CORS policy for a particular controller we need to add the [EnableCors] attribute at controller level.  
+```csharp
+[EnableCors("Policy1")]  
+public class HomeController : Controller  
+{  
+}  
+```
+
+**3). Action Method :**  
+```csharp
+public class TestController: ControllerBase {  
+        [EnableCors("Policy2")]  
+        [HttpGet]  
+        public ActionResult < IEnumerable < string >> Get() {  
+                return new string[] {  
+                    "apple",  
+                    "mango"  
+                };  
+            }  
+            [EnableCors("Policy1")]  
+            [HttpGet("{id}")]  
+        public ActionResult < string > Get(int id) {  
+            return "test"  
+        } 
+```
+
+Sometimes we need to add multiple CORS.  
+The following code will create two CORS policies:  
+
+```csharp
+public void ConfigureServices(IServiceCollection services) {  
+        services.AddCors(options => {  
+            options.AddPolicy("Policy1", builder => {  
+                builder.WithOrigins("http://hello.com");  
+            });  
+            options.AddPolicy("Policy2", builder => {  
+                builder.WithOrigins("http://www.test.com").AllowAnyHeader().AllowAnyMethod();  
+            });  
+        });  
 ```
 
 I needed to make an authenticated cross-origin request to an ASP.NET Core Identity application that was using cookie authentication. I showed how to configure the app to allow CORS requests, and how to use the JavaScript fetch() API to call the request. However, this still doesn't work as the ASP.NET Core Identity cookie is marked as SameSite=Lax (for good security reasons). In the final section I showed how to configure Identity to mark the cookie as SameSite=None. This has security implications, so you should be wary about doing this is in your production applications!
