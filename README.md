@@ -60,6 +60,8 @@ public void Configure(IApplicationBuilder app)
 } 
 ```
 
+[CORS In .NET Core](https://www.c-sharpcorner.com/article/cors-in-dotnet-core/)
+
 **Implementation:**
 
 To enable CORS there are  three ways to do so:  
@@ -85,7 +87,7 @@ To enable CORS there are  three ways to do so:
             endpoints.MapControllers();  
         });  
     }  
-}  ```
+}```
 
 - **Using Endpoint Routing**
 
@@ -169,6 +171,32 @@ public void ConfigureServices(IServiceCollection services) {
             });  
         });  
 ```
+
+[Cross-Origin Resource Sharing in .NET](https://medium.com/@darshana-edirisinghe/cross-origin-resource-sharing-in-net-f8d0aa802b5f)
+
+**Practical Example of CORS ASP.NET Core**  
+CORS and ASP.NET Core go together like bread and butter, cookies and milk, or… well, you get the idea. To make this partnership crystal clear, let’s look at a practical example where we configure an ASP.NET Core application to allow requests from specific origins.  
+
+```csharp
+/*
+In Startup.cs configure services method, we add a CORS policy
+*/
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddCors(options =>
+    {
+        options.AddPolicy("AllowSpecificOrigin",
+            builder =>
+            {
+                builder.WithOrigins("http://example.com", "http://example2.com")
+                    .AllowAnyHeader()
+                    .AllowAnyMethod();
+            });
+    });
+}
+```
+
+[Enable CORS in ASP.NET Core in the Easiest Way](https://www.bytehide.com/blog/cors-aspnet-core)
 
 I needed to make an authenticated cross-origin request to an ASP.NET Core Identity application that was using cookie authentication. I showed how to configure the app to allow CORS requests, and how to use the JavaScript fetch() API to call the request. However, this still doesn't work as the ASP.NET Core Identity cookie is marked as SameSite=Lax (for good security reasons). In the final section I showed how to configure Identity to mark the cookie as SameSite=None. This has security implications, so you should be wary about doing this is in your production applications!
 
