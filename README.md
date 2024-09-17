@@ -1278,10 +1278,10 @@ public class Player
 ```
 
 ## 11.5). LINQ
-
+Language-Integrated Query(LINQ) was introduced in C# 3.0 & .NET Framework 3.5
 ### A). LINQ Tutorial
 
-- **LINQ Query Syntax in C#**
+- **LINQ Syntax**
 
 ```csharp
 int[] Num = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
@@ -1290,6 +1290,67 @@ IEnumerable<int> result = from numbers in Num
                                 select numbers;  
 ```
 
+Rewrite the same example by using the LINQ method syntax: 
+```csharp
+using System;  
+usingSystem.Collections.Generic;  
+usingSystem. Linq;  
+usingSystem. Text;  
+usingSystem.Threading.Tasks;  
+  
+namespace ConsoleApp1  
+{  
+classProgram  
+{  
+static void Main(string[] args)  
+{  
+//Data Source  
+List<int>integerList = new List<int>()  
+    {  
+        1, 2, 3, 4, 5, 6, 7, 8, 9, 10  
+    };  
+
+//LINQ Query using Method Syntax  
+varMethodSyntax = integerList.Where(obj =>obj> 5).ToList(); 
+
+//Execution  
+foreach (var item inMethodSyntax)  
+            {  
+Console.Write(item + " ");  
+            }  
+  
+Console.ReadKey();  
+        }  
+    }  
+}  
+/* Output : 6 7 8 9 10
+*/
+```
+
+LINQ Mixed Syntax Example: 
+
+```csharp
+classProgram  
+{  
+static void Main(string[] args)  
+{  
+//Data Source  
+List<int>integerList = new List<int>()  
+    {  
+        1, 2, 3, 4, 5, 6, 7, 8, 9, 10  
+    };  
+//LINQ Query using Mixed Syntax  
+varMethodSyntax = (from obj in integerList  
+                   where obj > 5  
+                   select obj).Sum();  
+
+//Execution  
+Console.Write("Sum Is : " + MethodSyntax);  
+  
+Console.ReadKey();  
+}  
+}  
+```
 - **Lambda Expresssion**
 
 // List to store the countries type of string  
@@ -1338,7 +1399,7 @@ int Sum = Num.Sum();
 
 ```csharp
 int[] Num = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
-int Sum = Num.Sum();  
+int Count = Num.Count();  
 ```
 
 - **LINQ Aggregate () Function Syntax in C#**  
@@ -1351,7 +1412,7 @@ Console.WriteLine("{0}", Average); //Output 10 ((1+2)+3)+4
 
 ### C). LINQ Sorting Operators
 
-Sorting Operators available in LINQ are:
+Sorting Operators available in LINQ are:  
 
 1. ORDER BY  
 2. ORDER BY DESCENDING  
@@ -1455,6 +1516,17 @@ namespace ConsoleApp1
         public List<string> Subjects { get; set; }
     }
 }
+```
+
+- **ThenBy Operator**  
+
+```csharp
+var studentname = Objstudent.OrderBy(x => x.Name).ThenBy(x => x.RoleId);  
+```
+
+- **ThenBy Descending Operator**  
+```csharp
+var studentname = Objstudent.OrderBy(x => x.Name).ThenByDescending(x => x.RoleId);  
 ```
 
 ### D). Partition Operator
@@ -1683,66 +1755,208 @@ namespace ConsoleApp1
 ### F). Element Operators
 
 - **First() Element**
+The First () method/operator is used to return the first element from the sequence of the items in the list or collection or the first element in the sequence of items in the list based on the specified condition. 
 
 ```csharp
-int[] a = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
-int minimumNum = a.Min();  
+int result = objList.First();   
 ```
 
 - **FirstOrDefault() Method**
+FirstOrDefault() Operator is same as LINQ First() Operator and the only difference is, in case if the lists returns no elements then LINQ FirstOrDefault operator method will return default value.
 
 ```csharp
-int[] a = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
-int MaximumNum = a.Max();  
+int result = objList.FirstOrDefault();  
+```
+
+Here is the example of using the LINQ FirstOrDefault() operator in query syntax :  
+
+```csharp
+using System;  
+using System. Collections;  
+using System.Collections.Generic;  
+using System. Linq;  
+using System. Text;  
+using System.Threading.Tasks;  
+  
+namespace ConsoleApp1  
+{  
+    class Program1  
+    {  
+        static void Main(string[] args)  
+        {  
+  
+  
+            int[] ListOb = { 1, 2, 3, 4, 5 };  
+  
+            int[] ValOb = { };  
+  
+            int result = (from l in ListOb select l).FirstOrDefault();  
+  
+            int val = (from x in ValOb  
+  
+                       select x).FirstOrDefault();  
+  
+            Console.WriteLine("Element from the List1: {0}", result);  
+  
+            Console.WriteLine("Element from the List2: {0}", val);  
+  
+            Console.ReadLine();  
+  
+        }  
+  
+    }  
+  
+    }  
+
+/* Output : Element from the List1: 1  
+            Element from the List2: 0
+*/
 ```
 
 - **Last() Method**
 
 ```csharp
-int[] Num = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
-int Sum = Num.Sum();  
+int result = objList.Last();  
 ```
 
 - **LastOrDefault() Method**
 
 ```csharp
-int[] a = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
-int minimumNum = a.Min();  
+int result = ListObj.LastOrDefault();  
+```
+Example of using the LINQ LastOrDefault() operator in query syntax :
+
+```csharp
+using System;  
+using System. Collections;  
+using System.Collections.Generic;  
+using System. Linq;  
+using System. Text;  
+using System.Threading.Tasks;  
+  
+namespace ConsoleApp1  
+{  
+    class Program1  
+    {  
+        static void Main(string[] args)  
+        {  
+            int[] LISTOBJ = { 1, 2, 3, 4, 5 };  
+            int[] ValObj = { };  
+            int result = (from l in LISTOBJ select l).LastOrDefault();  
+            int val = (from x in ValObj select x).LastOrDefault();  
+            Console.WriteLine("Element from the List1: {0}", result);  
+            Console.WriteLine("Element from the List2: {0}", val);  
+            Console.ReadLine();  
+        }  
+    }  
+}  
+/*
+Output : Element from the List1: 5
+         Element from the List2: 0
+*/
 ```
 
 - **ElementAt() Method**
+ElementAt() operator is used to return the elements from the list/collection based on the specified index.
 
 ```csharp
-int[] a = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
-int MaximumNum = a.Max();  
+int result = objList.ElementAt(1);  
 ```
 
 - **ElementAtOrDefault() Method**
+If the specified index position of the element does not exist in the list, then in that case also this will return the default value.
 
 ```csharp
-int[] Num = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
-int Sum = Num.Sum();  
+int result = objList.ElementAtOrDefault(1);  
 ```
 
 - **Single() Method**
+In LINQ, the Single() method is used to return the single element from the collection, which satisfies the condition. In case, if the Single() method found more than one element in collection or no element in the collection, then it will throw the "InvalidOperationException" error.
 
 ```csharp
-int[] a = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
-int minimumNum = a.Min();  
+int a = objList.Single(); 
+```
+
+Here is the example of the LINQ Single () method to get a single element from the collection.
+```csharp
+using System;  
+using System. Collections;  
+using System.Collections.Generic;  
+using System. Linq;  
+using System. Text;  
+using System.Threading.Tasks;  
+  
+namespace ConsoleApp1  
+{  
+    class Programme2  
+    {  
+        static void Main(string[] args)  
+        {  
+//create an object objStudent of the class Student added the record to the list.  
+            List<Student> objStudent = new List<Student>()  
+            {  
+                new Student() { Name = "Shubham Rastogi", Gender = "Male",Location="Chennai" },  
+                new Student() { Name = "Rohini Tyagi", Gender = "Female", Location="Chennai" },  
+                new Student() { Name = "Praveen Alavala", Gender = "Male",Location="Bangalore" },  
+                new Student() { Name = "Sateesh Rastogi", Gender = "Male", Location ="Vizag"},  
+                new Student() { Name = "Madhav Sai", Gender = "Male", Location="Nagpur"}  
+            };  
+    //initialize the array objList  
+                int[] objList = { 1 };  
+    //objStudent.Single() used to select the student  
+                var user = objStudent.Single(s => s.Name == "Shubham Rastogi");  
+                string result = user.Name;  
+                int val = objList.Single();  
+                Console.WriteLine("Element from objStudent: {0}", result);  
+                Console.WriteLine("Element from objList: {0}", val);  
+                Console.ReadLine();  
+        }  
+    }  
+        class Student  
+        {  
+           public string Name { get; set; }  
+           public string Gender { get; set; }  
+           public string Location { get; set; }  
+        }  
+}
+/*Output :
+Element from objStudent: Shubham Rastogi
+Element from objList: 1
+*/
 ```
 
 - **SingleOrDefault Method**
 
 ```csharp
-int[] a = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
-int MaximumNum = a.Max();  
+int a = objList.SingleOrDefault(); 
+```
+If there are no elements present in the list/collection, then this will return more than one element and will throw an exception like a Single () method.
+
+```csharp
+// initialize the array 'vs' from 1 to 5  
+int[] vs = { 1, 2, 3, 4, 5 };  
+
+// objStudent.SingleOrDefault() method will return the information of the student  
+var user = objStudent.SingleOrDefault(i => i.Name == "Akshay Tyagi");  
+
+string result = user.Name;  
+int val = vs.SingleOrDefault(j => j > 5);  
+```
+
+The LINQ SingleOrDefault() method will throw the InvalidOperationException error in case if the list/collection returns more than one element.
+
+```csharp
+// initialize the objList array from 1 to 5  
+int[] objList = { 1, 2, 3, 4, 5 };  
+
+// here SingleOrDefault()method will return the default value  
+int val = objList.SingleOrDefault();  
 ```
 
 - **DefaultfEmpty() Method**
 
 ```csharp
-int[] Num = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
-int Sum = Num.Sum();  
+var result = List1.DefaultIfEmpty();  
 ```
 
 ### G). Grouping Operators
@@ -1750,8 +1964,58 @@ int Sum = Num.Sum();
 - **GroupBy() Method**
 
 ```csharp
-int[] a = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
-int minimumNum = a.Min();  
+var student1 = objStudent.GroupBy(x => x.Location);  
+```
+
+Example: Group employees by department
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+public class Employee
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public string Department { get; set; }
+}
+
+class Program
+{
+    static void Main()
+    {
+        List<Employee> employees = new List<Employee>
+        {
+            new Employee { Id = 1, Name = "Alice", Department = "HR" },
+            new Employee { Id = 2, Name = "Bob", Department = "Finance" },
+            new Employee { Id = 3, Name = "Charlie", Department = "HR" },
+            new Employee { Id = 4, Name = "David", Department = "IT" },
+            new Employee { Id = 5, Name = "Eve", Department = "Finance" }
+        };
+
+        var groupedEmployees = employees.GroupBy(e => e.Department);
+
+        foreach (var group in groupedEmployees)
+        {
+            Console.WriteLine($"Department: {group.Key}");
+            foreach (var employee in group)
+            {
+                Console.WriteLine($" - {employee.Name}");
+            }
+        }
+    }
+}
+
+/* Output :
+Department: HR
+ - Alice
+ - Charlie
+Department: Finance
+ - Bob
+ - Eve
+Department: IT
+ - David
+*/ 
 ```
 
 ### H). Join Operators
@@ -1759,8 +2023,78 @@ int minimumNum = a.Min();
 - **Inner Join**
 
 ```csharp
-int[] a = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
-int minimumNum = a.Min();  
+var result = from item1 in collection1
+             join item2 in collection2
+             on item1.Property equals item2.Property
+             select new
+             {
+                 Property1 = item1.SomeProperty,
+                 Property2 = item2.AnotherProperty
+             };
+```
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+public class Employee
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public int DepartmentId { get; set; }
+}
+
+public class Department
+{
+    public int Id { get; set; }
+    public string DepartmentName { get; set; }
+}
+
+class Program
+{
+    static void Main()
+    {
+        List<Employee> employees = new List<Employee>
+        {
+            new Employee { Id = 1, Name = "Alice", DepartmentId = 1 },
+            new Employee { Id = 2, Name = "Bob", DepartmentId = 2 },
+            new Employee { Id = 3, Name = "Charlie", DepartmentId = 1 },
+            new Employee { Id = 4, Name = "David", DepartmentId = 3 },
+            new Employee { Id = 5, Name = "Eve", DepartmentId = 4 }  // No matching department
+        };
+
+        List<Department> departments = new List<Department>
+        {
+            new Department { Id = 1, DepartmentName = "HR" },
+            new Department { Id = 2, DepartmentName = "Finance" },
+            new Department { Id = 3, DepartmentName = "IT" }
+        };
+
+        var employeeDepartments = employees.Join(
+            departments,                       // Second collection
+            e => e.DepartmentId,               // Key from the first collection (employees)
+            d => d.Id,                         // Key from the second collection (departments)
+            (e, d) => new                      // Result selector
+            {
+                EmployeeName = e.Name,
+                DepartmentName = d.DepartmentName
+            }
+        );
+
+        foreach (var item in employeeDepartments)
+        {
+            Console.WriteLine($"{item.EmployeeName} works in {item.DepartmentName} department.");
+        }
+    }
+}
+/* Output :
+Alice works in HR department.
+Bob works in Finance department.
+Charlie works in HR department.
+David works in IT department.
+*/
+// Now, I will see it after United Airlines Interview.
 ```
 
 - **Left Join**
