@@ -2311,6 +2311,57 @@ Two-Factor Authentication (2FA) in ASP.NET Core Identity is a security process i
 
 [Two-Factor Authentication in ASP.NET Core Identity](https://dotnettutorials.net/lesson/two-factor-authentication-in-asp-net-core-identity/)
 
+### Role Based Authorization  
+
+[Role based Authorization in .NET Core: A Beginner’s Guide with Code Snippets](https://medium.com/@siva.veeravarapu/role-based-authorization-in-net-core-a-beginners-guide-with-code-snippets-b952e5b952f7)
+Let’s create a custom authorization handler (RoleRequirementHandler.cs) to handle role-based authorization.
+
+```csharp
+public class RoleRequirementHandler : AuthorizationHandler<RoleRequirement>
+{
+    protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, RoleRequirement requirement)
+    {
+        if (context.User.IsInRole(requirement.Role))
+        {
+            context.Succeed(requirement);
+        }
+
+        return Task.CompletedTask;
+    }
+}
+```
+This handler checks if the user has the required role and succeeds if the condition is met.
+
+Create a RoleRequirement.cs file to define the RoleRequirement class
+
+```csharp
+public class RoleRequirement : IAuthorizationRequirement
+{
+    public string Role { get; }
+
+    public RoleRequirement(string role)
+    {
+        Role = role;
+    }
+}
+```
+This class represents the requirement for a specific role.
+
+Apply authorization to controllers or actions using attributes. For example, in a controller
+
+```csharp
+[ApiController]
+[Route("api/[controller]")]
+[Authorize(Roles = "Admin")]
+public class AdminController : ControllerBase
+{
+    // Controller logic accessible only to users with the "Admin" role
+}
+```
+Here, the [Authorize(Roles = "Admin")] attribute restricts access to the controller or action to users with the "Admin" role.
+
+[Role Based Authorization With Identity and ASP.NET Core Web API](https://www.youtube.com/watch?v=IpWIKcytnKA)
+
 🎮 In a multiplayer game, it’s important to authenticate users securely. .NET Core provides Identity and OAuth2.0 for managing player authentication and authorization.
 
 **JWT Tokens:** Issue JWT tokens for player authentication. This is particularly useful in games, where the token can be passed in each request to verify the player’s identity without maintaining a session.
