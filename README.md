@@ -2313,7 +2313,7 @@ Two-Factor Authentication (2FA) in ASP.NET Core Identity is a security process i
 
 ### Role Based Authorization  
 
-[Role based Authorization in .NET Core: A Beginner’s Guide with Code Snippets](https://medium.com/@siva.veeravarapu/role-based-authorization-in-net-core-a-beginners-guide-with-code-snippets-b952e5b952f7)
+[Role based Authorization in .NET Core: A Beginner’s Guide with Code Snippets](https://medium.com/@siva.veeravarapu/role-based-authorization-in-net-core-a-beginners-guide-with-code-snippets-b952e5b952f7)  
 Let’s create a custom authorization handler (RoleRequirementHandler.cs) to handle role-based authorization.
 
 ```csharp
@@ -2360,7 +2360,7 @@ public class AdminController : ControllerBase
 ```
 Here, the [Authorize(Roles = "Admin")] attribute restricts access to the controller or action to users with the "Admin" role.
 
-[Role Based Authorization With Identity and ASP.NET Core Web API](https://www.youtube.com/watch?v=IpWIKcytnKA)
+▶️ [Role Based Authorization With Identity and ASP.NET Core Web API](https://www.youtube.com/watch?v=IpWIKcytnKA)
 
 🎮 In a multiplayer game, it’s important to authenticate users securely. .NET Core provides Identity and OAuth2.0 for managing player authentication and authorization.
 
