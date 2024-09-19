@@ -2284,8 +2284,9 @@ int Sum = Num.Sum();
 
 - [Entity States in Entity Framework](https://dotnettutorials.net/lesson/entity-state-in-entity-framework/)
 
-## 12). JWT Authentication and Role Based Authorization
+## 12). JWT Authentication + Two Factor Authentication and Role Based Authorization
 
+### JWT Authentication
 One of the key aspects of building web applications is implementing user authentication and authorization. We can implement authentication and authorization using JSON Web Tokens (JWT) in ASP.NET Core, along with a refresh token mechanism to extend the validity of the JWT.
 JSON Web Token (JWT) is a widely used standard for representing claims securely between two parties. 
 A JWT consists of three parts separated by dots:   
@@ -2304,6 +2305,11 @@ c). Signature
 **6. Token Expiration:** JWT tokens have an expiration time, which helps mitigate the risk of token misuse.  
 
 [OAuth 2.0 and OpenID in simple terms](https://medium.com/@iamprovidence/oauth-2-0-and-openid-in-simple-terms-7196089a1b29)
+
+### Two Factor Authentication
+Two-Factor Authentication (2FA) in ASP.NET Core Identity is a security process in which users provide two different authentication factors to verify themselves. This process is done to protect better both the user’s credentials and the resources the user can access. 2FA adds an additional layer of security to the authentication process, making it harder for attackers to access a person’s devices or online accounts because knowing the victim’s password alone is insufficient to pass the authentication check.
+
+[Two-Factor Authentication in ASP.NET Core Identity](https://dotnettutorials.net/lesson/two-factor-authentication-in-asp-net-core-identity/)
 
 🎮 In a multiplayer game, it’s important to authenticate users securely. .NET Core provides Identity and OAuth2.0 for managing player authentication and authorization.
 
