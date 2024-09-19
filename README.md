@@ -120,7 +120,7 @@ public class Startup {
   
 This [EnableCors] attribute allow CORS for selected endpoints, so it will not impact the all endpoints,
  
-This attribute will be applied on the following places:
+This attribute will be applied on the following places:  
 **1). Global :** You can enable CORS globally for all controllers by adding the CorsAuthorizationFilterFactory filter in the ConfigureServices method,
 ```csharp
 public void ConfigureServices(IServiceCollection services) {  
