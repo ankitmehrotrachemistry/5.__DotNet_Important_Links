@@ -345,58 +345,6 @@ public class ProductsController : ControllerBase
 }
 ```
 
-🎮 In a game server built using .NET Core, routing plays a crucial role in handling requests from clients (game players) and directing them to appropriate controllers or actions.
-
-There are two primary ways to define routes in Web API:
-
-**A). Convention-based routing** : It is typically set up in the Startup.cs file using the MapControllerRoute method.
-
-```csharp
-public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-{
-    app.UseRouting();
-
-    app.UseEndpoints(endpoints =>
-    {
-        endpoints.MapControllerRoute(
-            name: "default",
-            pattern: "api/{controller=Home}/{action=Index}/{id?}");
-    });
-}
-```
-
-For example, if the player requests api/players/GetPlayer/123, the framework maps this to the PlayersController's GetPlayer method with the parameter 123.
-
-**B). Attribute Based Routing** :
-In attribute routing, you specify the URL pattern directly in the controller.
-
-```csharp
-[ApiController]
-[Route("api/[controller]")]
-public class PlayersController : ControllerBase
-{
-    // GET api/players/{id}
-    [HttpGet("{id}")]
-    public IActionResult GetPlayer(string id)
-    {
-        // Logic to retrieve player details by ID
-        var player = PlayerService.GetPlayerById(id);
-        return Ok(player);
-    }
-
-    // POST api/players/create
-    [HttpPost("create")]
-    public IActionResult CreatePlayer([FromBody] Player newPlayer)
-    {
-        // Logic to create a new player
-        PlayerService.CreatePlayer(newPlayer);
-        return Ok(newPlayer);
-    }
-}
-```
-GET api/players/123: Retrieves the player with ID 123.
-POST api/players/create: Creates a new player.
-
 [Http Routing in ASP.NET Core Web API](https://medium.com/@nwonahr/routing-in-asp-net-core-web-api-c9c6dcae5cbd)
 
 ## 5). Middleware and it's working
@@ -3255,6 +3203,61 @@ public class GameHub : Hub
     }
 }
 ```
+
+## 1). Routing
+🎮 In a game server built using .NET Core, routing plays a crucial role in handling requests from clients (game players) and directing them to appropriate controllers or actions.
+
+There are two primary ways to define routes in Web API:
+
+**A). Convention-based routing** : It is typically set up in the Startup.cs file using the MapControllerRoute method.
+
+```csharp
+public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+{
+    app.UseRouting();
+
+    app.UseEndpoints(endpoints =>
+    {
+        endpoints.MapControllerRoute(
+            name: "default",
+            pattern: "api/{controller=Home}/{action=Index}/{id?}");
+    });
+}
+```
+
+For example, if the player requests api/players/GetPlayer/123, the framework maps this to the PlayersController's GetPlayer method with the parameter 123.
+
+**B). Attribute Based Routing** :
+In attribute routing, you specify the URL pattern directly in the controller.
+
+```csharp
+[ApiController]
+[Route("api/[controller]")]
+public class PlayersController : ControllerBase
+{
+    // GET api/players/{id}
+    [HttpGet("{id}")]
+    public IActionResult GetPlayer(string id)
+    {
+        // Logic to retrieve player details by ID
+        var player = PlayerService.GetPlayerById(id);
+        return Ok(player);
+    }
+
+    // POST api/players/create
+    [HttpPost("create")]
+    public IActionResult CreatePlayer([FromBody] Player newPlayer)
+    {
+        // Logic to create a new player
+        PlayerService.CreatePlayer(newPlayer);
+        return Ok(newPlayer);
+    }
+}
+```
+GET api/players/123: Retrieves the player with ID 123.
+POST api/players/create: Creates a new player.
+
+## 2). 
 
 
 
