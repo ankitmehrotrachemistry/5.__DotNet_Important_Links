@@ -3280,6 +3280,148 @@ public class ActionsController : ControllerBase
 
 [Create rest API in .Net Core](https://medium.com/@sagarkumar2499/create-rest-api-in-net-core-b2aed00416fd)
 
+## Photon, Socket IO, Smartfox Server.  
+
+For implementing multiplayer functionality in a game with Photon, Socket.IO, or SmartFox Server using .NET, the choice depends on the architecture, networking layer, and the scale of the game. Below is an outline of how each technology can be integrated into your backend system using .NET, focusing on the multiplayer aspect.
+
+**1. Photon (Photon Realtime/Photon Quantum)**
+Photon is a popular solution for multiplayer games, providing both real-time and turn-based networking. It integrates well with Unity, and you can write the backend logic using .NET Core or .NET.
+
+**Example of Photon Multiplayer Setup:**
+Photon provides a cloud-based service, so most of the server-side logic is handled in their cloud. However, you can create custom server logic via Photon Server or by integrating a .NET Core API.
+
+Here’s an example of integrating Photon in a .NET backend system for matchmaking or session management:
+
+```csharp
+public class PhotonGameService
+{
+    private string photonAppId = "Your-App-ID";
+    private string photonAppVersion = "1.0";
+
+    public PhotonGameService()
+    {
+        PhotonNetwork.ConnectUsingSettings();
+        PhotonNetwork.GameVersion = photonAppVersion;
+    }
+
+    public void CreateRoom(string roomName, int maxPlayers)
+    {
+        RoomOptions roomOptions = new RoomOptions();
+        roomOptions.MaxPlayers = (byte)maxPlayers;
+        PhotonNetwork.CreateRoom(roomName, roomOptions, TypedLobby.Default);
+    }
+
+    public void JoinRoom(string roomName)
+    {
+        PhotonNetwork.JoinRoom(roomName);
+    }
+
+    // More custom server logic...
+}
+```
+
+You will also have to integrate Photon-specific SDKs and handle client-side logic in Unity or another .NET client.  
+  
+**2. Socket.IO with .NET Core**  
+Socket.IO is a WebSocket-based library that is often used for real-time applications like multiplayer games. You can set up a real-time multiplayer system by integrating Socket.IO with a .NET Core API.
+
+Example of Socket.IO Setup in .NET Core:
+1). Install the Socket.IO server-side library via npm.
+2). Create a .NET Core backend API that interacts with the Socket.IO server for real-time multiplayer data.
+
+```csharp
+// Example controller for game sessions using WebSockets in .NET Core
+using Microsoft.AspNetCore.Mvc;
+using SocketIOClient;
+
+public class GameController : ControllerBase
+{
+    private readonly SocketIO _socket;
+
+    public GameController()
+    {
+        _socket = new SocketIO("http://localhost:3000"); // Your Socket.IO server URL
+        _socket.OnConnected += async (sender, e) => {
+            Console.WriteLine("Socket.IO connected");
+            await _socket.EmitAsync("joinGame", "Player1"); // Emit custom events to Socket.IO server
+        };
+    }
+
+    [HttpPost("startGame")]
+    public async Task<IActionResult> StartGame()
+    {
+        await _socket.ConnectAsync(); // Connect to the Socket.IO server
+        await _socket.EmitAsync("startGame", "Game started");
+        return Ok("Game started");
+    }
+
+    [HttpPost("endGame")]
+    public async Task<IActionResult> EndGame()
+    {
+        await _socket.EmitAsync("endGame", "Game ended");
+        await _socket.DisconnectAsync();
+        return Ok("Game ended");
+    }
+}
+```
+
+On the client-side, you can use Unity or other platforms to connect to this WebSocket server and handle game logic.
+
+**3. SmartFox Server with .NET**
+SmartFox Server is a popular choice for multiplayer games, particularly for MMOs or more complex games. It supports both Unity and custom .NET server-side logic.
+
+Example of SmartFox Server Integration:
+SmartFox Server provides its own extension framework for server-side logic, where you can use C# or Java. For a .NET-based game, you can either interact with SmartFox Server APIs or run it as a separate backend service.
+
+Here’s an example of integrating SmartFox Server from a .NET Core backend for handling matchmaking:
+
+```csharp
+public class SmartFoxGameService
+{
+    private SmartFox sfs;
+
+    public SmartFoxGameService()
+    {
+        sfs = new SmartFox();
+        sfs.AddEventListener(SFSEvent.CONNECTION, OnConnection);
+        sfs.Connect("127.0.0.1", 9933); // SmartFox server IP and port
+    }
+
+    private void OnConnection(BaseEvent evt)
+    {
+        if ((bool)evt.Params["success"])
+        {
+            Console.WriteLine("Connected to SmartFox Server");
+            sfs.Send(new LoginRequest("PlayerName", "", "ZoneName"));
+        }
+        else
+        {
+            Console.WriteLine("Failed to connect to SmartFox Server");
+        }
+    }
+
+    public void CreateRoom(string roomName)
+    {
+        RoomSettings settings = new RoomSettings(roomName);
+        settings.MaxUsers = 8;
+        sfs.Send(new CreateRoomRequest(settings));
+    }
+
+    public void JoinRoom(string roomName)
+    {
+        sfs.Send(new JoinRoomRequest(roomName));
+    }
+
+    // More server logic...
+}
+```
+
+**Summary :**
+- **Photon:** Best for real-time games with fast action (shooters, sports games). Offers cloud services but can be extended via .NET backend for custom logic.
+- **Socket.IO:** Best for custom multiplayer game logic using WebSockets. You can build the entire multiplayer system on top of Socket.IO using .NET Core APIs.
+- **SmartFox Server:** Best for larger, more complex games like MMOs or strategy games. You can extend SmartFox using C# for more complex backend logic.
+
+Each option has specific use cases, so your choice will depend on the game's architecture, player count, and real-time needs. 
 
 ## Minor Projects
 
