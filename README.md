@@ -606,15 +606,7 @@ There are 2 different ways/workflow for the EF -
 
 [An Insightful Dive into Entity Framework Core](https://www.linkedin.com/pulse/insightful-dive-entity-framework-core-heart-data-management-adi-inbar/?trackingId=CKg92x8pLiei6Du9gH2AjQ%3D%3D)
 
-- ▶️ [Complete 3 Hour ASP NET 6.0 and Entity Framework Core Course!](https://www.youtube.com/watch?v=7d2UMAIgOLQ&list=PLwhVruPHD9rxZ9U5K6vqUFkfrjaRhwEsV&index=12)
-
-🎮  **Entity Framework (EF) is an Object-Relational Mapper (ORM)** used in .NET applications to interact with databases, simplifying data access by mapping database records to objects in your application. In the context of a game server, using Entity Framework allows you to efficiently manage player data, game statistics, match histories, and other persistent data without manually writing complex SQL queries.
-
-Common Use Cases for Entity Framework in a Game Server
-- **Player Profiles:** Storing and retrieving player information such as usernames, levels, stats, inventory, etc.
-- **Match History:** Keeping records of past matches, player scores, and performance.
-- **In-Game Currency/Inventory:** Managing virtual currencies or in-game assets tied to players.
-- **Game States:** Saving the state of ongoing matches or sessions for persistence between server restarts.
+▶️ [Complete 3 Hour ASP NET 6.0 and Entity Framework Core Course!](https://www.youtube.com/watch?v=7d2UMAIgOLQ&list=PLwhVruPHD9rxZ9U5K6vqUFkfrjaRhwEsV&index=12)
 
 ## 11.2). DataBase First Approach and CodeFirst Approach
 
@@ -670,8 +662,6 @@ public IEnumerable<Person> GetPersons()
 
 [Code First Approach vs. Database First Approach](https://medium.com/codex/code-first-approach-vs-database-first-approach-a3830c0cc9b6)
 
-🎮 Store persistent player data (e.g., profiles, achievements, leaderboards) using a database like SQL Server. Use Entity Framework Core (Code First) to interact with the database.
-
 ## 11.3). DbContext, DbSet & DTOs
 
 The **DbContext** is simply the way for the developers to incorporate Entity Framework based data to the application. It allows you to make database connections inside an application model and allows the developer to link the model properties to the database table using a connection string.
@@ -705,132 +695,9 @@ The use of DTOs is very common in web development with ASP.NET Core as they prov
 
 [DTO (Data Transfer Object)](https://www.telerik.com/blogs/dotnet-basics-dto-data-transfer-object)
 
-🎮 In a game server, the GameDbContext would contain DbSets for various entities like Player, Game, and Match.
-
-```csharp
-public class GameDbContext : DbContext
-{
-    public DbSet<Player> Players { get; set; }
-    public DbSet<Game> Games { get; set; }
-    public DbSet<Match> Matches { get; set; }
-
-    public GameDbContext(DbContextOptions<GameDbContext> options) : base(options)
-    {
-    }
-
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        // Additional configuration of entities (optional)
-    }
-}
-```
-
-Your entities represent the data you want to store. For example, a Player class might include information about a player, such as username, score, level, etc.
-
-```csharp
-public class Player
-{
-    public int PlayerId { get; set; } // Primary Key
-    public string Username { get; set; }
-    public int Level { get; set; }
-    public int Score { get; set; }
-    public List<Match> Matches { get; set; } // One-to-many relationship with Matches
-}
-
-public class Game
-{
-    public int GameId { get; set; } // Primary Key
-    public string Title { get; set; }
-    public List<Match> Matches { get; set; }
-}
-
-public class Match
-{
-    public int MatchId { get; set; } // Primary Key
-    public int PlayerId { get; set; }
-    public Player Player { get; set; } // Foreign Key relationship to Player
-    public int GameId { get; set; }
-    public Game Game { get; set; } // Foreign Key relationship to Game
-    public DateTime MatchDate { get; set; }
-    public int PlayerScore { get; set; }
-}
-```
-In this example:
-
-A Player can participate in many Matches.
-Each Match is associated with both a Player and a Game.
-
-In the Startup.cs file (or Program.cs in .NET 6+), configure Entity Framework to use your chosen database provider (e.g., SQL Server).
-
-```csharp
-public class Startup
-{
-    public void ConfigureServices(IServiceCollection services)
-    {
-        // Register the DbContext with SQL Server
-        services.AddDbContext<GameDbContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("GameDb")));
-
-        // Register other services
-        services.AddTransient<IPlayerService, PlayerService>();
-        services.AddTransient<IGameService, GameService>();
-
-        services.AddControllers();
-    }
-
-    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-    {
-        app.UseRouting();
-        app.UseEndpoints(endpoints =>
-        {
-            endpoints.MapControllers();
-        });
-    }
-}
-```
-
 ## 11.4). SQL and NoSQL
 
-🎮 Multiplayer games often have global leaderboards. .NET Core can integrate with databases like Redis for fast leaderboard lookups and use SQL or NoSQL databases to store player performance stats.
-
-```csharp
-public class LeaderboardService
-{
-    private readonly IRedisCache _redis;
-
-    public LeaderboardService(IRedisCache redis)
-    {
-        _redis = redis;
-    }
-
-    public async Task<IEnumerable<Player>> GetTopPlayers()
-    {
-        // Get top players from Redis cache
-        return await _redis.GetTopPlayersAsync();
-    }
-}
-```
-**Performance Optimization:    
-Asynchronous Programming:** Use async/await patterns to handle concurrent connections and I/O-bound operations, which is crucial in multiplayer games to prevent blocking threads.  
-**Caching:** Use Redis for caching frequently accessed data, like player profiles or game states, to reduce database load.
-
-For certain games, you’ll want to store persistent data, such as player stats, inventory, or achievements. This can be done using a SQL or NoSQL database, integrated with Entity Framework Core.
-
-Example:
-```csharp
-public class PlayerContext : DbContext
-{
-    public DbSet<Player> Players { get; set; }
-}
-
-public class Player
-{
-    public string PlayerId { get; set; }
-    public int Score { get; set; }
-    public Vector2 Position { get; set; }
-}
-
-```
+It will be explained in some time. Please wait.
 
 ## 11.5). LINQ
 Language-Integrated Query(LINQ) was introduced in C# 3.0 & .NET Framework 3.5
@@ -1917,56 +1784,6 @@ Here, the [Authorize(Roles = "Admin")] attribute restricts access to the control
 
 ▶️ [Role Based Authorization With Identity and ASP.NET Core Web API](https://www.youtube.com/watch?v=IpWIKcytnKA)
 
-🎮 In a multiplayer game, it’s important to authenticate users securely. .NET Core provides Identity and OAuth2.0 for managing player authentication and authorization.
-
-**JWT Tokens:** Issue JWT tokens for player authentication. This is particularly useful in games, where the token can be passed in each request to verify the player’s identity without maintaining a session.
-
-```csharp
-public class AuthController : ControllerBase
-{
-    private readonly ITokenService _tokenService;
-
-    public AuthController(ITokenService tokenService)
-    {
-        _tokenService = tokenService;
-    }
-
-    [HttpPost("login")]
-    public async Task<IActionResult> Login(LoginDto loginDto)
-    {
-        var token = await _tokenService.GenerateJwtToken(loginDto);
-        return Ok(new { token });
-    }
-}
-```
-
-Use JWT Tokens for player authentication, especially in multiplayer environments where players need to remain authenticated across multiple sessions.
-
-The server broadcasts the updated game state to all clients at regular intervals, ensuring that each client has the same view of the game world. The clients update their local copies of the game state based on these updates.
-
-Example: Every 100ms, the server sends an update to all clients, informing them of the latest player positions, game events, etc.
-
-```csharp
-public async Task SyncGameState()
-{
-    while (true)
-    {
-        // Periodically broadcast the authoritative game state to all clients
-        await Clients.All.SendAsync("GameStateUpdate", _gameState);
-
-        // Wait for a short interval before sending the next update
-        await Task.Delay(100); // Send updates every 100ms
-    }
-}
-```
-
-
-💻 **Explain how you Implement Authentication and Authorization in a Project:**         
-
-**a). Authentication Example:** "In one of my projects, I used ASP.NET Core Identity for user authentication. We allowed users to sign in using either their email and password or via Google using OAuth 2.0. For the web API, we implemented JWT tokens to authenticate users, where the token was validated with every API request."    
-
-**b). Authorization Example:** "For authorization, we implemented a role-based system where different user roles had different access levels. For example, Admin users could manage products, while regular users could only view them. We used the [Authorize] attribute in ASP.NET Core to protect specific API endpoints and ensured the users' roles were checked before performing certain actions."     
-
 ## 13). CSRF (Cross Site Request Forgery)
 
 Cross-site request forgery (CSRF) is an attack that tricks a user's browser into sending a malicious HTTP request to another website. This malicious HTTP request looks like it was sent by the user, but it actually comes from the attacker.
@@ -2231,108 +2048,6 @@ The three parts of MVC are:
 As an example, the Customer controller manages all the interactions and inputs received from the Customer View and updates the database by using the Customer model. The Customer controller is also utilized for viewing the Customer-specific data.
 
 ![image](https://github.com/user-attachments/assets/a7c9ee7a-f685-445f-a6c0-01b61fbbcf63)
-
-🎮 Create controllers to handle player interactions. For example, you might have a PlayersController and an ActionsController.
-
-**PlayersController.cs**
-```csharp
-using Microsoft.AspNetCore.Mvc;
-using System.Linq;
-using System.Threading.Tasks;
-
-[ApiController]
-[Route("api/[controller]")]
-public class PlayersController : ControllerBase
-{
-    private readonly GameDbContext _context;
-
-    public PlayersController(GameDbContext context)
-    {
-        _context = context;
-    }
-
-    [HttpGet("{id}")]
-    public async Task<IActionResult> GetPlayer(string id)
-    {
-        var player = await _context.Players.FindAsync(id);
-        if (player == null)
-        {
-            return NotFound();
-        }
-        return Ok(player);
-    }
-
-    [HttpPost]
-    public async Task<IActionResult> CreatePlayer([FromBody] Player player)
-    {
-        if (!ModelState.IsValid)
-        {
-            return BadRequest(ModelState);
-        }
-
-        _context.Players.Add(player);
-        await _context.SaveChangesAsync();
-        return CreatedAtAction(nameof(GetPlayer), new { id = player.PlayerId }, player);
-    }
-
-    [HttpPut("{id}")]
-    public async Task<IActionResult> UpdatePlayer(string id, [FromBody] Player player)
-    {
-        if (id != player.PlayerId)
-        {
-            return BadRequest();
-        }
-
-        _context.Entry(player).State = EntityState.Modified;
-        await _context.SaveChangesAsync();
-        return NoContent();
-    }
-
-    [HttpDelete("{id}")]
-    public async Task<IActionResult> DeletePlayer(string id)
-    {
-        var player = await _context.Players.FindAsync(id);
-        if (player == null)
-        {
-            return NotFound();
-        }
-
-        _context.Players.Remove(player);
-        await _context.SaveChangesAsync();
-        return NoContent();
-    }
-}
-```
-
-**ActionsController.cs**
-using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
-
-[ApiController]
-[Route("api/[controller]")]
-public class ActionsController : ControllerBase
-{
-    private readonly GameDbContext _context;
-
-    public ActionsController(GameDbContext context)
-    {
-        _context = context;
-    }
-
-    [HttpPost]
-    public async Task<IActionResult> RecordAction([FromBody] PlayerAction action)
-    {
-        if (!ModelState.IsValid)
-        {
-            return BadRequest(ModelState);
-        }
-
-        _context.PlayerActions.Add(action);
-        await _context.SaveChangesAsync();
-        return Ok(action);
-    }
-}
-
 
 ## 20). Controller Action Methods in MVC
 
@@ -2664,12 +2379,6 @@ In a REST system, representations transfer JSON or XML to represent data objects
 
 **How we can create REST API in Dot Net?**  
 ▶️ [Create Your First Web API Using Visual Studio With C# Beginners Guide explained in Hindi](https://www.youtube.com/watch?v=BfuOUso-W_M)
-
-🎮 You can implement a matchmaking service using REST APIs or SignalR to find and assign players to games based on their skills, region, or preferences.
-
-[How To Build a RESTful API with ASP.NET Core](https://medium.com/net-core/how-to-build-a-restful-api-with-asp-net-core-fb7dd8d3e5e3)
-
-[Create rest API in .Net Core](https://medium.com/@sagarkumar2499/create-rest-api-in-net-core-b2aed00416fd)
 
 ## 25). What are HTTP Verbs? 
 
@@ -3266,7 +2975,310 @@ app.Run();
 
 In a multiplayer backend, app.Run effectively starts the game server, enabling it to handle player requests, game events, matchmaking, or real-time communication over WebSockets.
 
-**========================================================================================================================================================================================**
+## 11.1). Entity Framework Core
+
+🎮  **Entity Framework (EF) is an Object-Relational Mapper (ORM)** used in .NET applications to interact with databases, simplifying data access by mapping database records to objects in your application. In the context of a game server, using Entity Framework allows you to efficiently manage player data, game statistics, match histories, and other persistent data without manually writing complex SQL queries.
+
+Common Use Cases for Entity Framework in a Game Server
+- **Player Profiles:** Storing and retrieving player information such as usernames, levels, stats, inventory, etc.
+- **Match History:** Keeping records of past matches, player scores, and performance.
+- **In-Game Currency/Inventory:** Managing virtual currencies or in-game assets tied to players.
+- **Game States:** Saving the state of ongoing matches or sessions for persistence between server restarts.
+
+## 11.2). DataBase First Approach and CodeFirst Approach  
+
+🎮 Store persistent player data (e.g., profiles, achievements, leaderboards) using a database like SQL Server. Use Entity Framework Core (Code First) to interact with the database.  
+
+## 11.3). DbContext, DbSet & DTOs
+
+🎮 In a game server, the GameDbContext would contain DbSets for various entities like Player, Game, and Match.
+
+```csharp
+public class GameDbContext : DbContext
+{
+    public DbSet<Player> Players { get; set; }
+    public DbSet<Game> Games { get; set; }
+    public DbSet<Match> Matches { get; set; }
+
+    public GameDbContext(DbContextOptions<GameDbContext> options) : base(options)
+    {
+    }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        // Additional configuration of entities (optional)
+    }
+}
+```
+
+Your entities represent the data you want to store. For example, a Player class might include information about a player, such as username, score, level, etc.
+
+```csharp
+public class Player
+{
+    public int PlayerId { get; set; } // Primary Key
+    public string Username { get; set; }
+    public int Level { get; set; }
+    public int Score { get; set; }
+    public List<Match> Matches { get; set; } // One-to-many relationship with Matches
+}
+
+public class Game
+{
+    public int GameId { get; set; } // Primary Key
+    public string Title { get; set; }
+    public List<Match> Matches { get; set; }
+}
+
+public class Match
+{
+    public int MatchId { get; set; } // Primary Key
+    public int PlayerId { get; set; }
+    public Player Player { get; set; } // Foreign Key relationship to Player
+    public int GameId { get; set; }
+    public Game Game { get; set; } // Foreign Key relationship to Game
+    public DateTime MatchDate { get; set; }
+    public int PlayerScore { get; set; }
+}
+```
+In this example:
+
+A Player can participate in many Matches.
+Each Match is associated with both a Player and a Game.
+
+In the Startup.cs file (or Program.cs in .NET 6+), configure Entity Framework to use your chosen database provider (e.g., SQL Server).
+
+```csharp
+public class Startup
+{
+    public void ConfigureServices(IServiceCollection services)
+    {
+        // Register the DbContext with SQL Server
+        services.AddDbContext<GameDbContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("GameDb")));
+
+        // Register other services
+        services.AddTransient<IPlayerService, PlayerService>();
+        services.AddTransient<IGameService, GameService>();
+
+        services.AddControllers();
+    }
+
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+    {
+        app.UseRouting();
+        app.UseEndpoints(endpoints =>
+        {
+            endpoints.MapControllers();
+        });
+    }
+}
+```
+
+## 11.4). SQL and NoSQL
+
+🎮 Multiplayer games often have global leaderboards. .NET Core can integrate with databases like Redis for fast leaderboard lookups and use SQL or NoSQL databases to store player performance stats.
+
+```csharp
+public class LeaderboardService
+{
+    private readonly IRedisCache _redis;
+
+    public LeaderboardService(IRedisCache redis)
+    {
+        _redis = redis;
+    }
+
+    public async Task<IEnumerable<Player>> GetTopPlayers()
+    {
+        // Get top players from Redis cache
+        return await _redis.GetTopPlayersAsync();
+    }
+}
+```
+**Performance Optimization:    
+Asynchronous Programming:** Use async/await patterns to handle concurrent connections and I/O-bound operations, which is crucial in multiplayer games to prevent blocking threads.  
+**Caching:** Use Redis for caching frequently accessed data, like player profiles or game states, to reduce database load.
+
+For certain games, you’ll want to store persistent data, such as player stats, inventory, or achievements. This can be done using a SQL or NoSQL database, integrated with Entity Framework Core.
+
+Example:
+```csharp
+public class PlayerContext : DbContext
+{
+    public DbSet<Player> Players { get; set; }
+}
+
+public class Player
+{
+    public string PlayerId { get; set; }
+    public int Score { get; set; }
+    public Vector2 Position { get; set; }
+}
+
+```
+
+## 12). JWT Authentication + Two Factor Authentication and Role Based Authorization  
+
+🎮 In a multiplayer game, it’s important to authenticate users securely. .NET Core provides Identity and OAuth2.0 for managing player authentication and authorization.
+
+**JWT Tokens:** Issue JWT tokens for player authentication. This is particularly useful in games, where the token can be passed in each request to verify the player’s identity without maintaining a session.
+
+```csharp
+public class AuthController : ControllerBase
+{
+    private readonly ITokenService _tokenService;
+
+    public AuthController(ITokenService tokenService)
+    {
+        _tokenService = tokenService;
+    }
+
+    [HttpPost("login")]
+    public async Task<IActionResult> Login(LoginDto loginDto)
+    {
+        var token = await _tokenService.GenerateJwtToken(loginDto);
+        return Ok(new { token });
+    }
+}
+```
+
+Use JWT Tokens for player authentication, especially in multiplayer environments where players need to remain authenticated across multiple sessions.
+
+The server broadcasts the updated game state to all clients at regular intervals, ensuring that each client has the same view of the game world. The clients update their local copies of the game state based on these updates.
+
+Example: Every 100ms, the server sends an update to all clients, informing them of the latest player positions, game events, etc.
+
+```csharp
+public async Task SyncGameState()
+{
+    while (true)
+    {
+        // Periodically broadcast the authoritative game state to all clients
+        await Clients.All.SendAsync("GameStateUpdate", _gameState);
+
+        // Wait for a short interval before sending the next update
+        await Task.Delay(100); // Send updates every 100ms
+    }
+}
+```
+
+💻 **Explain how you Implement Authentication and Authorization in a Project:**         
+
+**a). Authentication Example:** "In one of my projects, I used ASP.NET Core Identity for user authentication. We allowed users to sign in using either their email and password or via Google using OAuth 2.0. For the web API, we implemented JWT tokens to authenticate users, where the token was validated with every API request."    
+
+**b). Authorization Example:** "For authorization, we implemented a role-based system where different user roles had different access levels. For example, Admin users could manage products, while regular users could only view them. We used the [Authorize] attribute in ASP.NET Core to protect specific API endpoints and ensured the users' roles were checked before performing certain actions."     
+
+## 19). What is MVC Architecture? How to create Controllers?  
+
+🎮 Create controllers to handle player interactions. For example, you might have a PlayersController and an ActionsController.
+
+**PlayersController.cs**
+```csharp
+using Microsoft.AspNetCore.Mvc;
+using System.Linq;
+using System.Threading.Tasks;
+
+[ApiController]
+[Route("api/[controller]")]
+public class PlayersController : ControllerBase
+{
+    private readonly GameDbContext _context;
+
+    public PlayersController(GameDbContext context)
+    {
+        _context = context;
+    }
+
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetPlayer(string id)
+    {
+        var player = await _context.Players.FindAsync(id);
+        if (player == null)
+        {
+            return NotFound();
+        }
+        return Ok(player);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> CreatePlayer([FromBody] Player player)
+    {
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(ModelState);
+        }
+
+        _context.Players.Add(player);
+        await _context.SaveChangesAsync();
+        return CreatedAtAction(nameof(GetPlayer), new { id = player.PlayerId }, player);
+    }
+
+    [HttpPut("{id}")]
+    public async Task<IActionResult> UpdatePlayer(string id, [FromBody] Player player)
+    {
+        if (id != player.PlayerId)
+        {
+            return BadRequest();
+        }
+
+        _context.Entry(player).State = EntityState.Modified;
+        await _context.SaveChangesAsync();
+        return NoContent();
+    }
+
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeletePlayer(string id)
+    {
+        var player = await _context.Players.FindAsync(id);
+        if (player == null)
+        {
+            return NotFound();
+        }
+
+        _context.Players.Remove(player);
+        await _context.SaveChangesAsync();
+        return NoContent();
+    }
+}
+```
+
+**ActionsController.cs**
+using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
+
+[ApiController]
+[Route("api/[controller]")]
+public class ActionsController : ControllerBase
+{
+    private readonly GameDbContext _context;
+
+    public ActionsController(GameDbContext context)
+    {
+        _context = context;
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> RecordAction([FromBody] PlayerAction action)
+    {
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(ModelState);
+        }
+
+        _context.PlayerActions.Add(action);
+        await _context.SaveChangesAsync();
+        return Ok(action);
+    }
+}
+
+## 24). REST Api. How to create REST API?  
+
+🎮 You can implement a matchmaking service using REST APIs or SignalR to find and assign players to games based on their skills, region, or preferences.
+
+[How To Build a RESTful API with ASP.NET Core](https://medium.com/net-core/how-to-build-a-restful-api-with-asp-net-core-fb7dd8d3e5e3)
+
+[Create rest API in .Net Core](https://medium.com/@sagarkumar2499/create-rest-api-in-net-core-b2aed00416fd)
 
 
 ## Minor Projects
