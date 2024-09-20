@@ -2528,6 +2528,17 @@ We stored player profiles and game data in SQL Server while using Redis for cach
      
 For security, we used JWT tokens for player authentication, ensuring secure and stateless communication between the client and server.  
 
+**New things to tell in Interview :**  
+1). I was part of entire software development life cycle.  
+2). Hosting and consuming RESTful APIs.   
+3). Applying modern software architecture patterns (distributed systems, microservices, etc.) Ensuring code is efficient, optimized, and performant.   
+4). Writing moderate level technical documentation and submitting for review by a senior developer.   
+5). Database technologies like SQL.   
+6). Experience working on various tools to test Web Api using Postman.   
+7). Understanding of Agile methodologies.   
+8). Run the MV Agent in Docker. Once the docker image is successfully created, run the following command to create the containers.   
+9). MongoDB for Database.   
+
 ## Architecture of a Multiplayer Game Backend:
     
 **Client-Server Model:** The client (game app) communicates with the server (backend) for operations like player registration, authentication, game state synchronization, and matchmaking. The server is responsible for managing game logic, player connections, and real-time communication.    
