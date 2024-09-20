@@ -1,34 +1,3 @@
-## Tell me about your Project
- 
-In my previous role, I developed the backend for a real-time multiplayer game using .NET Core. My primary responsibility was designing and developing scalable APIs that supported player interactions, matchmaking, and in-game events. We used a microservices architecture to handle key features like player matchmaking, real-time communication, and leaderboards. For real-time gameplay, I integrated SignalR to manage WebSocket connections, allowing players to communicate their moves instantly. 
-     
-We stored player profiles and game data in SQL Server while using Redis for caching active game sessions and leaderboards. The system was deployed on Azure with Kubernetes, allowing it to scale dynamically based on player demand. This ensured low-latency gameplay for over 1 million players. We also leveraged Azure Cloud Services to scale our servers dynamically based on player activity, ensuring low latency and high availability, especially during peak times.
-     
-For security, we used JWT tokens for player authentication, ensuring secure and stateless communication between the client and server.  
-
-## Architecture of a Multiplayer Game Backend:
-    
-**Client-Server Model:** The client (game app) communicates with the server (backend) for operations like player registration, authentication, game state synchronization, and matchmaking. The server is responsible for managing game logic, player connections, and real-time communication.    
-**Microservices Architecture:** .NET Core supports building modular systems where game functionalities like matchmaking, leaderboards, and player stats are managed in separate services. This architecture enhances scalability and maintainability.
-
-## Real-Time Communication with SignalR:
-
-For multiplayer games, real-time communication between the server and players is crucial. SignalR is a library built into ASP.NET Core that allows real-time communication via WebSockets or other protocols.    
-
-**Use Case:** It is used to broadcast messages to all players (like game state updates) or send targeted messages (like player-specific notifications or movements).    
-**Example:** In a multiplayer game where players need to synchronize actions (e.g., shooting, moving), SignalR helps keep all clients in sync    
-
-```csharp
-public class GameHub : Hub
-{
-    public async Task SendMove(string player, string move)
-    {
-        // Broadcast the player's move to all other connected players
-        await Clients.Others.SendAsync("ReceiveMove", player, move);
-    }
-}
-```
-
 # DotNet_Important_Links
 
 ## 2). CORS (Cross Origin Resource Sharing)
@@ -3253,6 +3222,41 @@ potential leaks, especially in complex applications.
 ## 30). Unit Testing - NUnit and XUnit
 
 [Controller Action Return Types in ASP.NET Core Web API](https://dotnettutorials.net/lesson/controller-action-return-types-core-web-api/)
+
+# Dot Net in Game Development
+
+## Tell me about your Project
+ 
+In my previous role, I developed the backend for a real-time multiplayer game using .NET Core. My primary responsibility was designing and developing scalable APIs that supported player interactions, matchmaking, and in-game events. We used a microservices architecture to handle key features like player matchmaking, real-time communication, and leaderboards. For real-time gameplay, I integrated SignalR to manage WebSocket connections, allowing players to communicate their moves instantly. 
+     
+We stored player profiles and game data in SQL Server while using Redis for caching active game sessions and leaderboards. The system was deployed on Azure with Kubernetes, allowing it to scale dynamically based on player demand. This ensured low-latency gameplay for over 1 million players. We also leveraged Azure Cloud Services to scale our servers dynamically based on player activity, ensuring low latency and high availability, especially during peak times.
+     
+For security, we used JWT tokens for player authentication, ensuring secure and stateless communication between the client and server.  
+
+## Architecture of a Multiplayer Game Backend:
+    
+**Client-Server Model:** The client (game app) communicates with the server (backend) for operations like player registration, authentication, game state synchronization, and matchmaking. The server is responsible for managing game logic, player connections, and real-time communication.    
+**Microservices Architecture:** .NET Core supports building modular systems where game functionalities like matchmaking, leaderboards, and player stats are managed in separate services. This architecture enhances scalability and maintainability.
+
+## Real-Time Communication with SignalR:
+
+For multiplayer games, real-time communication between the server and players is crucial. SignalR is a library built into ASP.NET Core that allows real-time communication via WebSockets or other protocols.    
+
+**Use Case:** It is used to broadcast messages to all players (like game state updates) or send targeted messages (like player-specific notifications or movements).    
+**Example:** In a multiplayer game where players need to synchronize actions (e.g., shooting, moving), SignalR helps keep all clients in sync    
+
+```csharp
+public class GameHub : Hub
+{
+    public async Task SendMove(string player, string move)
+    {
+        // Broadcast the player's move to all other connected players
+        await Clients.Others.SendAsync("ReceiveMove", player, move);
+    }
+}
+```
+
+
 
 ## Minor Projects
 
