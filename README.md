@@ -360,116 +360,6 @@ public class ProductsController : ControllerBase
   <img src="https://github.com/user-attachments/assets/6cca0303-5287-4c16-96a4-310f80dffa35" width="500" height="250" />
 </p>
 
-🎮 Middlewares allow you to insert custom logic into the request/response pipeline of your game server.
-In the context of a game server, middlewares can handle:
-
-**Request/Response validation:** Validate requests from clients and responses sent back to clients.
-**Authentication and Authorization:** Ensure that only authenticated users can access the game server.
-
-Middleware components in .NET Core are implemented as part of the RequestDelegate pipeline.
-
-**Common Use Cases for Middleware in Game Server Logic**
-
-**A). Authentication and Authorization Middleware**
-Authentication and Authorization Middleware verifies JWT tokens or other forms of authentication, checking if a player has permission to access the game server.
-
-```csharp
-public class AuthenticationMiddleware
-{
-    private readonly RequestDelegate _next;
-
-    public AuthenticationMiddleware(RequestDelegate next)
-    {
-        _next = next;
-    }
-
-    public async Task Invoke(HttpContext context)
-    {
-        var token = context.Request.Headers["Authorization"].FirstOrDefault()?.Split(" ").Last();
-        if (string.IsNullOrEmpty(token) || !ValidateToken(token))
-        {
-            context.Response.StatusCode = 401; // Unauthorized
-            await context.Response.WriteAsync("Invalid Token");
-            return;
-        }
-
-        await _next(context); // Pass to the next middleware if authenticated
-    }
-
-    private bool ValidateToken(string token)
-    {
-        // Token validation logic
-        return true; // Assume token is valid
-    }
-}
-```
-
-**B). Request Rate Limiting**
-Rate limiting middleware helps prevent denial-of-service attacks and ensures fair use. This is especially important during in-game events where many players may be interacting simultaneously.
-
-```csharp
-public class RateLimitingMiddleware
-{
-    private static Dictionary<string, DateTime> _requestTracker = new Dictionary<string, DateTime>();
-    private readonly RequestDelegate _next;
-    private readonly TimeSpan _throttlePeriod = TimeSpan.FromSeconds(1); // 1 request per second
-
-    public RateLimitingMiddleware(RequestDelegate next)
-    {
-        _next = next;
-    }
-
-    public async Task Invoke(HttpContext context)
-    {
-        string playerId = GetPlayerId(context); // Get player identifier (e.g., from headers)
-
-        if (_requestTracker.TryGetValue(playerId, out var lastRequestTime))
-        {
-            if (DateTime.UtcNow - lastRequestTime < _throttlePeriod)
-            {
-                context.Response.StatusCode = 429; // Too many requests
-                await context.Response.WriteAsync("Rate limit exceeded");
-                return;
-            }
-        }
-
-        _requestTracker[playerId] = DateTime.UtcNow;
-        await _next(context);
-    }
-
-    private string GetPlayerId(HttpContext context)
-    {
-        return context.Request.Headers["Player-Id"].FirstOrDefault();
-    }
-}
-```
-**C). Logging and Performance Monitoring**
-Track the requests coming to your game server, logging critical events like player actions, matchmaking requests, or game state updates.
-
-```csharp
-public class LoggingMiddleware
-{
-    private readonly RequestDelegate _next;
-
-    public LoggingMiddleware(RequestDelegate next)
-    {
-        _next = next;
-    }
-
-    public async Task Invoke(HttpContext context)
-    {
-        var request = context.Request;
-        Console.WriteLine($"Request: {request.Method} {request.Path}");
-
-        var startTime = DateTime.UtcNow;
-        await _next(context); // Pass control to the next middleware
-        var duration = DateTime.UtcNow - startTime;
-
-        Console.WriteLine($"Response Status: {context.Response.StatusCode}, Duration: {duration.TotalMilliseconds} ms");
-    }
-}
-```
-
 ## 6). Create Custom Middleware
 
 C# Code Example: Custom Logging Middleware 📝
@@ -508,77 +398,6 @@ public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 }
 ```
 
-🎮 **You can also create custom middlewares for game-specific scenarios such as:**
-
-**A). Game State Middleware**
-Used to manage the player's current game state and persist data as they progress.
-
-**B). Matchmaking Middleware**
-Track requests for matchmaking and either enqueue them or assign players to a match when conditions are met.
-
-Example Middleware for Matchmaking:
-
-```csharp
-public class MatchmakingMiddleware
-{
-    private static Queue<string> _waitingPlayers = new Queue<string>();
-    private readonly RequestDelegate _next;
-
-    public MatchmakingMiddleware(RequestDelegate next)
-    {
-        _next = next;
-    }
-
-    public async Task Invoke(HttpContext context)
-    {
-        var playerId = context.Request.Headers["Player-Id"].FirstOrDefault();
-        if (!string.IsNullOrEmpty(playerId))
-        {
-            if (_waitingPlayers.Count > 0)
-            {
-                var opponentId = _waitingPlayers.Dequeue();
-                await context.Response.WriteAsync($"Match found! You are playing against {opponentId}");
-            }
-            else
-            {
-                _waitingPlayers.Enqueue(playerId);
-                await context.Response.WriteAsync("Waiting for a match...");
-            }
-        }
-        else
-        {
-            await _next(context);
-        }
-    }
-}
-```
-
-**Register Middlewares in the Pipeline**
-Once you have created your middleware, you need to register it in the request pipeline within the Startup.cs or Program.cs:
-
-```csharp
-public class Startup
-{
-    public void Configure(IApplicationBuilder app)
-    {
-        // Custom Middlewares
-        app.UseMiddleware<LoggingMiddleware>();
-        app.UseMiddleware<AuthenticationMiddleware>();
-        app.UseMiddleware<RateLimitingMiddleware>();
-        app.UseMiddleware<MatchmakingMiddleware>();
-
-        // Exception Handling Middleware
-        app.UseMiddleware<ExceptionHandlingMiddleware>();
-
-        // Endpoints
-        app.UseRouting();
-        app.UseEndpoints(endpoints =>
-        {
-            endpoints.MapControllers();
-        });
-    }
-}
-```
 [Custom Middlewares With Dependency Injection In .NET Framework](https://medium.com/@ofirbarak96/custom-middlewares-with-dependency-injection-in-net-framework-b18f5b935e4d)
 
 ## 7). OWIN Middleware
@@ -660,138 +479,6 @@ public void ConfigureServices(IServiceCollection services)
 **Dependency Injection Video Demonstration** ▶️    
 
 [ASP.NET CORE Tutorial For Beginners 31 - Dependency Injection (DI) in Hindi](https://www.youtube.com/watch?v=3nnESO6I3iE)
-
-🎮 In a game server, DI allows you to:
-
-- Inject services for handling game logic, player management, matchmaking, etc.
-- Swap implementations, such as switching from in-memory storage to a database.
-- Manage the lifetime of objects (e.g., singleton for game state services, transient for per-request services).
-
-Common Use Cases in Game Servers
-In a game server, you might use DI for various core components:
-
-**a. Game Logic Services :**  
-Services that handle game mechanics, rules, and interactions between players.
-Examples: Combat systems, scoring, event handling.
-
-```csharp
-public interface IGameService
-{
-    void StartGame(string gameId);
-    void EndGame(string gameId);
-    void UpdateGameState(string gameId, string playerAction);
-}
-
-public class GameService : IGameService
-{
-    private readonly IGameRepository _gameRepository;
-    
-    public GameService(IGameRepository gameRepository)
-    {
-        _gameRepository = gameRepository;
-    }
-
-    public void StartGame(string gameId)
-    {
-        // Initialize game logic
-        Console.WriteLine($"Game {gameId} started.");
-    }
-
-    public void EndGame(string gameId)
-    {
-        // Handle game ending logic
-        Console.WriteLine($"Game {gameId} ended.");
-    }
-
-    public void UpdateGameState(string gameId, string playerAction)
-    {
-        // Update game state based on player action
-        Console.WriteLine($"Game {gameId} updated with player action: {playerAction}");
-    }
-}
-```
-
-**b. Player Management :**  
-Managing player profiles, authentication, session tracking, and in-game states.
-
-```csharp
-public interface IPlayerService
-{
-    void PlayerLogin(string playerId);
-    void PlayerLogout(string playerId);
-    Player GetPlayerProfile(string playerId);
-}
-
-public class PlayerService : IPlayerService
-{
-    private readonly IPlayerRepository _playerRepository;
-
-    public PlayerService(IPlayerRepository playerRepository)
-    {
-        _playerRepository = playerRepository;
-    }
-
-    public void PlayerLogin(string playerId)
-    {
-        // Handle player login logic
-        Console.WriteLine($"{playerId} logged in.");
-    }
-
-    public void PlayerLogout(string playerId)
-    {
-        // Handle player logout logic
-        Console.WriteLine($"{playerId} logged out.");
-    }
-
-    public Player GetPlayerProfile(string playerId)
-    {
-        // Fetch player profile from repository
-        return _playerRepository.GetPlayer(playerId);
-    }
-}
-```
-
-**c. Matchmaking Services**
-Logic for pairing players based on skill levels, waiting time, or other criteria.
-
-**d. Data Repositories**
-Managing game data storage, such as player stats, inventory, match history, etc.
-Can be backed by a database (e.g., SQL Server) or an in-memory store.
-
-```csharp
-public interface IPlayerRepository
-{
-    Player GetPlayer(string playerId);
-    void SavePlayer(Player player);
-}
-
-public class PlayerRepository : IPlayerRepository
-{
-    // Assume we are using Entity Framework for SQL Server interaction
-    private readonly GameDbContext _dbContext;
-
-    public PlayerRepository(GameDbContext dbContext)
-    {
-        _dbContext = dbContext;
-    }
-
-    public Player GetPlayer(string playerId)
-    {
-        return _dbContext.Players.FirstOrDefault(p => p.PlayerId == playerId);
-    }
-
-    public void SavePlayer(Player player)
-    {
-        _dbContext.Players.Add(player);
-        _dbContext.SaveChanges();
-    }
-}
-```
-
-**e. Real-time Communication Services:**    
-Handling WebSocket connections or gRPC for real-time player interactions.
-
-By using Dependency Injection in your .NET Core game server, you can manage your components and services more efficiently, reduce code duplication, improve testability, and handle complex game logic in a modular and maintainable way. Whether it’s player management, game state updates, or matchmaking, DI provides flexibility and robustness to your backend game server architecture.
 
 ## 9). AddScoped, AddTransient and AddSingleton
 
@@ -885,55 +572,6 @@ public static class StringExtensions
 
 Coming to the Extension Methods - Run(), Use() and Next()  
 [Run, Use, and Next Method in ASP.NET Core](https://dotnettutorials.net/lesson/run-next-use-methods-in-asp-net-core/#:~:text=The%20Run%20method%20in%20ASP,in%20the%20request%20processing%20pipeline.)
-
-🎮 We can use Extension Methods in Unity3D also in Game Development.
-
-[11 Useful Unity C# Extension Methods](https://monoflauta.com/2021/07/27/11-useful-unity-c-extension-methods/)  
-
-**Game server setup for handling player connections or game events**  
-In a game server using .NET, app.Run is typically part of the setup in an ASP.NET Core application, where it starts the web host and begins listening for incoming HTTP requests. For a backend game server, especially in Unity or another game framework using .NET Core, app.Run is used to host the game server logic via a web API or WebSocket server.
-
-Here’s an example of how you might use app.Run in a game server setup for handling player connections or game events via HTTP or WebSockets:
-
-```csharp
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-
-var builder = WebApplication.CreateBuilder(args);
-
-// Add services like WebSockets or other game-related services
-builder.Services.AddControllers();
-builder.Services.AddWebSocketManager(); // If using WebSockets for real-time interactions
-
-var app = builder.Build();
-
-if (app.Environment.IsDevelopment())
-{
-    app.UseDeveloperExceptionPage();
-}
-
-app.UseRouting();
-
-// If using WebSockets
-app.UseWebSockets();
-
-// Endpoints for HTTP-based requests
-app.UseEndpoints(endpoints =>
-{
-    endpoints.MapControllers();  // Map API routes for game functionality
-});
-
-// Run the game server
-app.Run();
-```
-
-**app.UseRouting():** This is used to route incoming requests to the appropriate handlers (e.g., player connections, game events).
-**app.UseWebSockets():** If you are handling real-time communication, WebSockets may be necessary for live multiplayer game servers.
-**app.UseEndpoints():** Configures endpoints for different routes like /api/game/start for starting a game or /api/game/player/connect for player connections.    
-
-In a multiplayer backend, app.Run effectively starts the game server, enabling it to handle player requests, game events, matchmaking, or real-time communication over WebSockets.
 
 ## 11.1). Entity Framework Core
 
@@ -3257,8 +2895,378 @@ public class PlayersController : ControllerBase
 GET api/players/123: Retrieves the player with ID 123.
 POST api/players/create: Creates a new player.
 
-## 2). 
+## 2). Middlewares  
 
+🎮 Middlewares allow you to insert custom logic into the request/response pipeline of your game server.
+In the context of a game server, middlewares can handle:
+
+**Request/Response validation:** Validate requests from clients and responses sent back to clients.
+**Authentication and Authorization:** Ensure that only authenticated users can access the game server.
+
+Middleware components in .NET Core are implemented as part of the RequestDelegate pipeline.
+
+**Common Use Cases for Middleware in Game Server Logic**
+
+**A). Authentication and Authorization Middleware**
+Authentication and Authorization Middleware verifies JWT tokens or other forms of authentication, checking if a player has permission to access the game server.
+
+```csharp
+public class AuthenticationMiddleware
+{
+    private readonly RequestDelegate _next;
+
+    public AuthenticationMiddleware(RequestDelegate next)
+    {
+        _next = next;
+    }
+
+    public async Task Invoke(HttpContext context)
+    {
+        var token = context.Request.Headers["Authorization"].FirstOrDefault()?.Split(" ").Last();
+        if (string.IsNullOrEmpty(token) || !ValidateToken(token))
+        {
+            context.Response.StatusCode = 401; // Unauthorized
+            await context.Response.WriteAsync("Invalid Token");
+            return;
+        }
+
+        await _next(context); // Pass to the next middleware if authenticated
+    }
+
+    private bool ValidateToken(string token)
+    {
+        // Token validation logic
+        return true; // Assume token is valid
+    }
+}
+```
+
+**B). Request Rate Limiting**
+Rate limiting middleware helps prevent denial-of-service attacks and ensures fair use. This is especially important during in-game events where many players may be interacting simultaneously.
+
+```csharp
+public class RateLimitingMiddleware
+{
+    private static Dictionary<string, DateTime> _requestTracker = new Dictionary<string, DateTime>();
+    private readonly RequestDelegate _next;
+    private readonly TimeSpan _throttlePeriod = TimeSpan.FromSeconds(1); // 1 request per second
+
+    public RateLimitingMiddleware(RequestDelegate next)
+    {
+        _next = next;
+    }
+
+    public async Task Invoke(HttpContext context)
+    {
+        string playerId = GetPlayerId(context); // Get player identifier (e.g., from headers)
+
+        if (_requestTracker.TryGetValue(playerId, out var lastRequestTime))
+        {
+            if (DateTime.UtcNow - lastRequestTime < _throttlePeriod)
+            {
+                context.Response.StatusCode = 429; // Too many requests
+                await context.Response.WriteAsync("Rate limit exceeded");
+                return;
+            }
+        }
+
+        _requestTracker[playerId] = DateTime.UtcNow;
+        await _next(context);
+    }
+
+    private string GetPlayerId(HttpContext context)
+    {
+        return context.Request.Headers["Player-Id"].FirstOrDefault();
+    }
+}
+```
+**C). Logging and Performance Monitoring**
+Track the requests coming to your game server, logging critical events like player actions, matchmaking requests, or game state updates.
+
+```csharp
+public class LoggingMiddleware
+{
+    private readonly RequestDelegate _next;
+
+    public LoggingMiddleware(RequestDelegate next)
+    {
+        _next = next;
+    }
+
+    public async Task Invoke(HttpContext context)
+    {
+        var request = context.Request;
+        Console.WriteLine($"Request: {request.Method} {request.Path}");
+
+        var startTime = DateTime.UtcNow;
+        await _next(context); // Pass control to the next middleware
+        var duration = DateTime.UtcNow - startTime;
+
+        Console.WriteLine($"Response Status: {context.Response.StatusCode}, Duration: {duration.TotalMilliseconds} ms");
+    }
+}
+```
+
+## 3). Create Custom Middleware  
+
+🎮 **You can also create custom middlewares for game-specific scenarios such as:**
+
+**A). Game State Middleware**
+Used to manage the player's current game state and persist data as they progress.
+
+**B). Matchmaking Middleware**
+Track requests for matchmaking and either enqueue them or assign players to a match when conditions are met.
+
+Example Middleware for Matchmaking:
+
+```csharp
+public class MatchmakingMiddleware
+{
+    private static Queue<string> _waitingPlayers = new Queue<string>();
+    private readonly RequestDelegate _next;
+
+    public MatchmakingMiddleware(RequestDelegate next)
+    {
+        _next = next;
+    }
+
+    public async Task Invoke(HttpContext context)
+    {
+        var playerId = context.Request.Headers["Player-Id"].FirstOrDefault();
+        if (!string.IsNullOrEmpty(playerId))
+        {
+            if (_waitingPlayers.Count > 0)
+            {
+                var opponentId = _waitingPlayers.Dequeue();
+                await context.Response.WriteAsync($"Match found! You are playing against {opponentId}");
+            }
+            else
+            {
+                _waitingPlayers.Enqueue(playerId);
+                await context.Response.WriteAsync("Waiting for a match...");
+            }
+        }
+        else
+        {
+            await _next(context);
+        }
+    }
+}
+```
+
+**Register Middlewares in the Pipeline**
+Once you have created your middleware, you need to register it in the request pipeline within the Startup.cs or Program.cs:
+
+```csharp
+public class Startup
+{
+    public void Configure(IApplicationBuilder app)
+    {
+        // Custom Middlewares
+        app.UseMiddleware<LoggingMiddleware>();
+        app.UseMiddleware<AuthenticationMiddleware>();
+        app.UseMiddleware<RateLimitingMiddleware>();
+        app.UseMiddleware<MatchmakingMiddleware>();
+
+        // Exception Handling Middleware
+        app.UseMiddleware<ExceptionHandlingMiddleware>();
+
+        // Endpoints
+        app.UseRouting();
+        app.UseEndpoints(endpoints =>
+        {
+            endpoints.MapControllers();
+        });
+    }
+}
+```
+
+## 4). Dependency Injection  
+
+🎮 In a game server, DI allows you to:
+
+- Inject services for handling game logic, player management, matchmaking, etc.
+- Swap implementations, such as switching from in-memory storage to a database.
+- Manage the lifetime of objects (e.g., singleton for game state services, transient for per-request services).
+
+Common Use Cases in Game Servers
+In a game server, you might use DI for various core components:
+
+**a. Game Logic Services :**  
+Services that handle game mechanics, rules, and interactions between players.
+Examples: Combat systems, scoring, event handling.
+
+```csharp
+public interface IGameService
+{
+    void StartGame(string gameId);
+    void EndGame(string gameId);
+    void UpdateGameState(string gameId, string playerAction);
+}
+
+public class GameService : IGameService
+{
+    private readonly IGameRepository _gameRepository;
+    
+    public GameService(IGameRepository gameRepository)
+    {
+        _gameRepository = gameRepository;
+    }
+
+    public void StartGame(string gameId)
+    {
+        // Initialize game logic
+        Console.WriteLine($"Game {gameId} started.");
+    }
+
+    public void EndGame(string gameId)
+    {
+        // Handle game ending logic
+        Console.WriteLine($"Game {gameId} ended.");
+    }
+
+    public void UpdateGameState(string gameId, string playerAction)
+    {
+        // Update game state based on player action
+        Console.WriteLine($"Game {gameId} updated with player action: {playerAction}");
+    }
+}
+```
+
+**b. Player Management :**  
+Managing player profiles, authentication, session tracking, and in-game states.
+
+```csharp
+public interface IPlayerService
+{
+    void PlayerLogin(string playerId);
+    void PlayerLogout(string playerId);
+    Player GetPlayerProfile(string playerId);
+}
+
+public class PlayerService : IPlayerService
+{
+    private readonly IPlayerRepository _playerRepository;
+
+    public PlayerService(IPlayerRepository playerRepository)
+    {
+        _playerRepository = playerRepository;
+    }
+
+    public void PlayerLogin(string playerId)
+    {
+        // Handle player login logic
+        Console.WriteLine($"{playerId} logged in.");
+    }
+
+    public void PlayerLogout(string playerId)
+    {
+        // Handle player logout logic
+        Console.WriteLine($"{playerId} logged out.");
+    }
+
+    public Player GetPlayerProfile(string playerId)
+    {
+        // Fetch player profile from repository
+        return _playerRepository.GetPlayer(playerId);
+    }
+}
+```
+
+**c. Matchmaking Services**
+Logic for pairing players based on skill levels, waiting time, or other criteria.
+
+**d. Data Repositories**
+Managing game data storage, such as player stats, inventory, match history, etc.
+Can be backed by a database (e.g., SQL Server) or an in-memory store.
+
+```csharp
+public interface IPlayerRepository
+{
+    Player GetPlayer(string playerId);
+    void SavePlayer(Player player);
+}
+
+public class PlayerRepository : IPlayerRepository
+{
+    // Assume we are using Entity Framework for SQL Server interaction
+    private readonly GameDbContext _dbContext;
+
+    public PlayerRepository(GameDbContext dbContext)
+    {
+        _dbContext = dbContext;
+    }
+
+    public Player GetPlayer(string playerId)
+    {
+        return _dbContext.Players.FirstOrDefault(p => p.PlayerId == playerId);
+    }
+
+    public void SavePlayer(Player player)
+    {
+        _dbContext.Players.Add(player);
+        _dbContext.SaveChanges();
+    }
+}
+```
+
+**e. Real-time Communication Services:**    
+Handling WebSocket connections or gRPC for real-time player interactions.
+
+By using Dependency Injection in your .NET Core game server, you can manage your components and services more efficiently, reduce code duplication, improve testability, and handle complex game logic in a modular and maintainable way. Whether it’s player management, game state updates, or matchmaking, DI provides flexibility and robustness to your backend game server architecture.
+
+## 5). Extension Methods. What are the use of extension method : Run(), Use() and Next()?  
+
+🎮 We can use Extension Methods in Unity3D also in Game Development.
+
+[11 Useful Unity C# Extension Methods](https://monoflauta.com/2021/07/27/11-useful-unity-c-extension-methods/)  
+
+**Game server setup for handling player connections or game events**  
+In a game server using .NET, app.Run is typically part of the setup in an ASP.NET Core application, where it starts the web host and begins listening for incoming HTTP requests. For a backend game server, especially in Unity or another game framework using .NET Core, app.Run is used to host the game server logic via a web API or WebSocket server.
+
+Here’s an example of how you might use app.Run in a game server setup for handling player connections or game events via HTTP or WebSockets:
+
+```csharp
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+
+var builder = WebApplication.CreateBuilder(args);
+
+// Add services like WebSockets or other game-related services
+builder.Services.AddControllers();
+builder.Services.AddWebSocketManager(); // If using WebSockets for real-time interactions
+
+var app = builder.Build();
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseDeveloperExceptionPage();
+}
+
+app.UseRouting();
+
+// If using WebSockets
+app.UseWebSockets();
+
+// Endpoints for HTTP-based requests
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllers();  // Map API routes for game functionality
+});
+
+// Run the game server
+app.Run();
+```
+
+**app.UseRouting():** This is used to route incoming requests to the appropriate handlers (e.g., player connections, game events).
+**app.UseWebSockets():** If you are handling real-time communication, WebSockets may be necessary for live multiplayer game servers.
+**app.UseEndpoints():** Configures endpoints for different routes like /api/game/start for starting a game or /api/game/player/connect for player connections.    
+
+In a multiplayer backend, app.Run effectively starts the game server, enabling it to handle player requests, game events, matchmaking, or real-time communication over WebSockets.
+
+**========================================================================================================================================================================================**
 
 
 ## Minor Projects
