@@ -1,5 +1,48 @@
 # DotNet_Important_Links
 
+## 1). Client-Server Architecture
+
+**Client**
+The client is something that initiates requests for services or resources.
+
+**Server**
+A server responds to the requests made by clients. 
+
+[Client-Server Architectural Pattern in C#](https://code-maze.com/csharp-client-server-architecture/)
+
+![image](https://github.com/user-attachments/assets/d3e11560-ebf7-4e30-b1cf-3d939a2fa94f)
+
+**How Client-Server Architecture Works?**
+It starts with a client initiating a request. This request could be a click on a webpage or a query for some specific data. This request transmits across a network and arrives at the server. There are communication protocols like HTTP, or FTP that regulate how the request is transmitted.
+
+![image](https://github.com/user-attachments/assets/70e6053b-9dbe-4c17-b530-cba10f2b8506)
+
+Once the request reaches the server, the processing starts. Here, the server interprets the request and identifies the required action. Based on the exact nature of the request, the server takes appropriate action. This could be something like querying a database, executing some business logic, or retrieving files. In scenarios involving data, the server interacts with the database. This interaction typically includes executing SQL queries to perform CRUD operations.
+
+**Types of Client-Server Architecture**
+Some of the most common types of client-server architecture are 2-tier, 3-tier, and n-tier.
+
+3-tier Architecture
+The 3-tier architecture is the evolved version of a 2-tier architecture. The most important distinction between them is that the 3-tier architecture introduces a separation of concerns in the system.
+
+We divide the system into three major components: 
+- Presentation tier
+- Application tier
+- Data tier.
+
+![image](https://github.com/user-attachments/assets/b99a52a1-896f-456f-ad31-54f99a967b71)
+
+In a 3-tier system, changes in one tier are less likely to impact the others. In addition, as the system isn’t as tightly coupled as a 2-tier, it’s easier to update different components without affecting the entire system.
+
+**When to Use Client-Server Architecture?**
+- One of the primary situations where we can adopt the client-server architecture is when we need a clear separation between the user interface and the data and business logic in an application. This separation is important to keep our components loosely coupled such that changes in one component do not necessarily disrupt the others. 
+- Additionally, in scenarios where multiple users need access to centralized data or resources, client-server architecture proves useful. 
+
+**When Not to Use Client-Server Architecture?**
+- In applications where we don’t expect much growth, the client-service architecture isn’t a good option as the overhead introduced by the additional layers might outweigh the benefits.
+- Additionally, in scenarios where we require low latency, the communication between the client and server layers may introduce delays. In applications like online gaming, where we require immediate responses this delay can become a hindrance. Thus, client-server architecture isn’t a suitable choice in such cases.
+- Finally, for systems that rely on peer-to-peer communication, client-server architecture might not be an optimal choice.
+
 ## 2). CORS (Cross Origin Resource Sharing)
 
 - Cross-Origin Resource Sharing (CORS) is a security feature that allows or restricts web applications running at one domain to make requests for resources from a different domain.  
@@ -695,11 +738,7 @@ The use of DTOs is very common in web development with ASP.NET Core as they prov
 
 [DTO (Data Transfer Object)](https://www.telerik.com/blogs/dotnet-basics-dto-data-transfer-object)
 
-## 11.4). SQL and NoSQL
-
-It will be explained in some time. Please wait.
-
-## 11.5). LINQ
+## 11.4). LINQ
 Language-Integrated Query(LINQ) was introduced in C# 3.0 & .NET Framework 3.5
 
 The LINQ Tuotrial can be best found at : [LINQ Tutorial](https://www.javatpoint.com/linq)
@@ -1877,7 +1916,7 @@ db.EmployeeDetails.DeleteOnSubmit(emp);
 db.SubmitChanges();  
 ```
 
-## 11.6). Migrations, Seeding Data , Nullable and Entity States
+## 11.5). Migrations, Seeding Data , Nullable and Entity States
 
 - [Migrations in Entity Framework Core](https://www.entityframeworktutorial.net/efcore/entity-framework-core-migration.aspx)
 
@@ -3995,8 +4034,3 @@ Each option has specific use cases, so your choice will depend on the game's arc
 - ▶️ [Learn ASP.NET MVC (.NET 6)](https://www.youtube.com/watch?v=H14S7x8q_vQ&list=PLqVWQ84m1Q7EiKKyOpiWSVcpG3qUmJ0Xc&index=1)
 
 - ▶️ [Full Course - Learn ASP.NET Core MVC in .NET 8 | CRUD Operations](https://www.youtube.com/watch?v=BzlPrVB_DwA)
-
-## Best Channels PlayLists
-
-- ▶️ [Code Unparalleled .NET Playlist](https://www.youtube.com/@CodeUnparalleled/playlists)
-
