@@ -1570,46 +1570,36 @@ int[] Num = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 int Sum = Num.Sum();  
 ```
 
-
 ### J). Equality Operations
 
 - **SequenceEqual Method**
 
-```csharp
-int[] a = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
-int minimumNum = a.Min();  
-```
+In LINQ, the SequenceEqual method is used to compare the sequence of two collections that are equal or not. It determines two sequences whether they are equal or not by comparing the elements in a pair-wise manner, and two sequences contain the equality number of the element or not.
 
 ### K). Concat Operations
 
 - **Concat Method**
 
-```csharp
-int[] a = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
-int minimumNum = a.Min();  
-```
+In LINQ, the Concat method or operator is used to concatenate or append the two collection elements into a single collection, and it does not remove the duplicates from two sequences.
 
 ### L). Generations Operations
 
 - **Range Method**
 
 ```csharp
-int[] a = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
-int minimumNum = a.Min();  
+IEnumerable<int> obj = Enumerable.Range(100, 10); 
 ```
 
 - **Repeat Method**
 
 ```csharp
-int[] a = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
-int MaximumNum = a.Max();  
+IEnumerable<int> obj = Enumerable.Repeat(100, 10);
 ```
 
 - **Empty Method**
 
 ```csharp
-int[] Num = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
-int Sum = Num.Sum();  
+var result1 = Enumerable.Empty<int>();   
 ```
 
 
@@ -1617,37 +1607,78 @@ int Sum = Num.Sum();
 
 - **LINQ to Objects**
 
-```csharp
-int[] a = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
-int minimumNum = a.Min();  
-```
+In LINQ, if we use "LINQ to Objects" in our applications, it will give us a chance to use IEnumerable or IEnumerable<T> collections directly in LINQ queries, without the use of any intermediate LINQ provider or API such as LINQ to SQL, or LINQ to XML. 
 
 - **LINQ to Strings**
 
 ```csharp
-int[] a = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
-int MaximumNum = a.Max();  
+var result = from s in str.ToLowerInvariant().Split()
 ```
 
 - **LINQ to String Array**
 
 ```csharp
-int[] Num = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
-int Sum = Num.Sum();  
+IEnumerable<string> result = from a in arr  
+    select a;  
+```
+
+```csharp
+class Programme2  
+    {  
+        static void Main(string[] args)  
+        {  
+//create an array of type string  
+            string[] array = { "Vaishali", "Shalu", "Akshay", "Akki" };  
+/*IEnumerable will iterate over the collection of data use  
+Linq query to select the particular element which starts from s*/  
+            IEnumerable<string> result = from a in array  
+            where a.ToLowerInvariant().StartsWith("s")  
+            select a;  
+    //foreach loop is used to print the output which is in the result  
+            foreach (string item in result)  
+            {  
+                Console.WriteLine(item);  
+            }  
+                Console.ReadLine();  
+         }  
+    } 
 ```
 
 - **LINQ to Int Array**
 
+The syntax of writing the LINQ queries on integer arrays to get the required elements from array collection.
+
 ```csharp
-int[] a = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
-int MaximumNum = a.Max();  
+class Programme2  
+    {  
+        static void Main(string[] args)  
+        {  
+//create an array numarray of type int  
+            int[] numarray = { 1, 6, 9, 10, 50, 60, 100, 200, 300 };  
+/*write LINQ query to get hte data from the  
+numarray where the value is greater than 10 and less than 200*/  
+            IEnumerable<int> result = from a in numarray  
+            where a > 10 && a < 200  
+            select a;  
+            foreach (int item in result)  
+            {  
+                Console.WriteLine(item);  
+            }  
+                Console.ReadLine();  
+        }
 ```
 
 - **LINQ to Lists/Collection**
 
+Here is the syntax of writing the LINQ queries on the list or collection to get the required elements.  
+
 ```csharp
-int[] Num = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
-int Sum = Num.Sum();  
+var result = from e in objEmp  
+select new  
+{  
+   Name = e.Name,  
+  Location = e.Location  
+};   
 ```
 
 
@@ -1655,39 +1686,79 @@ int Sum = Num.Sum();
 
 - **LINQ to SQL**
 
-```csharp
-int[] a = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
-int minimumNum = a.Min();  
-```
+The LINQ to SQL is the component of .NET Framework version 3.5. It provides the run time infrastructure to manage the relational data as objects.
+
+It allows us to access and get the data from the SQL database with LINQ queries. It allows us to perform the select, insert, update, and delete operations on tables like SQL using the LINQ Query.
 
 - **LINQ to SQL Select Query**
 
 ```csharp
-int[] a = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
-int MaximumNum = a.Max();  
+EmployeeDBDataContext db = new EmployeeDBDataContext();  
+var result = from ed in db.EmployeeDetails  
+select new  
+{  
+     EmployeeName = ed.EmpName,  
+     Location = ed.Location  
+};
 ```
 
 - **LINQ to SQL Inner Join**
 
 ```csharp
-int[] Num = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
-int Sum = Num.Sum();  
+var result = from ed in db.EmployeeDetails  
+join d in db.Departments on ed.DeptId equals d.DeptId  
+select new   
+{  
+Name = ed.EmpName,  
+Department = d.DeptName  
+};  
 ```
 
 - **LINQ to SQL Group Join**
 
 ```csharp
-int[] a = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
-int MaximumNum = a.Max();  
+var result = from ed in db.EmployeeDetails  
+join d in db. Departments on ed.DeptId equals d.DeptId into edept  
+from dpem in edept  
+select new  
+{  
+Name = ed.EmpName,  
+Department = dpem.DeptName  
+};   
 ```
 
 - **LINQ to SQL CRUD Operations**
 
+**LINQ to SQL Insert Operations**  
 ```csharp
-int[] Num = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
-int Sum = Num.Sum();  
+EmployeeDBDataContext db = new EmployeeDBDataContext();  
+EmployeeDetail emp = new EmployeeDetail();  
+emp.EmpName = txtname.Text;  
+emp.Location = txtlocation.Text;  
+db.EmployeeDetails.InsertOnSubmit(emp);  
+db.SubmitChanges();  
 ```
- 
+
+**LINQ to SQL Update Operations**
+```csharp
+EmployeeDBDataContext db = new EmployeeDBDataContext();  
+EmployeeDetail emp = new EmployeeDetail();  
+emp = db.EmployeeDetails.Single(x => x.EmpId == empid);  
+emp.EmpName = txtname.Text;  
+emp.Location = txtlocation.Text;  
+emp.Gender = txtgender.Text;  
+db.SubmitChanges();  
+```
+
+**LINQ to SQL Delete Operations**
+```csharp
+EmployeeDBDataContext db = new EmployeeDBDataContext();  
+EmployeeDetail emp = new EmployeeDetail();  
+emp = db.EmployeeDetails.Single(x => x.EmpId == empid);  
+db.EmployeeDetails.DeleteOnSubmit(emp);  
+db.SubmitChanges();  
+```
+
 ## 11.6). Migrations, Seeding Data , Nullable and Entity States
 
 - [Migrations in Entity Framework Core](https://www.entityframeworktutorial.net/efcore/entity-framework-core-migration.aspx)
