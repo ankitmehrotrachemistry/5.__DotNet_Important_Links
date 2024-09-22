@@ -2639,10 +2639,137 @@ It has advantages to use Output Caching as it cuts down database server round tr
 **How to Maximize Performance and Scalability of Your App?**  
 https://medium.com/agoda-engineering/asp-net-core-performance-optimization-how-to-maximize-performance-and-scalability-of-your-app-d676668aebea
 
-**What is Eager Loading and Lazy Loading in .NET Core?**  
+## 28). What is Eager Loading and Lazy Loading in .NET Core?
 [Eager Loading and Lazy Loading in .NET Core](https://www.c-sharpcorner.com/article/eager-loading-and-lazy-loading-in-net-core/)
 
-## 28). Memory Leaks
+## 29). What is Caching? What are Caching Strategies in .NET Core? 
+Caching is a process of storing frequently accessed data in a temporary storage location, known as a cache. The primary objective of caching is to accelerate data delivery to clients, as it eliminates the need to repeatedly fetch the same data from the original source.
+
+[Caching in .NET Core](https://medium.com/simform-engineering/caching-in-net-core-7c759a5bc3c6)
+
+Caching acts as a middle layer between the application and the data source, providing faster access and reducing the load on underlying systems.  
+
+Here are some key benefits of using caching :
+
+- **Enhanced performance:** It improves performance by reducing the time and resources required to retrieve the data. By serving cached data, you can avoid expensive database queries, which results in faster response times.
+- **Scalability and concurrency:** Caching can enhance the scalability of your application by reducing the load on backend systems. Your application can handle more concurrent requests and more users without experiencing performance issues by serving cached data.
+- **Offline support:** Even when the backend systems or external services are temporarily unavailable, data can be served from the cache. By storing essential data in the cache, your application can continue to function and serve content to users during outages or connectivity issues.
+- **Lower latency:** Caching the data enables faster access compared to retrieving data from disk or making network calls. This reduces latency and enhances the overall user experience by delivering data more quickly.
+
+Types of caching techniques in .NET Core :  
+
+**1. In-Memory caching:** In this technique, the application stores temporary data in the main memory, which is RAM. The application holds some portions of the main memory as a cache to store the data.
+Follow the steps below to implement in-memory caching in your web application.
+
+**Step 1:** Add memory cache middleware in Program.cs
+
+```csharp
+builder.Services.AddMemoryCache();
+```
+
+**Step 2:** Inject the IMemoryCache interface into the controller
+
+```csharp
+public class ProductController : Controller
+    {
+        private readonly AppDbContext _dbContext;
+
+        private readonly IMemoryCache _memoryCache;
+
+
+        public ProductController(AppDbContext dbContext, IMemoryCache memoryCache)
+        {
+            _dbContext = dbContext;
+
+            _memoryCache = memoryCache;
+
+        }
+}
+```
+
+**Step 3:** Implement a method that uses a memory cache.
+
+```csharp
+public async Task<IActionResult> MemoryCache()
+        {
+            var cacheData = _memoryCache.Get<IEnumerable<Product>>("products");
+            if (cacheData != null)
+            {
+                return View(cacheData);
+            }
+
+            var expirationTime = DateTimeOffset.Now.AddMinutes(5.0);
+            cacheData = await _dbContext.Products.ToListAsync();
+            _memoryCache.Set("products", cacheData, expirationTime);
+            return View(cacheData);
+        }
+```  
+
+**2. Distributed caching:** Distributed caching distributes cached data across multiple servers, enabling scalability and resilience. It’s ideal for large-scale applications deployed in a distributed environment.  
+
+**C# Example:**
+
+```csharp
+using Microsoft.Extensions.Caching.Distributed;
+
+public class ProductService
+{
+    private readonly IDistributedCache _cache;
+
+    public ProductService(IDistributedCache cache)
+    {
+        _cache = cache;
+    }
+
+    public async Task<Product> GetProductByIdAsync(int id)
+    {
+        var cachedProduct = await _cache.GetAsync($"product:{id}");
+
+        if (cachedProduct != null)
+        {
+            return DeserializeProduct(cachedProduct);
+        }
+
+        var product = FetchProductFromDatabase(id);
+        await _cache.SetAsync($"product:{id}", SerializeProduct(product));
+
+        return product;
+    }
+
+    private byte[] SerializeProduct(Product product)
+    {
+        // Serialize product object to byte array
+    }
+
+    private Product DeserializeProduct(byte[] data)
+    {
+        // Deserialize byte array to product object
+    }
+
+    private Product FetchProductFromDatabase(int id)
+    {
+        // Database query to fetch product
+    }
+}
+```
+**Real-Time Use Case:** In a microservices architecture for an e-commerce platform, distributed caching can be employed to store product catalog information shared across multiple services.
+
+**3. Response caching:** Response caching is specific to web applications and involves caching the entire HTTP responses generated by action methods.
+
+.NET Core provides `[ResponseCache]` attribute and configuration options to enable this.
+
+```csharp
+[ResponseCache(Location = ResponseCacheLocation.Any,Duration =10000)]
+public async Task<IActionResult> ResponseCache()
+{
+    var products = await _dbContext.Products.ToListAsync();
+    return View(products);
+}
+```
+
+[Caching Strategies in .NET Core](https://medium.com/@dayanandthombare/caching-strategies-in-net-core-5c6daf9dff2e)
+
+## 30). Memory Leaks
 
 **What is Memory Leak?**
 A memory leak in C# occurs when a program allocates memory by creating objects but fails to release them after they are no longer needed.  
