@@ -611,7 +611,15 @@ public static class StringExtensions
 }
 ```
 
-Coming to the Extension Methods - Run(), Use() and Next()  
+**Coming to the Extension Methods - Use(), Next(), Run() and Map()**
+
+In ASP.NET Core, Middleware will be configured using extension methods called Run(), Use() and Map().
+
+- **Use()** extension method in ASP.NET Core is used to add/insert new middleware component to HTTP Request Pipeline.
+- **Next()** extension method is used to call the next middleware component in HTTP Request Pipeline.
+- **Run()** extension method in  ASP.NET Core is used to end the execution of the pipeline, it means that Run() extension method is the last middleware and which will not call the next middleware in HTTP Request Pipeline. Any other middleware added after the Run() method will not be called and ignored.
+- **Map()** extension method in ASP.NET Core is used to map the middleware to a specific URL.
+
 [Run, Use, and Next Method in ASP.NET Core](https://dotnettutorials.net/lesson/run-next-use-methods-in-asp-net-core/#:~:text=The%20Run%20method%20in%20ASP,in%20the%20request%20processing%20pipeline.)
 
 ## 11.1). Entity Framework Core
@@ -2202,11 +2210,14 @@ public IActionResult AnotherAction()
 
 ## 17). .NET Core and .NET Framework
 
-| Column 1 | Column 2 | Column 3 |
+| Column 1 | Column 2 | Column 3 | 
 |----------|----------|----------|
-| Mobile Development    | The .NET Framework currently does not support their development at all, and that is a problem. | NET Core has some support for mobile apps that is compatible with Xamarin and other open-source platforms for mobile applications.|
-| Row 2    | Data 3   | Data 4   |
-
+| Mobile Development    | NET Core has some support for mobile apps that is compatible with Xamarin and other open-source platforms for mobile applications. | The .NET Framework currently does not support their development at all, and that is a problem. |
+| Open Source    | .Net Core is an Open Source platform.   | .Net Framework is not wholly an open-source framework, but yes we have certain components that are open source.   |
+| Shipping & Packaging    | .Net core is shipped as a collection of NuGet packages.  | .Net Framework is delivered as a whole package in which the libraries are also bundled together.  |
+| Security    | Code Access Security is a feature for security purposes that is not present in .Net core.   | We can say the .Net framework has an edge over .Net Core with this key feature of having the Code Access Security.   |
+| Performance and Scalability    | It has been seen that the .Net core offers good scalability and performance in a comparison with the .Net framework for the reason of its architecture.   | In contrast with the .Net core, the .Net Framework offers relatively slow performance and scalability.  |
+| Support for Microservices    | .Net Core does support the buildout and execution of Microservices, at the same time allowing a mix of technologies that can be minimalized for each microservices. | When it comes to the .Net Framework, it does not permit the buildout and execution of these microservices in various different languages. |
 
 [.Net Core vs .Net Framework: Key Differences, Features, and more](https://www.mygreatlearning.com/blog/net-core-vs-net-framework/)
 
@@ -2867,8 +2878,19 @@ It has advantages to use Output Caching as it cuts down database server round tr
 **How to Maximize Performance and Scalability of Your App?**  
 https://medium.com/agoda-engineering/asp-net-core-performance-optimization-how-to-maximize-performance-and-scalability-of-your-app-d676668aebea
 
-## 28). What is Eager Loading and Lazy Loading in .NET Core?
-[Eager Loading and Lazy Loading in .NET Core](https://www.c-sharpcorner.com/article/eager-loading-and-lazy-loading-in-net-core/)
+## 28). What is Eager, Lazy and Explicit Loading in .NET Core? 
+Entity Framework Core (EF Core) supports a number of ways to load related data. There’s eager loading, lazy loading, and explicit loading. Each of these approaches have their own advantages and drawbacks.  
+
+Different mechanisms for loading related data with Entity Framework Core:  
+- **Eager loading** queries navigational data together with the main entity type, but you have to remember to call `.Include()` for each of them to do so.
+- **Lazy loading** makes querying navigational data implicit, fetching data from the database when it’s accessed. The downside is that this may result in running too many queries due to the N+1 problem.
+- **Explicit loading** is similar, in that related data is only loaded when you need it. The downside is that you have to remember to load the data explicitly, and the N+1 problem is also very likely with this approach.
+
+[Lazy Vs Eager Loading With Entity Framework Core](https://dev.to/rasheedmozaffar/lazy-vs-eager-loading-with-entity-framework-core-lcg#:~:text=Explaining%20lazy%20loading%20and%20eager%20loading,-When%20I%20first&text=Lazy%20loading%20is%20a%20method,in%20the%20database%20when%20needed.)
+
+Lazy loading is a method of retrieving related data when it's demanded, while eager loading fetches all related data as part of the initial query using joins in the database when needed.
+
+[Eager, Lazy and Explicit Loading with Entity Framework Core](https://blog.jetbrains.com/dotnet/2023/09/21/eager-lazy-and-explicit-loading-with-entity-framework-core/)
 
 ## 29). What is Caching? What are Caching Strategies in .NET Core? 
 Caching is a process of storing frequently accessed data in a temporary storage location, known as a cache. The primary objective of caching is to accelerate data delivery to clients, as it eliminates the need to repeatedly fetch the same data from the original source.
