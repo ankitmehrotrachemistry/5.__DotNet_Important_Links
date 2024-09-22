@@ -573,12 +573,6 @@ services.AddScoped<IUserService, UserIdentityService>();
 
 [Navigating Dependency Lifetimes: A Practical Comparison of AddTransient, AddScoped, and AddSingleton in .NET](https://nshyamprasad.medium.com/navigating-dependency-lifetimes-a-practical-comparison-of-addtransient-addscoped-and-8b825a465dc5)
 
-**Advanced Use of DI: Scoped, Transient, and Singleton Lifetimes**
-
-**Singleton services**, such as cache or configuration services, can store game state across sessions.  
-**Scoped services** are useful for maintaining game-related state during a single request, such as player session data.  
-**Transient services** are ideal for lightweight operations that don’t require state preservation between requests.  
-
 ## 10). Extension Methods. What are the use of extension method : Run(), Use() and Next()?
 
 Extension methods are a way to add new functionality to existing types without modifying their source code. They are static methods that can be called as if they are instance methods on the extended type. Extension methods are a powerful feature in C# that can help you write cleaner, more expressive code.  
@@ -3607,6 +3601,14 @@ app.Run();
 **app.UseEndpoints():** Configures endpoints for different routes like /api/game/start for starting a game or /api/game/player/connect for player connections.    
 
 In a multiplayer backend, app.Run effectively starts the game server, enabling it to handle player requests, game events, matchmaking, or real-time communication over WebSockets.
+
+## 9). AddScoped, AddTransient and AddSingleton
+
+**Advanced Use of DI: Scoped, Transient, and Singleton Lifetimes**
+
+- **Singleton services**, such as cache or configuration services, can store game state across sessions.  
+- **Scoped services** are useful for maintaining game-related state during a single request, such as player session data.  
+- **Transient services** are ideal for lightweight operations that don’t require state preservation between requests.  
 
 ## 11.1). Entity Framework Core
 
