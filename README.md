@@ -2424,7 +2424,7 @@ POST creates an item in a collection. PUT replaces an item. PATCH modifies an it
 ## 27). What is Pagination?  
 
 
-## 28). Improve (Optimize) performance of Dot Net Application.
+## 28). Your Application is very slow. How you can improve (Optimize) performance of Dot Net Application?
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/7803c0d0-dcc5-42d1-90f9-a11907e915ea" width="500" height="250" />
