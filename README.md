@@ -2115,6 +2115,8 @@ public void UtilityMethod()
 }
 ```
 
+[Understanding Action and Non- Action methods, Types of Action Results in ASP.NET Core.](https://medium.com/@ananthomprakash/understanding-action-and-non-action-methods-types-of-action-results-in-asp-net-core-ea201ffcfa96)
+
 **NOTE :**
 
 Action Attribute and Action Method are not the same thing, and they are not synonyms. Both have different roles:
