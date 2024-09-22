@@ -604,6 +604,8 @@ There are 2 different ways/workflow for the EF -
   
 [One-to-Many Relationships using Fluent API in Entity Framework Core](https://www.entityframeworktutorial.net/efcore/configure-one-to-many-relationship-using-fluent-api-in-ef-core.aspx)
 
+[Configure Many-to-Many Relationships in Entity Framework Core](https://www.entityframeworktutorial.net/efcore/configure-many-to-many-relationship-in-ef-core.aspx)
+
 [An Insightful Dive into Entity Framework Core](https://www.linkedin.com/pulse/insightful-dive-entity-framework-core-heart-data-management-adi-inbar/?trackingId=CKg92x8pLiei6Du9gH2AjQ%3D%3D)
 
 ▶️ [Complete 3 Hour ASP NET 6.0 and Entity Framework Core Course!](https://www.youtube.com/watch?v=7d2UMAIgOLQ&list=PLwhVruPHD9rxZ9U5K6vqUFkfrjaRhwEsV&index=12)
@@ -2015,7 +2017,7 @@ Authorize filter is an example of an Authorization filter.
 - Action filters are a type of filter in ASP.NET Core that are used to inject custom logic before or after the execution of a controller action method.  
 [Understanding Action Filters in ASP.NET Core](https://medium.com/@kefasogabi/understanding-action-filters-in-asp-net-core-a-comprehensive-guide-with-code-samples-ec1f1f2af425)
 
-## 19). What is MVC Architecture? How to create Controllers?
+## 19). What is MVC Architecture? Explain Life cycle of MVC. 
 
 **MVC (Model-View-Controller)** separates the logic of the application from the display. MVC, with its ‘separation of concerns principle, not only creates a solid framework for web applications but also ensures that different aspects of the application are neatly organized, simplifying future scalability.  
 
@@ -2024,7 +2026,6 @@ The three parts of MVC are:
 **b). View:** Handles the user interface and data presentation. The View is the display layer. View presents something to the user i.e User Interface.    
 **c). Controller:** Updates the model and view based on user input. The Controller is input control. Controller coordinates between Model and the View. 
       Whatever data the Model has, the Controller passes that data to the View.  
-
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/91fdf570-51ef-497f-9a11-8e7fd13f4af5" width="500" height="350" />
@@ -2039,6 +2040,17 @@ The three parts of MVC are:
 
 [What Is ASP.NET MVC and What Are Its Main Features?](https://www.matridtech.net/what-is-asp-net-mvc-and-what-are-its-main-features/)
 
+**Life cycle of MVC**  
+MVC actually defined in two life cycles, the application life cycle, and the request life cycle.   
+
+The application life cycle, in which the application process starts the running server until the time it stops. and it tagged the two events in the startup file of your application. i.e  the application start and end events.  
+
+This is separate from the request life cycle, which is the sequence of events or stages that executed every time an HTTP request is handled by the application.  
+
+[ASP.NET MVC Life Cycle](https://www.geeksforgeeks.org/asp-net-mvc-life-cycle/)
+
+## 20). How to create Controllers? What are Action Results and it's types? What are Action and Non- Action Methods and in MVC? 
+
 **What is the role of the Controller in ASP.NET MVC?**
 
 - The controller is the interface between the model and view components. 
@@ -2048,8 +2060,6 @@ The three parts of MVC are:
 As an example, the Customer controller manages all the interactions and inputs received from the Customer View and updates the database by using the Customer model. The Customer controller is also utilized for viewing the Customer-specific data.
 
 ![image](https://github.com/user-attachments/assets/a7c9ee7a-f685-445f-a6c0-01b61fbbcf63)
-
-## 20). Controller Action Methods in MVC
 
 Different types of action results returned by action methods in the MVC controller. In the MVC Controller file you have many action methods. Each action method can return different return types of results lik e contentresult,javascript,json or view.  
 
@@ -2069,6 +2079,69 @@ Basic return types of action results in ASP.NET MVC are :-
 **Content negotiation** is the process of selecting the best resource for a response when multiple resource representations are available. Content negotiation is an HTTP feature. Examples are - IActionResult. [Content Negotiation in Web API](https://code-maze.com/content-negotiation-web-api/)
 
 [Controller Action Return Types in ASP.NET Core Web API](https://dotnettutorials.net/lesson/controller-action-return-types-core-web-api/)
+
+The differences between Actions and Non-Actions methods:
+
+**1). Action Methods:**
+Action methods are responsible for handling HTTP requests and returning HTTP responses. They are the methods that perform specific actions in response to user requests.
+
+These methods are typically associated with URLs and are used to execute specific functionality based on the request type (e.g., GET, POST, PUT, DELETE).
+
+Action methods are public and typically return an ActionResult or one of its derived types (e.g., ViewResult, JsonResult, RedirectToActionResult) to determine the response to send back to the client.
+
+Example of an action method in a controller:
+
+```csharp
+public ActionResult Index()
+{
+    // Code to handle a GET request and return a view
+    return View();
+}
+```
+
+**2. Non-Action Methods:**
+
+Non-action methods are regular methods in a controller that are not intended to be used as entry points for handling HTTP requests. They are auxiliary methods used to factor out common functionality or logic to be shared among action methods.
+
+Non-action methods are typically marked with the [NonAction] attribute to explicitly indicate that they should not be invoked as actions.
+
+These methods cannot be directly accessed via a URL, and they do not return ActionResults.
+
+```csharp
+[NonAction]
+public void UtilityMethod()
+{
+    // Code for a utility method that should not be invoked as an action
+}
+```
+
+**NOTE :**
+
+Action Attribute and Action Method are not the same thing, and they are not synonyms. Both have different roles:
+
+- Action Attribute: This is a specific attribute that controls the behavior of methods. For example, [HttpGet], [HttpPost], [ActionName("customName")], etc. It defines how a method should be treated (like which HTTP verb it should accept).
+
+```csharp
+[HttpPost]
+public IActionResult SubmitForm()
+{
+    // Code to handle form submission
+}
+```
+
+- Action Method: This is a method defined inside a controller that handles HTTP requests from the client. It is the method that responds to web requests.
+
+```csharp
+public IActionResult Index()
+{
+    return View();
+}
+```
+
+**Summary:**
+- Action Attribute: Modifies the behavior of a method (e.g., [HttpPost], [NonAction]).  
+- Action Method: The method that handles HTTP requests (e.g., Index(), SubmitForm()).  
+So, these are two different things and not synonyms.
 
 ## 21). What are Views? ViewData , ViewBag and TempData
 
