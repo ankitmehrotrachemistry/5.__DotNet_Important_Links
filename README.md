@@ -4057,21 +4057,3 @@ public class SmartFoxGameService
 - **SmartFox Server:** Best for larger, more complex games like MMOs or strategy games. You can extend SmartFox using C# for more complex backend logic.
 
 Each option has specific use cases, so your choice will depend on the game's architecture, player count, and real-time needs. 
-
-## Minor Projects
-
-#### 1). CRUD Operations
-
-- [ASP.NET Core Web Application](https://www.youtube.com/watch?v=T-e554Zt3n4)
-
-- [CRUD Operations using ASP.NET Core MVC](https://www.youtube.com/watch?v=SfWuOFEatYc)
-
-#### 2). Custom Identity
-
-- [Custom Identity in Asp.Net Core MVC](https://www.youtube.com/watch?v=93ssXlCPcuI&t=2158s)
-
-## ASP.NET MVC
-
-- ▶️ [Learn ASP.NET MVC (.NET 6)](https://www.youtube.com/watch?v=H14S7x8q_vQ&list=PLqVWQ84m1Q7EiKKyOpiWSVcpG3qUmJ0Xc&index=1)
-
-- ▶️ [Full Course - Learn ASP.NET Core MVC in .NET 8 | CRUD Operations](https://www.youtube.com/watch?v=BzlPrVB_DwA)
