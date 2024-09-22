@@ -2769,6 +2769,51 @@ public async Task<IActionResult> ResponseCache()
 
 [Caching Strategies in .NET Core](https://medium.com/@dayanandthombare/caching-strategies-in-net-core-5c6daf9dff2e)
 
+The cache-aside pattern is the most common caching strategy. Here's how it works:
+
+- Check the cache: Look for the requested data in the cache.
+- Fetch from source (if cache miss): If the data isn't in the cache, fetch it from the source.
+- Update the cache: Store the fetched data in the cache for subsequent requests.
+
+![image](https://github.com/user-attachments/assets/91026378-c5e1-4ec7-aa77-634eedca8d6e)
+
+[Caching in ASP.NET Core: Improving Application Performance](https://www.milanjovanovic.tech/blog/caching-in-aspnetcore-improving-application-performance)
+
+Here's how you can implement the cache-aside pattern as an extension method for IDistributedCache:
+
+```csharp
+public static class DistributedCacheExtensions
+{
+    public static DistributedCacheEntryOptions DefaultExpiration => new()
+    {
+        AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(2)
+    };
+
+    public static async Task<T> GetOrCreateAsync<T>(
+        this IDistributedCache cache,
+        string key,
+        Func<Task<T>> factory,
+        DistributedCacheEntryOptions? cacheOptions = null)
+    {
+        var cachedData = await cache.GetStringAsync(key);
+
+        if (cachedData is not null)
+        {
+            return JsonSerializer.Deserialize<T>(cachedData);
+        }
+
+        var data = await factory();
+
+        await cache.SetStringAsync(
+            key,
+            JsonSerializer.Serialize(data),
+            cacheOptions ?? DefaultExpiration);
+
+        return data;
+    }
+}
+```
+
 ## 30). Memory Leaks
 
 **What is Memory Leak?**
