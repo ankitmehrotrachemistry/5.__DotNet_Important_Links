@@ -2049,6 +2049,8 @@ This is separate from the request life cycle, which is the sequence of events or
 
 [ASP.NET MVC Life Cycle](https://www.geeksforgeeks.org/asp-net-mvc-life-cycle/)
 
+![image](https://github.com/user-attachments/assets/a567ae94-e693-43c1-a294-ff5a380a17d6)
+
 ## 20). How to create Controllers? What are Action Results and it's types? What are Action and Non- Action Methods and in MVC? 
 
 **What is the role of the Controller in ASP.NET MVC?**
