@@ -440,8 +440,6 @@ The above OWIN specification describes the five parts (or roles) of the applicat
 
 [Create OWIN Middleware](https://www.tektutorialshub.com/asp-net/asp-net-owin-middleware/)
 
-[Controller Action Return Types in ASP.NET Core Web API](https://dotnettutorials.net/lesson/controller-action-return-types-core-web-api/)
-
 [.Net Core Using Middleware to log http request/responses](https://theochiu2010.medium.com/net-core-using-middleware-to-log-http-request-responses-f60364e2880)
 
 ## 8). Dependency Injection
@@ -1961,6 +1959,7 @@ public IActionResult Index()
 }
 
 ```
+[ASP.NET Session Management](https://www.h2kinfosys.com/blog/asp-net-session-management/)
 
 To retrieve the data from the session:
 
@@ -2539,13 +2538,78 @@ POST creates an item in a collection. PUT replaces an item. PATCH modifies an it
  
 [HTTP Verbs in REST API](https://medium.com/@alrazak/understanding-http-verbs-in-rest-api-f6080711d580)
 
-## 26). What is Data Annotations(Validations)? Client Side and Server Side Validations.
+## 26). What is Data Annotations(Validations)? What are Razor pages? Client Side and Server Side Validations.
 
+Validation is the set of rules which we define on the input fields on the webform page. We have certain types of validations which we can use as per the user requirements:  
 
-## 27). What is Pagination?  
+**Input Validation**  
+In every application that allow users to supply input data, it is crucial to ensure that these data are submitted in the correct format, within the expected ranges, and aligned with any other rules we might apply. This process is known as input validation.  
+[How to Implement Server and Client Side Validations in ASP.NET Core MVC and Razor Pages](https://softwareparticles.com/server-client-side-validations-in-mvc-views-and-razor-pages/)
 
+The table below shows the build-in validation attributes :  
+![image](https://github.com/user-attachments/assets/fa7d768f-4179-4459-b5f9-b7c85128d6ce)
 
-## 28). Your Application is very slow. How you can improve (Optimize) performance of Dot Net Application?
+**Custom Validations**  
+Creating custom validation attributes allows us to implement validations that are not achievable with built-in attributes. By defining our own custom validation attributes, we can apply them across various properties in our models. We will place all custom validation attributes inside a folder named Validations in the root of the project.
+
+**Razor**  
+- A Razor Page is very similar to the view component that ASP.NET MVC developers use. It has all the same syntax and functionality.
+- The key difference is that the model and controller code are also included within the Razor Page. It is more of an MVVM (Model-View-ViewModel) framework.
+
+[ASP.NET Razor Pages vs MVC: How Do Razor Pages Fit in Your Toolbox?](https://stackify.com/asp-net-razor-pages-vs-mvc/)
+
+Here is a basic example of a Razor Page using inline code within a @functions block.
+
+```html
+@page
+@model IndexModel
+@using Microsoft.AspNetCore.Mvc.RazorPages
+
+@functions {
+    public class IndexModel : PageModel
+    {
+        public string Message { get; private set; } = "In page model: ";
+
+        public void OnGet()
+        {
+            Message += $" Server seconds  { DateTime.Now.Second.ToString() }";
+        }
+    }
+}
+
+<h2>In page sample</h2>
+<p>
+    @Model.Message
+</p>
+```
+
+**A). Client-Side Validation** - To enable the client-side validation, we can use JQuery and Javascript.
+There are 2 simple steps to enable the client-side validation in the ASP.NET MVC application. In the First step, we need to Enable ClientValidation and UnobtrusiveJavaScript in the web.config file. Add the following two keys within the appSettings section of your web config file.
+
+```html
+<appSettings> 
+  <add key="ClientValidationEnabled" value="true" />
+  <add key="UnobtrusiveJavaScriptEnabled" value="true" />
+</appSettings>
+```
+   
+In the second step, we need to include the references to the following javascript files. Add the following javascript files in sequence in the _Layout.cshtml view which is inside the shared folder as our create.cshtml view uses _Layout.cshtml view
+
+```html
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+```
+
+**B). Server-side Validation** - Server-side validations are required to ensure that received data is correct and valid. If the received data is valid then we do the further processing with the data. Server-side validations are very important before playing with the sensitive information of a user.  
+In MVC Razor, we can validate a model server side in the following two ways:
+
+- Explicit Model Validation
+- Model Validation with Data Annotations
+
+[Server Side Model Validation in MVC Razor](https://www.scholarhat.com/tutorial/mvc/server-side-model-validation-in-mvc-razor)
+
+## 27). Your Application is very slow. How you can improve (Optimize) performance of Dot Net Application?
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/7803c0d0-dcc5-42d1-90f9-a11907e915ea" width="500" height="250" />
@@ -2580,7 +2644,7 @@ https://medium.com/agoda-engineering/asp-net-core-performance-optimization-how-t
 **What is Eager Loading and Lazy Loading in .NET Core?**  
 [Eager Loading and Lazy Loading in .NET Core](https://www.c-sharpcorner.com/article/eager-loading-and-lazy-loading-in-net-core/)
 
-## 29). Memory Leaks
+## 28). Memory Leaks
 
 **What is Memory Leak?**
 A memory leak in C# occurs when a program allocates memory by creating objects but fails to release them after they are no longer needed.  
@@ -2638,9 +2702,6 @@ class) for objects that do not need to be kept alive by the garbage collector.
 **7. Profiling and Analysis Tools:** Utilize memory profiling and analysis tools to identify
 potential leaks, especially in complex applications.
 
-## 30). Unit Testing - NUnit and XUnit
-
-[Controller Action Return Types in ASP.NET Core Web API](https://dotnettutorials.net/lesson/controller-action-return-types-core-web-api/)
 
 # Dot Net in Game Development
 
