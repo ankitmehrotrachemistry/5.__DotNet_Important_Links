@@ -2145,10 +2145,54 @@ public IActionResult Index()
 - Action Method: The method that handles HTTP requests (e.g., Index(), SubmitForm()).  
 So, these are two different things and not synonyms.
 
-## 21). What are Views? ViewData , ViewBag and TempData
+## 21). What are Views? What are Partial Views? What are Strongly types Views? ViewData , ViewBag and TempData
 
-There are two approaches to passing a weakly typed data into the views:
+**What are Views?**  
 
+In the MVC pattern, the view component contains the logic to represent the model data as a user interface with which the end-user can interact. Typically, it creates the user interface with the data from the model provided to it by the controller. So you can consider the Views in ASP.NET MVC as HTML templates embedded with Razor syntax which generates HTML content that sends to the client.
+
+[ASP.NET MVC Views](https://dotnettutorials.net/lesson/asp-dot-net-mvc-views/)
+
+**What are Partial Views?**   
+
+- The Partial View Result returns the result to the Partial view page. It is one of the views that we can call inside the Normal view page.  
+- One has to create a Partial view inside the shared folder or else we are unable to succeed in the Partial View. This class is also derived from Action Result.  
+
+[An in-depth guide on View Result and Partial View Result in MVC](https://www.ifourtechnolab.com/blog/an-in-depth-guide-on-view-result-and-partial-view-result-in-mvc)
+
+```csharp
+public PartialViewResult Index()  
+{  
+return PartialView("_PartialView");  
+}
+```
+
+A partial view is a reusable chunk of CSHTML code. In this case, I will use the partial view to control my menu across two distinct Layout pages.  
+▶️ [use partial views in asp.net mvc 6](https://www.youtube.com/watch?v=sFCdDAkxPcM)
+
+**What are Strongly types Views?**    
+
+In ASP.NET Core MVC, there are 3 ways to pass data from a controller to a view 
+- Using a strongly typed model object. This is also called Strongly typed view.
+- Using ViewData
+- Using ViewBag
+
+[Strongly Typed View in ASP.NET Core MVC](https://csharp-video-tutorials.blogspot.com/2019/03/strongly-typed-view-in-aspnet-core-mvc.html)
+
+The preferred approach to pass data from a controller to a view is by using a strongly typed view. To create a strongly typed view, in the controller action method, pass the model object to the View() helper method. Notice, in the example below, we are passing the Employee model object to the View() method.
+
+```csharp
+public ViewResult Details()
+{
+    Employee model = _employeeRepository.GetEmployee(1);
+
+    ViewBag.PageTitle = "Employee Details";
+
+    return View(model);
+}
+```
+
+**There are two approaches to passing a weakly typed data into the views:**
 - ViewData
 - ViewBag
 
