@@ -701,6 +701,9 @@ It will be explained in some time. Please wait.
 
 ## 11.5). LINQ
 Language-Integrated Query(LINQ) was introduced in C# 3.0 & .NET Framework 3.5
+
+The LINQ Tuotrial can be best found at : [LINQ Tutorial](https://www.javatpoint.com/linq)
+
 ### A). LINQ Tutorial
 
 - **LINQ Syntax**
