@@ -2221,7 +2221,7 @@ public IActionResult AnotherAction()
 
 ## 17). .NET Core and .NET Framework
 
-| Column 1 | Column 2 | Column 3 | 
+|  | .NET Core | .NET Framework | 
 |----------|----------|----------|
 | Mobile Development    | NET Core has some support for mobile apps that is compatible with Xamarin and other open-source platforms for mobile applications. | The .NET Framework currently does not support their development at all, and that is a problem. |
 | Open Source    | .Net Core is an Open Source platform.   | .Net Framework is not wholly an open-source framework, but yes we have certain components that are open source.   |
