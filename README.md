@@ -1952,7 +1952,7 @@ a). Header
 b). Payload  
 c). Signature  
 
-[Implementing Authentication and Authorization in ASP.NET Core using JWT Tokens and refresh token with .NET 7](https://medium.com/@kefasogabi/implementing-authentication-and-authorization-in-asp-net-e831c04b4d38)
+[Implementing Authentication and Authorization in ASP.NET Core using JWT Tokens and refresh token with .NET 7](https://medium.com/@kefasogabi/implementing-authentication-and-authorization-in-asp-net-e831c04b4d38)  
 
 **Here is a basic overview of how JWT-based authentication works in a web application:**  
 **1. User Authentication:** When a user logs in, the server validates the provided credentials (username and password). If the credentials are valid, the server generates a JWT token containing claims such as user ID, roles, expiration time, etc.  
@@ -1961,6 +1961,23 @@ c). Signature
 **4. Server Validation:** The server validates the token upon receiving a request by checking the signature and verifying the claims.   
 **5. Token Refresh:** To avoid frequent logins, a refresh token mechanism may be implemented. The client can request a new JWT token using a refresh token without re-entering credentials.   
 **6. Token Expiration:** JWT tokens have an expiration time, which helps mitigate the risk of token misuse.  
+
+[Implementing JWT Authentication in ASP.NET Core Web APIs: A Comprehensive Guide](https://www.dotnet4techies.com/2024/03/implementing-jwt-authentication-in.html)   
+
+### Open Authentication (OAuth 2.0)
+Here are some things to know about OAuth: 
+**Authorization flow**
+The process of obtaining an access token is called the authorization flow. 
+**Refresh token**
+A refresh token is a token that can be used to get additional access tokens. It can be sent to the OAuth server to obtain new ones. 
+**OAuth flows**
+OAuth flows are processes that support authorization and authentication. Some OAuth flows allow users to enter credentials directly into the app, while others support authentication without user involvement. 
+**Client credentials**
+OAuth has a standard flow for machine-to-machine communication called Client Credentials. 
+**OAuth endpoints**
+OAuth endpoints are URLs used to make OAuth authorization requests. Each OAuth flow defines which endpoints to use and what request data to provide. 
+**Incremental authorization**
+In the OAuth 2.0 protocol, an app requests authorization to access resources, which are identified by scopes.
 
 [OAuth 2.0 and OpenID in simple terms](https://medium.com/@iamprovidence/oauth-2-0-and-openid-in-simple-terms-7196089a1b29)
 
