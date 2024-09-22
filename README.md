@@ -1516,28 +1516,53 @@ Bob works in Finance department.
 Charlie works in HR department.
 David works in IT department.
 */
-// Now, I will see it after United Airlines Interview.
 ```
 
 - **Left Join**
 
+In LINQ, LEFT JOIN or LEFT OUTER JOIN is used to return all the records or elements from the left side collection and matching the elements from the right side of the collection.
+
+Syntax of LINQ Left Outer Join : 
 ```csharp
-int[] a = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
-int MaximumNum = a.Max();  
+var result = from e in objEmp1  
+join d in objDept1  
+on e.DeptId equals d.DepId into empDept  
+from ed in empDept.DefaultIfEmpty()  
+select new  
+{  
+    EmployeeName = e.Name,  
+    DepartmentName = ed == null ? "No Department" : ed.DepName  
+}  
 ```
 
 - **Cross Join**
 
+In LINQ Cross join, each element on the left side collection will be mapped to all the elements on the right side collection.
 ```csharp
-int[] Num = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
-int Sum = Num.Sum();  
+var result = from e in objEmp1  
+from d in objDept1  
+select new  
+{  
+    EmployeeName = e.Name,  
+    DepartmentName = d.DepName  
+};   
 ```
 
 - **Group Join**
 
+In LINQ, Group join produces a sequence of the elements of the objects, which is based on the matching element from both left and right collections.
+
+Syntax of LINQ Group Join
 ```csharp
-int[] Num = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
-int Sum = Num.Sum();  
+var result = from d in objDept  
+join e in objEmp on d.DepId equals e.DeptId into empDept  
+select new  
+{  
+    DepartmentName = d.DepName,  
+    Employees = from emp2 in empDept  
+    orderby emp2.Name  
+     select emp2  
+};  
 ```
 
 ### I). Set Operations
@@ -1545,29 +1570,119 @@ int Sum = Num.Sum();
 - **Union Method**
 
 ```csharp
-int[] a = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
-int minimumNum = a.Min();  
+var result = count1.Union(count2);   
+```
+
+Here is the example of using the LINQ Union Method.
+```csharp
+class Programme2  
+    {  
+        static void Main(string[] args)  
+        {  
+//create array count1 and count2 of type string  
+            string[] count1 = { "India", "USA", "UK", "Australia" };  
+            string[] count2 = { "India", "Canada", "UK", "China" };  
+//count1.Union(count2) is used to find out the unique element from both the collection  
+            var result = count1.Union(count2);  
+//foreach loop is used to print the output conaining in the result  
+            foreach (var item in result)  
+            {  
+                Console.WriteLine(item);  
+            }  
+                Console.ReadLine();  
+        }  
+    }
 ```
 
 - **Intersect Method**
 
+LINQ Intersect method will combine both the collections into a single collection and return only the matching element from the collection.
+
 ```csharp
-int[] a = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
-int MaximumNum = a.Max();  
+var result = count1.Intersect(count2);  
+```
+
+```csharp
+class Programme2  
+    {  
+        static void Main(string[] args)  
+        {  
+//declare the two array variable count1 and count2 of the type string   
+            string[] count1 = { "India", "Australia", "UK", "USA" };  
+            string[] count2 = { "India", "China", "UK", "China" };  
+/*apply the Intersect method on both of the array 
+ count1 and count2 and store the output in result variable*/  
+            var result = count1.Intersect(count2);  
+/*foreach loop will iterate over all the element of  
+the variable item which store the output of the result variable*/   
+            foreach (var item in result)  
+            {  
+/*Console.WriteLine(item) print  
+all element store in the item variable.*/  
+                Console.WriteLine(item);  
+            }  
+                Console.ReadLine();  
+        }
+     }
 ```
 
 - **Distinct Method**
 
+The LINQ Distinct method or operator is used to get only the distinct elements from the collection.
 ```csharp
-int[] Num = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
-int Sum = Num.Sum();  
+IEnumerable<int> result = numbers.Distinct();  
+```
+
+```csharp
+    class Programme2  
+    {  
+        static void Main(string[] args)  
+        {  
+//taking an array named countries type of string having the list of countries   
+            string[] countries = { "UK", "India", "Australia", "uk", "india", "USA" };  
+//apply the Distinct method to find out the different country names   
+            IEnumerable<string> result = countries.Distinct(StringComparer.OrdinalIgnoreCase);  
+    //with the help of foreach loop fetch each element from the list of the array  
+            foreach (var item in result)  
+            {  
+    /*with the help of WriteLine() function print the values of  
+    the variable item having the output of the result*/   
+                Console.WriteLine(item);  
+            }  
+                Console.ReadLine();  
+        }  
+  
+    }
 ```
 
 - **Except Method**
 
+In LINQ, the Except method or operator is used to return only the elements from the first collection, which are not present in the second collection.
 ```csharp
-int[] Num = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };  
-int Sum = Num.Sum();  
+var result = arr1.Except(arr2);   
+```
+
+```csharp
+class Programme2  
+    {  
+        static void Main(string[] args)  
+        {  
+//create an array 'a' and 'b' type of string having the values  
+            string[] a = { "Rohini", "Suresh", "Sateesh", "Praveen" };  
+            string[] b = { "Madhav", "Sushmitha", "Sateesh", "Praveen" };  
+//Except method is used to return the value which does not exist in the second list   
+            var result = a.Except(b);  
+            foreach (var item in result)  
+            {  
+                Console.WriteLine(item);  
+            }  
+                Console.ReadLine();  
+        }  
+    }
+
+// Output :
+// Rohini
+// Suresh
 ```
 
 ### J). Equality Operations
