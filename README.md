@@ -2385,18 +2385,16 @@ TempData.Peek("Name");
 
 ![image](https://github.com/user-attachments/assets/4c4e67a9-2d3f-46cd-a884-b101035ad3fa)
 
-♉ 𝐖𝐡𝐲 𝐒𝐞𝐚𝐥𝐞𝐝 ?
+𝐖𝐡𝐲 𝐒𝐞𝐚𝐥𝐞𝐝 ?
 We want only one Instance of Singleton class , when a class inherits a call to parent constructor comes which is eventually causing a object creation (Kind of objection creation not exactly). So to avoid it we have made Singleton class sealed. Now no other class can inherit from it.
 
-♉ 𝐖𝐡𝐲 𝐂𝐨𝐧𝐬𝐭𝐫𝐮𝐜𝐭𝐨𝐫 𝐢𝐬 𝐏𝐫𝐢𝐯𝐚𝐭𝐞 ?
+𝐖𝐡𝐲 𝐂𝐨𝐧𝐬𝐭𝐫𝐮𝐜𝐭𝐨𝐫 𝐢𝐬 𝐏𝐫𝐢𝐯𝐚𝐭𝐞 ?
 To avoid multiple instance creation of Singleton class we have made constructor private. When constructor is private no one can create object of that class using new Singleton() out of that class.
 
-♉ 𝐇𝐨𝐰 𝐚𝐫𝐞 𝐰𝐞 𝐬𝐮𝐫𝐞 𝐭𝐡𝐚𝐭 𝐨𝐧𝐥𝐲 𝐨𝐧𝐞 𝐈𝐧𝐬𝐭𝐚𝐧𝐜𝐞 𝐰𝐨𝐮𝐥𝐝 𝐛𝐞 𝐜𝐫𝐞𝐚𝐭𝐞𝐝  
-▶ Sealed class make sure that no class can inherit it
-
-▶ Constructor is private so no way for direct instantiation.
-
-▶ The read only keyword ensures that the lazy property is initialized only once, either during the static constructor or before the class is first accessed, and is never modified again. But only read only keyword does not guarantee it right ! That’s why we have made property of only getter type you would note it does not have setter in it.
+𝐇𝐨𝐰 𝐚𝐫𝐞 𝐰𝐞 𝐬𝐮𝐫𝐞 𝐭𝐡𝐚𝐭 𝐨𝐧𝐥𝐲 𝐨𝐧𝐞 𝐈𝐧𝐬𝐭𝐚𝐧𝐜𝐞 𝐰𝐨𝐮𝐥𝐝 𝐛𝐞 𝐜𝐫𝐞𝐚𝐭𝐞𝐝  
+- Sealed class make sure that no class can inherit it
+- Constructor is private so no way for direct instantiation.
+- The read only keyword ensures that the lazy property is initialized only once, either during the static constructor or before the class is first accessed, and is never modified again. But only read only keyword does not guarantee it right ! That’s why we have made property of only getter type you would note it does not have setter in it.
 
 [Singleton Design Pattern Implementation in C# (Thread Safe)](https://medium.com/@mwaseemzakir/singleton-design-pattern-implementation-in-c-thread-safe-4b0fd536d821)
 
