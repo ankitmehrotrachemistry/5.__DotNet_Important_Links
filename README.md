@@ -2456,6 +2456,9 @@ It has advantages to use Output Caching as it cuts down database server round tr
 **How to Maximize Performance and Scalability of Your App?**  
 https://medium.com/agoda-engineering/asp-net-core-performance-optimization-how-to-maximize-performance-and-scalability-of-your-app-d676668aebea
 
+**What is Eager Loading and Lazy Loading in .NET Core?**  
+[Eager Loading and Lazy Loading in .NET Core](https://www.c-sharpcorner.com/article/eager-loading-and-lazy-loading-in-net-core/)
+
 ## 29). Memory Leaks
 
 **What is Memory Leak?**
