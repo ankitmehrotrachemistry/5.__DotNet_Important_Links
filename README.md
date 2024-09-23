@@ -803,7 +803,7 @@ c). Signature
 [Implementing Authentication and Authorization in ASP.NET Core using JWT Tokens and refresh token with .NET 7](https://medium.com/@kefasogabi/implementing-authentication-and-authorization-in-asp-net-e831c04b4d38)  
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/957f5b97-c8c8-42ca-b12f-30fa6e39bc68" width="800" height="550" />
+  <img src="https://github.com/user-attachments/assets/957f5b97-c8c8-42ca-b12f-30fa6e39bc68" width="800" height="450" />
 </p>
 
 **Here is a basic overview of how JWT-based authentication works in a web application:**  
@@ -834,7 +834,7 @@ In the OAuth 2.0 protocol, an app requests authorization to access resources, wh
 [OAuth 2.0 authorization with Microsoft Entra ID](https://learn.microsoft.com/en-us/entra/architecture/auth-oauth2)
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/afcb7b1c-5d8d-4a44-85fa-e753e8471be5" width="800" height="600" />
+  <img src="https://github.com/user-attachments/assets/afcb7b1c-5d8d-4a44-85fa-e753e8471be5" width="800" height="450" />
 </p>
 
   **Rich client and modern app scenarios and RESTful web API access.**
@@ -1922,7 +1922,7 @@ The cache-aside pattern is the most common caching strategy. Here's how it works
 - Update the cache: Store the fetched data in the cache for subsequent requests.
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/91026378-c5e1-4ec7-aa77-634eedca8d6e" width="500" height="250" />
+  <img src="https://github.com/user-attachments/assets/91026378-c5e1-4ec7-aa77-634eedca8d6e" width="700" height="500" />
 </p>
 
 [Caching in ASP.NET Core: Improving Application Performance](https://www.milanjovanovic.tech/blog/caching-in-aspnetcore-improving-application-performance)
