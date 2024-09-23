@@ -621,6 +621,8 @@ In ASP.NET Core, Middleware will be configured using extension methods called Ru
 In Entity Framework, the model is prepared according to the requirement of the user. It depends upon the number of classes and categories that will be embedded into the database. 
 Entity Framework is a tool we use to access the database. EF is an Object Relational Mapper (ORM) we use to map the objects of our applications with the Relational Data.  
 
+[Entity Framework Core Model](https://www.learnentityframeworkcore5.com/entity-framework-core-model)
+
 ![image](https://github.com/user-attachments/assets/1ecc98c4-a8ce-434a-a2f8-6492385fcda6)
 
 Earlier, we had to do all these mapping manually which involved lots of steps. We work at a higher level of Abstraction in Entity Framework.  
@@ -639,17 +641,28 @@ So, Entity Framework is responsible for opening a connection to the database, re
 
 As we add, modify or remove objects in these DbSets, EF keeps track of these changes and when we ask to persist these changes, again it will automatically generate the SQL Statements and execute them on our Database. 
 
-There are 2 different ways/workflow for the EF - 
-  a). Database First Approach 
-  b). CodeFirst Approach 
+There are 2 different ways/workflow for the EF -  
+  a). Database First Approach   
+  b). CodeFirst Approach   
+ 
+**Configure One-to-Many Relationships using Fluent API in Entity Framework Core**  
 
-[Entity Framework Core Model](https://www.learnentityframeworkcore5.com/entity-framework-core-model)
-  
 [One-to-Many Relationships using Fluent API in Entity Framework Core](https://www.entityframeworktutorial.net/efcore/configure-one-to-many-relationship-using-fluent-api-in-ef-core.aspx)
+
+**Configure Many-to-Many Relationships in Entity Framework Core**  
 
 [Configure Many-to-Many Relationships in Entity Framework Core](https://www.entityframeworktutorial.net/efcore/configure-many-to-many-relationship-in-ef-core.aspx)
 
+**Advantages of Harnessing Entity Framework Core:**    
+- **Model Generation:** EF Core shines in its ability to auto-generate models based on the database schema and vice versa. This feature is a time-saver, eliminating the tedium of manual updates every time a new table or model is introduced.
+- **Security:** With EF Core, the queries employed are pre-equipped with robust security features, thereby enhancing the safety net around data access and manipulation.
+- **Cross-platform Compatibility and Open-source Nature:** The cross-platform and open-source nature of EF Core broadens the horizons for developers, offering a flexible and cost-effective solution for data access.
+- **Mapping Management:** The automated management of mappings between objects and database entities is yet another feather in EF Core's cap, simplifying the data interaction process.
+- **Stored Procedures:** Although the need for stored procedures is greatly reduced, EF Core provides the flexibility to execute them whenever required, offering a balanced approach to database interaction.
+
 [An Insightful Dive into Entity Framework Core](https://www.linkedin.com/pulse/insightful-dive-entity-framework-core-heart-data-management-adi-inbar/?trackingId=CKg92x8pLiei6Du9gH2AjQ%3D%3D)
+
+In a nutshell, Entity Framework Core is a robust, developer-friendly platform that significantly eases the data management process, thereby accelerating project timelines while ensuring optimum quality. 
 
 ▶️ [Complete 3 Hour ASP NET 6.0 and Entity Framework Core Course!](https://www.youtube.com/watch?v=7d2UMAIgOLQ&list=PLwhVruPHD9rxZ9U5K6vqUFkfrjaRhwEsV&index=12)
 
