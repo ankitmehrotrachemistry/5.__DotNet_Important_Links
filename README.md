@@ -1955,7 +1955,7 @@ The Entity Lifecycle in Entity Framework describes the process in which an Entit
 
 ## 12). JWT Authentication + Two Factor Authentication and Role Based Authorization
 
-### JWT Authentication
+- ### JWT Authentication
 One of the key aspects of building web applications is implementing user authentication and authorization. We can implement authentication and authorization using JSON Web Tokens (JWT) in ASP.NET Core, along with a refresh token mechanism to extend the validity of the JWT.
 JSON Web Token (JWT) is a widely used standard for representing claims securely between two parties. 
 A JWT consists of three parts separated by dots:   
@@ -1977,7 +1977,7 @@ c). Signature
 
 [Implementing JWT Authentication in ASP.NET Core Web APIs: A Comprehensive Guide](https://www.dotnet4techies.com/2024/03/implementing-jwt-authentication-in.html)   
 
-### Open Authentication (OAuth 2.0)
+- ### Open Authentication (OAuth 2.0)
 Here are some things to know about OAuth:  
 **Authorization flow**  
 The process of obtaining an access token is called the authorization flow. 
@@ -2015,14 +2015,14 @@ When a user logins in, the authorization server issues an access token, which is
 **What Is a Refresh Token?**
 As mentioned, for security purposes, access tokens may be valid for a short amount of time. Once they expire, client applications can use a refresh token to "refresh" the access token. That is, a refresh token is a credential artifact that lets a client application get new access tokens without having to ask the user to log in again.
 
-### Two Factor Authentication
+- ### Two Factor Authentication
 Two-Factor Authentication (2FA) in ASP.NET Core Identity is a security process in which users provide two different authentication factors to verify themselves. This process is done to protect better both the user’s credentials and the resources the user can access. 2FA adds an additional layer of security to the authentication process, making it harder for attackers to access a person’s devices or online accounts because knowing the victim’s password alone is insufficient to pass the authentication check.
 
 [Two-Factor Authentication in ASP.NET Core Identity](https://dotnettutorials.net/lesson/two-factor-authentication-in-asp-net-core-identity/)
 
 ![image](https://github.com/user-attachments/assets/77d81b73-eba8-4a1d-acc0-cbe6dacfe328)
 
-### Role Based Authorization  
+- ### Role Based Authorization  
 
 [Role based Authorization in .NET Core: A Beginner’s Guide with Code Snippets](https://medium.com/@siva.veeravarapu/role-based-authorization-in-net-core-a-beginners-guide-with-code-snippets-b952e5b952f7)  
 Let’s create a custom authorization handler (RoleRequirementHandler.cs) to handle role-based authorization.
