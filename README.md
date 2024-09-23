@@ -1933,19 +1933,23 @@ db.SubmitChanges();
 
 ## 11.5). Migrations, Seeding Data , Nullable and Entity States
 
-- [Migrations in Entity Framework Core](https://www.entityframeworktutorial.net/efcore/entity-framework-core-migration.aspx)
+**Migrations in Entity Framework Core**  
+Migration is a way to keep the database schema in sync with the EF Core model by preserving data.
 
-- [Navigating Migrations and Delete Table in Entity Framework Core](https://www.linkedin.com/pulse/navigating-migrations-delete-table-entity-framework-core-adi-inbar/)
+[Migrations in Entity Framework Core](https://www.entityframeworktutorial.net/efcore/entity-framework-core-migration.aspx)
 
-- [Harnessing Entity Framework Core: Add Migration in C#](https://www.linkedin.com/pulse/harnessing-entity-framework-core-add-migration-c-adi-inbar/?trackingId=VnxXh8XGAjpfVSfRaFG39A%3D%3D)
+EF Core provides migrations commands to create, update, or remove tables and other DB objects based on the entities and configurations.
+Suppose we add some new entities or modify an existing entities or changed any configuration, then we again need to execute the add-migration and update-migration commands to apply changes to the database schema.
 
-- [Reverting and Managing Migrations in Entity Framework Core with C#](https://www.linkedin.com/pulse/reverting-managing-migrations-entity-framework-core-c-adi-inbar/?trackingId=w3J1ieu5fLpAMDfIVaruhA%3D%3D)
- 
-- [Migration Seeding Data in Entity Framework Core with C#](https://www.linkedin.com/pulse/seeding-data-entity-framework-core-c-adi-inbar-tqwff/?trackingId=Bgt89Mt6yxrDPsRHDmpSOQ%3D%3D)
+![image](https://github.com/user-attachments/assets/c321bf20-af1c-46ef-bbdd-05e0dddf4139)
+
+**EF Core Seed Data**  
+Applying seed data to a database refers to the process of inserting initial data into a database, usually when the database is first created. This data serves as a baseline and can be used for testing, and development, and to provide some context for the application that will be built on top of the database.
 
 - [EF Core Seed Data](https://www.learnentityframeworkcore.com/migrations/seeding)
- 
-- [Understanding Nullable Fields and Renaming Columns in C# with Entity Framework Core](https://www.linkedin.com/pulse/understanding-nullable-fields-renaming-columns-c-entity-adi-inbar/?trackingId=%2BwnxToGDylnTUiTV54QnEA%3D%3D)
+
+**Entity States in Entity Framework**  
+The Entity Lifecycle in Entity Framework describes the process in which an Entity is created, added, modified, deleted, etc. Entities have many states during their lifetime. Entity Framework maintains the state of each entity during its lifetime. Each entity has a state based on the operation performed on it via the context class (the class which is derived from DbContext class). 
 
 - [Entity States in Entity Framework](https://dotnettutorials.net/lesson/entity-state-in-entity-framework/)
 
@@ -1961,6 +1965,8 @@ c). Signature
 
 [Implementing Authentication and Authorization in ASP.NET Core using JWT Tokens and refresh token with .NET 7](https://medium.com/@kefasogabi/implementing-authentication-and-authorization-in-asp-net-e831c04b4d38)  
 
+![image](https://github.com/user-attachments/assets/957f5b97-c8c8-42ca-b12f-30fa6e39bc68)
+
 **Here is a basic overview of how JWT-based authentication works in a web application:**  
 **1. User Authentication:** When a user logs in, the server validates the provided credentials (username and password). If the credentials are valid, the server generates a JWT token containing claims such as user ID, roles, expiration time, etc.  
 **2. JWT Structure:** A JWT token is a compact, URL-safe string composed of three parts: header, payload, and signature.  
@@ -1972,31 +1978,56 @@ c). Signature
 [Implementing JWT Authentication in ASP.NET Core Web APIs: A Comprehensive Guide](https://www.dotnet4techies.com/2024/03/implementing-jwt-authentication-in.html)   
 
 ### Open Authentication (OAuth 2.0)
-Here are some things to know about OAuth: 
-**Authorization flow**
+Here are some things to know about OAuth:  
+**Authorization flow**  
 The process of obtaining an access token is called the authorization flow. 
-**Refresh token**
+**Refresh token**  
 A refresh token is a token that can be used to get additional access tokens. It can be sent to the OAuth server to obtain new ones. 
-**OAuth flows**
+**OAuth flows**  
 OAuth flows are processes that support authorization and authentication. Some OAuth flows allow users to enter credentials directly into the app, while others support authentication without user involvement. 
-**Client credentials**
+**Client credentials**  
 OAuth has a standard flow for machine-to-machine communication called Client Credentials. 
-**OAuth endpoints**
+**OAuth endpoints**  
 OAuth endpoints are URLs used to make OAuth authorization requests. Each OAuth flow defines which endpoints to use and what request data to provide. 
-**Incremental authorization**
+**Incremental authorization**  
 In the OAuth 2.0 protocol, an app requests authorization to access resources, which are identified by scopes.
 
+**Rich client and modern app scenarios and RESTful web API access.**
+
+[OAuth 2.0 authorization with Microsoft Entra ID](https://learn.microsoft.com/en-us/entra/architecture/auth-oauth2)
+
+![image](https://github.com/user-attachments/assets/afcb7b1c-5d8d-4a44-85fa-e753e8471be5)
+
 [OAuth 2.0 and OpenID in simple terms](https://medium.com/@iamprovidence/oauth-2-0-and-openid-in-simple-terms-7196089a1b29)
+
+**What Are Refresh Tokens and How to Use Them Securely?**
+
+**What Is A Token?**
+Tokens are pieces of data that carry just enough information to facilitate the process of determining a user's identity or authorizing a user to perform an action. All in all, tokens are artifacts that allow application systems to perform the authorization and authentication process.
+
+OAuth 2.0 is one of the most popular authorization frameworks out there. It is designed to allow an application to access resources hosted by other servers on behalf of a user. OAuth 2.0 uses Access Tokens and Refresh Tokens.
+
+[What Are Refresh Tokens and How to Use Them Securely](https://auth0.com/blog/refresh-tokens-what-are-they-and-when-to-use-them/)
+
+**What's an access token?**
+When a user logins in, the authorization server issues an access token, which is an artifact that client applications can use to make secure calls to an API server. 
+
+**What Is a Refresh Token?**
+As mentioned, for security purposes, access tokens may be valid for a short amount of time. Once they expire, client applications can use a refresh token to "refresh" the access token. That is, a refresh token is a credential artifact that lets a client application get new access tokens without having to ask the user to log in again.
 
 ### Two Factor Authentication
 Two-Factor Authentication (2FA) in ASP.NET Core Identity is a security process in which users provide two different authentication factors to verify themselves. This process is done to protect better both the user’s credentials and the resources the user can access. 2FA adds an additional layer of security to the authentication process, making it harder for attackers to access a person’s devices or online accounts because knowing the victim’s password alone is insufficient to pass the authentication check.
 
 [Two-Factor Authentication in ASP.NET Core Identity](https://dotnettutorials.net/lesson/two-factor-authentication-in-asp-net-core-identity/)
 
+![image](https://github.com/user-attachments/assets/77d81b73-eba8-4a1d-acc0-cbe6dacfe328)
+
 ### Role Based Authorization  
 
 [Role based Authorization in .NET Core: A Beginner’s Guide with Code Snippets](https://medium.com/@siva.veeravarapu/role-based-authorization-in-net-core-a-beginners-guide-with-code-snippets-b952e5b952f7)  
 Let’s create a custom authorization handler (RoleRequirementHandler.cs) to handle role-based authorization.
+
+![image](https://github.com/user-attachments/assets/5bbc5bcc-eaef-4dc2-b784-c311459a7e6d)
 
 ```csharp
 public class RoleRequirementHandler : AuthorizationHandler<RoleRequirement>
