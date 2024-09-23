@@ -219,7 +219,7 @@ I needed to make an authenticated cross-origin request to an ASP.NET Core Identi
 [Making authenticated cross-origin requests with ASP.NET Core Identity](https://andrewlock.net/making-authenticated-cross-origin-requests-with-aspnetcore-identity/)
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/cdc2c0f6-481a-4285-93e6-ae8c82808d75" width="600" height="450" />
+  <img src="https://github.com/user-attachments/assets/cdc2c0f6-481a-4285-93e6-ae8c82808d75" width="750" height="450" />
 </p>
 
 ## 3). How to handle Exception except try-Catch?
