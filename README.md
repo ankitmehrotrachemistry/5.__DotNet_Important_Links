@@ -1980,17 +1980,17 @@ c). Signature
 - ### Open Authentication (OAuth 2.0)
 Here are some things to know about OAuth:  
 **Authorization flow**  
-The process of obtaining an access token is called the authorization flow. 
+The process of obtaining an access token is called the authorization flow.  
 **Refresh token**  
-A refresh token is a token that can be used to get additional access tokens. It can be sent to the OAuth server to obtain new ones. 
+A refresh token is a token that can be used to get additional access tokens. It can be sent to the OAuth server to obtain new ones.   
 **OAuth flows**  
-OAuth flows are processes that support authorization and authentication. Some OAuth flows allow users to enter credentials directly into the app, while others support authentication without user involvement. 
+OAuth flows are processes that support authorization and authentication. Some OAuth flows allow users to enter credentials directly into the app, while others support authentication without user involvement.  
 **Client credentials**  
-OAuth has a standard flow for machine-to-machine communication called Client Credentials. 
+OAuth has a standard flow for machine-to-machine communication called Client Credentials.  
 **OAuth endpoints**  
-OAuth endpoints are URLs used to make OAuth authorization requests. Each OAuth flow defines which endpoints to use and what request data to provide. 
+OAuth endpoints are URLs used to make OAuth authorization requests. Each OAuth flow defines which endpoints to use and what request data to provide.  
 **Incremental authorization**  
-In the OAuth 2.0 protocol, an app requests authorization to access resources, which are identified by scopes.
+In the OAuth 2.0 protocol, an app requests authorization to access resources, which are identified by scopes. 
 
 **Rich client and modern app scenarios and RESTful web API access.**
 
