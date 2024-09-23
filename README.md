@@ -803,7 +803,7 @@ c). Signature
 [Implementing Authentication and Authorization in ASP.NET Core using JWT Tokens and refresh token with .NET 7](https://medium.com/@kefasogabi/implementing-authentication-and-authorization-in-asp-net-e831c04b4d38)  
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/957f5b97-c8c8-42ca-b12f-30fa6e39bc68" width="600" height="350" />
+  <img src="https://github.com/user-attachments/assets/957f5b97-c8c8-42ca-b12f-30fa6e39bc68" width="800" height="550" />
 </p>
 
 **Here is a basic overview of how JWT-based authentication works in a web application:**  
@@ -834,7 +834,7 @@ In the OAuth 2.0 protocol, an app requests authorization to access resources, wh
 [OAuth 2.0 authorization with Microsoft Entra ID](https://learn.microsoft.com/en-us/entra/architecture/auth-oauth2)
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/afcb7b1c-5d8d-4a44-85fa-e753e8471be5" width="600" height="350" />
+  <img src="https://github.com/user-attachments/assets/afcb7b1c-5d8d-4a44-85fa-e753e8471be5" width="800" height="600" />
 </p>
 
   **Rich client and modern app scenarios and RESTful web API access.**
@@ -923,7 +923,7 @@ Cross-site request forgery (CSRF) is an attack that tricks a user's browser into
 [Cross-site request forgery (CSRF)](https://portswigger.net/web-security/csrf)
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/4e1df98f-61a0-4a14-8d57-8f16e9865fc5" width="650" height="400" />
+  <img src="https://github.com/user-attachments/assets/4e1df98f-61a0-4a14-8d57-8f16e9865fc5" width="750" height="450" />
 </p>
 
 [How to secure legacy ASP.NET MVC against Cross-Site (CSRF) Attacks](https://www.red-gate.com/simple-talk/development/web/how-to-secure-legacy-asp-net-mvc-against-csrf-attacks/)
@@ -1607,7 +1607,7 @@ The Singleton pattern has several advantages over static classes.
 
 However the most important advantage, though, is that singletons can be handled polymorphic ally without forcing their users to assume that there is only one instance.
 
-## 24). REST Api. How to create REST API?
+## 24). What is REST API? How to create REST API?
 
 REST, or REpresentational State Transfer, is an architectural style for providing standards between computer systems on the web, making it easier for systems to communicate with each other. [How To Build a RESTful API with ASP.NET Core](https://medium.com/net-core/how-to-build-a-restful-api-with-asp-net-core-fb7dd8d3e5e3)
 
@@ -1921,7 +1921,9 @@ The cache-aside pattern is the most common caching strategy. Here's how it works
 - Fetch from source (if cache miss): If the data isn't in the cache, fetch it from the source.
 - Update the cache: Store the fetched data in the cache for subsequent requests.
 
-![image](https://github.com/user-attachments/assets/91026378-c5e1-4ec7-aa77-634eedca8d6e)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/91026378-c5e1-4ec7-aa77-634eedca8d6e" width="500" height="250" />
+</p>
 
 [Caching in ASP.NET Core: Improving Application Performance](https://www.milanjovanovic.tech/blog/caching-in-aspnetcore-improving-application-performance)
 
