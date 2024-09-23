@@ -863,6 +863,8 @@ Two-Factor Authentication (2FA) in ASP.NET Core Identity is a security process i
 
 ![image](https://github.com/user-attachments/assets/77d81b73-eba8-4a1d-acc0-cbe6dacfe328)
 
+[Two-Factor Authentication using Google Authenticator in asp.net mvc](http://www.dotnetawesome.com/2016/04/two-factor-authentication-in-aspnet-mvc.html)  
+
 - ### Role Based Authorization  
 
 [Role based Authorization in .NET Core: A Beginner’s Guide with Code Snippets](https://medium.com/@siva.veeravarapu/role-based-authorization-in-net-core-a-beginners-guide-with-code-snippets-b952e5b952f7)  
