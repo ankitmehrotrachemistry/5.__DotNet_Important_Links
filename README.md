@@ -10,12 +10,16 @@ A server responds to the requests made by clients.
 
 [Client-Server Architectural Pattern in C#](https://code-maze.com/csharp-client-server-architecture/)
 
-![image](https://github.com/user-attachments/assets/d3e11560-ebf7-4e30-b1cf-3d939a2fa94f)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/d3e11560-ebf7-4e30-b1cf-3d939a2fa94f" width="500" height="250" />
+</p>
 
 **How Client-Server Architecture Works?**
 It starts with a client initiating a request. This request could be a click on a webpage or a query for some specific data. This request transmits across a network and arrives at the server. There are communication protocols like HTTP, or FTP that regulate how the request is transmitted.
 
-![image](https://github.com/user-attachments/assets/70e6053b-9dbe-4c17-b530-cba10f2b8506)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/70e6053b-9dbe-4c17-b530-cba10f2b8506" width="500" height="250" />
+</p>
 
 Once the request reaches the server, the processing starts. Here, the server interprets the request and identifies the required action. Based on the exact nature of the request, the server takes appropriate action. This could be something like querying a database, executing some business logic, or retrieving files. In scenarios involving data, the server interacts with the database. This interaction typically includes executing SQL queries to perform CRUD operations.
 
@@ -215,7 +219,7 @@ I needed to make an authenticated cross-origin request to an ASP.NET Core Identi
 [Making authenticated cross-origin requests with ASP.NET Core Identity](https://andrewlock.net/making-authenticated-cross-origin-requests-with-aspnetcore-identity/)
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/cdc2c0f6-481a-4285-93e6-ae8c82808d75" width="400" height="250" />
+  <img src="https://github.com/user-attachments/assets/cdc2c0f6-481a-4285-93e6-ae8c82808d75" width="600" height="450" />
 </p>
 
 ## 3). How to handle Exception except try-Catch?
@@ -317,7 +321,7 @@ public void ConfigureServices(IServiceCollection services)
 Routing in ASP.NET Core Web API is a powerful feature that allows you to define how HTTP requests are mapped to your API endpoints. It allows you to define the endpoints of your API and handle requests efficiently.
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/a715b526-925d-42c9-a437-b069abab9763" width="300" height="250" />
+  <img src="https://github.com/user-attachments/assets/a715b526-925d-42c9-a437-b069abab9763" width="500" height="450" />
 </p>
 
 **What is Routing?**  
@@ -400,7 +404,7 @@ public class ProductsController : ControllerBase
 [.Net Core Middleware Explained](https://medium.com/@shubhadeepchat/net-core-middleware-explained-8c21bf646700)
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/6cca0303-5287-4c16-96a4-310f80dffa35" width="500" height="250" />
+  <img src="https://github.com/user-attachments/assets/6cca0303-5287-4c16-96a4-310f80dffa35" width="550" height="350" />
 </p>
 
 ## 6). Create Custom Middleware
@@ -722,6 +726,7 @@ public IEnumerable<Person> GetPersons()
 
 ## 11.3). DbContext, DbSet & DTOs
 
+### DbContext  
 The **DbContext** is simply the way for the developers to incorporate Entity Framework based data to the application. It allows you to make database connections inside an application model and allows the developer to link the model properties to the database table using a connection string.
 
 [DbContext](https://www.learnentityframeworkcore5.com/dbcontext)
@@ -736,9 +741,12 @@ The DbContext in Entity Framework Core consist of the following features and res
 - Querying
 - Validation
 
+### DbSet     
 In Entity Framework Core, the **DbSet** represents the set of entities. In a database, a group of similar entities is called an Entity Set. The DbSet is responsible for performing all the basic CRUD (Create, Read, Update and Delete) operations on each of the Entity.
 
 [DbSet](https://www.learnentityframeworkcore5.com/dbset)
+
+### DTO         
 
 **What Is a DTO?**  
 A DTO (Data Transfer Object) is an object that defines how data will be sent between applications.  
@@ -794,7 +802,9 @@ c). Signature
 
 [Implementing Authentication and Authorization in ASP.NET Core using JWT Tokens and refresh token with .NET 7](https://medium.com/@kefasogabi/implementing-authentication-and-authorization-in-asp-net-e831c04b4d38)  
 
-![image](https://github.com/user-attachments/assets/957f5b97-c8c8-42ca-b12f-30fa6e39bc68)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/957f5b97-c8c8-42ca-b12f-30fa6e39bc68" width="600" height="350" />
+</p>
 
 **Here is a basic overview of how JWT-based authentication works in a web application:**  
 **1. User Authentication:** When a user logs in, the server validates the provided credentials (username and password). If the credentials are valid, the server generates a JWT token containing claims such as user ID, roles, expiration time, etc.  
@@ -821,11 +831,13 @@ OAuth endpoints are URLs used to make OAuth authorization requests. Each OAuth f
 **Incremental authorization**  
 In the OAuth 2.0 protocol, an app requests authorization to access resources, which are identified by scopes. 
 
-**Rich client and modern app scenarios and RESTful web API access.**
-
 [OAuth 2.0 authorization with Microsoft Entra ID](https://learn.microsoft.com/en-us/entra/architecture/auth-oauth2)
 
-![image](https://github.com/user-attachments/assets/afcb7b1c-5d8d-4a44-85fa-e753e8471be5)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/afcb7b1c-5d8d-4a44-85fa-e753e8471be5" width="600" height="350" />
+</p>
+
+  **Rich client and modern app scenarios and RESTful web API access.**
 
 [OAuth 2.0 and OpenID in simple terms](https://medium.com/@iamprovidence/oauth-2-0-and-openid-in-simple-terms-7196089a1b29)
 
@@ -911,7 +923,7 @@ Cross-site request forgery (CSRF) is an attack that tricks a user's browser into
 [Cross-site request forgery (CSRF)](https://portswigger.net/web-security/csrf)
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/4e1df98f-61a0-4a14-8d57-8f16e9865fc5" width="500" height="250" />
+  <img src="https://github.com/user-attachments/assets/4e1df98f-61a0-4a14-8d57-8f16e9865fc5" width="650" height="400" />
 </p>
 
 [How to secure legacy ASP.NET MVC against Cross-Site (CSRF) Attacks](https://www.red-gate.com/simple-talk/development/web/how-to-secure-legacy-asp-net-mvc-against-csrf-attacks/)
@@ -1150,7 +1162,7 @@ The three parts of MVC are:
       Whatever data the Model has, the Controller passes that data to the View.  
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/91fdf570-51ef-497f-9a11-8e7fd13f4af5" width="500" height="350" />
+  <img src="https://github.com/user-attachments/assets/91fdf570-51ef-497f-9a11-8e7fd13f4af5" width="500" height="450" />
 </p>
 
 [The MVC Architecture](https://medium.com/@sadikarahmantanisha/the-mvc-architecture-97d47e071eb2)
