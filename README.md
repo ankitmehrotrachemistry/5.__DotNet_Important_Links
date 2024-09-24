@@ -2044,6 +2044,15 @@ For security, we used JWT tokens for player authentication, ensuring secure and 
 8). Run the MV Agent in Docker. Once the docker image is successfully created, run the following command to create the containers.   
 9). MongoDB for Database.   
 
+**New things in Interview**
+1). Maintaining Confluence Page for Proper Documentation  
+2). Design a Database for Multiplayer Online Games  
+3). The BackEnd of Milan contains the math and logic needed for a slot game or similar game of chance  
+4). The Milan BackEnd is comprised of a customizable slot engine and adapters to send and receive requests from app services and storage  
+5). The Backend component contains the business logic that processes incoming requests that the Service Adapter receives and generates an appropriate response  
+6). Math verification results and templates for settings are stored on MongoDB, through Milan.Storage.MongoDB storage  
+7). Implement Custom Middlewares on Agent Adapters Milan.Host now allows the different users to implement their own middlewares through the Agent Adapter project. Milan.Host uses customs middleware for the execution pipeline of a request  
+
 ## Architecture of a Multiplayer Game Backend:
     
 **Client-Server Model:** The client (game app) communicates with the server (backend) for operations like player registration, authentication, game state synchronization, and matchmaking. The server is responsible for managing game logic, player connections, and real-time communication.    
