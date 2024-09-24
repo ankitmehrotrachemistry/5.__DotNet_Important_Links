@@ -2044,7 +2044,7 @@ For security, we used JWT tokens for player authentication, ensuring secure and 
 8). Run the MV Agent in Docker. Once the docker image is successfully created, run the following command to create the containers.   
 9). MongoDB for Database.   
 
-**New things in Interview**
+**New things in Interview**  
 1). Maintaining Confluence Page for Proper Documentation  
 2). Design a Database for Multiplayer Online Games  
 3). The BackEnd of Milan contains the math and logic needed for a slot game or similar game of chance  
