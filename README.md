@@ -407,7 +407,51 @@ public class ProductsController : ControllerBase
   <img src="https://github.com/user-attachments/assets/6cca0303-5287-4c16-96a4-310f80dffa35" width="550" height="350" />
 </p>
 
-## 6). Create Custom Middleware
+## 6). Extension Methods. What are the use of extension method : Run(), Use() and Next()?
+
+Extension methods are a way to add new functionality to existing types without modifying their source code. They are static methods that can be called as if they are instance methods on the extended type. Extension methods are a powerful feature in C# that can help you write cleaner, more expressive code.  
+
+**Key Characteristics:**
+- Static Class: Extension methods must be defined in a static class.  
+- Static Method: The method itself must be static.  
+- First Parameter with this Keyword: The first parameter specifies the type being extended, and it must be preceded by the this keyword.  
+
+**Benefits of Extension Methods:**
+- Improved Readability and Maintainability: They help in writing fluent APIs and make code more readable.  
+- Encapsulation of Logic: You can encapsulate frequently used logic, which simplifies code maintenance.  
+- Flexibility: They allow you to "add" functionality to existing types, including those in third-party libraries or .NET's core libraries, without inheritance.  
+
+**Common Uses:**  
+- LINQ: Most LINQ operations are implemented as extension methods on IEnumerable<T> and IQueryable<T>.  
+- Utility Functions: Often used for string manipulations, date/time operations, and other utility functions.  
+
+[Mastering Extension Methods in C#](https://www.linkedin.com/pulse/mastering-extension-methods-c-pradeep-pandit-feawf/)
+
+In one of my .NET Core projects, I created an extension method for validating email addresses. 
+
+```csharp
+public static class StringExtensions
+{
+    public static bool IsValidEmail(this string email)
+    {
+        return Regex.IsMatch(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$");
+    }
+}
+```
+
+**Coming to the Extension Methods - Use(), Next(), Run() and Map()**
+
+In ASP.NET Core, Middleware will be configured using extension methods called Run(), Use() and Map().
+
+- **Use()** extension method in ASP.NET Core is used to add/insert new middleware component to HTTP Request Pipeline.
+- **Next()** extension method is used to call the next middleware component in HTTP Request Pipeline.
+- **Run()** extension method in  ASP.NET Core is used to end the execution of the pipeline, it means that Run() extension method is the last middleware and which will not call the next middleware in HTTP Request Pipeline. Any other middleware added after the Run() method will not be called and ignored.
+- **Map()** extension method in ASP.NET Core is used to map the middleware to a specific URL.
+
+[Run, Use, and Next Method in ASP.NET Core](https://dotnettutorials.net/lesson/run-next-use-methods-in-asp-net-core/#:~:text=The%20Run%20method%20in%20ASP,in%20the%20request%20processing%20pipeline.)
+
+
+## 7). Create Custom Middleware
 
 C# Code Example: Custom Logging Middleware 📝
 
@@ -447,7 +491,7 @@ public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 
 [Custom Middlewares With Dependency Injection In .NET Framework](https://medium.com/@ofirbarak96/custom-middlewares-with-dependency-injection-in-net-framework-b18f5b935e4d)
 
-## 7). OWIN Middleware
+## 8). OWIN Middleware
 
 - OWIN defines a standard interface between .NET web servers and web applications.
 - The goal of the OWIN interface is to decouple server and application.
@@ -489,7 +533,7 @@ The above OWIN specification describes the five parts (or roles) of the applicat
 
 [.Net Core Using Middleware to log http request/responses](https://theochiu2010.medium.com/net-core-using-middleware-to-log-http-request-responses-f60364e2880)
 
-## 8). Dependency Injection
+## 9). Dependency Injection, Depenedency Inversion
 
 Dependency Injection is the design pattern that helps us to create an application which loosely coupled. The main advantage of DI (Dependency Injection) is our application is loosely coupled and has provided greater maintainability, testability, and also re-usability. 
 ASP.NET Core is designed from scratch to support Dependency Injection. ASP.NET Core injects objects of dependency classes through constructor or method by using built-in IoC container.  
@@ -525,7 +569,7 @@ public void ConfigureServices(IServiceCollection services)
 
 [ASP.NET CORE Tutorial For Beginners 31 - Dependency Injection (DI) in Hindi](https://www.youtube.com/watch?v=3nnESO6I3iE)
 
-## 9). AddScoped, AddTransient and AddSingleton
+## 10). AddScoped, AddTransient and AddSingleton
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/9d3bd981-1c65-4eba-a4a9-e947a889a50a" width="400" height="250" />
@@ -577,50 +621,315 @@ services.AddScoped<IUserService, UserIdentityService>();
 
 [Navigating Dependency Lifetimes: A Practical Comparison of AddTransient, AddScoped, and AddSingleton in .NET](https://nshyamprasad.medium.com/navigating-dependency-lifetimes-a-practical-comparison-of-addtransient-addscoped-and-8b825a465dc5)
 
-## 10). Extension Methods. What are the use of extension method : Run(), Use() and Next()?
+## 11). How to create Controllers? What are Action Results and it's types? What are Action and Non- Action Methods and in MVC? 
 
-Extension methods are a way to add new functionality to existing types without modifying their source code. They are static methods that can be called as if they are instance methods on the extended type. Extension methods are a powerful feature in C# that can help you write cleaner, more expressive code.  
+**What is the role of the Controller in ASP.NET MVC?**
 
-**Key Characteristics:**
-- Static Class: Extension methods must be defined in a static class.  
-- Static Method: The method itself must be static.  
-- First Parameter with this Keyword: The first parameter specifies the type being extended, and it must be preceded by the this keyword.  
+- The controller is the interface between the model and view components. 
+- It manages and responds to the input and interaction from a user. 
+- Controller renders the suitable view to the client, executes the relevant action method, obtains data from the model and fills the view, gets data from the view and updates the model.
 
-**Benefits of Extension Methods:**
-- Improved Readability and Maintainability: They help in writing fluent APIs and make code more readable.  
-- Encapsulation of Logic: You can encapsulate frequently used logic, which simplifies code maintenance.  
-- Flexibility: They allow you to "add" functionality to existing types, including those in third-party libraries or .NET's core libraries, without inheritance.  
+As an example, the Customer controller manages all the interactions and inputs received from the Customer View and updates the database by using the Customer model. The Customer controller is also utilized for viewing the Customer-specific data.
 
-**Common Uses:**  
-- LINQ: Most LINQ operations are implemented as extension methods on IEnumerable<T> and IQueryable<T>.  
-- Utility Functions: Often used for string manipulations, date/time operations, and other utility functions.  
+![image](https://github.com/user-attachments/assets/a7c9ee7a-f685-445f-a6c0-01b61fbbcf63)
 
-[Mastering Extension Methods in C#](https://www.linkedin.com/pulse/mastering-extension-methods-c-pradeep-pandit-feawf/)
+Different types of action results returned by action methods in the MVC controller. In the MVC Controller file you have many action methods. Each action method can return different return types of results lik e contentresult,javascript,json or view.  
 
-In one of my .NET Core projects, I created an extension method for validating email addresses. 
+[Basic return types of ActionResults in ASP.NET MVC](http://www.usmtechworld.com/actionreturntypes)  
+
+Basic return types of action results in ASP.NET MVC are :-  
+- **ViewResult -** If you want to return a view in an action method , you should use View as the return type of that method.  
+- **PartialViewResult -** If you want to return partialview in action method,you should use partialviewresult as return type of that method.  
+- **Contentresult -** If you want to return your content to the view then you should use Content as the return type of the action method.  
+- **Emptyresult -** This emptyresult returns nothing in the view page.  
+- **Fileresult -** If you want to return a file to the view then you should use File as the return type of the action method.  
+- **Json result -** If you want to return JSON data to the view then you should use JSON as the return type of the action method.  
+- **Javascript result -** If you want to return javascript to the view then you should use JavaScript as the return type of the action method.  
+
+![image](https://github.com/user-attachments/assets/3f833388-c2b4-4882-a3ea-5b2407febd66)
+
+**Content negotiation** is the process of selecting the best resource for a response when multiple resource representations are available. Content negotiation is an HTTP feature. Examples are - IActionResult. [Content Negotiation in Web API](https://code-maze.com/content-negotiation-web-api/)
+
+[Controller Action Return Types in ASP.NET Core Web API](https://dotnettutorials.net/lesson/controller-action-return-types-core-web-api/)
+
+The differences between Actions and Non-Actions methods:
+
+**1). Action Methods:**
+Action methods are responsible for handling HTTP requests and returning HTTP responses. They are the methods that perform specific actions in response to user requests.
+
+These methods are typically associated with URLs and are used to execute specific functionality based on the request type (e.g., GET, POST, PUT, DELETE).
+
+Action methods are public and typically return an ActionResult or one of its derived types (e.g., ViewResult, JsonResult, RedirectToActionResult) to determine the response to send back to the client.
+
+Example of an action method in a controller:
 
 ```csharp
-public static class StringExtensions
+public ActionResult Index()
 {
-    public static bool IsValidEmail(this string email)
+    // Code to handle a GET request and return a view
+    return View();
+}
+```
+
+**2. Non-Action Methods:**
+
+Non-action methods are regular methods in a controller that are not intended to be used as entry points for handling HTTP requests. They are auxiliary methods used to factor out common functionality or logic to be shared among action methods.
+
+Non-action methods are typically marked with the [NonAction] attribute to explicitly indicate that they should not be invoked as actions.
+
+These methods cannot be directly accessed via a URL, and they do not return ActionResults.
+
+```csharp
+[NonAction]
+public void UtilityMethod()
+{
+    // Code for a utility method that should not be invoked as an action
+}
+```
+
+[Understanding Action and Non- Action methods, Types of Action Results in ASP.NET Core.](https://medium.com/@ananthomprakash/understanding-action-and-non-action-methods-types-of-action-results-in-asp-net-core-ea201ffcfa96)
+
+**NOTE :**
+
+Action Attribute and Action Method are not the same thing, and they are not synonyms. Both have different roles:
+
+- Action Attribute: This is a specific attribute that controls the behavior of methods. For example, [HttpGet], [HttpPost], [ActionName("customName")], etc. It defines how a method should be treated (like which HTTP verb it should accept).
+
+```csharp
+[HttpPost]
+public IActionResult SubmitForm()
+{
+    // Code to handle form submission
+}
+```
+
+- Action Method: This is a method defined inside a controller that handles HTTP requests from the client. It is the method that responds to web requests.
+
+```csharp
+public IActionResult Index()
+{
+    return View();
+}
+```
+
+**Summary:**
+- Action Attribute: Modifies the behavior of a method (e.g., [HttpPost], [NonAction]).  
+- Action Method: The method that handles HTTP requests (e.g., Index(), SubmitForm()).  
+So, these are two different things and not synonyms.
+
+## 12). What are Views? What are Partial Views? What are Strongly types Views? ViewData , ViewBag and TempData
+
+**What are Views?**  
+
+In the MVC pattern, the view component contains the logic to represent the model data as a user interface with which the end-user can interact. Typically, it creates the user interface with the data from the model provided to it by the controller. So you can consider the Views in ASP.NET MVC as HTML templates embedded with Razor syntax which generates HTML content that sends to the client.
+
+[ASP.NET MVC Views](https://dotnettutorials.net/lesson/asp-dot-net-mvc-views/)
+
+**What are Partial Views?**   
+
+- The Partial View Result returns the result to the Partial view page. It is one of the views that we can call inside the Normal view page.  
+- One has to create a Partial view inside the shared folder or else we are unable to succeed in the Partial View. This class is also derived from Action Result.  
+
+[An in-depth guide on View Result and Partial View Result in MVC](https://www.ifourtechnolab.com/blog/an-in-depth-guide-on-view-result-and-partial-view-result-in-mvc)
+
+```csharp
+public PartialViewResult Index()  
+{  
+return PartialView("_PartialView");  
+}
+```
+
+A partial view is a reusable chunk of CSHTML code. In this case, I will use the partial view to control my menu across two distinct Layout pages.  
+▶️ [use partial views in asp.net mvc 6](https://www.youtube.com/watch?v=sFCdDAkxPcM)
+
+**What are Strongly types Views?**    
+
+In ASP.NET Core MVC, there are 3 ways to pass data from a controller to a view 
+- Using a strongly typed model object. This is also called Strongly typed view.
+- Using ViewData
+- Using ViewBag
+
+[Strongly Typed View in ASP.NET Core MVC](https://csharp-video-tutorials.blogspot.com/2019/03/strongly-typed-view-in-aspnet-core-mvc.html)
+
+The preferred approach to pass data from a controller to a view is by using a strongly typed view. To create a strongly typed view, in the controller action method, pass the model object to the View() helper method. Notice, in the example below, we are passing the Employee model object to the View() method.
+
+```csharp
+public ViewResult Details()
+{
+    Employee model = _employeeRepository.GetEmployee(1);
+
+    ViewBag.PageTitle = "Employee Details";
+
+    return View(model);
+}
+```
+
+**There are two approaches to passing a weakly typed data into the views:**
+- ViewData
+- ViewBag
+
+**1). ViewData**
+
+ViewData maintains data when you move from controller to view. It is also a dictionary object and derived from ViewDataDictionary. As Data is stored as Object in ViewData, while retrieving, the data it needs to be TypeCasted to its original type as the datas stored as objects and it also requires NULL checks while retrieving.
+
+```csharp
+ViewData[“Name"] = “CodingSikho";
+```
+
+ViewData is a dictionary object and we can get/set values using a key. ViewData exposes an instance of the ViewDataDictionary class.
+
+Let’s create a controller action method and set a value for UserId inside ViewData:
+
+```csharp
+public class ViewDataController : Controller
+{
+    public IActionResult Index()
     {
-        return Regex.IsMatch(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$");
+        ViewData["UserId"] = 101;
+        return View();
     }
 }
 ```
 
-**Coming to the Extension Methods - Use(), Next(), Run() and Map()**
+Now let’s try to access the userId value inside the View:
 
-In ASP.NET Core, Middleware will be configured using extension methods called Run(), Use() and Map().
+```html
+@{
+    ViewData["Title"] = "Index";
+    var userId = ViewData["UserId"]?.ToString();
+}
+<h1>ViewData</h1>
+User Id : @userId
+```
 
-- **Use()** extension method in ASP.NET Core is used to add/insert new middleware component to HTTP Request Pipeline.
-- **Next()** extension method is used to call the next middleware component in HTTP Request Pipeline.
-- **Run()** extension method in  ASP.NET Core is used to end the execution of the pipeline, it means that Run() extension method is the last middleware and which will not call the next middleware in HTTP Request Pipeline. Any other middleware added after the Run() method will not be called and ignored.
-- **Map()** extension method in ASP.NET Core is used to map the middleware to a specific URL.
+Then let’s run the application and navigate to /viewdata:
 
-[Run, Use, and Next Method in ASP.NET Core](https://dotnettutorials.net/lesson/run-next-use-methods-in-asp-net-core/#:~:text=The%20Run%20method%20in%20ASP,in%20the%20request%20processing%20pipeline.)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/843ec7b1-e81e-4bd2-a1f7-0cf845e304e8" width="500" height="250" />
+</p>
 
-## 11.1). Entity Framework Core
+We can see the UserId value is read from ViewData and displayed on the page.
+
+**2). ViewBag** 
+
+The ViewBag is a dynamic type property of ControllerBase class which is the base class of all the controllers. Castings not required when you use ViewBag.  
+ViewBag only transfers data from controller to view, not visa-versa. ViewBag values will be null if redirection occurs.  
+ViewBag support any number of properties or values. If same value found then it will only consider last value assigned to the property.
+
+```csharp
+ViewBag.Name = “Coding Sikho";
+```
+ViewBag is similar to ViewData but it is a dynamic object and we can add data into it without converting to a strongly typed object. In other words, ViewBag is just a dynamic wrapper around the ViewData.
+
+Let’s add a controller action method to set a few values in ViewBag:
+
+```csharp
+public class ViewBagController : Controller
+{
+    public IActionResult Index()
+    {
+        ViewBag.UserId = 101;
+        ViewBag.Name = "John";
+        ViewBag.Age = 31;
+        return View();
+    }
+}
+```
+Then let’s access it from the View and display the values:
+
+```csharp
+{
+    ViewData["Title"] = "Index";
+    var userId = ViewBag.UserId;
+    var name = ViewBag.Name;
+    var age = ViewBag.Age;
+}
+<h1>ViewBag</h1>
+User Id : @userId<br />
+Name : @name<br /&gt;
+Age : @age<br />
+
+```
+Now let’s run the application and navigate to /viewbag:
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/01e5e09b-ae14-418b-b1e4-008e7c2ede5f" width="500" height="200" />
+</p>
+
+**3). TempData**
+
+TempData is another way to store temporary data. It is meant to be a short-lived, single-use store for data between requests. It uses session state behind the scenes.
+
+```csharp
+public IActionResult Index()
+{
+    TempData["Message"] = "You successfully registered!";
+    return RedirectToAction("Welcome");
+}
+
+public IActionResult Welcome()
+{
+    var message = TempData["Message"];
+    // ...
+}
+```
+TempData values are retained for a single request, so they are useful for scenarios such as redirecting between actions (Post-Redirect-Get pattern).
+
+TempData internally uses session variable and stays for a subsequent HTTP Request. This means it maintains data when you move one controller to another controller or oneaction to another action. As this is a dictionary object null checking and typecastingis required while using it.
+
+```csharp
+TempData["Name"] = “Coding Sikho";
+```
+
+TempData gets destroyed immediately after it's used (once value is read from tempdata) in subsequent HTTP request, so no explicit action required, if you want preserve value in the subsequent request after using need to call **Keep method or Peek method**.
+
+[ASP.NET MVC: Models, ViewData, ViewBag, and TempData Explained](https://www.linkedin.com/pulse/aspnet-mvc-models-viewdata-viewbag-tempdata-explained-ervis-trupja-ytn7f/)
+
+**Keep and Peek**
+The keep() and peek() method is used to read the data without deletion of the current read object.
+You can use Keep() when prevent/hold the value depends on additional logic.
+You can use Peek() when you always want to hold/prevent the value for another request.
+
+```csharp
+TempData["Name"] = "Coding Sikho"
+TempData.Keep("Name");
+TempData.Peek("Name");
+```
+
+[State Management in ASP.NET Core MVC](https://code-maze.com/state-management-in-asp-net-core-mvc/)
+
+▶️ [TempData, ViewData, ViewBag in Asp.Net MVC | MVC for beginners](https://www.youtube.com/watch?v=lr7YTjpRF5g)
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/f7b31ffa-1a68-4a79-84bf-06f3ab51624f" width="500" height="250" />
+</p>
+
+## 13). Filters and it's type
+
+- Web API includes filters to add extra logic before or after the action method executes. Filters can be used to provide cross-cutting features such as logging, exception handling, performance measurement, authentication and authorization.
+- Filters are actually attributes that can be applied on the Web API controller or one or more action methods.
+
+![image](https://github.com/user-attachments/assets/adb92003-1d8b-4832-ac7c-d0ad4e8fb09d)
+
+- Sometimes we want to execute some logic either before the execution of the action method or after the execution. We can use Action Filter for such a scenario.
+- Filters define the logic which is executed before or after the execution of the action method.
+- Action Filters are attributes which we can apply to the action methods.
+
+  Following are the MVC action filter types:  
+  **a). Authorization filter (implements IAuthorizationFilter) :** Authorization filters are used to implement authentication and authorization for controller actions. For example, the 
+Authorize filter is an example of an Authorization filter.  
+  **b). Action filter  (implements IActionFilter) :** Action filters contain logic that is executed before and after a controller action executes. You can use an action filter, for instance, to modify the view data that a controller action returns.  
+  **c). Result filter  (implements IResultFilter) :** Result filters contain logic that is executed before and after a view result is executed. For example, you might want to modify a view result right before the view is rendered to the browser.  
+  **d). Exception filter  (implementsIExceptionFilter attribute) :** Exception filters are the last type of filter to run. You can use an exception filter to handle errors raised by either your controller actions or controller action results. You also can use exception filters to log errors.  
+
+![image](https://github.com/user-attachments/assets/b3776787-ab79-4e20-bde5-b0a5f652f3c9)
+
+[Action Filters in MVC [Types of Filters with Examples]](https://www.upgrad.com/blog/action-filters-in-mvc/)
+
+- Action filters are a type of filter in ASP.NET Core that are used to inject custom logic before or after the execution of a controller action method.  
+[Understanding Action Filters in ASP.NET Core](https://medium.com/@kefasogabi/understanding-action-filters-in-asp-net-core-a-comprehensive-guide-with-code-samples-ec1f1f2af425)
+
+## 14.1). Entity Framework Core
 
 In Entity Framework, the model is prepared according to the requirement of the user. It depends upon the number of classes and categories that will be embedded into the database. 
 Entity Framework is a tool we use to access the database. EF is an Object Relational Mapper (ORM) we use to map the objects of our applications with the Relational Data.  
@@ -670,7 +979,7 @@ In a nutshell, Entity Framework Core is a robust, developer-friendly platform th
 
 ▶️ [Complete 3 Hour ASP NET 6.0 and Entity Framework Core Course!](https://www.youtube.com/watch?v=7d2UMAIgOLQ&list=PLwhVruPHD9rxZ9U5K6vqUFkfrjaRhwEsV&index=12)
 
-## 11.2). DataBase First Approach and CodeFirst Approach
+## 14.2). DataBase First Approach and CodeFirst Approach
 
 Entity Framework is an open-source object-relational mapping framework for ADO .NET, which is a data access technology, this means that you can use this technology to access data in the database.  
 
@@ -724,7 +1033,7 @@ public IEnumerable<Person> GetPersons()
 
 [Code First Approach vs. Database First Approach](https://medium.com/codex/code-first-approach-vs-database-first-approach-a3830c0cc9b6)
 
-## 11.3). DbContext, DbSet & DTOs
+## 14.3). DbContext, DbSet & DTOs
 
 ### DbContext  
 The **DbContext** is simply the way for the developers to incorporate Entity Framework based data to the application. It allows you to make database connections inside an application model and allows the developer to link the model properties to the database table using a connection string.
@@ -761,14 +1070,14 @@ The use of DTOs is very common in web development with ASP.NET Core as they prov
 
 [DTO (Data Transfer Object)](https://www.telerik.com/blogs/dotnet-basics-dto-data-transfer-object)
 
-## 11.4). LINQ
+## 14.4). LINQ
 Language-Integrated Query(LINQ) was introduced in C# 3.0 & .NET Framework 3.5
 
 The LINQ Tuotrial can be best found at : [LINQ Tutorial](https://www.javatpoint.com/linq)
 
 For LINQ Github ReadMe Code, refer my this seperate Github ReadMe Repo : [LINQ Tutorial](https://github.com/ankitmehrotrachemistry/1.__C_Sharp_Concepts_TopicWise)
 
-## 11.5). Migrations, Seeding Data , Nullable and Entity States
+## 14.5). Migrations, Seeding Data , Nullable and Entity States
 
 **Migrations in Entity Framework Core**  
 Migration is a way to keep the database schema in sync with the EF Core model by preserving data.
@@ -790,7 +1099,7 @@ The Entity Lifecycle in Entity Framework describes the process in which an Entit
 
 - [Entity States in Entity Framework](https://dotnettutorials.net/lesson/entity-state-in-entity-framework/)
 
-## 12). JWT Authentication + Two Factor Authentication and Role Based Authorization
+## 15). JWT Authentication and OAuth 2.0
 
 - ### JWT Authentication
 One of the key aspects of building web applications is implementing user authentication and authorization. We can implement authentication and authorization using JSON Web Tokens (JWT) in ASP.NET Core, along with a refresh token mechanism to extend the validity of the JWT.
@@ -1128,31 +1437,6 @@ Prefer .NET Framework for Server Applications when:
 - Applications are already run on .NET Framework
 - Applications that require technologies such as workflow, webforms, or WCF may not be compatible with .NET Core
 
-## 18). Filters and it's type
-
-- Web API includes filters to add extra logic before or after the action method executes. Filters can be used to provide cross-cutting features such as logging, exception handling, performance measurement, authentication and authorization.
-- Filters are actually attributes that can be applied on the Web API controller or one or more action methods.
-
-![image](https://github.com/user-attachments/assets/adb92003-1d8b-4832-ac7c-d0ad4e8fb09d)
-
-- Sometimes we want to execute some logic either before the execution of the action method or after the execution. We can use Action Filter for such a scenario.
-- Filters define the logic which is executed before or after the execution of the action method.
-- Action Filters are attributes which we can apply to the action methods.
-
-  Following are the MVC action filter types:  
-  **a). Authorization filter (implements IAuthorizationFilter) :** Authorization filters are used to implement authentication and authorization for controller actions. For example, the 
-Authorize filter is an example of an Authorization filter.  
-  **b). Action filter  (implements IActionFilter) :** Action filters contain logic that is executed before and after a controller action executes. You can use an action filter, for instance, to modify the view data that a controller action returns.  
-  **c). Result filter  (implements IResultFilter) :** Result filters contain logic that is executed before and after a view result is executed. For example, you might want to modify a view result right before the view is rendered to the browser.  
-  **d). Exception filter  (implementsIExceptionFilter attribute) :** Exception filters are the last type of filter to run. You can use an exception filter to handle errors raised by either your controller actions or controller action results. You also can use exception filters to log errors.  
-
-![image](https://github.com/user-attachments/assets/b3776787-ab79-4e20-bde5-b0a5f652f3c9)
-
-[Action Filters in MVC [Types of Filters with Examples]](https://www.upgrad.com/blog/action-filters-in-mvc/)
-
-- Action filters are a type of filter in ASP.NET Core that are used to inject custom logic before or after the execution of a controller action method.  
-[Understanding Action Filters in ASP.NET Core](https://medium.com/@kefasogabi/understanding-action-filters-in-asp-net-core-a-comprehensive-guide-with-code-samples-ec1f1f2af425)
-
 ## 19). What is MVC Architecture? Explain Life cycle of MVC. 
 
 **MVC (Model-View-Controller)** separates the logic of the application from the display. MVC, with its ‘separation of concerns principle, not only creates a solid framework for web applications but also ensures that different aspects of the application are neatly organized, simplifying future scalability.  
@@ -1186,289 +1470,6 @@ This is separate from the request life cycle, which is the sequence of events or
 [ASP.NET MVC Life Cycle](https://www.geeksforgeeks.org/asp-net-mvc-life-cycle/)
 
 ![image](https://github.com/user-attachments/assets/a567ae94-e693-43c1-a294-ff5a380a17d6)
-
-## 20). How to create Controllers? What are Action Results and it's types? What are Action and Non- Action Methods and in MVC? 
-
-**What is the role of the Controller in ASP.NET MVC?**
-
-- The controller is the interface between the model and view components. 
-- It manages and responds to the input and interaction from a user. 
-- Controller renders the suitable view to the client, executes the relevant action method, obtains data from the model and fills the view, gets data from the view and updates the model.
-
-As an example, the Customer controller manages all the interactions and inputs received from the Customer View and updates the database by using the Customer model. The Customer controller is also utilized for viewing the Customer-specific data.
-
-![image](https://github.com/user-attachments/assets/a7c9ee7a-f685-445f-a6c0-01b61fbbcf63)
-
-Different types of action results returned by action methods in the MVC controller. In the MVC Controller file you have many action methods. Each action method can return different return types of results lik e contentresult,javascript,json or view.  
-
-[Basic return types of ActionResults in ASP.NET MVC](http://www.usmtechworld.com/actionreturntypes)  
-
-Basic return types of action results in ASP.NET MVC are :-  
-- **ViewResult -** If you want to return a view in an action method , you should use View as the return type of that method.  
-- **PartialViewResult -** If you want to return partialview in action method,you should use partialviewresult as return type of that method.  
-- **Contentresult -** If you want to return your content to the view then you should use Content as the return type of the action method.  
-- **Emptyresult -** This emptyresult returns nothing in the view page.  
-- **Fileresult -** If you want to return a file to the view then you should use File as the return type of the action method.  
-- **Json result -** If you want to return JSON data to the view then you should use JSON as the return type of the action method.  
-- **Javascript result -** If you want to return javascript to the view then you should use JavaScript as the return type of the action method.  
-
-![image](https://github.com/user-attachments/assets/3f833388-c2b4-4882-a3ea-5b2407febd66)
-
-**Content negotiation** is the process of selecting the best resource for a response when multiple resource representations are available. Content negotiation is an HTTP feature. Examples are - IActionResult. [Content Negotiation in Web API](https://code-maze.com/content-negotiation-web-api/)
-
-[Controller Action Return Types in ASP.NET Core Web API](https://dotnettutorials.net/lesson/controller-action-return-types-core-web-api/)
-
-The differences between Actions and Non-Actions methods:
-
-**1). Action Methods:**
-Action methods are responsible for handling HTTP requests and returning HTTP responses. They are the methods that perform specific actions in response to user requests.
-
-These methods are typically associated with URLs and are used to execute specific functionality based on the request type (e.g., GET, POST, PUT, DELETE).
-
-Action methods are public and typically return an ActionResult or one of its derived types (e.g., ViewResult, JsonResult, RedirectToActionResult) to determine the response to send back to the client.
-
-Example of an action method in a controller:
-
-```csharp
-public ActionResult Index()
-{
-    // Code to handle a GET request and return a view
-    return View();
-}
-```
-
-**2. Non-Action Methods:**
-
-Non-action methods are regular methods in a controller that are not intended to be used as entry points for handling HTTP requests. They are auxiliary methods used to factor out common functionality or logic to be shared among action methods.
-
-Non-action methods are typically marked with the [NonAction] attribute to explicitly indicate that they should not be invoked as actions.
-
-These methods cannot be directly accessed via a URL, and they do not return ActionResults.
-
-```csharp
-[NonAction]
-public void UtilityMethod()
-{
-    // Code for a utility method that should not be invoked as an action
-}
-```
-
-[Understanding Action and Non- Action methods, Types of Action Results in ASP.NET Core.](https://medium.com/@ananthomprakash/understanding-action-and-non-action-methods-types-of-action-results-in-asp-net-core-ea201ffcfa96)
-
-**NOTE :**
-
-Action Attribute and Action Method are not the same thing, and they are not synonyms. Both have different roles:
-
-- Action Attribute: This is a specific attribute that controls the behavior of methods. For example, [HttpGet], [HttpPost], [ActionName("customName")], etc. It defines how a method should be treated (like which HTTP verb it should accept).
-
-```csharp
-[HttpPost]
-public IActionResult SubmitForm()
-{
-    // Code to handle form submission
-}
-```
-
-- Action Method: This is a method defined inside a controller that handles HTTP requests from the client. It is the method that responds to web requests.
-
-```csharp
-public IActionResult Index()
-{
-    return View();
-}
-```
-
-**Summary:**
-- Action Attribute: Modifies the behavior of a method (e.g., [HttpPost], [NonAction]).  
-- Action Method: The method that handles HTTP requests (e.g., Index(), SubmitForm()).  
-So, these are two different things and not synonyms.
-
-## 21). What are Views? What are Partial Views? What are Strongly types Views? ViewData , ViewBag and TempData
-
-**What are Views?**  
-
-In the MVC pattern, the view component contains the logic to represent the model data as a user interface with which the end-user can interact. Typically, it creates the user interface with the data from the model provided to it by the controller. So you can consider the Views in ASP.NET MVC as HTML templates embedded with Razor syntax which generates HTML content that sends to the client.
-
-[ASP.NET MVC Views](https://dotnettutorials.net/lesson/asp-dot-net-mvc-views/)
-
-**What are Partial Views?**   
-
-- The Partial View Result returns the result to the Partial view page. It is one of the views that we can call inside the Normal view page.  
-- One has to create a Partial view inside the shared folder or else we are unable to succeed in the Partial View. This class is also derived from Action Result.  
-
-[An in-depth guide on View Result and Partial View Result in MVC](https://www.ifourtechnolab.com/blog/an-in-depth-guide-on-view-result-and-partial-view-result-in-mvc)
-
-```csharp
-public PartialViewResult Index()  
-{  
-return PartialView("_PartialView");  
-}
-```
-
-A partial view is a reusable chunk of CSHTML code. In this case, I will use the partial view to control my menu across two distinct Layout pages.  
-▶️ [use partial views in asp.net mvc 6](https://www.youtube.com/watch?v=sFCdDAkxPcM)
-
-**What are Strongly types Views?**    
-
-In ASP.NET Core MVC, there are 3 ways to pass data from a controller to a view 
-- Using a strongly typed model object. This is also called Strongly typed view.
-- Using ViewData
-- Using ViewBag
-
-[Strongly Typed View in ASP.NET Core MVC](https://csharp-video-tutorials.blogspot.com/2019/03/strongly-typed-view-in-aspnet-core-mvc.html)
-
-The preferred approach to pass data from a controller to a view is by using a strongly typed view. To create a strongly typed view, in the controller action method, pass the model object to the View() helper method. Notice, in the example below, we are passing the Employee model object to the View() method.
-
-```csharp
-public ViewResult Details()
-{
-    Employee model = _employeeRepository.GetEmployee(1);
-
-    ViewBag.PageTitle = "Employee Details";
-
-    return View(model);
-}
-```
-
-**There are two approaches to passing a weakly typed data into the views:**
-- ViewData
-- ViewBag
-
-**1). ViewData**
-
-ViewData maintains data when you move from controller to view. It is also a dictionary object and derived from ViewDataDictionary. As Data is stored as Object in ViewData, while retrieving, the data it needs to be TypeCasted to its original type as the datas stored as objects and it also requires NULL checks while retrieving.
-
-```csharp
-ViewData[“Name"] = “CodingSikho";
-```
-
-ViewData is a dictionary object and we can get/set values using a key. ViewData exposes an instance of the ViewDataDictionary class.
-
-Let’s create a controller action method and set a value for UserId inside ViewData:
-
-```csharp
-public class ViewDataController : Controller
-{
-    public IActionResult Index()
-    {
-        ViewData["UserId"] = 101;
-        return View();
-    }
-}
-```
-
-Now let’s try to access the userId value inside the View:
-
-```html
-@{
-    ViewData["Title"] = "Index";
-    var userId = ViewData["UserId"]?.ToString();
-}
-<h1>ViewData</h1>
-User Id : @userId
-```
-
-Then let’s run the application and navigate to /viewdata:
-
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/843ec7b1-e81e-4bd2-a1f7-0cf845e304e8" width="500" height="250" />
-</p>
-
-We can see the UserId value is read from ViewData and displayed on the page.
-
-**2). ViewBag** 
-
-The ViewBag is a dynamic type property of ControllerBase class which is the base class of all the controllers. Castings not required when you use ViewBag.  
-ViewBag only transfers data from controller to view, not visa-versa. ViewBag values will be null if redirection occurs.  
-ViewBag support any number of properties or values. If same value found then it will only consider last value assigned to the property.
-
-```csharp
-ViewBag.Name = “Coding Sikho";
-```
-ViewBag is similar to ViewData but it is a dynamic object and we can add data into it without converting to a strongly typed object. In other words, ViewBag is just a dynamic wrapper around the ViewData.
-
-Let’s add a controller action method to set a few values in ViewBag:
-
-```csharp
-public class ViewBagController : Controller
-{
-    public IActionResult Index()
-    {
-        ViewBag.UserId = 101;
-        ViewBag.Name = "John";
-        ViewBag.Age = 31;
-        return View();
-    }
-}
-```
-Then let’s access it from the View and display the values:
-
-```csharp
-{
-    ViewData["Title"] = "Index";
-    var userId = ViewBag.UserId;
-    var name = ViewBag.Name;
-    var age = ViewBag.Age;
-}
-<h1>ViewBag</h1>
-User Id : @userId<br />
-Name : @name<br /&gt;
-Age : @age<br />
-
-```
-Now let’s run the application and navigate to /viewbag:
-
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/01e5e09b-ae14-418b-b1e4-008e7c2ede5f" width="500" height="200" />
-</p>
-
-**3). TempData**
-
-TempData is another way to store temporary data. It is meant to be a short-lived, single-use store for data between requests. It uses session state behind the scenes.
-
-```csharp
-public IActionResult Index()
-{
-    TempData["Message"] = "You successfully registered!";
-    return RedirectToAction("Welcome");
-}
-
-public IActionResult Welcome()
-{
-    var message = TempData["Message"];
-    // ...
-}
-```
-TempData values are retained for a single request, so they are useful for scenarios such as redirecting between actions (Post-Redirect-Get pattern).
-
-TempData internally uses session variable and stays for a subsequent HTTP Request. This means it maintains data when you move one controller to another controller or oneaction to another action. As this is a dictionary object null checking and typecastingis required while using it.
-
-```csharp
-TempData["Name"] = “Coding Sikho";
-```
-
-TempData gets destroyed immediately after it's used (once value is read from tempdata) in subsequent HTTP request, so no explicit action required, if you want preserve value in the subsequent request after using need to call **Keep method or Peek method**.
-
-[ASP.NET MVC: Models, ViewData, ViewBag, and TempData Explained](https://www.linkedin.com/pulse/aspnet-mvc-models-viewdata-viewbag-tempdata-explained-ervis-trupja-ytn7f/)
-
-**Keep and Peek**
-The keep() and peek() method is used to read the data without deletion of the current read object.
-You can use Keep() when prevent/hold the value depends on additional logic.
-You can use Peek() when you always want to hold/prevent the value for another request.
-
-```csharp
-TempData["Name"] = "Coding Sikho"
-TempData.Keep("Name");
-TempData.Peek("Name");
-```
-
-[State Management in ASP.NET Core MVC](https://code-maze.com/state-management-in-asp-net-core-mvc/)
-
-▶️ [TempData, ViewData, ViewBag in Asp.Net MVC | MVC for beginners](https://www.youtube.com/watch?v=lr7YTjpRF5g)
-
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/f7b31ffa-1a68-4a79-84bf-06f3ab51624f" width="500" height="250" />
-</p>
 
 ## 22). Repository Pattern
 
