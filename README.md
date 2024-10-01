@@ -1227,119 +1227,7 @@ Here, the [Authorize(Roles = "Admin")] attribute restricts access to the control
 
 ▶️ [Role Based Authorization With Identity and ASP.NET Core Web API](https://www.youtube.com/watch?v=IpWIKcytnKA)
 
-## 13). CSRF (Cross Site Request Forgery)
-
-Cross-site request forgery (CSRF) is an attack that tricks a user's browser into sending a malicious HTTP request to another website. This malicious HTTP request looks like it was sent by the user, but it actually comes from the attacker.
-
-[Cross-site request forgery (CSRF)](https://portswigger.net/web-security/csrf)
-
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/4e1df98f-61a0-4a14-8d57-8f16e9865fc5" width="750" height="450" />
-</p>
-
-[How to secure legacy ASP.NET MVC against Cross-Site (CSRF) Attacks](https://www.red-gate.com/simple-talk/development/web/how-to-secure-legacy-asp-net-mvc-against-csrf-attacks/)
-
-## 14). Kestrel Server
-
-Kestrel is the default web server used in ASP.NET Core applications. It is designed to be fast and efficient, making it an ideal choice for modern web applications. Kestrel can handle HTTP requests and responses, providing a robust foundation for building web applications.
-
-Why Use Kestrel?   
-**a). Performance:** Kestrel is highly performant and can handle a large number of requests per second.  
-**b). Cross-Platform:** Kestrel runs on Windows, macOS, and Linux, making it versatile for different deployment environments.  
-**c). Asynchronous:** Built on top of libuv, Kestrel is designed to handle asynchronous I/O operations efficiently.  
-**d). Default Server:** It’s the default web server in ASP.NET Core, which means it’s well-integrated and supported out of the box.  
-
-The Kestrel web server is the latest web server as part of ASP.NET Core. Kestrel is open-source , asynchronous I/O based server .It is used to host on any platform ASP.NET applications. It’s a command-line interface and listening server.  
-
-![image](https://github.com/user-attachments/assets/642dbf97-2d29-4b7e-9240-6eb9382692a2)
-
-The internal web server is called Kestrel and the external web server can be IIS, Apache or Nginx .Security purpose kestrel web server supports Secure Sockets Layer.  
-
-**Configure Kestrel in Program.cs**  
-Open the Program.cs file and configure Kestrel by calling the UseKestrel method on the WebHostBuilder.
-
-```csharp
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Hosting;
-
-public class Program
-{
-    public static void Main(string[] args)
-    {
-        CreateHostBuilder(args).Build().Run();
-    }
-
-    public static IHostBuilder CreateHostBuilder(string[] args) =>
-        Host.CreateDefaultBuilder(args)
-            .ConfigureWebHostDefaults(webBuilder =>
-            {
-                webBuilder.UseStartup<Startup>();
-                webBuilder.UseKestrel(options =>
-                {
-                    options.ListenAnyIP(5000); // Listen on port 5000
-                });
-            });
-}
-```
-
-**Configure the Startup Class**  
-In the Startup.cs file, configure the services and middleware.
-
-```csharp
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-
-public class Startup
-{
-    public void ConfigureServices(IServiceCollection services)
-    {
-        services.AddControllers();
-    }
-
-    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-    {
-        if (env.IsDevelopment())
-        {
-            app.UseDeveloperExceptionPage();
-        }
-
-        app.UseRouting();
-
-        app.UseEndpoints(endpoints =>
-        {
-            endpoints.MapControllers();
-        });
-    }
-}
-```
-
-**Create a Sample Controller**  
-Create a sample controller to test the Kestrel server. Add a new WeatherForecastController.cs file in the Controllers folder.
-
-```csharp
-using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
-
-namespace KestrelDemo.Controllers
-{
-    [ApiController]
-    [Route("[controller]")]
-    public class WeatherForecastController : ControllerBase
-    {
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "Weather 1", "Weather 2" };
-        }
-    }
-}
-```
-
-- [Kestrel Server in ASP.NET Core](https://medium.com/@siva.veeravarapu/kestrel-server-in-asp-net-core-cbba6911805b#:~:text=Kestrel%20is%20the%20default%20web%20server%20used%20in%20ASP.NET,IIS%2C%20Nginx%2C%20or%20Apache.)
-
-## 15). State Management - Client and Server
+## 16). State Management - Client and Server
 
 State Management is a programming technique for User Interface in which the state of a single UI control completely or partially depends on the state of all the other UI controls.  
 
@@ -1366,7 +1254,7 @@ These are further subdivided into the following -
 
 [What are the different Session state management options available in ASP.NET?](https://medium.com/@iammanolov98/what-are-the-different-session-state-management-options-available-in-asp-net-c08b7ef7dc49)
 
-## 16). Session Management
+## 17). Session Management
 
 - **Sessions** in Web Applications refer to the mechanism of storing user-specific data temporarily on the server side across multiple requests. 
 - Unlike cookies, which are stored on the client side, session data is stored on the server side, enhancing security and reducing the risk of exposing sensitive information.
@@ -1414,64 +1302,7 @@ public IActionResult AnotherAction()
 }
 
 ```
-
-## 17). .NET Core and .NET Framework
-
-|  | .NET Core | .NET Framework | 
-|----------|----------|----------|
-| Mobile Development    | NET Core has some support for mobile apps that is compatible with Xamarin and other open-source platforms for mobile applications. | The .NET Framework currently does not support their development at all, and that is a problem. |
-| Open Source    | .Net Core is an Open Source platform.   | .Net Framework is not wholly an open-source framework, but yes we have certain components that are open source.   |
-| Shipping & Packaging    | .Net core is shipped as a collection of NuGet packages.  | .Net Framework is delivered as a whole package in which the libraries are also bundled together.  |
-| Security    | Code Access Security is a feature for security purposes that is not present in .Net core.   | We can say the .Net framework has an edge over .Net Core with this key feature of having the Code Access Security.   |
-| Performance and Scalability    | It has been seen that the .Net core offers good scalability and performance in a comparison with the .Net framework for the reason of its architecture.   | In contrast with the .Net core, the .Net Framework offers relatively slow performance and scalability.  |
-| Support for Microservices    | .Net Core does support the buildout and execution of Microservices, at the same time allowing a mix of technologies that can be minimalized for each microservices. | When it comes to the .Net Framework, it does not permit the buildout and execution of these microservices in various different languages. |
-
-[.Net Core vs .Net Framework: Key Differences, Features, and more](https://www.mygreatlearning.com/blog/net-core-vs-net-framework/)
-
-Use .NET Core for Server Applications When:
-- When a project needs to be integrated across multiple platforms.
-- The project requires the development of microservices
-- The project necessitates extensive utilization of the Command Line Interface (CLI).
-
-Prefer .NET Framework for Server Applications when:
-- Applications are already run on .NET Framework
-- Applications that require technologies such as workflow, webforms, or WCF may not be compatible with .NET Core
-
-## 19). What is MVC Architecture? Explain Life cycle of MVC. 
-
-**MVC (Model-View-Controller)** separates the logic of the application from the display. MVC, with its ‘separation of concerns principle, not only creates a solid framework for web applications but also ensures that different aspects of the application are neatly organized, simplifying future scalability.  
-
-The three parts of MVC are:   
-**a). Model:** Defines the structure of the data. The Model is the business layer. Model provides the data.      
-**b). View:** Handles the user interface and data presentation. The View is the display layer. View presents something to the user i.e User Interface.    
-**c). Controller:** Updates the model and view based on user input. The Controller is input control. Controller coordinates between Model and the View. 
-      Whatever data the Model has, the Controller passes that data to the View.  
-
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/91fdf570-51ef-497f-9a11-8e7fd13f4af5" width="500" height="450" />
-</p>
-
-[The MVC Architecture](https://medium.com/@sadikarahmantanisha/the-mvc-architecture-97d47e071eb2)
-
-- MVC Architecture is used to manage Code.
-- The ASP.NET MVC framework is suitable for building complex but lightweight web applications.
-- It facilitates rapid and efficient application development.
-- The framework has a loosely coupled architecture that allows bigger teams of web designers and developers to work parallely in the development projects.
-
-[What Is ASP.NET MVC and What Are Its Main Features?](https://www.matridtech.net/what-is-asp-net-mvc-and-what-are-its-main-features/)
-
-**Life cycle of MVC**  
-MVC actually defined in two life cycles, the application life cycle, and the request life cycle.   
-
-The application life cycle, in which the application process starts the running server until the time it stops. and it tagged the two events in the startup file of your application. i.e  the application start and end events.  
-
-This is separate from the request life cycle, which is the sequence of events or stages that executed every time an HTTP request is handled by the application.  
-
-[ASP.NET MVC Life Cycle](https://www.geeksforgeeks.org/asp-net-mvc-life-cycle/)
-
-![image](https://github.com/user-attachments/assets/a567ae94-e693-43c1-a294-ff5a380a17d6)
-
-## 22). Repository Pattern
+## 18). Repository Pattern
 
 [Repository Pattern Implementation in ASP.NET Core](https://medium.com/net-core/repository-pattern-implementation-in-asp-net-core-21e01c6664d7) 
 - The repository pattern is a software design pattern that acts as an abstraction layer between your data access layer and the business logic layer in an ASP.NET Core Web API .  
@@ -1497,7 +1328,7 @@ This is separate from the request life cycle, which is the sequence of events or
 
 [A Comprehensive Guide to Repository Pattern in .NET: Implementation and Best Practices](https://medium.com/@dhananjay_1891/a-comprehensive-guide-to-repository-pattern-in-net-implementation-and-best-practices-d67c3a92e618)
 
-## 23). Singleton Design Pattern. Singleton VS Static Class.  
+## 19). Singleton Design Pattern. Singleton VS Static Class.  
 
 [Singleton Pattern in C#](https://dev.to/kalkwst/singleton-pattern-in-c-1dh0)
 
@@ -1610,7 +1441,7 @@ The Singleton pattern has several advantages over static classes.
 
 However the most important advantage, though, is that singletons can be handled polymorphic ally without forcing their users to assume that there is only one instance.
 
-## 24). What is REST API? How to create REST API?
+## 20.1). What is REST API? How to create REST API?
 
 REST, or REpresentational State Transfer, is an architectural style for providing standards between computer systems on the web, making it easier for systems to communicate with each other. [How To Build a RESTful API with ASP.NET Core](https://medium.com/net-core/how-to-build-a-restful-api-with-asp-net-core-fb7dd8d3e5e3)
 
@@ -1636,7 +1467,7 @@ In a REST system, representations transfer JSON or XML to represent data objects
 **How we can create REST API in Dot Net?**  
 ▶️ [Create Your First Web API Using Visual Studio With C# Beginners Guide explained in Hindi](https://www.youtube.com/watch?v=BfuOUso-W_M)
 
-## 25). What are HTTP Verbs? 
+## 20.2). What are HTTP Verbs? What is HTTP Response Status Code?
 
 HTTP verbs are a set of standardized HTTP methods used to specify the desired action to be performed on a resource. 
 In REST API, these verbs are the means by which clients communicate their intentions to the server. 
@@ -1674,7 +1505,7 @@ POST creates an item in a collection. PUT replaces an item. PATCH modifies an it
  
 [HTTP Verbs in REST API](https://medium.com/@alrazak/understanding-http-verbs-in-rest-api-f6080711d580)
 
-## 26). What is Data Annotations(Validations)? What are Razor pages? Client Side and Server Side Validations.
+## 21). What is Data Annotations(Validations)? What are Razor pages? Client Side and Server Side Validations.
 
 Validation is the set of rules which we define on the input fields on the webform page. We have certain types of validations which we can use as per the user requirements:  
 
@@ -1745,7 +1576,176 @@ In MVC Razor, we can validate a model server side in the following two ways:
 
 [Server Side Model Validation in MVC Razor](https://www.scholarhat.com/tutorial/mvc/server-side-model-validation-in-mvc-razor)
 
-## 27). Your Application is very slow. How you can improve (Optimize) performance of Dot Net Application?
+## 22). CSRF (Cross Site Request Forgery)
+
+Cross-site request forgery (CSRF) is an attack that tricks a user's browser into sending a malicious HTTP request to another website. This malicious HTTP request looks like it was sent by the user, but it actually comes from the attacker.
+
+[Cross-site request forgery (CSRF)](https://portswigger.net/web-security/csrf)
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/4e1df98f-61a0-4a14-8d57-8f16e9865fc5" width="750" height="450" />
+</p>
+
+[How to secure legacy ASP.NET MVC against Cross-Site (CSRF) Attacks](https://www.red-gate.com/simple-talk/development/web/how-to-secure-legacy-asp-net-mvc-against-csrf-attacks/)
+
+## 23). Kestrel Server
+
+Kestrel is the default web server used in ASP.NET Core applications. It is designed to be fast and efficient, making it an ideal choice for modern web applications. Kestrel can handle HTTP requests and responses, providing a robust foundation for building web applications.
+
+Why Use Kestrel?   
+**a). Performance:** Kestrel is highly performant and can handle a large number of requests per second.  
+**b). Cross-Platform:** Kestrel runs on Windows, macOS, and Linux, making it versatile for different deployment environments.  
+**c). Asynchronous:** Built on top of libuv, Kestrel is designed to handle asynchronous I/O operations efficiently.  
+**d). Default Server:** It’s the default web server in ASP.NET Core, which means it’s well-integrated and supported out of the box.  
+
+The Kestrel web server is the latest web server as part of ASP.NET Core. Kestrel is open-source , asynchronous I/O based server .It is used to host on any platform ASP.NET applications. It’s a command-line interface and listening server.  
+
+![image](https://github.com/user-attachments/assets/642dbf97-2d29-4b7e-9240-6eb9382692a2)
+
+The internal web server is called Kestrel and the external web server can be IIS, Apache or Nginx .Security purpose kestrel web server supports Secure Sockets Layer.  
+
+**Configure Kestrel in Program.cs**  
+Open the Program.cs file and configure Kestrel by calling the UseKestrel method on the WebHostBuilder.
+
+```csharp
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Hosting;
+
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        CreateHostBuilder(args).Build().Run();
+    }
+
+    public static IHostBuilder CreateHostBuilder(string[] args) =>
+        Host.CreateDefaultBuilder(args)
+            .ConfigureWebHostDefaults(webBuilder =>
+            {
+                webBuilder.UseStartup<Startup>();
+                webBuilder.UseKestrel(options =>
+                {
+                    options.ListenAnyIP(5000); // Listen on port 5000
+                });
+            });
+}
+```
+
+**Configure the Startup Class**  
+In the Startup.cs file, configure the services and middleware.
+
+```csharp
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+
+public class Startup
+{
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.AddControllers();
+    }
+
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+    {
+        if (env.IsDevelopment())
+        {
+            app.UseDeveloperExceptionPage();
+        }
+
+        app.UseRouting();
+
+        app.UseEndpoints(endpoints =>
+        {
+            endpoints.MapControllers();
+        });
+    }
+}
+```
+
+**Create a Sample Controller**  
+Create a sample controller to test the Kestrel server. Add a new WeatherForecastController.cs file in the Controllers folder.
+
+```csharp
+using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+
+namespace KestrelDemo.Controllers
+{
+    [ApiController]
+    [Route("[controller]")]
+    public class WeatherForecastController : ControllerBase
+    {
+        [HttpGet]
+        public IEnumerable<string> Get()
+        {
+            return new string[] { "Weather 1", "Weather 2" };
+        }
+    }
+}
+```
+
+- [Kestrel Server in ASP.NET Core](https://medium.com/@siva.veeravarapu/kestrel-server-in-asp-net-core-cbba6911805b#:~:text=Kestrel%20is%20the%20default%20web%20server%20used%20in%20ASP.NET,IIS%2C%20Nginx%2C%20or%20Apache.)
+
+
+## 24). .NET Core and .NET Framework
+
+|  | .NET Core | .NET Framework | 
+|----------|----------|----------|
+| Mobile Development    | NET Core has some support for mobile apps that is compatible with Xamarin and other open-source platforms for mobile applications. | The .NET Framework currently does not support their development at all, and that is a problem. |
+| Open Source    | .Net Core is an Open Source platform.   | .Net Framework is not wholly an open-source framework, but yes we have certain components that are open source.   |
+| Shipping & Packaging    | .Net core is shipped as a collection of NuGet packages.  | .Net Framework is delivered as a whole package in which the libraries are also bundled together.  |
+| Security    | Code Access Security is a feature for security purposes that is not present in .Net core.   | We can say the .Net framework has an edge over .Net Core with this key feature of having the Code Access Security.   |
+| Performance and Scalability    | It has been seen that the .Net core offers good scalability and performance in a comparison with the .Net framework for the reason of its architecture.   | In contrast with the .Net core, the .Net Framework offers relatively slow performance and scalability.  |
+| Support for Microservices    | .Net Core does support the buildout and execution of Microservices, at the same time allowing a mix of technologies that can be minimalized for each microservices. | When it comes to the .Net Framework, it does not permit the buildout and execution of these microservices in various different languages. |
+
+[.Net Core vs .Net Framework: Key Differences, Features, and more](https://www.mygreatlearning.com/blog/net-core-vs-net-framework/)
+
+Use .NET Core for Server Applications When:
+- When a project needs to be integrated across multiple platforms.
+- The project requires the development of microservices
+- The project necessitates extensive utilization of the Command Line Interface (CLI).
+
+Prefer .NET Framework for Server Applications when:
+- Applications are already run on .NET Framework
+- Applications that require technologies such as workflow, webforms, or WCF may not be compatible with .NET Core
+
+## 25). What is MVC Architecture? Explain Life cycle of MVC. 
+
+**MVC (Model-View-Controller)** separates the logic of the application from the display. MVC, with its ‘separation of concerns principle, not only creates a solid framework for web applications but also ensures that different aspects of the application are neatly organized, simplifying future scalability.  
+
+The three parts of MVC are:   
+**a). Model:** Defines the structure of the data. The Model is the business layer. Model provides the data.      
+**b). View:** Handles the user interface and data presentation. The View is the display layer. View presents something to the user i.e User Interface.    
+**c). Controller:** Updates the model and view based on user input. The Controller is input control. Controller coordinates between Model and the View. 
+      Whatever data the Model has, the Controller passes that data to the View.  
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/91fdf570-51ef-497f-9a11-8e7fd13f4af5" width="500" height="450" />
+</p>
+
+[The MVC Architecture](https://medium.com/@sadikarahmantanisha/the-mvc-architecture-97d47e071eb2)
+
+- MVC Architecture is used to manage Code.
+- The ASP.NET MVC framework is suitable for building complex but lightweight web applications.
+- It facilitates rapid and efficient application development.
+- The framework has a loosely coupled architecture that allows bigger teams of web designers and developers to work parallely in the development projects.
+
+[What Is ASP.NET MVC and What Are Its Main Features?](https://www.matridtech.net/what-is-asp-net-mvc-and-what-are-its-main-features/)
+
+**Life cycle of MVC**  
+MVC actually defined in two life cycles, the application life cycle, and the request life cycle.   
+
+The application life cycle, in which the application process starts the running server until the time it stops. and it tagged the two events in the startup file of your application. i.e  the application start and end events.  
+
+This is separate from the request life cycle, which is the sequence of events or stages that executed every time an HTTP request is handled by the application.  
+
+[ASP.NET MVC Life Cycle](https://www.geeksforgeeks.org/asp-net-mvc-life-cycle/)
+
+![image](https://github.com/user-attachments/assets/a567ae94-e693-43c1-a294-ff5a380a17d6)
+
+## 26). Your Application is very slow. How you can improve (Optimize) performance of Dot Net Application?
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/7803c0d0-dcc5-42d1-90f9-a11907e915ea" width="500" height="250" />
@@ -1777,7 +1777,7 @@ It has advantages to use Output Caching as it cuts down database server round tr
 **How to Maximize Performance and Scalability of Your App?**  
 https://medium.com/agoda-engineering/asp-net-core-performance-optimization-how-to-maximize-performance-and-scalability-of-your-app-d676668aebea
 
-## 28). What is Eager, Lazy and Explicit Loading in .NET Core? 
+## 27). What is Eager, Lazy and Explicit Loading in .NET Core? 
 Entity Framework Core (EF Core) supports a number of ways to load related data. There’s eager loading, lazy loading, and explicit loading. Each of these approaches have their own advantages and drawbacks.  
 
 Different mechanisms for loading related data with Entity Framework Core:  
@@ -1791,7 +1791,7 @@ Lazy loading is a method of retrieving related data when it's demanded, while ea
 
 [Eager, Lazy and Explicit Loading with Entity Framework Core](https://blog.jetbrains.com/dotnet/2023/09/21/eager-lazy-and-explicit-loading-with-entity-framework-core/)
 
-## 29). What is Caching? What are Caching Strategies in .NET Core? 
+## 28). What is Caching? What are Caching Strategies in .NET Core? 
 Caching is a process of storing frequently accessed data in a temporary storage location, known as a cache. The primary objective of caching is to accelerate data delivery to clients, as it eliminates the need to repeatedly fetch the same data from the original source.
 
 [Caching in .NET Core](https://medium.com/simform-engineering/caching-in-net-core-7c759a5bc3c6)
@@ -1965,7 +1965,7 @@ public static class DistributedCacheExtensions
 }
 ```
 
-## 30). Memory Leaks
+## 29). Memory Leaks
 
 **What is Memory Leak?**
 A memory leak in C# occurs when a program allocates memory by creating objects but fails to release them after they are no longer needed.  
