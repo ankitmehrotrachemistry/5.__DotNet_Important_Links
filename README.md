@@ -500,6 +500,15 @@ Creating custom Middleware components in .NET Core is also possible and allows f
 
 [Demystifying Middleware in .NET Core: Creating Custom Middleware](https://medium.com/@susithapb/demystifying-middleware-in-net-core-creating-custom-middleware-db6efe05024b)
 
+Middleware acts as a passage through which each request and response passes. In an application we can have multiple middleware components, they are executed sequentially based on their addition to the application pipeline.  
+Here is the list of some of the important Middleware’s :  
+- **UseAuthentication :** This middleware used to authenticating HTTP request.
+- **UseRouting :** This middleware routes HTTP request to appropriate endpoint.
+- **UseExceptionHandler :** This middleware is used to handle all the unhandled exceptions which occurs during the request processing.
+- **UseStaticFiles :** This middleware serves static files (such as HTML, CSS, JavaScript, images, etc.) to clients.
+
+[Custom Middleware in ASP.NET Core Web API](https://medium.com/@rushikeshsuradkar2000/custom-middleware-in-asp-net-core-web-api-fbb4caa87265)  
+
 [Custom Middlewares With Dependency Injection In .NET Framework](https://medium.com/@ofirbarak96/custom-middlewares-with-dependency-injection-in-net-framework-b18f5b935e4d)
 
 ## 8). OWIN Middleware
