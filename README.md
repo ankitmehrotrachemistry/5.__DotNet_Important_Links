@@ -453,6 +453,13 @@ In ASP.NET Core, Middleware will be configured using extension methods called Ru
 
 ## 7). Create Custom Middleware
 
+You can create a custom middleware in the following ways:  
+ - provide a delegate for Use method in WebApplication class.  
+ - create a Middleware class by convention.  
+ - create a Middleware class by inheriting from IMiddleware interface.
+
+[How To Create Custom Middlewares in ASP.NET Core](https://medium.com/codex/how-to-create-custom-middlewares-in-asp-net-core-5bb2f910da01)
+
 C# Code Example: Custom Logging Middleware 📝
 
 ```csharp
@@ -488,6 +495,10 @@ public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     // Other middleware registrations
 }
 ```
+
+Creating custom Middleware components in .NET Core is also possible and allows for even greater flexibility in handling requests and responses. Custom Middleware components can be created by implementing the IMiddleware interface or by creating a class that includes the InvokeAsync method. 
+
+[Demystifying Middleware in .NET Core: Creating Custom Middleware](https://medium.com/@susithapb/demystifying-middleware-in-net-core-creating-custom-middleware-db6efe05024b)
 
 [Custom Middlewares With Dependency Injection In .NET Framework](https://medium.com/@ofirbarak96/custom-middlewares-with-dependency-injection-in-net-framework-b18f5b935e4d)
 
