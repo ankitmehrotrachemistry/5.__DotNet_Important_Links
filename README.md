@@ -513,7 +513,7 @@ Here is the list of some of the important Middleware’s :
 
 To create custom middleware in ASP.NET Core Web API, follow these steps:  
 1. Create a new class that will serve as your middleware component. The class should have a constructor that takes a `RequestDelegate` parameter. The `RequestDelegate` represents the next middleware component in the pipeline.
-'''csharp
+```csharp
 public class CustomMiddleware
 {
  private readonly RequestDelegate _next;
@@ -530,20 +530,20 @@ await _next(context);
  // …
  }
 }
-'''
+```
 
 2. Implement the `InvokeAsync` method in your middleware class. This method contains the actual logic that will be executed for each HTTP request.
 
 3. Open the `Startup.cs` file in your ASP.NET Core Web API project. In the `Configure` method, add your middleware component to the request pipeline using the `UseMiddleware` extension method.
 
-'''csharp
+```csharp
 public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 {
  // Other middleware components…
 app.UseMiddleware<CustomMiddleware>();
 // Other middleware components…
 }   
-'''
+```
 
 [Custom Middleware In Asp.net Core Web API](https://sardarmudassaralikhan.medium.com/custom-middleware-in-asp-net-core-web-api-70c2ffbbc095)
 
