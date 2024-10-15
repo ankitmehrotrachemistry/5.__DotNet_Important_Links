@@ -1287,6 +1287,10 @@ Here, the [Authorize(Roles = "Admin")] attribute restricts access to the control
 
 State Management is a programming technique for User Interface in which the state of a single UI control completely or partially depends on the state of all the other UI controls.  
 
+State Management refers to the techniques used to preserve the state of a web application between HTTP requests. Since HTTP is a stateless protocol, each request is independent, and the server does not retain any information about previous interactions. State management ensures that necessary data persists across these requests, enhancing user experience and application functionality.
+
+State management in .NET Core offers a variety of tools and techniques to maintain and manage application and user state effectively. Whether you're building a simple web application, a complex API, or a rich interactive front-end with Blazor, understanding and implementing the appropriate state management strategy is essential for creating robust, scalable, and user-friendly applications.
+
 There are two types of State management in ASP net. They are :  
 - Server-side  
 - Client-side  
