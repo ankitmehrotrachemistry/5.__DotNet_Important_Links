@@ -564,6 +564,8 @@ The environment dictionary outlines the state of the request/response and simpli
 
 - With .Net 4.7 I used to log my http request and response conditionally through the help of OWIN. 
 
+- OWIN is not a framework. It is a set of rules or specifications on how the web applications and web servers should interact with each other.
+
 ```csharp
 public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 {
