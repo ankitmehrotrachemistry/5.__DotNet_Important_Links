@@ -1,60 +1,11 @@
 # DotNet_Important_Links
 
-## 1). Client-Server Architecture
-
-**Client**
-The client is something that initiates requests for services or resources.
-
-**Server**
-A server responds to the requests made by clients. 
-
-[Client-Server Architectural Pattern in C#](https://code-maze.com/csharp-client-server-architecture/)
-
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/d3e11560-ebf7-4e30-b1cf-3d939a2fa94f" width="500" height="250" />
-</p>
-
-**How Client-Server Architecture Works?**
-It starts with a client initiating a request. This request could be a click on a webpage or a query for some specific data. This request transmits across a network and arrives at the server. There are communication protocols like HTTP, or FTP that regulate how the request is transmitted.
-
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/70e6053b-9dbe-4c17-b530-cba10f2b8506" width="500" height="250" />
-</p>
-
-Once the request reaches the server, the processing starts. Here, the server interprets the request and identifies the required action. Based on the exact nature of the request, the server takes appropriate action. This could be something like querying a database, executing some business logic, or retrieving files. In scenarios involving data, the server interacts with the database. This interaction typically includes executing SQL queries to perform CRUD operations.
-
-**Types of Client-Server Architecture**
-Some of the most common types of client-server architecture are 2-tier, 3-tier, and n-tier.
-
-3-tier Architecture
-The 3-tier architecture is the evolved version of a 2-tier architecture. The most important distinction between them is that the 3-tier architecture introduces a separation of concerns in the system.
-
-We divide the system into three major components: 
-- Presentation tier
-- Application tier
-- Data tier.
-
-![image](https://github.com/user-attachments/assets/b99a52a1-896f-456f-ad31-54f99a967b71)
-
-In a 3-tier system, changes in one tier are less likely to impact the others. In addition, as the system isn’t as tightly coupled as a 2-tier, it’s easier to update different components without affecting the entire system.
-
-**When to Use Client-Server Architecture?**
-- One of the primary situations where we can adopt the client-server architecture is when we need a clear separation between the user interface and the data and business logic in an application. This separation is important to keep our components loosely coupled such that changes in one component do not necessarily disrupt the others. 
-- Additionally, in scenarios where multiple users need access to centralized data or resources, client-server architecture proves useful. 
-
-**When Not to Use Client-Server Architecture?**
-- In applications where we don’t expect much growth, the client-service architecture isn’t a good option as the overhead introduced by the additional layers might outweigh the benefits.
-- Additionally, in scenarios where we require low latency, the communication between the client and server layers may introduce delays. In applications like online gaming, where we require immediate responses this delay can become a hindrance. Thus, client-server architecture isn’t a suitable choice in such cases.
-- Finally, for systems that rely on peer-to-peer communication, client-server architecture might not be an optimal choice.
-
 ## 2). CORS (Cross Origin Resource Sharing)
 
 - Cross-Origin Resource Sharing (CORS) is a security feature that allows or restricts web applications running at one domain to make requests for resources from a different domain.  
 - In a .NET Core API, CORS is implemented using middleware.   
 - A CORS policy defines which domains, HTTP methods, headers, and other options are permitted. 
 - You need to register the CORS middleware in the Configure method of Startup.cs .
-
- [Cross-Origin Resource Sharing in .NET](https://medium.com/@darshana-edirisinghe/cross-origin-resource-sharing-in-net-f8d0aa802b5f)
 
 Configure CORS startup class inside the ConfigureService method.  
 
@@ -75,8 +26,6 @@ public void Configure(IApplicationBuilder app)
    app.UseCors("AllowMyOrigin");  
 } 
 ```
-
-[CORS In .NET Core](https://www.c-sharpcorner.com/article/cors-in-dotnet-core/)
 
 **Implementation:**
 
@@ -188,8 +137,6 @@ public void ConfigureServices(IServiceCollection services) {
         });  
 ```
 
-[Cross-Origin Resource Sharing in .NET](https://medium.com/@darshana-edirisinghe/cross-origin-resource-sharing-in-net-f8d0aa802b5f)
-
 **Practical Example of CORS ASP.NET Core**  
 CORS and ASP.NET Core go together like bread and butter, cookies and milk, or… well, you get the idea. To make this partnership crystal clear, let’s look at a practical example where we configure an ASP.NET Core application to allow requests from specific origins.  
 
@@ -211,16 +158,6 @@ public void ConfigureServices(IServiceCollection services)
     });
 }
 ```
-
-[Enable CORS in ASP.NET Core in the Easiest Way](https://www.bytehide.com/blog/cors-aspnet-core)
-
-I needed to make an authenticated cross-origin request to an ASP.NET Core Identity application that was using cookie authentication. I showed how to configure the app to allow CORS requests, and how to use the JavaScript fetch() API to call the request. However, this still doesn't work as the ASP.NET Core Identity cookie is marked as SameSite=Lax (for good security reasons). In the final section I showed how to configure Identity to mark the cookie as SameSite=None. This has security implications, so you should be wary about doing this is in your production applications! 
-
-[Making authenticated cross-origin requests with ASP.NET Core Identity](https://andrewlock.net/making-authenticated-cross-origin-requests-with-aspnetcore-identity/)
-
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/cdc2c0f6-481a-4285-93e6-ae8c82808d75" width="750" height="450" />
-</p>
 
 ## 3). How to handle Exception except try-Catch?
 
@@ -312,17 +249,9 @@ public void ConfigureServices(IServiceCollection services)
 }
 ``` 
 
-[Exception Handling in .NET Core Web API](https://medium.com/codenx/exception-handling-in-net-core-web-api-e0c4aad1db06)
-
-[Middleware and Filters power in ASP.NET Core](https://binodmahto.medium.com/middleware-and-filters-power-in-asp-net-core-3c4e3349cedb)
-
 ## 4). Routing in WEB API and MVC
 
 Routing in ASP.NET Core Web API is a powerful feature that allows you to define how HTTP requests are mapped to your API endpoints. It allows you to define the endpoints of your API and handle requests efficiently.
-
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/a715b526-925d-42c9-a437-b069abab9763" width="500" height="450" />
-</p>
 
 **What is Routing?**  
 - Routing is a pattern matching system.  
@@ -392,21 +321,6 @@ public class ProductsController : ControllerBase
 }
 ```
 
-[Http Routing in ASP.NET Core Web API](https://medium.com/@nwonahr/routing-in-asp-net-core-web-api-c9c6dcae5cbd)
-
-## 5). Middleware and it's working
-
-- Middleware is a component that sits between the web server and the application’s request pipeline. It processes incoming requests and generates outgoing responses.  
-- Middleware can be used to perform a wide range of tasks such as authentication, logging, error handling, routing, and more.  
-- Middleware can be added and ordered in the pipeline using the **UseMiddleware() method** in the **Configure() method** of the Startup class.  
-- Middleware in .NET Core is like a series of checkpoints or gatekeepers that a request must pass through before reaching the endpoint, and again on its way back as a response. They are essential components in the request pipeline, responsible for everything from logging, authentication, to response compression.
-
-[.Net Core Middleware Explained](https://medium.com/@shubhadeepchat/net-core-middleware-explained-8c21bf646700)
-
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/6cca0303-5287-4c16-96a4-310f80dffa35" width="550" height="350" />
-</p>
-
 ## 6). Extension Methods. What are the use of extension method : Run(), Use() and Next()?
 
 Extension methods are a way to add new functionality to existing types without modifying their source code. They are static methods that can be called as if they are instance methods on the extended type. Extension methods are a powerful feature in C# that can help you write cleaner, more expressive code.  
@@ -415,17 +329,6 @@ Extension methods are a way to add new functionality to existing types without m
 - Static Class: Extension methods must be defined in a static class.  
 - Static Method: The method itself must be static.  
 - First Parameter with this Keyword: The first parameter specifies the type being extended, and it must be preceded by the this keyword.  
-
-**Benefits of Extension Methods:**
-- Improved Readability and Maintainability: They help in writing fluent APIs and make code more readable.  
-- Encapsulation of Logic: You can encapsulate frequently used logic, which simplifies code maintenance.  
-- Flexibility: They allow you to "add" functionality to existing types, including those in third-party libraries or .NET's core libraries, without inheritance.  
-
-**Common Uses:**  
-- LINQ: Most LINQ operations are implemented as extension methods on IEnumerable<T> and IQueryable<T>.  
-- Utility Functions: Often used for string manipulations, date/time operations, and other utility functions.  
-
-[Mastering Extension Methods in C#](https://www.linkedin.com/pulse/mastering-extension-methods-c-pradeep-pandit-feawf/)
 
 In one of my .NET Core projects, I created an extension method for validating email addresses. 
 
@@ -447,9 +350,6 @@ In ASP.NET Core, Middleware will be configured using extension methods called Ru
 - **Next()** extension method is used to call the next middleware component in HTTP Request Pipeline.
 - **Run()** extension method in  ASP.NET Core is used to end the execution of the pipeline, it means that Run() extension method is the last middleware and which will not call the next middleware in HTTP Request Pipeline. Any other middleware added after the Run() method will not be called and ignored.
 - **Map()** extension method in ASP.NET Core is used to map the middleware to a specific URL.
-
-[Run, Use, and Next Method in ASP.NET Core](https://dotnettutorials.net/lesson/run-next-use-methods-in-asp-net-core/#:~:text=The%20Run%20method%20in%20ASP,in%20the%20request%20processing%20pipeline.)
-
 
 ## 7). Create Custom Middleware
 
@@ -498,18 +398,11 @@ public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 
 Creating custom Middleware components in .NET Core is also possible and allows for even greater flexibility in handling requests and responses. Custom Middleware components can be created by implementing the IMiddleware interface or by creating a class that includes the InvokeAsync method. 
 
-[Demystifying Middleware in .NET Core: Creating Custom Middleware](https://medium.com/@susithapb/demystifying-middleware-in-net-core-creating-custom-middleware-db6efe05024b)
-
-Middleware acts as a passage through which each request and response passes. In an application we can have multiple middleware components, they are executed sequentially based on their addition to the application pipeline.  
 Here is the list of some of the important Middleware’s :  
 - **UseAuthentication :** This middleware used to authenticating HTTP request.
 - **UseRouting :** This middleware routes HTTP request to appropriate endpoint.
 - **UseExceptionHandler :** This middleware is used to handle all the unhandled exceptions which occurs during the request processing.
 - **UseStaticFiles :** This middleware serves static files (such as HTML, CSS, JavaScript, images, etc.) to clients.
-
-[Custom Middleware in ASP.NET Core Web API](https://medium.com/@rushikeshsuradkar2000/custom-middleware-in-asp-net-core-web-api-fbb4caa87265)  
-
-[Custom Middlewares With Dependency Injection In .NET Framework](https://medium.com/@ofirbarak96/custom-middlewares-with-dependency-injection-in-net-framework-b18f5b935e4d)
 
 To create custom middleware in ASP.NET Core Web API, follow these steps:  
 1. Create a new class that will serve as your middleware component. The class should have a constructor that takes a `RequestDelegate` parameter. The `RequestDelegate` represents the next middleware component in the pipeline.
@@ -545,52 +438,6 @@ app.UseMiddleware<CustomMiddleware>();
 }   
 ```
 
-[Custom Middleware In Asp.net Core Web API](https://sardarmudassaralikhan.medium.com/custom-middleware-in-asp-net-core-web-api-70c2ffbbc095)
-
-## 8). OWIN Middleware
-
-- OWIN defines a standard interface between .NET web servers and web applications.
-- The goal of the OWIN interface is to decouple server and application.
-- Prior to this standard in .NET, there was a tight coupling between .NET applications and Internet Information Server (IIS), which led to great difficulties when trying to expand to different web application/server technologies.
-- The introduction of OWIN has created an abstraction between application and server that completely decouples one from the other.
-- OWIN extends its support as: 
-a). It supports Authentication functionality related with Cookies.  
-b). It also supports Expiry states.  
-c). It supports Expiry state of session etc.  
-d). It supports the security protections using such secure tokens.
-
-- The contract defined by OWIN for application/server communication can be found within the IAppBuilder interface and at its core is boiled down into two pieces: the environment dictionary and a function to register middleware.  
-The environment dictionary outlines the state of the request/response and simplifies it down to a mapping of string keys to objects within the Properties property. 
-
-- With .Net 4.7 I used to log my http request and response conditionally through the help of OWIN. 
-
-- OWIN is not a framework. It is a set of rules or specifications on how the web applications and web servers should interact with each other.
-
-```csharp
-public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-{
-     app.UseCors(builder => builder
-                .AllowAnyOrigin()
-                .AllowAnyMethod()
-                .AllowAnyHeader());
-     app.UseHttpsRedirection();
-     app.UseMiddleware<HttpHandlerMiddleware>();
-     app.UseDefaultFiles();
-     app.UseStaticFiles();
-}
-```
-The above OWIN specification describes the five parts (or roles) of the application called as software actors. They are Server, Web Framework, Web Application, Middleware, and Host.
-
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/b307ab92-5583-4862-bdee-7d9c7c385494" width="500" height="250" />
-</p>
-
-[Introduction to OWIN](https://www.tektutorialshub.com/owin/introduction-to-owin/)
-
-[Create OWIN Middleware](https://www.tektutorialshub.com/asp-net/asp-net-owin-middleware/)
-
-[.Net Core Using Middleware to log http request/responses](https://theochiu2010.medium.com/net-core-using-middleware-to-log-http-request-responses-f60364e2880)
-
 ## 9). Dependency Injection, Depenedency Inversion
 
 Dependency Injection is the design pattern that helps us to create an application which loosely coupled. The main advantage of DI (Dependency Injection) is our application is loosely coupled and has provided greater maintainability, testability, and also re-usability. 
@@ -621,17 +468,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-[Mastering Dependency Injection in .NET Core](https://medium.com/@vndpal/mastering-dependency-injection-in-net-core-94aea0a4ab6c)
-
-**Dependency Injection Video Demonstration** ▶️    
-
-[ASP.NET CORE Tutorial For Beginners 31 - Dependency Injection (DI) in Hindi](https://www.youtube.com/watch?v=3nnESO6I3iE)
-
 ## 10). AddScoped, AddTransient and AddSingleton
-
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/9d3bd981-1c65-4eba-a4a9-e947a889a50a" width="400" height="250" />
-</p>
 
 **Service Lifetimes in .NET Core:**
 Service lifetimes define how long instances of a service should be kept and reused. The framework provides three main service lifetimes: Singleton, Transient, and Scoped. Choosing the appropriate service lifetime is crucial for managing resources efficiently and ensuring the desired behavior of your application.
@@ -675,40 +512,7 @@ services.AddScoped<IMyService, MyService>();
 services.AddScoped<IUserService, UserIdentityService>();
 ```
 
-[Dependency Injection and using AddTransient, AddScoped and AddSingleton in an ASP.NET Core application](https://alexb72.medium.com/dependency-injection-and-using-addtransient-addscoped-and-addsingleton-in-an-asp-net-2ae09e45c983)
-
-[Navigating Dependency Lifetimes: A Practical Comparison of AddTransient, AddScoped, and AddSingleton in .NET](https://nshyamprasad.medium.com/navigating-dependency-lifetimes-a-practical-comparison-of-addtransient-addscoped-and-8b825a465dc5)
-
 ## 11). How to create Controllers? What are Action Results and it's types? What are Action and Non- Action Methods and in MVC? 
-
-**What is the role of the Controller in ASP.NET MVC?**
-
-- The controller is the interface between the model and view components. 
-- It manages and responds to the input and interaction from a user. 
-- Controller renders the suitable view to the client, executes the relevant action method, obtains data from the model and fills the view, gets data from the view and updates the model.
-
-As an example, the Customer controller manages all the interactions and inputs received from the Customer View and updates the database by using the Customer model. The Customer controller is also utilized for viewing the Customer-specific data.
-
-![image](https://github.com/user-attachments/assets/a7c9ee7a-f685-445f-a6c0-01b61fbbcf63)
-
-Different types of action results returned by action methods in the MVC controller. In the MVC Controller file you have many action methods. Each action method can return different return types of results lik e contentresult,javascript,json or view.  
-
-[Basic return types of ActionResults in ASP.NET MVC](http://www.usmtechworld.com/actionreturntypes)  
-
-Basic return types of action results in ASP.NET MVC are :-  
-- **ViewResult -** If you want to return a view in an action method , you should use View as the return type of that method.  
-- **PartialViewResult -** If you want to return partialview in action method,you should use partialviewresult as return type of that method.  
-- **Contentresult -** If you want to return your content to the view then you should use Content as the return type of the action method.  
-- **Emptyresult -** This emptyresult returns nothing in the view page.  
-- **Fileresult -** If you want to return a file to the view then you should use File as the return type of the action method.  
-- **Json result -** If you want to return JSON data to the view then you should use JSON as the return type of the action method.  
-- **Javascript result -** If you want to return javascript to the view then you should use JavaScript as the return type of the action method.  
-
-![image](https://github.com/user-attachments/assets/3f833388-c2b4-4882-a3ea-5b2407febd66)
-
-**Content negotiation** is the process of selecting the best resource for a response when multiple resource representations are available. Content negotiation is an HTTP feature. Examples are - IActionResult. [Content Negotiation in Web API](https://code-maze.com/content-negotiation-web-api/)
-
-[Controller Action Return Types in ASP.NET Core Web API](https://dotnettutorials.net/lesson/controller-action-return-types-core-web-api/)
 
 The differences between Actions and Non-Actions methods:
 
@@ -777,37 +581,12 @@ So, these are two different things and not synonyms.
 
 ## 12). What are Views? What are Partial Views? What are Strongly types Views? ViewData , ViewBag and TempData
 
-**What are Views?**  
-
-In the MVC pattern, the view component contains the logic to represent the model data as a user interface with which the end-user can interact. Typically, it creates the user interface with the data from the model provided to it by the controller. So you can consider the Views in ASP.NET MVC as HTML templates embedded with Razor syntax which generates HTML content that sends to the client.
-
-[ASP.NET MVC Views](https://dotnettutorials.net/lesson/asp-dot-net-mvc-views/)
-
-**What are Partial Views?**   
-
-- The Partial View Result returns the result to the Partial view page. It is one of the views that we can call inside the Normal view page.  
-- One has to create a Partial view inside the shared folder or else we are unable to succeed in the Partial View. This class is also derived from Action Result.  
-
-[An in-depth guide on View Result and Partial View Result in MVC](https://www.ifourtechnolab.com/blog/an-in-depth-guide-on-view-result-and-partial-view-result-in-mvc)
-
-```csharp
-public PartialViewResult Index()  
-{  
-return PartialView("_PartialView");  
-}
-```
-
-A partial view is a reusable chunk of CSHTML code. In this case, I will use the partial view to control my menu across two distinct Layout pages.  
-▶️ [use partial views in asp.net mvc 6](https://www.youtube.com/watch?v=sFCdDAkxPcM)
-
 **What are Strongly types Views?**    
 
 In ASP.NET Core MVC, there are 3 ways to pass data from a controller to a view 
 - Using a strongly typed model object. This is also called Strongly typed view.
 - Using ViewData
 - Using ViewBag
-
-[Strongly Typed View in ASP.NET Core MVC](https://csharp-video-tutorials.blogspot.com/2019/03/strongly-typed-view-in-aspnet-core-mvc.html)
 
 The preferred approach to pass data from a controller to a view is by using a strongly typed view. To create a strongly typed view, in the controller action method, pass the model object to the View() helper method. Notice, in the example below, we are passing the Employee model object to the View() method.
 
@@ -954,102 +733,8 @@ TempData.Keep("Name");
 TempData.Peek("Name");
 ```
 
-[State Management in ASP.NET Core MVC](https://code-maze.com/state-management-in-asp-net-core-mvc/)
-
-▶️ [TempData, ViewData, ViewBag in Asp.Net MVC | MVC for beginners](https://www.youtube.com/watch?v=lr7YTjpRF5g)
-
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/f7b31ffa-1a68-4a79-84bf-06f3ab51624f" width="500" height="250" />
-</p>
-
 ## 13). Filters and it's type
 
-- Web API includes filters to add extra logic before or after the action method executes. Filters can be used to provide cross-cutting features such as logging, exception handling, performance measurement, authentication and authorization.
-- Filters are actually attributes that can be applied on the Web API controller or one or more action methods.
-
-![image](https://github.com/user-attachments/assets/adb92003-1d8b-4832-ac7c-d0ad4e8fb09d)
-
-- Sometimes we want to execute some logic either before the execution of the action method or after the execution. We can use Action Filter for such a scenario.
-- Filters define the logic which is executed before or after the execution of the action method.
-- Action Filters are attributes which we can apply to the action methods.
-
-  Following are the MVC action filter types:  
-  **a). Authorization filter (implements IAuthorizationFilter) :** Authorization filters are used to implement authentication and authorization for controller actions. For example, the 
-Authorize filter is an example of an Authorization filter.  
-  **b). Action filter  (implements IActionFilter) :** Action filters contain logic that is executed before and after a controller action executes. You can use an action filter, for instance, to modify the view data that a controller action returns.  
-  **c). Result filter  (implements IResultFilter) :** Result filters contain logic that is executed before and after a view result is executed. For example, you might want to modify a view result right before the view is rendered to the browser.  
-  **d). Exception filter  (implementsIExceptionFilter attribute) :** Exception filters are the last type of filter to run. You can use an exception filter to handle errors raised by either your controller actions or controller action results. You also can use exception filters to log errors.  
-
-![image](https://github.com/user-attachments/assets/b3776787-ab79-4e20-bde5-b0a5f652f3c9)
-
-[Action Filters in MVC [Types of Filters with Examples]](https://www.upgrad.com/blog/action-filters-in-mvc/)
-
-- Action filters are a type of filter in ASP.NET Core that are used to inject custom logic before or after the execution of a controller action method.  
-[Understanding Action Filters in ASP.NET Core](https://medium.com/@kefasogabi/understanding-action-filters-in-asp-net-core-a-comprehensive-guide-with-code-samples-ec1f1f2af425)
-
-## 14.1). Entity Framework Core
-
-In Entity Framework, the model is prepared according to the requirement of the user. It depends upon the number of classes and categories that will be embedded into the database. 
-Entity Framework is a tool we use to access the database. EF is an Object Relational Mapper (ORM) we use to map the objects of our applications with the Relational Data.  
-
-[Entity Framework Core Model](https://www.learnentityframeworkcore5.com/entity-framework-core-model)
-
-![image](https://github.com/user-attachments/assets/1ecc98c4-a8ce-434a-a2f8-6492385fcda6)
-
-Earlier, we had to do all these mapping manually which involved lots of steps. We work at a higher level of Abstraction in Entity Framework.  
-
-Entity Framework provides a class - DbContext which is the Gateway to our database. A DbContext can have one or more DbSets. These DBSets represent tables in our database. 
-
-![image](https://github.com/user-attachments/assets/bbcb8b46-0b4c-4acc-9be2-173d5f149452)
-           
-We use LINQ Query to query these DbSets. Entity Framework converts these LINQ Queries to SQL Queries at runtime. We don’t have to do these translations manually. All of these are done by EF behind the scenes.
-
-![image](https://github.com/user-attachments/assets/9fb5f640-deae-41cf-9b83-82ed7d01b846)
-
-So, Entity Framework is responsible for opening a connection to the database, reads the data and maps it to the objects and adds them to the DbSet and returns the DBContext back to us. 
-
-![image](https://github.com/user-attachments/assets/67141e8f-a167-455e-94b2-bca15f735b54)
-
-As we add, modify or remove objects in these DbSets, EF keeps track of these changes and when we ask to persist these changes, again it will automatically generate the SQL Statements and execute them on our Database. 
-
-There are 2 different ways/workflow for the EF -  
-  a). Database First Approach   
-  b). CodeFirst Approach   
- 
-**Configure One-to-Many Relationships using Fluent API in Entity Framework Core**  
-
-[One-to-Many Relationships using Fluent API in Entity Framework Core](https://www.entityframeworktutorial.net/efcore/configure-one-to-many-relationship-using-fluent-api-in-ef-core.aspx)
-
-**Configure Many-to-Many Relationships in Entity Framework Core**  
-
-[Configure Many-to-Many Relationships in Entity Framework Core](https://www.entityframeworktutorial.net/efcore/configure-many-to-many-relationship-in-ef-core.aspx)
-
-**Advantages of Harnessing Entity Framework Core:**    
-- **Model Generation:** EF Core shines in its ability to auto-generate models based on the database schema and vice versa. This feature is a time-saver, eliminating the tedium of manual updates every time a new table or model is introduced.
-- **Security:** With EF Core, the queries employed are pre-equipped with robust security features, thereby enhancing the safety net around data access and manipulation.
-- **Cross-platform Compatibility and Open-source Nature:** The cross-platform and open-source nature of EF Core broadens the horizons for developers, offering a flexible and cost-effective solution for data access.
-- **Mapping Management:** The automated management of mappings between objects and database entities is yet another feather in EF Core's cap, simplifying the data interaction process.
-- **Stored Procedures:** Although the need for stored procedures is greatly reduced, EF Core provides the flexibility to execute them whenever required, offering a balanced approach to database interaction.
-
-[An Insightful Dive into Entity Framework Core](https://www.linkedin.com/pulse/insightful-dive-entity-framework-core-heart-data-management-adi-inbar/?trackingId=CKg92x8pLiei6Du9gH2AjQ%3D%3D)
-
-In a nutshell, Entity Framework Core is a robust, developer-friendly platform that significantly eases the data management process, thereby accelerating project timelines while ensuring optimum quality. 
-
-▶️ [Complete 3 Hour ASP NET 6.0 and Entity Framework Core Course!](https://www.youtube.com/watch?v=7d2UMAIgOLQ&list=PLwhVruPHD9rxZ9U5K6vqUFkfrjaRhwEsV&index=12)
-
-## 14.2). DataBase First Approach and CodeFirst Approach
-
-Entity Framework is an open-source object-relational mapping framework for ADO .NET, which is a data access technology, this means that you can use this technology to access data in the database.  
-
-**A). Code First Approach**
-The code-first approach is a way to design your application’s data models by creating them as C# classes for your models and then you use them to create your database.
-
-In order to apply the code-first approach, you need to follow these steps:
-
-- Define your model classes, each class corresponds to a table in your database.
-- Create a DbContext class that inherits from the DbContext class provided by Entity Framework.
-- Enable migrations.
-- Create the database, through the package manager console, use the entity framework to create the database and the table. Also, you need to write a command for that which is the Update-Database command.
 
 As a simple example, we will create a Person model class and a DbContext class:
 
@@ -1087,75 +772,6 @@ public IEnumerable<Person> GetPersons()
             }
         }
 ```
-[Exploring Database-First Approach with Entity Framework in .NET Core 6](https://medium.com/@certosinolab/exploring-database-first-approach-with-entity-framework-in-net-core-6-db86a822d72e)
-
-[Code First Approach vs. Database First Approach](https://medium.com/codex/code-first-approach-vs-database-first-approach-a3830c0cc9b6)
-
-## 14.3). DbContext, DbSet & DTOs
-
-### DbContext  
-The **DbContext** is simply the way for the developers to incorporate Entity Framework based data to the application. It allows you to make database connections inside an application model and allows the developer to link the model properties to the database table using a connection string.
-
-[DbContext](https://www.learnentityframeworkcore5.com/dbcontext)
-
-[ASP.NET Core REST API DbContext](https://www.pragimtech.com/blog/blazor/asp.net-core-rest-api-dbcontext/)
-
-The DbContext in Entity Framework Core consist of the following features and responsibilities:
-
-- Database Management
-- Database Connections
-- Entity Set
-- Querying
-- Validation
-
-### DbSet     
-In Entity Framework Core, the **DbSet** represents the set of entities. In a database, a group of similar entities is called an Entity Set. The DbSet is responsible for performing all the basic CRUD (Create, Read, Update and Delete) operations on each of the Entity.
-
-[DbSet](https://www.learnentityframeworkcore5.com/dbset)
-
-### DTO         
-
-**What Is a DTO?**  
-A DTO (Data Transfer Object) is an object that defines how data will be sent between applications.  
-It’s used only to send and receive data and does not contain in itself any business logic.  
-
-**Why Use DTOs?**
-The use of DTOs is very common in web development with ASP.NET Core as they provide solutions for many needs. Below are some of them:  
-- Separate the service layer from the database layer  
-- Hide specific properties that clients don’t need to receive  
-- Omit properties to reduce the payload size  
-- Manipulate nested objects to make them more convenient for clients  
-
-[DTO (Data Transfer Object)](https://www.telerik.com/blogs/dotnet-basics-dto-data-transfer-object)
-
-## 14.4). LINQ
-Language-Integrated Query(LINQ) was introduced in C# 3.0 & .NET Framework 3.5
-
-The LINQ Tuotrial can be best found at : [LINQ Tutorial](https://www.javatpoint.com/linq)
-
-For LINQ Github ReadMe Code, refer my this seperate Github ReadMe Repo : [LINQ Tutorial](https://github.com/ankitmehrotrachemistry/1.__C_Sharp_Concepts_TopicWise)
-
-## 14.5). Migrations, Seeding Data , Nullable and Entity States
-
-**Migrations in Entity Framework Core**  
-Migration is a way to keep the database schema in sync with the EF Core model by preserving data.
-
-[Migrations in Entity Framework Core](https://www.entityframeworktutorial.net/efcore/entity-framework-core-migration.aspx)
-
-EF Core provides migrations commands to create, update, or remove tables and other DB objects based on the entities and configurations.
-Suppose we add some new entities or modify an existing entities or changed any configuration, then we again need to execute the add-migration and update-migration commands to apply changes to the database schema.
-
-![image](https://github.com/user-attachments/assets/c321bf20-af1c-46ef-bbdd-05e0dddf4139)
-
-**EF Core Seed Data**  
-Applying seed data to a database refers to the process of inserting initial data into a database, usually when the database is first created. This data serves as a baseline and can be used for testing, and development, and to provide some context for the application that will be built on top of the database.
-
-- [EF Core Seed Data](https://www.learnentityframeworkcore.com/migrations/seeding)
-
-**Entity States in Entity Framework**  
-The Entity Lifecycle in Entity Framework describes the process in which an Entity is created, added, modified, deleted, etc. Entities have many states during their lifetime. Entity Framework maintains the state of each entity during its lifetime. Each entity has a state based on the operation performed on it via the context class (the class which is derived from DbContext class). 
-
-- [Entity States in Entity Framework](https://dotnettutorials.net/lesson/entity-state-in-entity-framework/)
 
 ## 15). JWT Authentication and OAuth 2.0
 
@@ -1167,12 +783,6 @@ a). Header
 b). Payload  
 c). Signature  
 
-[Implementing Authentication and Authorization in ASP.NET Core using JWT Tokens and refresh token with .NET 7](https://medium.com/@kefasogabi/implementing-authentication-and-authorization-in-asp-net-e831c04b4d38)  
-
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/957f5b97-c8c8-42ca-b12f-30fa6e39bc68" width="800" height="450" />
-</p>
-
 **Here is a basic overview of how JWT-based authentication works in a web application:**  
 **1. User Authentication:** When a user logs in, the server validates the provided credentials (username and password). If the credentials are valid, the server generates a JWT token containing claims such as user ID, roles, expiration time, etc.  
 **2. JWT Structure:** A JWT token is a compact, URL-safe string composed of three parts: header, payload, and signature.  
@@ -1181,56 +791,6 @@ c). Signature
 **5. Token Refresh:** To avoid frequent logins, a refresh token mechanism may be implemented. The client can request a new JWT token using a refresh token without re-entering credentials.   
 **6. Token Expiration:** JWT tokens have an expiration time, which helps mitigate the risk of token misuse.  
 
-[Implementing JWT Authentication in ASP.NET Core Web APIs: A Comprehensive Guide](https://www.dotnet4techies.com/2024/03/implementing-jwt-authentication-in.html)   
-
-- ### Open Authentication (OAuth 2.0)
-Here are some things to know about OAuth:  
-**Authorization flow**  
-The process of obtaining an access token is called the authorization flow.  
-**Refresh token**  
-A refresh token is a token that can be used to get additional access tokens. It can be sent to the OAuth server to obtain new ones.   
-**OAuth flows**  
-OAuth flows are processes that support authorization and authentication. Some OAuth flows allow users to enter credentials directly into the app, while others support authentication without user involvement.  
-**Client credentials**  
-OAuth has a standard flow for machine-to-machine communication called Client Credentials.  
-**OAuth endpoints**  
-OAuth endpoints are URLs used to make OAuth authorization requests. Each OAuth flow defines which endpoints to use and what request data to provide.  
-**Incremental authorization**  
-In the OAuth 2.0 protocol, an app requests authorization to access resources, which are identified by scopes. 
-
-[OAuth 2.0 authorization with Microsoft Entra ID](https://learn.microsoft.com/en-us/entra/architecture/auth-oauth2)
-
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/afcb7b1c-5d8d-4a44-85fa-e753e8471be5" width="800" height="450" />
-</p>
-
-  **Rich client and modern app scenarios and RESTful web API access.**
-
-[OAuth 2.0 and OpenID in simple terms](https://medium.com/@iamprovidence/oauth-2-0-and-openid-in-simple-terms-7196089a1b29)
-
-**What Are Refresh Tokens and How to Use Them Securely?**
-
-**What Is A Token?**
-Tokens are pieces of data that carry just enough information to facilitate the process of determining a user's identity or authorizing a user to perform an action. All in all, tokens are artifacts that allow application systems to perform the authorization and authentication process.
-
-OAuth 2.0 is one of the most popular authorization frameworks out there. It is designed to allow an application to access resources hosted by other servers on behalf of a user. OAuth 2.0 uses Access Tokens and Refresh Tokens.
-
-[What Are Refresh Tokens and How to Use Them Securely](https://auth0.com/blog/refresh-tokens-what-are-they-and-when-to-use-them/)
-
-**What's an access token?**
-When a user logins in, the authorization server issues an access token, which is an artifact that client applications can use to make secure calls to an API server. 
-
-**What Is a Refresh Token?**
-As mentioned, for security purposes, access tokens may be valid for a short amount of time. Once they expire, client applications can use a refresh token to "refresh" the access token. That is, a refresh token is a credential artifact that lets a client application get new access tokens without having to ask the user to log in again.
-
-- ### Two Factor Authentication
-Two-Factor Authentication (2FA) in ASP.NET Core Identity is a security process in which users provide two different authentication factors to verify themselves. This process is done to protect better both the user’s credentials and the resources the user can access. 2FA adds an additional layer of security to the authentication process, making it harder for attackers to access a person’s devices or online accounts because knowing the victim’s password alone is insufficient to pass the authentication check.
-
-[Two-Factor Authentication in ASP.NET Core Identity](https://dotnettutorials.net/lesson/two-factor-authentication-in-asp-net-core-identity/)
-
-![image](https://github.com/user-attachments/assets/77d81b73-eba8-4a1d-acc0-cbe6dacfe328)
-
-[Two-Factor Authentication using Google Authenticator in asp.net mvc](http://www.dotnetawesome.com/2016/04/two-factor-authentication-in-aspnet-mvc.html)  
 
 - ### Role Based Authorization  
 
@@ -1287,11 +847,7 @@ Here, the [Authorize(Roles = "Admin")] attribute restricts access to the control
 
 ## 16). State Management - Client and Server
 
-State Management is a programming technique for User Interface in which the state of a single UI control completely or partially depends on the state of all the other UI controls.  
-
 State Management refers to the techniques used to preserve the state of a web application between HTTP requests. Since HTTP is a stateless protocol, each request is independent, and the server does not retain any information about previous interactions. State management ensures that necessary data persists across these requests, enhancing user experience and application functionality.
-
-State management in .NET Core offers a variety of tools and techniques to maintain and manage application and user state effectively. Whether you're building a simple web application, a complex API, or a rich interactive front-end with Blazor, understanding and implementing the appropriate state management strategy is essential for creating robust, scalable, and user-friendly applications.
 
 There are two types of State management in ASP net. They are :  
 - Server-side  
