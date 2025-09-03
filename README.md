@@ -251,34 +251,11 @@ public void ConfigureServices(IServiceCollection services)
 
 ## 4). Routing in WEB API and MVC
 
-Routing in ASP.NET Core Web API is a powerful feature that allows you to define how HTTP requests are mapped to your API endpoints. It allows you to define the endpoints of your API and handle requests efficiently.
-
 **What is Routing?**  
 - Routing is a pattern matching system.  
 - Routing maps incoming request (from browser) to a particular resource (controller & action method).
                  domain.com/Home/About
                  domain.com/about-us
-- MVC routing can be defined as a pattern-matching scheme that is used for mapping incoming requests of browsers to a definite MVC controller action.
-
-**The MVC routing has 3 parameters :**
-   - The first parameter determines the name of the route (ControllerName). 
-   - The second parameter determines a specific pattern with which the URL matches 
-     (ActionMethodName). 
-   - The third parameter is responsible for providing default values for its placeholders 
-     (Parameter).
-
-**How Routing works?**
-- We define a route for each action method. 
-- All the routes are stored in route table
-- Each incoming request is mapped to this route table.
-- If a URL match is found then the request goes to the related controller action method.
-- If the URL is not found then the application returns 404 pages.
-
-![image](https://github.com/user-attachments/assets/917c400e-940c-4782-8f81-fb47f6a7b6f9)
-
-In ASP.NET Core, routing is handled by the routing middleware, which is configured in the Startup.cs file. There are two primary types of routing:   
-A). Convention-based Routing   
-B). Attribute Routing  
 
 **A). Convention-based Routing :** Convention-based routing defines routes globally in the Startup.cs file. This approach is useful when you want to apply a consistent routing pattern across your entire application.
 
@@ -440,18 +417,6 @@ app.UseMiddleware<CustomMiddleware>();
 
 ## 9). Dependency Injection, Depenedency Inversion
 
-Dependency Injection is the design pattern that helps us to create an application which loosely coupled. The main advantage of DI (Dependency Injection) is our application is loosely coupled and has provided greater maintainability, testability, and also re-usability. 
-ASP.NET Core is designed from scratch to support Dependency Injection. ASP.NET Core injects objects of dependency classes through constructor or method by using built-in IoC container.  
-The built-in container is represented by **IServiceProvider interface** implementation that supports constructor injection by default. 
-The built-in IoC container supports three kinds of lifetimes:
-
-**a). Singleton:** IoC container will create and share a single instance of a service throughout the application's lifetime.  
-**b). Transient:** The IoC container will create a new instance of the specified service type every time you ask for it.  
-**c). Scoped:** IoC container will create an instance of the specified service type once per request and will be shared in a single request.  
-[Dependency Injection With .NET Core](https://kusham1998.medium.com/dependency-injection-with-net-core-a6b33e74f6df)
-
-ASP.NET Core framework includes extension methods for each types of lifetime; AddSingleton(), AddTransient() and AddScoped() methods for singleton, transient and scoped lifetime respectively.
-
 The following example shows the ways of registering types (service) using extension methods.
 
 ```csharp
@@ -470,11 +435,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ## 10). AddScoped, AddTransient and AddSingleton
 
-**Service Lifetimes in .NET Core:**
-Service lifetimes define how long instances of a service should be kept and reused. The framework provides three main service lifetimes: Singleton, Transient, and Scoped. Choosing the appropriate service lifetime is crucial for managing resources efficiently and ensuring the desired behavior of your application.
-
 **A). AddSingleton:**  
-The AddSingleton method is used to register a service as a singleton. A singleton instance is created once and reused throughout the lifetime of the application. This is beneficial when you want a single instance of a service to be shared across the entire application.
 
 ```csharp
 services.AddSingleton<IMyService, MyService>();
@@ -487,7 +448,6 @@ services.AddSingleton<IConfigurationService, FileConfigurationService>();
 ```
 
 **B). AddTransient:**
-The AddTransient method is used to register a service as transient. A new instance of the service is created every time it's requested. Transient services are suitable for lightweight and stateless operations.
 
 ```csharp
 services.AddTransient<IMyService, MyService>();
@@ -500,7 +460,6 @@ services.AddTransient<ILoggingService, FileLoggingService>();
 ```
 
 **C). AddScoped:**
-The AddScoped method is used to register a service as scoped. A scoped instance is created once per request within the scope of an HTTP request. It means that the same instance is shared across different components within the same HTTP request.
 
 ```csharp
 services.AddScoped<IMyService, MyService>();
@@ -517,11 +476,6 @@ services.AddScoped<IUserService, UserIdentityService>();
 The differences between Actions and Non-Actions methods:
 
 **1). Action Methods:**
-Action methods are responsible for handling HTTP requests and returning HTTP responses. They are the methods that perform specific actions in response to user requests.
-
-These methods are typically associated with URLs and are used to execute specific functionality based on the request type (e.g., GET, POST, PUT, DELETE).
-
-Action methods are public and typically return an ActionResult or one of its derived types (e.g., ViewResult, JsonResult, RedirectToActionResult) to determine the response to send back to the client.
 
 Example of an action method in a controller:
 
@@ -535,12 +489,6 @@ public ActionResult Index()
 
 **2. Non-Action Methods:**
 
-Non-action methods are regular methods in a controller that are not intended to be used as entry points for handling HTTP requests. They are auxiliary methods used to factor out common functionality or logic to be shared among action methods.
-
-Non-action methods are typically marked with the [NonAction] attribute to explicitly indicate that they should not be invoked as actions.
-
-These methods cannot be directly accessed via a URL, and they do not return ActionResults.
-
 ```csharp
 [NonAction]
 public void UtilityMethod()
@@ -548,9 +496,6 @@ public void UtilityMethod()
     // Code for a utility method that should not be invoked as an action
 }
 ```
-
-[Understanding Action and Non- Action methods, Types of Action Results in ASP.NET Core.](https://medium.com/@ananthomprakash/understanding-action-and-non-action-methods-types-of-action-results-in-asp-net-core-ea201ffcfa96)
-
 **NOTE :**
 
 Action Attribute and Action Method are not the same thing, and they are not synonyms. Both have different roles:
@@ -581,15 +526,6 @@ So, these are two different things and not synonyms.
 
 ## 12). What are Views? What are Partial Views? What are Strongly types Views? ViewData , ViewBag and TempData
 
-**What are Strongly types Views?**    
-
-In ASP.NET Core MVC, there are 3 ways to pass data from a controller to a view 
-- Using a strongly typed model object. This is also called Strongly typed view.
-- Using ViewData
-- Using ViewBag
-
-The preferred approach to pass data from a controller to a view is by using a strongly typed view. To create a strongly typed view, in the controller action method, pass the model object to the View() helper method. Notice, in the example below, we are passing the Employee model object to the View() method.
-
 ```csharp
 public ViewResult Details()
 {
@@ -607,7 +543,7 @@ public ViewResult Details()
 
 **1). ViewData**
 
-ViewData maintains data when you move from controller to view. It is also a dictionary object and derived from ViewDataDictionary. As Data is stored as Object in ViewData, while retrieving, the data it needs to be TypeCasted to its original type as the datas stored as objects and it also requires NULL checks while retrieving.
+ViewData maintains data when you move from controller to view.
 
 ```csharp
 ViewData[“Name"] = “CodingSikho";
@@ -649,9 +585,7 @@ We can see the UserId value is read from ViewData and displayed on the page.
 
 **2). ViewBag** 
 
-The ViewBag is a dynamic type property of ControllerBase class which is the base class of all the controllers. Castings not required when you use ViewBag.  
-ViewBag only transfers data from controller to view, not visa-versa. ViewBag values will be null if redirection occurs.  
-ViewBag support any number of properties or values. If same value found then it will only consider last value assigned to the property.
+The ViewBag is a dynamic type property of ControllerBase class which is the base class of all the controllers. 
 
 ```csharp
 ViewBag.Name = “Coding Sikho";
@@ -719,13 +653,6 @@ TempData["Name"] = “Coding Sikho";
 ```
 
 TempData gets destroyed immediately after it's used (once value is read from tempdata) in subsequent HTTP request, so no explicit action required, if you want preserve value in the subsequent request after using need to call **Keep method or Peek method**.
-
-[ASP.NET MVC: Models, ViewData, ViewBag, and TempData Explained](https://www.linkedin.com/pulse/aspnet-mvc-models-viewdata-viewbag-tempdata-explained-ervis-trupja-ytn7f/)
-
-**Keep and Peek**
-The keep() and peek() method is used to read the data without deletion of the current read object.
-You can use Keep() when prevent/hold the value depends on additional logic.
-You can use Peek() when you always want to hold/prevent the value for another request.
 
 ```csharp
 TempData["Name"] = "Coding Sikho"
@@ -876,14 +803,6 @@ These are further subdivided into the following -
 
 - **Sessions** in Web Applications refer to the mechanism of storing user-specific data temporarily on the server side across multiple requests. 
 - Unlike cookies, which are stored on the client side, session data is stored on the server side, enhancing security and reducing the risk of exposing sensitive information.
-- Sessions typically generate a unique identifier (session ID) for each user session upon their first interaction with the application. This identifier (session ID) is stored as a cookie on the client side (usually), and the corresponding data is stored on the Web Server.
-- When the client makes subsequent requests, this session ID is sent in the Request header.
-- The server uses this identifier to retrieve session-specific data stored in memory (Temporary Caching Mechanism), a database, or another persistent storage mechanism.
-- This data persists until the session expires (due to user inactivity or logout) or is manually cleared.
-
-- Session state allows you to store user data on the server that can be accessed across multiple requests from the same client. You can configure session state in the Startup.cs file and then use it in a controller or a view.
-
-[6.2 Using session and TempData for preserving user data](https://medium.com/@syantien/6-2-using-session-and-tempdata-for-preserving-user-data-5a3a6de32b76)
 
 ```csharp
 // Startup.cs
@@ -922,44 +841,21 @@ public IActionResult AnotherAction()
 ```
 ## 18). Repository Pattern
 
-[Repository Pattern Implementation in ASP.NET Core](https://medium.com/net-core/repository-pattern-implementation-in-asp-net-core-21e01c6664d7) 
 - The repository pattern is a software design pattern that acts as an abstraction layer between your data access layer and the business logic layer in an ASP.NET Core Web API .  
-- It hides the details of how exactly the data is saved or retrieved from the underlying data source.   
-- The details of how the data is stored and retrieved is in the respective repository.   
-- This means your business logic doesn’t care whether it’s talking to SQL Server, Oracle, or even a mock object for testing purposes.  
-
-[How to perform Repository pattern in ASP.NET MVC?](https://www.ifourtechnolab.com/blog/how-to-perform-repository-pattern-in-asp-net-mvc#:~:text=The%20repository%20is%20used%20to,can%20facilitate%20automated%20unit%20testing.)
-
-- The Repository pattern is the most popular pattern for creating an enterprise level application. 
-- The repository is used to create an abstraction layer between the data access layer and the business logic layer of an application.Implementation of repository patterns can help to abstract your application from changes in the data store and can facilitate automated unit testing.
-- Repository directly communicates with Database (Data Access Layer (DAL)) and fetches the data and provides it to the logical layer (Business logic layer (BAL)). 
-- The purpose of the Repository is to isolate the data access layer (DAL) and the Business Logic Layer (BAL). 
-- Instead of writing entire data access logic in a controller, write this logic in a different class known as a repository. This will make your code maintainable and understandable.
+- It hides the details of how exactly the data is saved or retrieved from the underlying data source.  
+- The Repository pattern is the most popular pattern for creating an enterprise level application.
 
 ![image](https://github.com/user-attachments/assets/ac941a3d-7b8f-488f-b8ad-fde8597e33f2)
-
-[Implement Repository Base and Unit of Work in C#](https://dev.to/1001binary/implement-repository-base-and-unit-of-work-in-c-2ncg)
-
-[Repository Pattern C# ultimate guide: Entity Framework Core, Clean Architecture, DTOs, Dependency Injection, CQRS](https://medium.com/@codebob75/repository-pattern-c-ultimate-guide-entity-framework-core-clean-architecture-dtos-dependency-6a8d8b444dcb)
-
-[Implementing ASP.NET CRUD APIs with Repository Pattern and Unit of Work](https://medium.com/@tahatasleem01/implementing-asp-net-crud-apis-with-repository-pattern-and-unit-of-work-b34a86d91baf)
-
-[A Comprehensive Guide to Repository Pattern in .NET: Implementation and Best Practices](https://medium.com/@dhananjay_1891/a-comprehensive-guide-to-repository-pattern-in-net-implementation-and-best-practices-d67c3a92e618)
 
 ## 19). Singleton Design Pattern. Singleton VS Static Class.  
 
 [Singleton Pattern in C#](https://dev.to/kalkwst/singleton-pattern-in-c-1dh0)
 
 **Definition :**  
-- In software engineering, the singleton pattern is a Creational software design pattern that restricts the instantiation of a class to a single instance(object). The Singleton pattern is used to ensure that a class has only one instance.
-- Throughout the lifetime of the application the instance will remain same.  
-- One of the well-known "Gang of Four" design patterns, which describe how to solve recurring problems in object-oriented software, the pattern is useful when exactly one object is needed to coordinate actions across a system.  
 - More specifically, the singleton pattern allows objects to:  
 1). Ensure they only have one instance  
 2). Provide easy access to that instance  
 3). Control their instantiation (for example, hiding the constructors of a class)  
-
-[Singleton Design Pattern | Singleton Class | Hindi](https://www.youtube.com/watch?v=UjP8YPTVONU)
 
 **Why we need Singleton design Pattern?**
 - When there is single resource throughout the application, for example database, log file etc.
